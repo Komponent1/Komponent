@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { 
+  BrowserRouter,
+  Routes,
+  Route
+} from 'react-router-dom';
 
-const App: React.FC = () => (
-  <div>
-    Dev 
-  </div>
-);
+import Main from './main';
+
+const App: React.FC = () => {
+  useEffect(() => {
+    
+  }, []);  
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />}/>
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById('root'));
