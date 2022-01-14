@@ -1,6 +1,8 @@
 import './style.css'
 
-const app: HTMLElement|null = document.getElementById("root");
-const elem = document.createTextNode("This is vanilla source");
+import contextMenu from './contextMenu/contextMenu';
 
-app?.appendChild(elem)
+const app: HTMLElement|null = document.getElementById("root");
+const elem = contextMenu(document.body, 5);
+
+app.appendChild(elem);
