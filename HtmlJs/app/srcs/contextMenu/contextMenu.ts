@@ -1,7 +1,4 @@
-import { makeDiv } from '../utils';
 import './contextMenu.css'
-
-const Box = makeDiv("Context Menu");
 
 // 단일 메뉴의 경우
 function contextMenu(parent: HTMLElement, num: number): HTMLDivElement {
@@ -27,8 +24,8 @@ function contextMenu(parent: HTMLElement, num: number): HTMLDivElement {
     items.forEach((item, i) => {
       if (item === e.target) {
         contexts[i].style.display = "block";
-        contexts[i].style.setProperty("--top", e.pageY + "px");
-        contexts[i].style.setProperty("--left", e.pageY + "px");
+        contexts[i].style.setProperty("--top", (e.pageY) + "px");
+        contexts[i].style.setProperty("--left", (e.clientX) + "px");
       } else {
         contexts[i].style.display = "none";
       }
