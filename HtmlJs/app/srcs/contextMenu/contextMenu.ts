@@ -3,6 +3,7 @@ import './contextMenu.css'
 // 단일 메뉴의 경우
 function contextMenu(parent: HTMLElement, num: number): HTMLDivElement {
   const wrapper = document.createElement("div");
+  wrapper.classList.add("context_wrap");
 
   const items = [];
   const contexts = [];
@@ -24,8 +25,8 @@ function contextMenu(parent: HTMLElement, num: number): HTMLDivElement {
     items.forEach((item, i) => {
       if (item === e.target) {
         contexts[i].style.display = "block";
-        contexts[i].style.setProperty("--top", (e.pageY) + "px");
-        contexts[i].style.setProperty("--left", (e.clientX) + "px");
+        contexts[i].style.setProperty("--top", (e.offsetY) + "px");
+        contexts[i].style.setProperty("--left", (e.offsetX) + "px");
       } else {
         contexts[i].style.display = "none";
       }

@@ -16,6 +16,14 @@ elem.stopPropagation();
 elem.preventDefault();
 ```
 
+- clickEvent 좌표
+```jsx
+e.offsetX, e.offsetY //absolute 기준으로 position
+e.pageX, e.pageY // fixed 기준으로 position
+e.clientX, e.clientY // 브라우저에서 보여지는 영역을 기준
+e.screenX, e.screenY // 모니터 기준
+```
+
 ## 설계해보기
 
 - elem에 해당하는 context는 display가 none이다.

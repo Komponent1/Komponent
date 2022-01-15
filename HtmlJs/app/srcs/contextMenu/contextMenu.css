@@ -2,16 +2,22 @@ div {
   
 }
 
-.context_item {
+.context_wrap {
   display: inline-block;
-  position: relative;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px 1px gray;
+}
 
-  border: 1px solid black;
-  width: 100px;
-  height: 100px;
+.context_item {
+  display: block;
+  position: relative;
+  
+  width: 200px;
+  height: 20px;
 }
 .context_item:hover {
   cursor: pointer;
+  background-color: gray;
 }
 
 .context {
@@ -22,8 +28,11 @@ div {
   position: absolute;
   top: var(--top);
   left: var(--left);
+  z-index: 99;
 
-  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px gray;
   width: 100px;
   height: 100px;
+  background-color: rgb(240, 240, 240);
 }
