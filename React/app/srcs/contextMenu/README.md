@@ -31,8 +31,6 @@ e.screenX, e.screenY // 모니터 기준
 - 클릭하면 현재 마우스 위치를 변수로 저장한다
 - context의 display를 visible화 한다
     - context는 겹쳐서 보여져야하므로 position은 absolte 혹은 fixed이며 z-index가 상위여야한다.
-    - 다른 elem의 context를 none으로 바꾼다
+- 다른 elem의 context를 none으로 바꾼다
 - 외부를 클릭하면 모든 elem의 context를 none으로 바꾼다.
-- contextMenu는 여러아이템과 여러 contextMenu를 만들수 있어야 한다.
-
-## 현재 사용시 유의점(1.15)
+- 만약 켜져있으면
