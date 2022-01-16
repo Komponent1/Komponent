@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as style from './style';
+import {  throttle } from '../utlls';
 
 type prop = {
   num: number,
@@ -34,14 +35,17 @@ const Scrollspy: React.FC = ({ num }: prop) => {
     }
   })();
   useEffect(() => {
-    window.addEventListener("scroll", (e: any) => {
+    const scrollevent = (e: any) => {
       const { scrollTop } = e.target.scrollingElement;
 
       const idx = getOffset().findIndex(([from, to]) => (
         scrollTop >= from && scrollTop < to
       ));
       setSelect(idx);
-    })
+    }
+    window.addEventListener("scroll", throttle(scrollevent, 300));
+
+    return window.removeEventListener("scroll", throttle(scrollevent, 300));
   }, [])
 
   return (
