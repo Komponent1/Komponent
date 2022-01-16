@@ -1,0 +1,29 @@
+.scrollspy_wrapper {
+  width: 800px;
+
+  border: 1px solid black;
+}
+.scrollspy_nav {
+  display: flex;
+  flex-direction: row;
+
+  border: 1px solid black;
+}
+.scrollspy_navitem {
+  --num: 0;
+  
+  width: calc(100% / var(--num));
+  height: 20px;
+  border: 1px solid black;
+}
+.scrollspy_navitem.select {
+  background: grey;
+}
+.scrollspy_navitem:hover {
+  background: grey;
+}
+.scrollspy_item {
+  width: 100%;
+  height: 500px;
+  border: 1px solid black;
+}
