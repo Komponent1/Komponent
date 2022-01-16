@@ -1,4 +1,5 @@
 import './scrollSpy.css';
+import { throttle } from '../utils'
 
 function scrollSpy(num: number): HTMLDivElement {
   const wrapper = document.createElement("div");
@@ -40,7 +41,7 @@ function scrollSpy(num: number): HTMLDivElement {
     }
   })();
 
-  window.addEventListener("scroll", (e: any) => {
+   window.addEventListener("scroll", throttle((e: any) => {
     const { scrollTop } = e.target.scrollingElement;
 
     const idx = getOffset().findIndex(([from, to]) => (
@@ -50,7 +51,7 @@ function scrollSpy(num: number): HTMLDivElement {
       if (i === idx) navitem.classList.add("select");
       else navitem.classList.remove("select");
     })
-  })
+  }, 300))
 
   nav.addEventListener("click", e => {
     e.stopPropagation();
