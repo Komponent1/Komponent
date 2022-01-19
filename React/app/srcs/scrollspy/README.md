@@ -23,3 +23,17 @@ const refs = useRef(Array.map(() => React.createRef()));
 
 <elem ref={refs.current[idx]}>
 ```
+
+## useRef의 forwarding 유의
+
+만약 react Component에 대해 ref를 리스트로 포워딩하는 경우 아래와 같은 방법이 유의하다.
+
+```jsx
+const refs = useRef([]);
+
+<ReactComponent ref={r => (refs.current[i] = r)} />
+
+const ReactComponent = forwardRef((prop, ref) => (<elem ref={ref} />));
+
+
+```
