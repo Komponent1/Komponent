@@ -12,7 +12,7 @@ const Main = () => (
     <Div title={'Scrollspy'}>
       <Scrollspy num={5}/>
     </Div>
-    <Div>
+    <Div title={'Infinite Scroll'}>
       <InfiniteScroll />
     </Div>
   </div>
