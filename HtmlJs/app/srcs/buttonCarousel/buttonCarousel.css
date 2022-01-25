@@ -1,0 +1,35 @@
+.btncarousel {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+.btncarousel_item {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  opacity: 0;
+  transition: opacity 1s;
+}
+.btncarousel_btnset {
+  position: absolute;
+  top: 350px;
+  text-align: center;
+  width: 100%;
+}
+.btncarousel_btnset button {
+  border: none;
+  background: black;
+  border-radius: 10px;
+  padding: 0;
+  margin: 10px;
+  width: 10px;
+  height: 10px;
+}
+.btncarousel_btnset .select{
+  background: none;
+  border: 1px solid black;
+}
