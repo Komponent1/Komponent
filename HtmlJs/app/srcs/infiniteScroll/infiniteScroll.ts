@@ -25,7 +25,6 @@ function infiniteScroll(): HTMLDivElement {
   const observer = new IntersectionObserver(
     ([ entry ]) => {
       if (entry.isIntersecting) {
-        console.log('work')
         fetchRender(idx++);
       }
     }

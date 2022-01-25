@@ -1,0 +1,45 @@
+.carousel_wrapper {
+  position: relative;
+  
+  width: 500px;
+  height: 350px;
+  overflow: hidden;
+}
+.carousel_slider {
+  --idx: 1;
+  --sec: 0.5;
+
+  display: flex;
+  width: 3000px;
+
+  transform: translateX(calc(500px * var(--idx) * -1));
+  transition: transform calc(var(--sec) * 1s) ease-out;
+}
+.carousel_item {
+  width: 500px;
+  height: 350px;
+}
+.carousel_rbutton {
+  background: none;
+  color: white;
+  width: 40px;
+  height: 30px;
+  font-weight: bold;
+  border: none;
+
+  position: absolute;
+  top: 150px;
+  right: 10px;
+}
+.carousel_lbutton {
+  background: none;
+  color: white;
+  width: 40px;
+  height: 30px;
+  font-weight: bold;
+  border: none;
+
+  position: absolute;
+  top: 150px;
+  left: 10px;
+}
