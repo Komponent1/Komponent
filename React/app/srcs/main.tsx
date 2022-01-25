@@ -4,9 +4,18 @@ import ContextMenu from './contextMenu/contextMenu';
 import Scrollspy from './scrollspy/scrollspy';
 import InfiniteScroll from './infiniteScroll/infiniteScroll';
 import Tab from './Tab/tab';
+import Carousel, { makeDummyElement } from './carousel/carousel';
 
 const Main = () => (
   <div>
+    <Div title={'Carousel'}>
+      <Carousel>
+        {makeDummyElement('red')}
+        {makeDummyElement('black')}
+        {makeDummyElement('blue')}
+        {makeDummyElement('grey')}
+      </Carousel>
+    </Div>
     <Div title={'ContextMenu'}>
       <ContextMenu num={5} />
     </Div>
