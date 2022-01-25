@@ -5,13 +5,22 @@ import Scrollspy from './scrollspy/scrollspy';
 import InfiniteScroll from './infiniteScroll/infiniteScroll';
 import Tab from './Tab/tab';
 import Carousel, { makeDummyElement } from './carousel/carousel';
+import ButtonCarousel from './buttonCarousel/buttonCarousel';
 
 const Main = () => (
   <div>
+    <Div title={"Button Carousel"}>
+      <ButtonCarousel>
+        {makeDummyElement('red')}
+        {makeDummyElement('yellow')}
+        {makeDummyElement('blue')}
+        {makeDummyElement('grey')}
+      </ButtonCarousel>
+    </Div>
     <Div title={'Carousel'}>
       <Carousel>
         {makeDummyElement('red')}
-        {makeDummyElement('black')}
+        {makeDummyElement('yellow')}
         {makeDummyElement('blue')}
         {makeDummyElement('grey')}
       </Carousel>
