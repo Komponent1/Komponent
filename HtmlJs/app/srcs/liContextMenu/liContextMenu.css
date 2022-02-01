@@ -1,0 +1,25 @@
+.licontextmenu {
+  display: flex;
+}
+.licontextmenu_icon {
+  position: relative;
+}
+.licontextmenu ul {
+  display: none;
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid black;
+}
+.licontextmenu_ul {
+  position: absolute;
+  top: auto;
+  left: 0;
+}
+.licontextmenu_subul {
+  position: absolute;
+  top: 0;
+  left: auto;
+}
+.licontextmenu_li {
+  position: relative;
+}
