@@ -79,7 +79,8 @@ function liContextMenu(config: config[]): HTMLDivElement {
 
   const icons = Array.from(wrapper.children) as HTMLElement[];
   icons.map(icon => {
-    icon.addEventListener('click', () => {
+    icon.addEventListener('click', event => {
+      event.stopPropagation();
       for(let i = 0; i < icons.length; i++) {
         if (icons[i].children.length !== 0) icons[i].children[0].style.display = 'none';
       }
@@ -87,8 +88,7 @@ function liContextMenu(config: config[]): HTMLDivElement {
     })
   });
 
-  window.addEventListener('click', event => {
-    event.stopPropagation();
+  document.body.addEventListener('click', event => {
     if (event.target.classList.contains('licontextmenu')) return;
     for(let i = 0; i < icons.length; i++) {
       if (icons[i].children.length !== 0) icons[i].children[0].style.display = 'none';
