@@ -11,23 +11,28 @@ function autocomplete(): HTMLDivElement {
   const input = document.createElement('input');
   input.classList.add('ac_input');
   wrapper.appendChild(input);
-  const ul = document.createElement('ul');
-  ul.classList.add('ac_ul');
-  wrapper.appendChild(ul);
-
+  
   input.addEventListener('keyup', async event => {
+    const prev = document.getElementsByClassName('ac_ul');
+    if (prev.length !== 0) wrapper.removeChild(prev[0]);
+
     const { data } = await fetcher(dummies);
-    ul.innerHTML = ''
-    ul.innerHTML = data
-      .filter(
-        e => e.search(event.target.value) !== -1 
-              && event.target.value !== ''
-      )
-      .map(e => (
+    if (event.target.value === '') return;
+    
+    const ul = document.createElement('ul');
+    ul.classList.add('ac_ul');
+    const lis = data.filter(
+      e => e.search(event.target.value) !== -1 
+            && event.target.value !== ''
+    );
+    if (lis.length === 0) return;
+    ul.innerHTML = lis.map(e => (
         `<li class="ac_li">
           ${e}
         </li>`
       )).join('');
+
+    wrapper.appendChild(ul);
   })
 
   return wrapper;
