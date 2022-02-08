@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Main from './main';
+import Test from './test';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -16,7 +17,8 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />}/>
+        <Route path="/react" element={<Main />}/>
+        <Route path="/react/test" element={<Test />} />
       </Routes>
     </BrowserRouter>
   );

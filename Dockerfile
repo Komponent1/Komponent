@@ -1,6 +1,8 @@
 FROM node:16-alpine
 
-COPY app /usr/app
+COPY Server/app /usr/app
+COPY React/app/build /usr/public/react
+COPY Vanilla/app/build /usr/public/vanilla
 WORKDIR /usr/app
 
 ENV NODE_ENV=development
@@ -8,6 +10,6 @@ ENV CHOKIDAR_USEPOLLING=true
 
 RUN npm install
 
-EXPOSE 4000
+EXPOSE 5000
 
 CMD ["npm", "start"]

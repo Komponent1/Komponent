@@ -1,0 +1,253 @@
+body {
+  position: relative;
+}
+
+.title {
+  
+}
+div {
+  
+}
+
+.context_wrap {
+  display: inline-block;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px 1px gray;
+}
+
+.context_item {
+  display: block;
+  position: relative;
+  
+  width: 200px;
+  height: 20px;
+}
+.context_item:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+.context {
+  --top: 0;
+  --left: 0;
+
+  display: none;
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  z-index: 99;
+
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px gray;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(240, 240, 240);
+}
+
+.scrollspy_wrapper {
+  width: 800px;
+
+  border: 1px solid black;
+}
+.scrollspy_nav {
+  display: flex;
+  flex-direction: row;
+
+  border: 1px solid black;
+}
+.scrollspy_navitem {
+  --num: 0;
+  
+  width: calc(100% / var(--num));
+  height: 20px;
+  border: 1px solid black;
+}
+.scrollspy_navitem.select {
+  background: grey;
+}
+.scrollspy_navitem:hover {
+  background: grey;
+}
+.scrollspy_item {
+  width: 100%;
+  height: 500px;
+  border: 1px solid black;
+}
+.infscroll_wrapper {
+  position: relative;
+
+  width: 500px;
+  height: 600px;
+  overflow-y: scroll;
+}
+.infscroll_li {
+  width: 500px;
+  border: 1px solid black;
+
+  height: 100px;
+}
+.infscroll_trigger {
+
+}
+.tab_wrapper {
+  width: 500px;
+
+  box-shadow: 3px 3px 3px 3px grey;
+}
+.tab_nav {
+  width: 100%;
+  
+  display: flex;
+  flex-direction: row;
+  background: grey;
+  color: orange;
+}
+.tab_navitem {
+  --num: 1;
+
+  width: calc(100% / var(--num));
+  height: 50px;
+}
+.select {
+  background: white;
+}
+.tab_item {
+  width: 100%;
+  height: 100px;
+}
+.carousel_wrapper {
+  position: relative;
+  
+  width: 500px;
+  height: 350px;
+  overflow: hidden;
+}
+.carousel_slider {
+  --idx: 1;
+  --sec: 0.5;
+
+  display: flex;
+  width: 3000px;
+
+  transform: translateX(calc(500px * var(--idx) * -1));
+  transition: transform calc(var(--sec) * 1s) ease-out;
+}
+.carousel_item {
+  width: 500px;
+  height: 350px;
+}
+.carousel_rbutton {
+  background: none;
+  color: white;
+  width: 40px;
+  height: 30px;
+  font-weight: bold;
+  border: none;
+
+  position: absolute;
+  top: 150px;
+  right: 10px;
+}
+.carousel_lbutton {
+  background: none;
+  color: white;
+  width: 40px;
+  height: 30px;
+  font-weight: bold;
+  border: none;
+
+  position: absolute;
+  top: 150px;
+  left: 10px;
+}
+.btncarousel {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+.btncarousel_item {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  opacity: 0;
+  transition: opacity 1s;
+}
+.btncarousel_btnset {
+  position: absolute;
+  top: 350px;
+  text-align: center;
+  width: 100%;
+}
+.btncarousel_btnset button {
+  border: none;
+  background: black;
+  border-radius: 10px;
+  padding: 0;
+  margin: 10px;
+  width: 10px;
+  height: 10px;
+}
+.btncarousel_btnset .select{
+  background: none;
+  border: 1px solid black;
+}
+.ac_wrapper {
+  width: 100px;
+  position: relative;
+}
+.ac_input {
+  width: 100%;
+}
+.ac_ul {
+  position: absolute;
+  top: auto;
+  left: 0;
+  list-style-type: none;
+  
+  width: 100%;
+  max-height: 60px;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+
+  border: 1px solid black;
+  border-radius: 1px;
+}
+.ac_li {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.ac_li:hover {
+  
+  background: skyblue;
+}
+.licontextmenu {
+  display: flex;
+}
+.licontextmenu_icon {
+  position: relative;
+}
+.licontextmenu ul {
+  display: none;
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid black;
+}
+.licontextmenu_ul {
+  position: absolute;
+  top: auto;
+  left: 0;
+}
+.licontextmenu_subul {
+  position: absolute;
+  top: 0;
+  left: auto;
+}
+.licontextmenu_li {
+  position: relative;
+}
