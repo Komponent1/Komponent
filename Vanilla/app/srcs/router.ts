@@ -1,0 +1,3 @@
+const historyRouter = (path, elem) => {
+  
+}

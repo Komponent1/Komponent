@@ -29,7 +29,6 @@ function carousel(elems: HTMLElement[]): HTMLDivElement {
   for (let i = 0; i < items.length; i++) {
     items[i].classList.add('carousel_item');
     slider.appendChild(items[i]);
-    console.log(slider);
   }
   const rButton = document.createElement('button');
   rButton.classList.add('carousel_rbutton');
