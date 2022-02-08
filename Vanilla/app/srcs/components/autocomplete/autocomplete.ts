@@ -1,5 +1,5 @@
 import './autocomplete.css'
-import { fetcher } from '../utils';
+import { fetcher } from '../../utils';
 
 const dummies = [
   'aaabbb', 'aaaaaa', 'aaccc', 'bbbccc'

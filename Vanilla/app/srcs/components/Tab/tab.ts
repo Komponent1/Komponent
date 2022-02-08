@@ -1,5 +1,5 @@
 import './tab.css';
-import { fetcher } from '../utils';
+import { fetcher } from '../../utils';
 
 const dummies = Array.from({ length: 3 }).map((_, i) => ({
   title: `${i}`,

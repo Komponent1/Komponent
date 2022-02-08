@@ -1,5 +1,5 @@
 import './scrollSpy.css';
-import { throttle } from '../utils'
+import { throttle } from '../../utils'
 
 function scrollSpy(num: number): HTMLDivElement {
   const wrapper = document.createElement("div");

@@ -1,4 +1,4 @@
-import { fetcher } from "../utils";
+import { fetcher } from '../../utils';
 import './infiniteScroll.css'
 
 const datas = Array.from({ length: 100 }).map((e, i) => i + '');
