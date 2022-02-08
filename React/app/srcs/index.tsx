@@ -5,22 +5,19 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
+import * as style from './style';
 
+import Menu from './menu';
 import Main from './main';
-import Test from './test';
 
 const App: React.FC = () => {
-  useEffect(() => {
-    
-  }, []);  
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/react" element={<Main />}/>
-        <Route path="/react/test" element={<Test />} />
-      </Routes>
-    </BrowserRouter>
+    <style.layout>
+      <BrowserRouter basename='/react'>
+        <Menu />
+        <Main />
+      </BrowserRouter>
+    </style.layout>
   );
 };
 

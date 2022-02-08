@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import style from './style';
+import * as style from './style';
 
 const dummies = [
   

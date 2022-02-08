@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as style from './style';
-import {  throttle } from '../utlls';
+import {  throttle } from '../../utlls';
 
 type prop = {
   num: number,

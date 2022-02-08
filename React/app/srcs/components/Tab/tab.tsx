@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetcher } from '../utlls';
+import { fetcher } from '../../utlls';
 import * as style from './style';
 
 const Loading: React.FC = () => (

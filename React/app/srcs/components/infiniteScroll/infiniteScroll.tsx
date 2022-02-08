@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import * as style from './style';
-import { fetcher } from '../utlls'; 
+import { fetcher } from '../../utlls'; 
 
 const dummies = Array.from({ length: 100 }).map((e, i) => i + '');
 
