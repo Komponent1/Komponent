@@ -1,6 +1,9 @@
 import './buttonCarousel.css'
 
-function buttonCarousel(elems: HTMLElement[]): HTMLDivElement {
+type Prop = {
+  elems: HTMLDivElement[]
+}
+function buttonCarousel({ elems }: Prop): HTMLDivElement {
   let idx = 0;
   let isChanged = false;
 

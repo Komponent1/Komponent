@@ -16,7 +16,7 @@ const init = (): void => {
       break;
     default:
       const conf = componentList[path];
-      router(path, conf.name, conf.render);
+      router(path, conf.name, conf.render, conf.prop);
   }
 };
  

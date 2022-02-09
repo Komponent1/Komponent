@@ -52,3 +52,15 @@ export function createElem (type: string, classname: string) {
 
   return elem;
 };
+
+export function makeDummyElem(): HTMLElement[] {
+  const colors = [ 'red', 'blue', 'grey', 'yellow'];
+
+  const elems = colors.map(e => {
+    const elem = document.createElement('div');
+    elem.style.backgroundColor = e;
+
+    return elem;
+  })
+  return elems
+};

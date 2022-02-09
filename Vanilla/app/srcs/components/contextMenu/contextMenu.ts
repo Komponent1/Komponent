@@ -1,7 +1,10 @@
 import './contextMenu.css'
 
+type Prop = {
+  num: number
+}
 // 단일 메뉴의 경우
-function contextMenu(parent: HTMLElement, num: number): HTMLDivElement {
+function contextMenu({ num }: Prop): HTMLDivElement {
   const wrapper = document.createElement("div");
   wrapper.classList.add("context_wrap");
 
@@ -33,7 +36,7 @@ function contextMenu(parent: HTMLElement, num: number): HTMLDivElement {
     });
   });
 
-  parent.addEventListener("click", e => {
+  window.addEventListener("click", e => {
     e.stopPropagation();
     
     contexts.forEach(context => {

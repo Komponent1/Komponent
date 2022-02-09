@@ -1,7 +1,10 @@
 import './scrollSpy.css';
 import { throttle } from '../../utils'
 
-function scrollSpy(num: number): HTMLDivElement {
+type Prop = {
+  num: number
+}
+function scrollSpy({ num }: Prop): HTMLDivElement {
   const wrapper = document.createElement("div");
   wrapper.classList.add("scrollspy_wrapper");
   const nav = document.createElement("div");

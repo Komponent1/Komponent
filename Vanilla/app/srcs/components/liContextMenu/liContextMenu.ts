@@ -1,47 +1,12 @@
 import { createElem } from "../../utils";
 import './liContextMenu.css'
 
-
 type config = {
   name: string,
   shortcut?: string,
   li?: config[],
   act?: Function  
 }
-export const dummies: config[] = [
-  {
-    name: 'menu1',
-    act: () => console.log('menu1 work')
-  },
-  {
-    name: 'menu2',
-    li: [
-      {
-        name: 'submenu1',
-        act: () => console.log('submenu1 work')
-      },
-      {
-        name: 'submenu2',
-        li: [
-          {
-            name: 'subsubemenu1',
-            act: () => console.log('subsubemnu1 work')
-          }
-        ]
-      }
-    ]
-  },
-  {
-    name: 'menu3',
-    li: [
-      {
-        name: 'submenu3',
-        act: () => console.log('submenu3 work')
-      }
-    ]
-    
-  }
-];
 function makeContext(type: string, config: config[], parent: HTMLElement): HTMLUListElement {
   const context = createElem(
     'ul',
@@ -67,7 +32,10 @@ function makeContext(type: string, config: config[], parent: HTMLElement): HTMLU
 
   return context as HTMLUListElement;
 }
-function liContextMenu(config: config[]): HTMLDivElement {
+type Prop = {
+  config: config[]
+}
+function liContextMenu({ config }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'licontextmenu');
   
   config.map(e => {
