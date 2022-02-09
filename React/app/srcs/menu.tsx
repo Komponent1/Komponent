@@ -5,8 +5,9 @@ import * as style from './style';
 
 const Menu = () => (
   <style.menu>
+    <h1>Comp List</h1>
     {Object.entries(ComponentList).map(([key, conf], i) => (
-      <li key={i}><Link to={`${key}`}>{conf.name}</Link></li>
+      <style.li key={i}><Link to={`${key}`}>{conf.name}</Link></style.li>
     ))}
   </style.menu>
 );

@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as style from './style';
 
-const dummies = [
-  
-]
-
 const useAutoComplete = (url: string, fetcher: Function) => {
   const [text, setText] = useState<string>('');
   const [lis, setLis] = useState<string[]>([]);
@@ -31,16 +27,18 @@ const Autocomplete: React.FC = ({placeholder, url, fetcher}: Prop) => {
       <style.input
         placeholder={placeholder}
         value={text}
-        onChange={e => setText(text)}
-        onFocuse={() => setFocus(true)}
+        onChange={e => setText(e.target.value)}
+        onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}/>
         <style.ul
           display={lis.length !== 0 && focus}>
-          {lis.map((li, i) => {
-            <style.li onClick={() => setText(li)}>
+          {lis.map((li, i) => (
+            <style.li key={i} onClick={() => {
+              setText(li)
+            }}>
               {li}
             </style.li>
-          })}
+          ))}
         </style.ul>
     </style.div>
   );

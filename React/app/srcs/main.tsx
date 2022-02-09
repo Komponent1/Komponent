@@ -1,18 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { 
   Routes,
-  Route,
-  useParam
+  Route
 } from 'react-router-dom';
 import { ComponentList } from './config';
+import * as style from './style';
+
+const Div: React.FC = ({ name, children }) => (
+  <div>
+    <h1>{name}</h1>
+    {children}
+  </div>
+);
 
 const Main = () => {
   return (
-    <Routes>
-      {Object.entries(ComponentList).map(([key, conf], i) => (
-          <Route key={i} path={`${key}`} element={<conf.comp/>} />
-      ))}
-    </Routes>
+    <style.main>
+      <Routes>
+        {Object.entries(ComponentList).map(([key, conf], i) => (
+            <Route key={i} path={`${key}`}
+              element={
+                <Div name={conf.name}>
+                  <conf.comp {...conf.prop}/>
+                </Div>
+              }/>
+        ))}
+      </Routes>
+    </style.main>
   );
 };
 

@@ -3,11 +3,6 @@ const path = require('path');
 
 module.exports = {
     entry: path.join(__dirname, '../srcs/index.tsx'),
-    output: {
-        path: path.join(__dirname, '../build'),
-        filename: '[name].bundle.js',
-    },
-
     resolve: {
         extensions: [".ts", ".tsx", ".js"],
     },
