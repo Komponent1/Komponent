@@ -1,4 +1,5 @@
 import './carousel.css';
+import { createElem } from '../../utils';
 
 type Prop = {
   elems: HTMLDivElement[]
@@ -7,8 +8,7 @@ function carousel({ elems }: Prop): HTMLDivElement {
   let idx = 1;
   let isTransitioned = false;
 
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('carousel_wrapper');
+  const wrapper = createElem('div', 'carousel_wrapper') as HTMLDivElement
   const slider = document.createElement('div');
   slider.classList.add('carousel_slider');
   wrapper.appendChild(slider);

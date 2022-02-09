@@ -1,4 +1,5 @@
 import './buttonCarousel.css'
+import { createElem } from '../../utils'; 
 
 type Prop = {
   elems: HTMLDivElement[]
@@ -7,10 +8,8 @@ function buttonCarousel({ elems }: Prop): HTMLDivElement {
   let idx = 0;
   let isChanged = false;
 
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('btncarousel');
-  const btnset = document.createElement('div');
-  btnset.classList.add('btncarousel_btnset');
+  const wrapper = createElem('div', 'btncarousel') as HTMLDivElement;
+  const btnset = createElem('div', 'btncarousel_btnset');
   let btns = [];
   for (let i = 0; i < elems.length; i++) {
     elems[i].classList.add('btncarousel_item');
