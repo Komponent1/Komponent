@@ -20,11 +20,10 @@ export const item = styled.div`
 `;
 export const button = styled.button<{ position: string }>`
   background: none;
-  color : white;
-  width: 40px;
-  height: 30px;
+  color : black;
   font-weight: bold;
   border: none;
+  font-size: 50px;
 
   position: absolute;
   top: 150px;

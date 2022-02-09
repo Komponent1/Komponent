@@ -1,16 +1,11 @@
 import React, { Children, useState } from 'react';
 import * as style from './style';
 
-export const makeDummyElement = (color: string) => (
-  <style.item style={{ background: color }}></style.item>
-)
-
 const Carousel: React.FC = ({ children }) => {
-  const elems = Children.toArray(children);
   const list = [
-    React.cloneElement(elems[elems.length - 1]),
-    ...elems,
-    React.cloneElement(elems[0])
+    React.cloneElement(children[children.length - 1]),
+    ...children,
+    React.cloneElement(children[0])
   ];
   const [idx, setIdx] = useState<number>(1);
   const [sec, setSec] = useState<number>(0.5);
@@ -30,7 +25,9 @@ const Carousel: React.FC = ({ children }) => {
           if (idx === 0) move(list.length - 2, 0);
           else if (idx === list.length - 1) move(1, 0);
         }}>
-        {list.map(e => <>{e}</>)}
+        {list.map((e, i) => (
+          <style.item key={i}>{e}</style.item>
+        ))}
       </style.slider>
       <style.button position="left" onClick={() => {
         if (isTransitioned) return;

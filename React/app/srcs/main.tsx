@@ -5,13 +5,7 @@ import {
 } from 'react-router-dom';
 import { ComponentList } from './config';
 import * as style from './style';
-
-const Div: React.FC = ({ name, children }) => (
-  <div>
-    <h1>{name}</h1>
-    {children}
-  </div>
-);
+import { Div } from './utlls';
 
 const Main = () => {
   return (
@@ -20,7 +14,7 @@ const Main = () => {
         {Object.entries(ComponentList).map(([key, conf], i) => (
             <Route key={i} path={`${key}`}
               element={
-                <Div name={conf.name}>
+                <Div title={conf.name}>
                   <conf.comp {...conf.prop}/>
                 </Div>
               }/>

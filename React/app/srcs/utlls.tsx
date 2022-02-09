@@ -49,3 +49,12 @@ type Obj = {
 export function fetcher(datas: any[]): Promise<Obj> {
   return new Promise(timer({ data: datas }));
 }
+export const DummyComp: React.FC = ({ color, width = '100%', height = '100%' }) => (
+  <div style={{ background: color, width: width, height: height }} />
+)
+const color = ['yellow', 'blue', 'red', 'green'];
+export const makeDummyComps = (): React.FC[] => {
+  return (
+    color.map((e, i) => <DummyComp key={i} color={e} />)
+  );
+}
