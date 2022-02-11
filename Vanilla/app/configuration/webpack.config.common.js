@@ -5,12 +5,6 @@ const path = require('path');
 
 module.exports = {
     entry: path.join(__dirname, '../srcs/index.ts'),
-    output: {
-        path: path.join(__dirname, '../build'),
-        filename: '[name].bundle.js',
-        publicPath: '/vanilla'
-    },
-
     resolve: {
         extensions: [".ts", ".js"],
     },
@@ -30,6 +24,17 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
+            },
+            {
+                test: /\.md$/,
+                use: [
+                    {
+                        loader: 'html-loader'
+                    },
+                    {
+                        loader: 'markdown-loader'
+                    }
+                ]
             }
         ]
     },

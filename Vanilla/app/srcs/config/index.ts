@@ -1,15 +1,8 @@
-import * as comp from './components';
-import * as util from './utils';
+import carousel from './carousel';
+import * as comp from '../components';
+import * as util from '../utils';
 
-type Comp = {
-  name: string,
-  render: Function,
-  prop?: Object
-}
-type CompList = {
-  [key in string]: Comp
-}
-export const componentList: CompList = {
+export const componentList = {
   autocomplete: {
     name: 'Auto Complete',
     render: comp.autocomplete,
@@ -21,13 +14,7 @@ export const componentList: CompList = {
       elems: util.makeDummyElem()
     }
   },
-  carousel: {
-    name: 'Carousel',
-    render: comp.carousel,
-    prop: {
-      elems: util.makeDummyElem()
-    }
-  },
+  carousel,
   contextmenu: {
     name: 'Context Menu',
     render: comp.contextMenu,

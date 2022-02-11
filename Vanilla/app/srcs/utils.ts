@@ -1,4 +1,4 @@
-export function makeDiv(name: string, elem: HTMLElement | HTMLDivElement) {
+export function makeDiv(name: string, explain: string, elem: HTMLElement | HTMLDivElement) {
   const div = document.createElement("div")
   div.classList.add("content_box");
 
@@ -6,8 +6,12 @@ export function makeDiv(name: string, elem: HTMLElement | HTMLDivElement) {
   const titleText = document.createTextNode(name)
   title.appendChild(titleText);
   title.classList.add("title");
+
+  const sub = document.createElement('div');
+  sub.innerHTML = explain;
   
   div.appendChild(title);
+  div.appendChild(sub);
   div.appendChild(elem);
 
   return div

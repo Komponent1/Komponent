@@ -4,6 +4,7 @@ import { createElem } from '../../utils';
 type Prop = {
   elems: HTMLDivElement[]
 }
+
 function buttonCarousel({ elems }: Prop): HTMLDivElement {
   let idx = 0;
   let isChanged = false;
