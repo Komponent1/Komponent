@@ -3,10 +3,10 @@ const common = require('./webpack.config.common');
 const path = require('path');
 
 module.exports = merge(common, {
-    mode: 'production',
     output: {
         path: path.join(__dirname, '../build'),
         filename: '[name].bundle.js',
         publicPath: '/vanilla'
     },
+    mode: 'production'
 });
