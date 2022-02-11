@@ -46,9 +46,9 @@ export function fetcher(datas: any[]): Promise<Obj> {
   return new Promise(timer({ data: datas }));
 }
 
-export function createElem (type: string, classname: string) {
+export function createElem (type: string, classname?: string) {
   const elem = document.createElement(type);
-  elem.classList.add(classname);
+  if (classname) elem.classList.add(classname);
 
   return elem;
 };

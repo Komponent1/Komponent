@@ -1,11 +1,11 @@
-.ac_wrapper {
+.autocomplete {
   width: 100px;
   position: relative;
 }
-.ac_input {
+.autocomplete_input {
   width: 100%;
 }
-.ac_ul {
+.autocomplete_ul {
   position: absolute;
   top: auto;
   left: 0;
@@ -20,12 +20,11 @@
   border: 1px solid black;
   border-radius: 1px;
 }
-.ac_li {
+.autocomplete_li {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-.ac_li:hover {
-  
+.autocomplete_li:hover {
   background: skyblue;
 }
