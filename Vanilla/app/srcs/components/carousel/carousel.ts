@@ -8,7 +8,7 @@ function carousel({ elems }: Prop): HTMLDivElement {
   let idx = 1;
   let isTransitioned = false;
 
-  const wrapper = createElem('div', 'carousel_wrapper') as HTMLDivElement
+  const wrapper = createElem('div', 'carousel') as HTMLDivElement
   const slider = document.createElement('div');
   slider.classList.add('carousel_slider');
   wrapper.appendChild(slider);
@@ -18,8 +18,9 @@ function carousel({ elems }: Prop): HTMLDivElement {
      elems[0].cloneNode(true) as HTMLElement
   ];
   for (let i = 0; i < items.length; i++) {
-    items[i].classList.add('carousel_item');
-    slider.appendChild(items[i]);
+    let itemWrap = createElem('div', 'carousel_item');
+    itemWrap.appendChild(items[i]);
+    slider.appendChild(itemWrap);
   }
   const rButton = document.createElement('button');
   rButton.classList.add('carousel_rbutton');

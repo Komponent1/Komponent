@@ -1,32 +1,38 @@
 import './contextMenu.css'
+import { createElem } from '../../utils';
 
+type Data = {
+  menu: string,
+  context: string,
+}
 type Prop = {
-  num: number
+  datas: Data[]
 }
 // 단일 메뉴의 경우
-function contextMenu({ num }: Prop): HTMLDivElement {
-  const wrapper = document.createElement("div");
-  wrapper.classList.add("context_wrap");
+function contextMenu({ datas }: Prop): HTMLDivElement {
+  const wrapper = createElem('div', 'contextmenu') as HTMLDivElement;
 
-  const items = [];
+  const menus = [];
   const contexts = [];
-  for (let i = 0; i < num; i++) {
-    let item = document.createElement("div");
-    item.classList.add("context_item")
-    let context = document.createElement("div");
-    context.classList.add("context");
-    item.appendChild(context);
-    wrapper.appendChild(item);
+  for (let i = 0; i < datas.length; i++) {
+    let menu = createElem('p', 'contextmenu_menu');
+    menu.innerText = datas[i].menu;
+    let context = createElem('p', 'contextmenu_context');
+    context.innerText = datas[i].context;
+    menu.appendChild(context);
+    wrapper.appendChild(menu);
     
-    items.push(item);
+    menus.push(menu);
     contexts.push(context);
   }
 
   wrapper.addEventListener("click", e => {
     e.stopPropagation();
 
-    items.forEach((item, i) => {
-      if (item === e.target) {
+    menus.forEach((menu, i) => {
+      if (contexts[i] === e.target) {
+        return;
+      } else if (menu === e.target) {
         contexts[i].style.display = "block";
         contexts[i].style.setProperty("--top", (e.offsetY) + "px");
         contexts[i].style.setProperty("--left", (e.offsetX) + "px");

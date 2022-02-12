@@ -1,27 +1,24 @@
 import './scrollSpy.css';
-import { throttle } from '../../utils'
+import { throttle, createElem } from '../../utils'
 
 type Prop = {
-  num: number
+  elems: HTMLElement[]
 }
-function scrollSpy({ num }: Prop): HTMLDivElement {
-  const wrapper = document.createElement("div");
-  wrapper.classList.add("scrollspy_wrapper");
-  const nav = document.createElement("div");
-  nav.classList.add("scrollspy_nav");
+function scrollSpy({ elems }: Prop): HTMLDivElement {
+  const wrapper = createElem('div', 'scrollspy') as HTMLDivElement;
+  const nav = createElem('div', 'scrollspy_nav');
   wrapper.appendChild(nav);
 
   const navitems = [];
   const items = [];
-  for(let i = 0; i < num; i++) {
-    let item = document.createElement("div");
-    item.classList.add("scrollspy_item");
+  for(let i = 0; i < elems.length; i++) {
+    let item = createElem('div', 'scrollspy_item');
+    item.appendChild(elems[i]);
     wrapper.appendChild(item);
     items.push(item);
     
-    let navitem = document.createElement("div");
-    navitem.classList.add("scrollspy_navitem");
-    navitem.style.setProperty("--num", num + '');
+    let navitem = createElem('div', 'scrollspy_navitem');
+    navitem.style.setProperty("--num", elems.length + '');
     nav.appendChild(navitem)
     navitems.push(navitem);
   }

@@ -1,13 +1,13 @@
 import { createElem } from "../../utils";
 import './liContextMenu.css'
 
-type config = {
+type data = {
   name: string,
   shortcut?: string,
-  li?: config[],
+  li?: data[],
   act?: Function  
 }
-function makeContext(type: string, config: config[], parent: HTMLElement): HTMLUListElement {
+function makeContext(type: string, config: data[], parent: HTMLElement): HTMLUListElement {
   const context = createElem(
     'ul',
     type === 'sub' ? 'licontextmenu_ul' : 'licontextmenu_subul');
@@ -33,12 +33,12 @@ function makeContext(type: string, config: config[], parent: HTMLElement): HTMLU
   return context as HTMLUListElement;
 }
 type Prop = {
-  config: config[]
+  datas: data[]
 }
-function liContextMenu({ config }: Prop): HTMLDivElement {
+function liContextMenu({ datas }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'licontextmenu');
   
-  config.map(e => {
+  datas.map(e => {
     const icon = createElem('div', 'licontextmenu_icon');
     icon.innerText = e.name;
     if (e.li) icon.appendChild(makeContext('main', e.li, icon));

@@ -1,27 +1,21 @@
 import './tab.css';
-import { fetcher } from '../../utils';
+import { createElem } from '../../utils';
 
-const dummies = Array.from({ length: 3 }).map((_, i) => ({
-  title: `${i}`,
-  content: `This is ${i}`
-}));
-
-function Tab(): HTMLDivElement {
+type Prop = {
+  fetcher: Function 
+};
+function Tab({ fetcher }: Prop): HTMLDivElement {
   let datas = null;
 
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('tab_wrapper');
-  const nav = document.createElement('div');
-  nav.classList.add('tab_nav');
-  const item = document.createElement('div');
-  item.classList.add('tab_item');
+  const wrapper = createElem('div', 'tab') as HTMLDivElement;
+  const nav = createElem('div', 'tab_nav');
+  const item = createElem('div', 'tab_item');
   wrapper.appendChild(nav);
   wrapper.appendChild(item);
 
   const navitems: HTMLDivElement[] = [];
   
-  const click = (e, idx: number) => {
-    console.log(navitems[idx].classList);
+  const click = (e: Event, idx: number) => {
     if (navitems[idx].classList.contains('select')) return;
     for (let i = 0; i < navitems.length; i++) {
       if (navitems[i].classList.contains('select'))
@@ -32,10 +26,10 @@ function Tab(): HTMLDivElement {
   }
 
   const fetchData = async () => {
-    datas = (await fetcher(dummies)).data;
+    datas = (await fetcher()).data;
+    console.log(datas);
     for (let i = 0; i < datas.length; i++) {
-      let navitem = document.createElement('div');
-      navitem.classList.add('tab_navitem');
+      let navitem = createElem('div', 'tab_navitem') as HTMLDivElement;
       if (i === 0) navitem.classList.add('select');
       navitem.style.setProperty('--num', datas.length);
       navitem.innerHTML = `<p>${datas[i].title}</p>`
@@ -47,8 +41,7 @@ function Tab(): HTMLDivElement {
     
     item.innerHTML = datas[0].content;
   };
-
-  window.addEventListener("load", () => fetchData());
+  fetchData();
 
   return wrapper;
 };

@@ -1,16 +1,13 @@
-.infscroll_wrapper {
+.infinitescroll {
   position: relative;
 
   width: 500px;
   height: 600px;
   overflow-y: scroll;
 }
-.infscroll_li {
+.infinitescroll_li {
   width: 500px;
   border: 1px solid black;
 
   height: 100px;
-}
-.infscroll_trigger {
-
 }

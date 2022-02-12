@@ -1,26 +1,25 @@
-div {
-  
-}
-
-.context_wrap {
+.contextmenu {
   display: inline-block;
   border-radius: 2px;
   box-shadow: 1px 1px 1px 1px gray;
 }
 
-.context_item {
+.contextmenu_menu {
   display: block;
   position: relative;
   
   width: 200px;
   height: 20px;
+
+  padding-left: 10px;
+  margin: 0;
 }
-.context_item:hover {
+.contextmenu_menu:hover {
   cursor: pointer;
   background-color: gray;
 }
 
-.context {
+.contextmenu_context {
   --top: 0;
   --left: 0;
 
@@ -32,7 +31,9 @@ div {
 
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px gray;
-  width: 100px;
-  height: 100px;
+  
   background-color: rgb(240, 240, 240);
+
+  padding: 10px;
+  margin: 0;
 }

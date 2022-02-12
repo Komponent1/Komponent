@@ -1,80 +1,21 @@
+import autocomplete from './autocomplete';
 import carousel from './carousel';
+import buttoncarousel from './buttomcarousel';
+import contextmenu from './contextmenu';
+import infinitescroll  from './infinitescroll';
+import licontextmenu from './licontextmenu';
+import scrollspy from './scrollspy';
+import tab from './tab';
+
 import * as comp from '../components';
-import * as util from '../utils';
 
 export const componentList = {
-  autocomplete: {
-    name: 'Auto Complete',
-    render: comp.autocomplete,
-  },
-  buttoncarousel: {
-    name: 'Button Carousel',
-    render: comp.buttonCarousel,
-    prop: {
-      elems: util.makeDummyElem()
-    }
-  },
+  autocomplete,
+  buttoncarousel,
   carousel,
-  contextmenu: {
-    name: 'Context Menu',
-    render: comp.contextMenu,
-    prop: {
-      num: 5
-    }
-  },
-  infinitescroll: {
-    name: 'Infinite Scroll',
-    render: comp.infiniteScroll,
-  },
-  liContextMenu: {
-    name: 'li Context Menu',
-    render: comp.liContextMenu,
-    prop: {
-      config: [
-        {
-          name: 'menu1',
-          act: () => console.log('menu1 work')
-        },
-        {
-          name: 'menu2',
-          li: [
-            {
-              name: 'submenu1',
-              act: () => console.log('submenu1 work')
-            },
-            {
-              name: 'submenu2',
-              li: [
-                {
-                  name: 'subsubemenu1',
-                  act: () => console.log('subsubemnu1 work')
-                }
-              ]
-            }
-          ]
-        },
-        {
-          name: 'menu3',
-          li: [
-            {
-              name: 'submenu3',
-              act: () => console.log('submenu3 work')
-            }
-          ]
-          
-        }
-      ]
-    }
-  },
-  scrollspy: {
-    name: 'Scroll Spy',
-    render: comp.scrollSpy,
-    prop: {
-      num: 5
-    }
-  },
-  tab: {
-    name: 'Tab',
-    render: comp.tab,
-  }
+  contextmenu,
+  infinitescroll,
+  licontextmenu,
+  scrollspy,
+  tab
 };

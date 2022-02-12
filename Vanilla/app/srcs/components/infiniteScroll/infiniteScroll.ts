@@ -1,21 +1,20 @@
-import { fetcher } from '../../utils';
 import './infiniteScroll.css'
+import { createElem } from '../../utils';
 
-const datas = Array.from({ length: 100 }).map((e, i) => i + '');
-
-function infiniteScroll(): HTMLDivElement {
+type Prop = {
+  fetcher: Function
+}
+function infiniteScroll({ fetcher }): HTMLDivElement {
   let idx = 0;
-  const wrapper = document.createElement("div");  
-  wrapper.classList.add("infscroll_wrapper");
-  const trigger = document.createElement("div");
-  trigger.classList.add("infscroll_trigger");
+  const wrapper = createElem('div', 'infinitescroll') as HTMLDivElement;
+  const trigger = createElem('div', 'infinitescroll_trigger');
   wrapper.appendChild(trigger);
   
   const fetchRender = async (idx: number) => {
     wrapper.removeChild(trigger);
-    const { data } = await fetcher(datas.slice(idx * 5, idx * 5 + 5));
+    const { data } = await fetcher(idx);
     const renderItem = data.map((e, i) => 
-      `<div class="infscroll_li"><p>${e}</p></div>`
+      `<div class="infinitescroll_li"><p>${e}</p></div>`
     ).join('');
 
     wrapper.insertAdjacentHTML('beforeend', renderItem);

@@ -1,15 +1,11 @@
 import './autocomplete.css'
-import { fetcher, createElem } from '../../utils';
+import { createElem } from '../../utils';
 
-const dummies = [
-  'aaabbb', 'aaaaaa', 'aaccc', 'bbbccc'
-]
-
-const setAutoEvent = async (comp: HTMLElement, input: HTMLInputElement, classname: string, event: Event) => {
+const setAutoEvent = async (comp: HTMLElement, input: HTMLInputElement, classname: string, event: Event, fetcher: Function) => {
   const prev = document.getElementsByClassName(classname);
   if (prev.length !== 0) comp.removeChild(prev[0]);
 
-  const { data } = await fetcher(dummies);
+  const { data } = await fetcher();
   if ((event.target as HTMLInputElement).value === '') return;
     
   const ul = createElem('ul', 'autocomplete_ul') as HTMLUListElement;
@@ -40,7 +36,7 @@ function autocomplete({ fetcher }): HTMLDivElement {
   wrapper.appendChild(input);
   
   input.addEventListener('keyup', async event => {
-    await setAutoEvent(wrapper, input, 'autocomplete_ul', event);
+    await setAutoEvent(wrapper, input, 'autocomplete_ul', event, fetcher);
   });
 
   return wrapper;
