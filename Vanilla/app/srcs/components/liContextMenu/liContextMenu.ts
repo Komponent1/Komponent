@@ -1,5 +1,5 @@
 import { createElem } from "../../utils";
-import './liContextMenu.css'
+import './licontextmenu.css'
 
 type data = {
   name: string,
@@ -10,7 +10,7 @@ type data = {
 function makeContext(type: string, config: data[], parent: HTMLElement): HTMLUListElement {
   const context = createElem(
     'ul',
-    type === 'sub' ? 'licontextmenu_ul' : 'licontextmenu_subul');
+    type !== 'sub' ? 'licontextmenu_ul' : 'licontextmenu_subul');
   config.map(e => {
     const li = createElem('li', 'licontextmenu_li');
     li.innerText = e.name;
@@ -50,16 +50,16 @@ function liContextMenu({ datas }: Prop): HTMLDivElement {
     icon.addEventListener('click', event => {
       event.stopPropagation();
       for(let i = 0; i < icons.length; i++) {
-        if (icons[i].children.length !== 0) icons[i].children[0].style.display = 'none';
+        if (icons[i].children.length !== 0) (icons[i].children[0] as HTMLElement).style.display = 'none';
       }
-      if (icon.children.length !== 0) icon.children[0].style.display = 'block';
+      if (icon.children.length !== 0) (icon.children[0] as HTMLElement).style.display = 'block';
     })
   });
 
   document.body.addEventListener('click', event => {
-    if (event.target.classList.contains('licontextmenu')) return;
+    if ((event.target as HTMLElement).classList.contains('licontextmenu')) return;
     for(let i = 0; i < icons.length; i++) {
-      if (icons[i].children.length !== 0) icons[i].children[0].style.display = 'none';
+      if (icons[i].children.length !== 0) (icons[i].children[0] as HTMLElement).style.display = 'none';
     }
   })
 

@@ -11,8 +11,9 @@ export function makeDiv(name: string, explain: string, elem: HTMLElement | HTMLD
   sub.innerHTML = explain;
   
   div.appendChild(title);
-  div.appendChild(sub);
+  div.insertAdjacentHTML("beforeend", "<h2>Example</h2>");
   div.appendChild(elem);
+  div.appendChild(sub);
 
   return div
 };

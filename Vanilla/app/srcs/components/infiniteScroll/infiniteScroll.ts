@@ -1,4 +1,4 @@
-import './infiniteScroll.css'
+import './infinitescroll.css'
 import { createElem } from '../../utils';
 
 type Prop = {

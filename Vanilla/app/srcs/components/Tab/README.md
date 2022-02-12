@@ -1,6 +1,8 @@
-# Tab
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/ree/master/Vanilla/app/srcs/components/tab))
 
-## 설계하기
+### 기능
+1. 최초에 데이터를 받아와서 Tab을 생성
+2. Tab은 각각의 nav를 클릭시 해당 요소의 context를 보여준다..
 
 - 최초에 데이터를 받아온다.
 - 상단에 Navigator가 있다.

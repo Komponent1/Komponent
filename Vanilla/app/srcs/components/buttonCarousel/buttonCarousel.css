@@ -12,7 +12,7 @@
   left: 0;
   
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 .btncarousel_btnset {
   position: absolute;
@@ -26,8 +26,8 @@
   border-radius: 10px;
   padding: 0;
   margin: 10px;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
 }
 .btncarousel_btnset .select{
   background: none;

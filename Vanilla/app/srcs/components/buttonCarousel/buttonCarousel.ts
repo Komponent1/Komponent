@@ -1,4 +1,4 @@
-import './buttonCarousel.css'
+import './buttoncarousel.css'
 import { createElem } from '../../utils'; 
 
 type Prop = {

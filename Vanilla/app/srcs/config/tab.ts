@@ -1,20 +1,27 @@
 import { tab } from '../components'
-import { fetcher } from '../utils'
+import { createElem, fetcher } from '../utils'
 import { CONFIG } from './configType'
 import md from '../components/tab/README.md'
+
+const dummyelem = (text: string) => {
+  const div = createElem('div');
+  div.innerHTML = `<p>${text}</p>`;
+  
+  return div;
+}
 
 const dummies = [
   {
     title: 'Tab1',
-    content: 'This is Tab1'
+    elem: dummyelem('This is Tab1')
   },
   {
     title: 'Tab2',
-    content: 'This is Tab2'
+    elem: dummyelem('This is Tab2')
   },
   {
     title: 'Tab3',
-    content: 'This is Tab3'
+    elem: dummyelem('This is Tab3')
   }
 ]
 
@@ -22,7 +29,7 @@ const config: CONFIG = {
   name: 'Tab',
   render: tab,
   prop: {
-    fetcher: async () => await fetcher(dummies)
+    tabs: dummies
   },
   explain: md
 };

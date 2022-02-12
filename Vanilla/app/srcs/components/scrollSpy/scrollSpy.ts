@@ -1,4 +1,4 @@
-import './scrollSpy.css';
+import './scrollspy.css';
 import { throttle, createElem } from '../../utils'
 
 type Prop = {

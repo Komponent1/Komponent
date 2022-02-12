@@ -1,5 +1,5 @@
 import './autocomplete.css'
-import { createElem } from '../../utils';
+import { createElem, debounce } from '../../utils';
 
 const setAutoEvent = async (comp: HTMLElement, input: HTMLInputElement, classname: string, event: Event, fetcher: Function) => {
   const prev = document.getElementsByClassName(classname);
@@ -30,14 +30,14 @@ const setAutoEvent = async (comp: HTMLElement, input: HTMLInputElement, classnam
 type Prop = {
   fetcher: Function
 }
-function autocomplete({ fetcher }): HTMLDivElement {
+function autocomplete({ fetcher }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'autocomplete') as HTMLDivElement;
   const input = createElem('input', 'autocomplete_input') as HTMLInputElement;
   wrapper.appendChild(input);
   
-  input.addEventListener('keyup', async event => {
+  input.addEventListener('keyup', debounce(async event => {
     await setAutoEvent(wrapper, input, 'autocomplete_ul', event, fetcher);
-  });
+  }, 500));
 
   return wrapper;
 };

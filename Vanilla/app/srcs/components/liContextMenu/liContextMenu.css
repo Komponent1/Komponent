@@ -1,25 +1,36 @@
 .licontextmenu {
+  width: 100%;
   display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+  padding: 5px;
 }
 .licontextmenu_icon {
   position: relative;
+  box-shadow: 1px 1px 1px 1px gray;
+  padding: 5px;
 }
 .licontextmenu ul {
   display: none;
   list-style-type: none;
+  
   padding: 0;
-  border: 1px solid black;
+  margin: 0;
+  box-shadow: 1px 1px 1px 1px gray;
+  background-color: white;
 }
 .licontextmenu_ul {
   position: absolute;
-  top: auto;
+  top: 28px;
   left: 0;
+  width: 100px;
 }
 .licontextmenu_subul {
   position: absolute;
   top: 0;
-  left: auto;
+  left: 100px;
 }
 .licontextmenu_li {
   position: relative;
+  padding: 3px;
 }

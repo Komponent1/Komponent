@@ -1,4 +1,4 @@
-import './contextMenu.css'
+import './contextmenu.css'
 import { createElem } from '../../utils';
 
 type Data = {
