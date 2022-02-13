@@ -2,10 +2,8 @@ export function makeDiv(name: string, explain: string, elem: HTMLElement | HTMLD
   const div = document.createElement("div")
   div.classList.add("content_box");
 
-  const title = document.createElement("h1");
-  const titleText = document.createTextNode(name)
-  title.appendChild(titleText);
-  title.classList.add("title");
+  const title = createElem("h1", 'title');
+  title.innerText = name;
 
   const sub = document.createElement('div');
   sub.innerHTML = explain;

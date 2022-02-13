@@ -7,7 +7,7 @@ const dummies = [
   'aaabbb', 'aaaaaa', 'aaccc', 'bbbccc'
 ]
 const config: CONFIG = {
-  name: 'autocomplete',
+  name: 'Autocomplete',
   render: autocomplete,
   prop: {
     fetcher: async () => await fetcher(dummies)
