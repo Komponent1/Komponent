@@ -7,14 +7,16 @@ type Prop = {
 function scrollSpy({ elems }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'scrollspy') as HTMLDivElement;
   const nav = createElem('div', 'scrollspy_nav');
+  const itemwrap = createElem('div', 'scrollspy_itemwrap');
   wrapper.appendChild(nav);
+  wrapper.appendChild(itemwrap);
 
   const navitems = [];
   const items = [];
   for(let i = 0; i < elems.length; i++) {
     let item = createElem('div', 'scrollspy_item');
     item.appendChild(elems[i]);
-    wrapper.appendChild(item);
+    itemwrap.appendChild(item);
     items.push(item);
     
     let navitem = createElem('div', 'scrollspy_navitem');
@@ -41,8 +43,8 @@ function scrollSpy({ elems }: Prop): HTMLDivElement {
     }
   })();
 
-   window.addEventListener("scroll", throttle((e: any) => {
-    const { scrollTop } = e.target.scrollingElement;
+   itemwrap.addEventListener("scroll", throttle((e: any) => {
+    const { scrollTop } = e.target;
 
     const idx = getOffset().findIndex(([from, to]) => (
       scrollTop >= from && scrollTop < to
