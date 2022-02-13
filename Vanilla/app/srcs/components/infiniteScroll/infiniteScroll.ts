@@ -4,6 +4,7 @@ import { createElem } from '../../utils';
 type Prop = {
   fetcher: Function
 }
+
 function infiniteScroll({ fetcher }): HTMLDivElement {
   let idx = 0;
   const wrapper = createElem('div', 'infinitescroll') as HTMLDivElement;

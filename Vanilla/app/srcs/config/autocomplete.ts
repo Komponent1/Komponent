@@ -11,7 +11,7 @@ const config: CONFIG = {
   render: autocomplete,
   prop: {
     fetcher: async () => await fetcher(dummies),
-    placeholder: '"aaa", "bbb" 등이 입력되 있습니다'
+    placeholder: '"aaa", "bbb" 등이 입력되어 있습니다'
   },
   explain: md
 }

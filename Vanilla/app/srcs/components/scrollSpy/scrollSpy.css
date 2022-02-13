@@ -24,12 +24,12 @@
 }
 .scrollspy_itemwrap {
   width: 100%;
-  height: 500px;
+  height: 250px;
 
   overflow-y: scroll;
 }
 .scrollspy_item {
   width: 100%;
-  height: 500px;
+  height: 250px;
   border: 1px solid black;
 }
