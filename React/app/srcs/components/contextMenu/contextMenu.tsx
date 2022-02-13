@@ -14,10 +14,12 @@ const usePosition = () => {
   return [top, left, setPosition];
 }
 
-const Context: React.FC = ({ top, left, visible }: { top: number, left: number, visible: boolean }) => (
-  <style.context top={top} left={left} visible={visible}/>
+const Context: React.FC = ({ top, left, visible, children }: { top: number, left: number, visible: boolean, children: React.Node }) => (
+  <style.context top={top} left={left} visible={visible}>
+    {children}
+  </style.context>
 );
-const ContextItem: React.FC = ({ id, visible, setVisible }: { id: number, visible: number, setVisible: Function }) => {
+const ContextItem: React.FC = ({ id, visible, setVisible, data }: { id: number, visible: number, setVisible: Function, data: Object }) => {
   const [top, left, setPosition] = usePosition();
   const onClick = e => {
     e.stopPropagation();
@@ -27,14 +29,17 @@ const ContextItem: React.FC = ({ id, visible, setVisible }: { id: number, visibl
 
   return (
     <style.item onClick={onClick}>
-      <Context top={top} left={left} visible={id === visible}/>
+      {data.menu}
+      <Context top={top} left={left} visible={id === visible}>
+        {data.context}
+      </Context>
     </style.item>
   ) 
 };
 
 
 /* wrapper 역할 */
-const ContextMenu: React.FC = ({ num }: { num: number }) => {
+const ContextMenu: React.FC = ({ datas }: { datas: any[] }) => {
   const [visible, setVisible] = useState<number>(-1);
   const ref = useRef<HTMLDivElement>();
   
@@ -53,8 +58,8 @@ const ContextMenu: React.FC = ({ num }: { num: number }) => {
 
   return (
     <style.wrapper ref={ref}>
-      {Array.from({ length: num }).map((_, i) => 
-        <ContextItem key={`context_${i}`} id={i} visible={visible} setVisible={setVisible}/>
+      {datas.map((e, i) => 
+        <ContextItem key={i} id={i} visible={visible} setVisible={setVisible} data={e} />      
       )}
     </style.wrapper>
   )

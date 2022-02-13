@@ -2,30 +2,15 @@ import React from 'react';
 import * as comp from '../components';
 import * as util from '../utils';
 import autocomplete from './autocomplete';
+import buttoncarousel from './buttoncarousel';
+import carousel from './carousel';
+import contextmenu from './contextmenu';
 
 export const ComponentList = {
   autocomplete,
-  buttoncarousel: {
-    name: 'Button Carousel',
-    comp: comp.ButtonCarousel,
-    prop: {
-      children: util.makeDummyComps()
-    }
-  },
-  carousel: {
-    name: 'Carousel',
-    comp: comp.Carousel,
-    prop: {
-      children: util.makeDummyComps()
-    }
-  },
-  contextmenu: {
-    name: 'Context Menu',
-    comp: comp.ContextMenu,
-    prop: {
-      num: 5
-    }
-  },
+  buttoncarousel,
+  carousel,
+  contextmenu,
   infinitescroll: {
     name: 'Infinite Scroll',
     comp: comp.InfiniteScroll,

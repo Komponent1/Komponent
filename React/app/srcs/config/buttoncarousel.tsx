@@ -7,7 +7,7 @@ const config: CONFIG = {
   name: 'Button Carousel',
   comp: ButtonCarousel,
   prop: {
-    elems: makeDummyComps()
+    children: makeDummyComps()
   },
   explain: md
 };

@@ -18,12 +18,14 @@ const Menu = () => {
     <style.menu>
       <style.menuTitle>Compoenets</style.menuTitle>
       {Object.entries(ComponentList).map(([key, conf], i) => (
-        <style.li
-          select={select === i}
-          onClick={e => setSelect(i)}
-          key={i}>
-          <Link to={`${key}`}>{conf.name}</Link>
-        </style.li>
+        <Link to={`${key}`} key={i}>
+          <style.li
+            select={select === i}
+            onClick={e => setSelect(i)}
+            >
+            {conf.name}
+          </style.li>
+        </Link>
       ))}
     </style.menu>
   );
