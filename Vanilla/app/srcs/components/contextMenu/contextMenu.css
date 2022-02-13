@@ -11,12 +11,14 @@
   width: 200px;
   height: 20px;
 
-  padding-left: 10px;
+  padding: 3px 0 3px 10px;
   margin: 0;
+
+  border-bottom: 1px solid rgba(172, 172, 172, 0.2);
 }
 .contextmenu_menu:hover {
   cursor: pointer;
-  background-color: gray;
+  background-color: rgba(172, 172, 172, 0.2);
 }
 
 .contextmenu_context {

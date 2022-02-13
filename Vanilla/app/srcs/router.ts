@@ -1,12 +1,15 @@
+import main from "./main";
 import { makeDiv } from "./utils";
 
-export const renderer = (name: string, renderFunc: Function, prop: Object, explain: string) => {
-  const app = document.getElementById('root');
+export const renderer = (name: string, renderFunc: Function, prop: Object, explain: string, app: HTMLDivElement) => {
   app.innerHTML = '';
   app.appendChild(makeDiv(name, explain, renderFunc({ ...prop })));
 }
 
-export default (path: string, name: string, render: Function, prop?: Object, explain?: string) => {
+export default (path: string, name?: string, render?: Function, prop?: Object, explain?: string) => {
+  const app = document.getElementById('root') as HTMLDivElement;
+
   window.history.pushState({}, path, window.location.origin + '/vanilla/' + path);
-  renderer(name, render, prop, explain);
+  if (name) renderer(name, render, prop, explain, app);
+  else main(app);
 };

@@ -1,6 +1,6 @@
 .btncarousel {
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 200px;
   position: relative;
 }
 .btncarousel_item {
@@ -16,7 +16,7 @@
 }
 .btncarousel_btnset {
   position: absolute;
-  top: 350px;
+  top: 150px;
   text-align: center;
   width: 100%;
 }
@@ -27,7 +27,7 @@
   padding: 0;
   margin: 10px;
   width: 20px;
-  height: 20px;
+  height: 10px;
 }
 .btncarousel_btnset .select{
   background: none;

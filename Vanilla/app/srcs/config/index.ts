@@ -7,8 +7,6 @@ import licontextmenu from './licontextmenu';
 import scrollspy from './scrollspy';
 import tab from './tab';
 
-import * as comp from '../components';
-
 export const componentList = {
   autocomplete,
   buttoncarousel,

@@ -5,12 +5,15 @@ export function makeDiv(name: string, explain: string, elem: HTMLElement | HTMLD
   const title = createElem("h1", 'title');
   title.innerText = name;
 
+  const example = createElem('div', 'example');
+  example.appendChild(elem);
+
   const sub = document.createElement('div');
   sub.innerHTML = explain;
   
   div.appendChild(title);
   div.insertAdjacentHTML("beforeend", "<h2>Example</h2>");
-  div.appendChild(elem);
+  div.appendChild(example);
   div.appendChild(sub);
 
   return div
@@ -57,7 +60,7 @@ export function createElem (type: string, classname?: string) {
 };
 
 export function makeDummyElem(): HTMLElement[] {
-  const colors = [ 'red', 'blue', 'grey', 'yellow'];
+  const colors = [ '#BF7950', '#8C634A', '#A6A6A6', '#B3D5F2'];
 
   const elems = colors.map(e => {
     const elem = document.createElement('div');

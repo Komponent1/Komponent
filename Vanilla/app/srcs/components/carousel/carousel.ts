@@ -33,8 +33,8 @@ function carousel({ elems }: Prop): HTMLDivElement {
 
   const move = (idx: number, sec: number): void => {
     if (sec !== 0)isTransitioned = true;
-    slider.style.setProperty('--sec', sec + '');
     slider.style.setProperty('--idx', idx + '');
+    slider.style.setProperty('--sec', sec + '');
   }
 
   rButton.addEventListener('click', () => {

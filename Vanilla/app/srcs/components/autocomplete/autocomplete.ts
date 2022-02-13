@@ -28,11 +28,14 @@ const setAutoEvent = async (comp: HTMLElement, input: HTMLInputElement, classnam
   comp.appendChild(ul);
 }
 type Prop = {
-  fetcher: Function
+  fetcher: Function,
+  placeholder: string
 }
-function autocomplete({ fetcher }: Prop): HTMLDivElement {
+function autocomplete({ fetcher, placeholder }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'autocomplete') as HTMLDivElement;
   const input = createElem('input', 'autocomplete_input') as HTMLInputElement;
+  console.log(placeholder);
+  input.setAttribute('placeholder', placeholder);
   wrapper.appendChild(input);
   
   input.addEventListener('keyup', debounce(async event => {

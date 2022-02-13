@@ -1,5 +1,11 @@
-const header = document.getElementById('header');
+import router from "./router";
+import { createElem } from "./utils";
 
-header.innerHTML = `
-  <h1>Komponent</h1>
-`
+const header = document.getElementById('header');
+const title = createElem('h1', 'title');
+title.innerText = 'Komponent';
+title.addEventListener('click', e => {
+  router('');
+});
+
+header.appendChild(title);

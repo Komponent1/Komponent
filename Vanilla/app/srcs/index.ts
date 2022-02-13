@@ -1,19 +1,16 @@
 import './style.css'
 import './menu';
 import './header';
+import main from './main';
 import router from './router';
 import { componentList } from './config';
 
 const app: HTMLElement = document.getElementById("root");
-
-const main = (app: HTMLElement) => {
-  app.innerHTML = '<h1>Main</h1>'
-};
 const init = (): void => {
   const path = window.location.pathname.split('/').filter(e => e !== '').pop();
 
   switch(path) {
-    case 'vanilla':
+    case 'vanilla' || '':
       main(app);
       break;
     default:
