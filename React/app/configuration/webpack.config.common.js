@@ -22,6 +22,25 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.md$/,
+                use: [
+                    {
+                        loader: 'html-loader'
+                    },
+                    {
+                        loader: 'markdown-loader',
+                        options: {
+                            langPrefix: "hljs language-",
+                            highlight: function(code, lang) {
+                                const hljs = require('highlight.js');
+                                const result =  hljs.highlight(code, { language: lang }).value;
+                                return result;
+                            }
+                        }
+                    }
+                ]
             }
         ]
     },

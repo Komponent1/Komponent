@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as style from './style';
 
-const useAutoComplete = (url: string, fetcher: Function) => {
+const useAutoComplete = (fetcher: Function) => {
   const [text, setText] = useState<string>('');
   const [lis, setLis] = useState<string[]>([]);
 
@@ -14,12 +14,11 @@ const useAutoComplete = (url: string, fetcher: Function) => {
 }
 type Prop = {
   placeholder: string,
-  url? : string,
   fetcher?: Function
 }
 
-const Autocomplete: React.FC = ({placeholder, url, fetcher}: Prop) => {
-  const [lis, text, setText] = useAutoComplete(url, fetcher);
+const Autocomplete: React.FC = ({placeholder, fetcher}: Prop) => {
+  const [lis, text, setText] = useAutoComplete(fetcher);
   const [focus, setFocus] = useState<boolean>(false);
 
   return (

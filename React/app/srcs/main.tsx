@@ -5,16 +5,18 @@ import {
 } from 'react-router-dom';
 import { ComponentList } from './config';
 import * as style from './style';
-import { Div } from './utlls';
+import { Div } from './utils';
 
 const Main = () => {
+  console.log(ComponentList.autocomplete.explain)
+
   return (
     <style.main>
       <Routes>
         {Object.entries(ComponentList).map(([key, conf], i) => (
             <Route key={i} path={`${key}`}
               element={
-                <Div title={conf.name}>
+                <Div conf={conf}>
                   <conf.comp {...conf.prop}/>
                 </Div>
               }/>

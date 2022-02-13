@@ -1,7 +1,7 @@
 import './style.css'
 import './menu';
 import './header';
-import main from './main';
+import home from './home';
 import router from './router';
 import { componentList } from './config';
 
@@ -11,7 +11,7 @@ const init = (): void => {
 
   switch(path) {
     case 'vanilla' || '':
-      main(app);
+      home(app);
       break;
     default:
       const conf = componentList[path];

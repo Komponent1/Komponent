@@ -1,4 +1,4 @@
-export { Div } from '../utlls';
+export { Div } from '../utils';
 export { default as ContextMenu } from './contextMenu/contextMenu';
 export { default as Scrollspy } from './scrollspy/scrollspy';
 export { default as InfiniteScroll } from './infiniteScroll/infiniteScroll';

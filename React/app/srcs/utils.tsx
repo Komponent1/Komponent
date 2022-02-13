@@ -1,21 +1,15 @@
 import React from 'react';
-import styled from 'styled-components'
+import * as style from './style';
 
-const style = {
-  Div: styled.div`
-    
-  `,
-  Title: styled.h1`
-    margin: 0;
-    padding: 0;
-  `
-};
-
-export const Div: React.FC = ({ title, children }) => (
-  <style.Div>
-    <style.Title>{title}</style.Title>
-    {children}
-  </style.Div>
+export const Div: React.FC = ({ conf, children }) => (
+  <div>
+    <style.mainTitle>{conf.name}</style.mainTitle>
+    <h2>Example</h2>
+    <style.mainExample>
+      {children}
+    </style.mainExample>
+    {conf.explain ? <div dangerouslySetInnerHTML={{ __html: conf.explain }} />: null}
+  </div>
 );
 /* set returnType is type of listener  */
 export function throttle (func: any, delay: number): (this: Window, ev: Event) => any {
@@ -52,7 +46,7 @@ export function fetcher(datas: any[]): Promise<Obj> {
 export const DummyComp: React.FC = ({ color, width = '100%', height = '100%' }) => (
   <div style={{ background: color, width: width, height: height }} />
 )
-const color = ['yellow', 'blue', 'red', 'green'];
+const color = [ '#BF7950', '#8C634A', '#A6A6A6', '#B3D5F2'];
 export const makeDummyComps = (): React.FC[] => {
   return (
     color.map((e, i) => <DummyComp key={i} color={e} />)

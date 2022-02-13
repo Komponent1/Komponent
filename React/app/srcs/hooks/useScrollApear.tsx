@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { throttle } from '../utlls';
+import { throttle } from '../utils';
 /*
   이 hook은 스크롤시 오브젝트가 상단으로 사라지는 동작을 진행하는 훅이다.
   scrollTop은 사라지는 기준 높이이고

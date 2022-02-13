@@ -1,15 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { ComponentList } from './config';
 import * as style from './style';
 
-const Menu = () => (
-  <style.menu>
-    <h1>Comp List</h1>
-    {Object.entries(ComponentList).map(([key, conf], i) => (
-      <style.li key={i}><Link to={`${key}`}>{conf.name}</Link></style.li>
-    ))}
-  </style.menu>
-);
+const Menu = () => {
+  const [ select, setSelect ] = useState<number>(-1);
+  
+  useEffect(() => {
+    const paths = window.location.pathname.split('/').filter(e => e !== '');
+    const path = paths[paths.length - 1];
+    if (path !== 'react') {
+      setSelect(Object.entries(ComponentList).findIndex(([key, _]) => key === path))
+    }
+  }, []);
+
+  return (
+    <style.menu>
+      <style.menuTitle>Compoenets</style.menuTitle>
+      {Object.entries(ComponentList).map(([key, conf], i) => (
+        <style.li
+          select={select === i}
+          onClick={e => setSelect(i)}
+          key={i}>
+          <Link to={`${key}`}>{conf.name}</Link>
+        </style.li>
+      ))}
+    </style.menu>
+  );
+}
 
 export default Menu;

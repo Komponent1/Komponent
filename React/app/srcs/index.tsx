@@ -1,23 +1,25 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { 
-  BrowserRouter,
-  Routes,
-  Route
+  BrowserRouter
 } from 'react-router-dom';
 import * as style from './style';
+import 'highlight.js/styles/atom-one-dark.css';
 
 import Menu from './menu';
 import Main from './main';
+import Header from './header';
 
 const App: React.FC = () => {
   return (
-    <style.layout>
+    <>
+      <style.global />
       <BrowserRouter basename='/react'>
+        <Header />
         <Menu />
         <Main />
       </BrowserRouter>
-    </style.layout>
+    </>
   );
 };
 

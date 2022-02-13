@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Div } from '../utlls';
+import { Div } from '../utils';
 import * as style from './style';
 
 const usePosition = () => {

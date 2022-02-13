@@ -1,4 +1,4 @@
-import main from "./main";
+import home from "./home";
 import { makeDiv } from "./utils";
 
 export const renderer = (name: string, renderFunc: Function, prop: Object, explain: string, app: HTMLDivElement) => {
@@ -11,5 +11,5 @@ export default (path: string, name?: string, render?: Function, prop?: Object, e
 
   window.history.pushState({}, path, window.location.origin + '/vanilla/' + path);
   if (name) renderer(name, render, prop, explain, app);
-  else main(app);
+  else home(app);
 };

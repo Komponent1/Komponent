@@ -1,25 +1,10 @@
 import React from 'react';
-import * as comp from './components';
-import * as util from './utlls';
+import * as comp from '../components';
+import * as util from '../utils';
+import autocomplete from './autocomplete';
 
-
-type Comp = {
-  name: string,
-  comp: React.FC,
-  prop?: Object
-}
-type CompList= {
-  [key in string]: Comp
-}
-export const ComponentList: CompList = {
-  autocomplete: {
-    name: 'Auto Complete',
-    comp: comp.AutoComplete,
-    prop: {
-      placeholder: '~~를 입력해주세요',
-      fetcher: async () => util.fetcher([ 'aaa', 'aab', 'bbb'])
-    }
-  },
+export const ComponentList = {
+  autocomplete,
   buttoncarousel: {
     name: 'Button Carousel',
     comp: comp.ButtonCarousel,
