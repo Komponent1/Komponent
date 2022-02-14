@@ -22,7 +22,11 @@ export const navitem = styled<{num: number, select: boolean}>(border)`
     background: grey;
   }
 `;
+export const itemwrapper = styled(border)`
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+`;
 export const item = styled(border)`
   width: 100%;
-  height: 500px;
 `;

@@ -3,12 +3,13 @@ import * as style from './style';
 import {  throttle } from '../../utils';
 
 type prop = {
-  num: number,
+  children: React.Node[],
 }
-const Scrollspy: React.FC = ({ num }: prop) => {
+const Scrollspy: React.FC = ({ children }: prop) => {
   const [select, setSelect] = useState();
+  const scrollref = useRef<React.Ref>(null);
   const refs = useRef<[]>(
-    Array.from({ length: num }).map(() => React.createRef())
+    Array.from({ length: children.length }).map(() => React.createRef())
   );
   const click = (e, idx: number) => {
     e.stopPropagation();
@@ -35,32 +36,37 @@ const Scrollspy: React.FC = ({ num }: prop) => {
     }
   })();
   useEffect(() => {
-    const scrollevent = (e: any) => {
-      const { scrollTop } = e.target.scrollingElement;
+    
+    scrollref.current.addEventListener("scroll", throttle(scrollevent, 300));
 
-      const idx = getOffset().findIndex(([from, to]) => (
-        scrollTop >= from && scrollTop < to
-      ));
-      setSelect(idx);
-    }
-    window.addEventListener("scroll", throttle(scrollevent, 300));
-
-    return window.removeEventListener("scroll", throttle(scrollevent, 300));
+    return scrollref.current.removeEventListener("scroll", throttle(scrollevent, 300));
   }, [])
+  const scrollevent = (e: any) => {
+    const { scrollTop } = e.target;
+
+    const idx = getOffset().findIndex(([from, to]) => (
+      scrollTop >= from && scrollTop < to
+    ));
+    setSelect(idx + 1);
+  }
 
   return (
     <style.div>
       <style.nav>
-        {Array.from({ length: num }).map((_, i) => (
+        {children.map((elem, i) => (
           <style.navitem key={`nav${i}`}
-            num={num}
+            num={children.length}
             select={i === select}
             onClick={e => click(e, i)} />
         ))}
       </style.nav>
-      {Array.from({ length: num }).map((_, i) => (
-        <style.item key={`item${i}`} ref={refs.current[i]}/>
-      ))}
+      <style.itemwrapper ref={scrollref}>
+        {children.map((elem, i) => (
+          <style.item key={`item${i}`} ref={refs.current[i]}>
+            {elem}
+          </style.item>
+        ))}
+      </style.itemwrapper>
     </style.div>
   )
 }

@@ -1,30 +1,17 @@
-import React from 'react';
-import * as comp from '../components';
-import * as util from '../utils';
 import autocomplete from './autocomplete';
 import buttoncarousel from './buttoncarousel';
 import carousel from './carousel';
 import contextmenu from './contextmenu';
+import infinitescroll from './infinitescroll';
+import scrollspy from './scrollspy';
+import tab from './tab';
 
 export const ComponentList = {
   autocomplete,
   buttoncarousel,
   carousel,
   contextmenu,
-  infinitescroll: {
-    name: 'Infinite Scroll',
-    comp: comp.InfiniteScroll,
-  },
-  scrollspy: {
-    name: 'Scroll Spy',
-    comp: comp.Scrollspy,
-    prop: {
-      num: 5
-    }
-  },
-  tab: {
-    name: 'Tab',
-    comp: comp.Tab
-  }
-  
+  infinitescroll,
+  scrollspy,
+  tab
 };

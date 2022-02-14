@@ -34,7 +34,6 @@ type Prop = {
 function autocomplete({ fetcher, placeholder }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'autocomplete') as HTMLDivElement;
   const input = createElem('input', 'autocomplete_input') as HTMLInputElement;
-  console.log(placeholder);
   input.setAttribute('placeholder', placeholder);
   wrapper.appendChild(input);
   

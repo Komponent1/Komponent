@@ -58,7 +58,6 @@ let offsets = [];
       const [ offset, clientHeight ] = [ items[i].offsetTop, items[i].clientHeight ];
       offsets.push([ offset - clientHeight / 2, offset + clientHeight / 2 ]);
     }
-    console.log(offsets)
   };
   getOffset(); //This is not work correctly becuase of it work before rendering(appendchild in body)
 
@@ -81,7 +80,6 @@ let offsets = [];
   const observer = new IntersectionObserver(
     entries => {
       const { target } = entries.find(entry => entry.isIntersecting) || {};
-      console.log(target)
       const idx = items.indexOf(target);
       navitems.forEach((e, i) => {
         if (i !== idx) e.classList.remove('select');

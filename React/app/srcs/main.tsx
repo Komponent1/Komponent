@@ -8,8 +8,6 @@ import * as style from './style';
 import { Div } from './utils';
 
 const Main = () => {
-  console.log(ComponentList.autocomplete.explain)
-
   return (
     <style.main>
       <Routes>
