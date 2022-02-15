@@ -10,8 +10,11 @@ const init = (): void => {
   const path = window.location.pathname.split('/').filter(e => e !== '').pop();
 
   switch(path) {
-    case 'vanilla' || '':
+    case 'vanilla':
       home(app);
+      break;
+    case undefined:
+      router('');
       break;
     default:
       const conf = componentList[path];

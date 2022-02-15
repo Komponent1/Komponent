@@ -22,7 +22,7 @@ const Autocomplete: React.FC = ({placeholder, fetcher}: Prop) => {
   const [focus, setFocus] = useState<boolean>(false);
 
   return (
-    <style.div>
+    <style.div className="autocomplete">
       <style.input
         placeholder={placeholder}
         value={text}
