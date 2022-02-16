@@ -7,6 +7,7 @@ import scrollspy from './scrollspy';
 import tab from './tab';
 import btnmenu from './btnmenu';
 import checkbox from './checkbox';
+import list from './list';
 
 export const ComponentList = {
   autocomplete,
@@ -17,5 +18,6 @@ export const ComponentList = {
   scrollspy,
   tab,
   btnmenu,
-  checkbox
+  checkbox,
+  list
 };

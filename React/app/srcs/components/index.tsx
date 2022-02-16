@@ -8,3 +8,4 @@ export { default as ButtonCarousel } from './buttonCarousel/buttonCarousel';
 export { default as AutoComplete } from './autocomplete/autocomplete';
 export { default as BtnMenu } from './btnmenu/btnmenu';
 export { default as Checkbox } from './checkbox/checkbox';
+export { default as List } from './list/list';

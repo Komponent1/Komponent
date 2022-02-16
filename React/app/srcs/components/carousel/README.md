@@ -1,4 +1,4 @@
-ver 1.0 ([github link](https://github.com/Komponent1/Komponent/ree/master/Vanilla/app/srcs/components/carousel))
+ver 1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/carousel))
 
 ### 기능
 
