@@ -8,13 +8,15 @@ ver1.0 ([github link](https://github.com/Komponent1/Komponent/ree/master/Vanilla
 1. 데이터를 가져오는 API fethcer를 받아서 동작시킨다
 
 ~~~javascript
-paramter: {
-  fetcher: (any) => Promise<data>
-}
+parameter: {
+  menus: {
+    name: string,
+    act: Function 
+  }
+}[]
 ~~~
 
 ### 특이사항
-1. keyup과 click에 대한 Event binding의 차이를 구별할것
+1. 메뉴가 생성되는 위치에 항시 유의할것
+2. 이벤트 바인딩과 릴리즈, stopPropagation에 유의할 것
 
-### BUG
-1. UL이 추가적으로 생기는 문제 발생

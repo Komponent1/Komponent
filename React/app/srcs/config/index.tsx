@@ -5,6 +5,7 @@ import contextmenu from './contextmenu';
 import infinitescroll from './infinitescroll';
 import scrollspy from './scrollspy';
 import tab from './tab';
+import btnmenu from './btnmenu';
 
 export const ComponentList = {
   autocomplete,
@@ -13,5 +14,6 @@ export const ComponentList = {
   contextmenu,
   infinitescroll,
   scrollspy,
-  tab
+  tab,
+  btnmenu
 };
