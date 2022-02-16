@@ -20,8 +20,8 @@ const BtnMenu: React.FC = ({ menus }) => {
       e.stopPropagation();
       setDisplay(prev => !prev);
     }}>
-      <style.btn display={display} className='btnmenu_btn'>=</style.btn>
-      <style.ul display={display} className="btnmenu_ul">
+      <style.btn show={display} className='btnmenu_btn'>=</style.btn>
+      <style.ul show={display} className="btnmenu_ul">
         {menus.map((btn, i) => (
           <style.li key={i}
             onClick={e => {

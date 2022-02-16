@@ -4,10 +4,10 @@ export const div = styled.div`
   display: inline-block;
   position: relative;
 `;
-export const btn = styled.div<{ display: boolean }>`
+export const btn = styled.div<{ show: boolean }>`
   display: inline-block;
   border-radius: 10px;
-  border: 1px solid ${({ display }) => display ? '#235E52' : 'rgba(0,0,0,0)'};
+  border: 1px solid ${({ show }) => show ? '#235E52' : 'rgba(0,0,0,0)'};
   padding: 3px;
   
 
@@ -15,8 +15,8 @@ export const btn = styled.div<{ display: boolean }>`
     background-color: rgba(172, 172, 172, 0.4);
   }
 `;
-export const ul = styled.div<{ display: boolean }>`
-  display: ${({ display }) => display ? 'block' : 'none'};
+export const ul = styled.div<{ show: boolean }>`
+  display: ${({ show }) => show ? 'block' : 'none'};
 
   position: absolute;
   top: auto;
