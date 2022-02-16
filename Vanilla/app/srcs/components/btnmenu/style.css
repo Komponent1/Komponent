@@ -1,0 +1,30 @@
+.btnmenu {
+  display: inline-block;
+  position: relative;  
+}
+.btnmenu_btn {
+  --color: 'rgba(0,0,0,0)';
+  display: 'inline-block';
+  border-radius: 10px;;
+  border: 1px solid var(--color);
+  padding: 3px;
+}
+.btnmenu_btn:hover {
+  background-color: rgba(172, 172, 172, 0.4);
+}
+.btnmenu_ul {
+  display: none;
+
+  position: absolute;
+  top: auto;
+  right: 0;
+
+  width: 100px;
+  border: 1px solid rgba(172, 172, 172, 0.5);
+}
+.btnmenu_li {
+  width: 100%;
+}
+.btnmenu_li:hover {
+  background-color: rgba(172, 172, 172, 0.5);
+}

@@ -6,6 +6,7 @@ import infinitescroll  from './infinitescroll';
 import licontextmenu from './licontextmenu';
 import scrollspy from './scrollspy';
 import tab from './tab';
+import btnmenu from './btnmenu';
 
 export const componentList = {
   autocomplete,
@@ -15,5 +16,6 @@ export const componentList = {
   infinitescroll,
   licontextmenu,
   scrollspy,
-  tab
+  tab,
+  btnmenu
 };

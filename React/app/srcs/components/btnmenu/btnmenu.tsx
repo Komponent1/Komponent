@@ -14,13 +14,15 @@ const BtnMenu: React.FC = ({ menus }) => {
 
 
   return (
-    <style.div className='btnmenu'
-      ref={ref}
-      onClick={e => {
-      e.stopPropagation();
-      setDisplay(prev => !prev);
-    }}>
-      <style.btn show={display} className='btnmenu_btn'>=</style.btn>
+    <style.div className='btnmenu' ref={ref}>
+      <style.btn show={display} 
+        onClick={e => {
+          e.stopPropagation();
+          setDisplay(prev => !prev);
+        }}
+        className='btnmenu_btn'>
+        =
+      </style.btn>
       <style.ul show={display} className="btnmenu_ul">
         {menus.map((btn, i) => (
           <style.li key={i}
