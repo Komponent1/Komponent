@@ -11,19 +11,20 @@ const List: React.FC = ({ lis }) => {
 
   return (
     <style.div>
-      <style.li>
+      <style.liTitle>
         {Object.entries(lis[0]).map(([key, value], j) => (
           <style.item key={j}>
-            {key}
+            <span style={{ marginLeft: '5px' }}>{key}</span>
+            {key === 'name' ? <div className='list_space' style={{ width: '17px' }}/> : null}
           </style.item>
         ))}
-      </style.li>
+      </style.liTitle>
       {lis.map((li, i) => (
         <style.li key={i}>
           {Object.entries(li).map(([key, value], j) => (
             <style.item key={j}>
               {key === 'name' ? <Checkbox checked={checked[i]} setCheck={() => setCheck(i)}/> : null}
-              <span>{value}</span>
+              <span style={{ marginLeft: '5px' }}>{value}</span>
             </style.item>
           ))}
         </style.li>
@@ -33,8 +34,6 @@ const List: React.FC = ({ lis }) => {
 };
 
 const Wrapper: React.FC = ({ api }) => {
-
-
   return (
     <div></div>
   )
