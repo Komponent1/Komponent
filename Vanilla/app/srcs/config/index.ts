@@ -9,6 +9,7 @@ import tab from './tab';
 import btnmenu from './btnmenu';
 import checkbox from './checkbox';
 import list from './list';
+import dragablepannel from './dragablepannel';
 
 export const componentList = {
   autocomplete,
@@ -21,5 +22,6 @@ export const componentList = {
   tab,
   btnmenu,
   checkbox,
-  list
+  list,
+  dragablepannel
 };

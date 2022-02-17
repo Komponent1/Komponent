@@ -1,0 +1,20 @@
+.dragablepannel {
+  position: relative;
+  width: 80%;
+  height: 300px;
+
+  border: 1px solid rgba(0,0,0, 0.5);
+  border-radius: 10px;
+}
+
+.dragable {
+  width: 20px;
+  height: 20px;
+
+  background-color: black;
+
+  --x: 20px;
+  --y: 20px;
+
+  transform: translate(var(--x), var(--y));
+}
