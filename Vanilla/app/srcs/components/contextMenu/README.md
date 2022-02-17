@@ -1,3 +1,5 @@
+ver 1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/contextmenu))
+
 ### 기능
 1. menu를 클릭하였을때 context menu가 생성된다
 2. 다른 context menu를 클릭시 혹은 외부 클릭시 해당하는 context menu를 제외한 context menu가 사라진다
