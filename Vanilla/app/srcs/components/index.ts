@@ -7,3 +7,5 @@ export { default as autocomplete } from './autocomplete/autocomplete';
 export { default as liContextMenu } from './licontextmenu/licontextmenu';
 export { default as contextMenu } from './contextmenu/contextmenu';
 export { default as btnMenu } from './btnmenu/btnmenu';  
+export { default as checkbox } from './checkbox/checkbox';
+export { default as list } from './list/list';

@@ -7,6 +7,8 @@ import licontextmenu from './licontextmenu';
 import scrollspy from './scrollspy';
 import tab from './tab';
 import btnmenu from './btnmenu';
+import checkbox from './checkbox';
+import list from './list';
 
 export const componentList = {
   autocomplete,
@@ -17,5 +19,7 @@ export const componentList = {
   licontextmenu,
   scrollspy,
   tab,
-  btnmenu
+  btnmenu,
+  checkbox,
+  list
 };

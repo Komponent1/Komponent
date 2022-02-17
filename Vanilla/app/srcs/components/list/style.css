@@ -1,0 +1,37 @@
+.list {
+  width: 80%; 
+}
+.list_li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 3px;
+}
+
+.list_li:hover {
+  background-color: rgba(172,172,172, 0.5);
+}
+.list_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.list_space {
+  width: 17px;
+}
+.list_item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  flex-grow: 1;
+  flex-basis: 0;
+
+  border-radius: 4px;
+}
+
+.list_item span {
+  margin-right: 5px;
+}
