@@ -11,13 +11,23 @@ const Dragable: React.FC = React.forwardRef(({ children, parent }, ref) => {
       setXY([x, y]);
     }
   }
-
-  useEffect(() => {
+  
+  const down = e => {
+    if (e.target.closest('.dragable') !== ref.current) return;
+    
+    const id = move(e.offsetX, e.offsetY);
+    // const up = e => {
+    //   parent.current.removeEventListener('mousemove', id);
+    //   // parent.current.removeEventListener('mouseup', this)
+    // }
+    parent.current.addEventListener('mousemove', id);
+    // parent.addEventListener('mouseup', up);
+  }
+  useEffect(() => { 
     if (!parent.current) return;
-    parent.current.addEventListener('mousedown', e => {
-      const id = move(e.offsetX, e.offsetY);
-      parent.current.addEventListener('mousemove', id);
-    })
+    parent.current.addEventListener('mousedown', down);
+
+    return () => parent.current.removeEventListener('mousedown', down);
   }, [ parent ]);
 
   return (
