@@ -8,7 +8,10 @@ const config: CONFIG = {
   name: 'Dragable Pannel',
   comp: DragablePannel,
   prop: {
-    children: (<div style={{ width: '30px', height: '30px', background: 'black'}} />)
+    children: [
+      <div key={1} style={{ width: '50px', height: '80px', background: 'black'}} />,
+      <div key={2} style={{ width: '80px', height: '50px', background: 'blue'}} />
+    ]
   },
   explain: md
 };
