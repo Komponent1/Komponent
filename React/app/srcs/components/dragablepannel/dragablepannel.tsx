@@ -33,6 +33,7 @@ const Dragable: React.FC = React.forwardRef(({ children, parent }, ref) => {
     return () => parent.current.removeEventListener('mousedown', down);
   }, [ parent ]);
   useEffect(() => {
+    if (id === null) return;
     parent.current.addEventListener('mouseup', up);
     parent.current.addEventListener('mouseleave', up);
 
