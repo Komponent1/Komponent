@@ -11,3 +11,4 @@ export { default as Checkbox } from './checkbox/checkbox';
 export { default as List } from './list/list';
 export { default as DragablePannel } from './dragablepannel/dragablepannel';
 export { default as ToggleMenu } from './togglemenu/togglemenu';
+export { default as Badge } from './badge/badge';

@@ -40,7 +40,7 @@ export function timer (datas: Object) {
 type Obj = {
   data: any[]
 }
-export function fetcher(datas: any[]): Promise<Obj> {
+export function fetcher(datas: any[] | any): Promise<Obj> {
   return new Promise(timer({ data: datas }));
 }
 export const DummyComp: React.FC = ({ color, width = '100%', height = '100%', children }) => (
