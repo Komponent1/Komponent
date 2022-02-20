@@ -10,3 +10,4 @@ export { default as btnMenu } from './btnmenu/btnmenu';
 export { default as checkbox } from './checkbox/checkbox';
 export { default as list } from './list/list';
 export { default as dragablepannel } from './dragablepannel/dragablepannel';
+export { default as togglemenu } from './togglemenu/togglemenu'; 

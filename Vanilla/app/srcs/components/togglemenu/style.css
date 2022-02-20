@@ -1,0 +1,13 @@
+.togglemenu {
+  border: 1px solid rgba(172, 172, 172, 0.5);
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: row;
+}
+.togglemenu_icon {
+  border-right: 1px solid rgba(172, 172, 172, 0.5);
+}
+.togglemenu .select {
+  background: rgba(172, 172, 172, 0.1)
+}
