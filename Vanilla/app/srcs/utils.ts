@@ -48,7 +48,7 @@ export function timer (datas: Object) {
 type Obj = {
   data: any[]
 }
-export function fetcher(datas: any[]): Promise<Obj> {
+export function fetcher(datas: any[] | any): Promise<Obj> {
   return new Promise(timer({ data: datas }));
 }
 

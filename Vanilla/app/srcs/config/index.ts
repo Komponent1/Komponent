@@ -11,6 +11,7 @@ import checkbox from './checkbox';
 import list from './list';
 import dragablepannel from './dragablepannel';
 import togglemenu from './togglemenu';
+import badge from './badge';
 
 export const componentList = {
   autocomplete,
@@ -25,5 +26,6 @@ export const componentList = {
   checkbox,
   list,
   dragablepannel,
-  togglemenu
+  togglemenu,
+  badge
 };

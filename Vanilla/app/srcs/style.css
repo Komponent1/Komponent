@@ -87,8 +87,13 @@ body {
   font-size: 40px;
 }
 #root .example {
-  border: 1px solid rgba(172, 172, 172, 0.4);
+  border: 2px solid rgba(172, 172, 172, 0.4);
+  border-radius: 8px;
   display: flex;
   justify-content: space-around;
   padding: 30px;
+}
+
+code {
+  border-radius: 8px;
 }
