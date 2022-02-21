@@ -12,6 +12,7 @@ import list from './list';
 import dragablepannel from './dragablepannel';
 import togglemenu from './togglemenu';
 import badge from './badge';
+import slider from './slider';
 
 export const componentList = {
   autocomplete,
@@ -27,5 +28,6 @@ export const componentList = {
   list,
   dragablepannel,
   togglemenu,
-  badge
+  badge,
+  slider
 };

@@ -12,3 +12,4 @@ export { default as list } from './list/list';
 export { default as dragablepannel } from './dragablepannel/dragablepannel';
 export { default as togglemenu } from './togglemenu/togglemenu'; 
 export { default as badge } from './badge/badge';
+export { default as slider } from './slider/slider';
