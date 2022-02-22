@@ -14,3 +14,4 @@ export { default as togglemenu } from './togglemenu/togglemenu';
 export { default as badge } from './badge/badge';
 export { default as slider } from './slider/slider';
 export { default as button } from './button/button';
+export { default as onoffswitch } from './onoffswitch/onoffswitch';

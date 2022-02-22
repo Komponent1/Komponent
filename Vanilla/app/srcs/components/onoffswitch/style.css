@@ -1,0 +1,43 @@
+.onoffswitch {
+  position: relative;
+
+  width: 40px;
+}
+.onoffswitch_icon {
+  --x: -10%;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  box-shadow: 1px 1px 5px black;
+  background: white;
+
+  transform: translateX(var(--x));
+  transition: transform 0.5s;
+}
+.onoffswitch_leftbar {
+  display: inline-block;
+  --width: 0%;
+  background: rgba(1,1,1,1);
+
+  width: var(--width);
+  height: 14px;
+  border-radius: 7px;
+
+  transition: width 0.5s;
+}
+.onoffswitch_rightbar {
+  display: inline-block;
+  --width: 100%;
+  background: rgba(1,1,1,0.4);
+
+  width: var(--width);
+  height: 14px;
+  border-radius: 7px;
+
+  transition: width 0.5s;
+}

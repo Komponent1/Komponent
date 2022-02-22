@@ -14,9 +14,10 @@ import togglemenu from './togglemenu';
 import badge from './badge';
 import slider from './slider';
 import button from './button';
+import onoffswitch from './onoffswitch';
 
 export const componentList = {
   autocomplete, buttoncarousel, carousel, contextmenu, infinitescroll,
   licontextmenu, scrollspy, tab, btnmenu, checkbox, list, dragablepannel,
-  togglemenu, badge, slider, button
+  togglemenu, badge, slider, button, onoffswitch
 };
