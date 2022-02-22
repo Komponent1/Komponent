@@ -20,8 +20,8 @@ function slider ({ setValue, width }) {
     value = point;
     setValue(value);
     marker.style.setProperty('--value', point + 'px');
-    up.style.setProperty('--scale', ((value / width) * 2) + '' )
-    down.style.setProperty('--scale', (2 - (value / width) * 2) + '' )
+    up.style.setProperty('--scale', ((value / width) * 100) + '%' )
+    down.style.setProperty('--scale', (((width - value) / width) * 100) + '%' )
   }
   
   marker.addEventListener('mousedown', () => {

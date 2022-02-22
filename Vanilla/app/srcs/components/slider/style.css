@@ -8,28 +8,22 @@
 .slider .slider_up {
   display: inline-block;
 
-  --scale: 0;
+  --scale: 0%;
   background: rgba(1,1,1,1);
-  width: 50%;
+  width: var(--scale);
   height: 8px;
   border-radius: 4px;
   margin-bottom: 6px;
-
-  transform: scaleX(var(--scale));
-  transform-origin: left;
 }
 .slider .slider_down {
   display: inline-block;
 
-  --scale: 2;
+  --scale: 100%;
   background: rgba(1,1,1,0.3);
-  width: 50%;
+  width: var(--scale);
   height: 6px;
   border-radius: 3px;
-  margin-bottom: 7px;  
-
-  transform: scaleX(var(--scale));
-  transform-origin: right;
+  margin-bottom: 7px;
 }
 .slider_marker {
   --value: 0px;
