@@ -13,7 +13,8 @@ function slider ({ setValue, width }) {
 
   let value = 0;
   const drag = (e: MouseEvent) => {
-    const point = e.clientX - ((e.target as HTMLElement).closest('.slider') as HTMLElement).offsetLeft;
+    const slider = document.getElementsByClassName('slider')[0]
+    const point = e.clientX - (slider as HTMLDivElement).offsetLeft;
     if (point > width || point < 0) {
       return;
     }
@@ -25,13 +26,10 @@ function slider ({ setValue, width }) {
   }
   
   marker.addEventListener('mousedown', () => {
-    wrapper.addEventListener('mousemove', drag);
+    window.addEventListener('mousemove', drag);
   });
-  marker.addEventListener('mouseleave', e => {
-    wrapper.removeEventListener('mousemove', drag);
-  })
-  marker.addEventListener('mouseup', () => {
-    wrapper.removeEventListener('mousemove', drag);
+  window.addEventListener('mouseup', () => {
+    window.removeEventListener('mousemove', drag);
   })
 
   return wrapper;
