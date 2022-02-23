@@ -8,7 +8,7 @@ export function makeDiv(name: string, explain: string, elem: HTMLElement | HTMLD
   const example = createElem('div', 'example');
   example.appendChild(elem);
 
-  const sub = document.createElement('div');
+  const sub = createElem('div', 'explain');
   sub.innerHTML = explain;
   
   div.appendChild(title);

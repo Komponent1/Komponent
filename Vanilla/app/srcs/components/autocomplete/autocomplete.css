@@ -1,10 +1,10 @@
-.autocomplete {
+.kui_autocomplete {
   width: 400px;
   position: relative;
 
   font-size: 20px;
 }
-.autocomplete_input {
+.kui_autocomplete_input {
   padding: 7px 10px;
   margin: 0;
   
@@ -13,7 +13,7 @@
   border: 2px solid black;
   border-radius: 5px;
 }
-.autocomplete_ul {
+.kui_autocomplete_ul {
   display: none;
 
   position: absolute;
@@ -32,11 +32,11 @@
   padding: 0px;
   background-color: white;
 }
-.autocomplete_li {
+.kui_autocomplete_li {
   width: calc(100% - 20px);
   margin: 0;
   padding: 7px 10px;
 }
-.autocomplete_li:hover {
+.kui_autocomplete_li:hover {
   background: skyblue;
 }

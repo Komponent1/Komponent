@@ -1,4 +1,5 @@
 import './style.css'
+import './markdown.css'
 import './menu';
 import './header';
 import home from './home';

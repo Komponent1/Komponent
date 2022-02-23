@@ -1,11 +1,11 @@
-import { buttonCarousel } from '../components'
+import { changecarousel } from '../components'
 import { makeDummyElem } from '../utils'
 import { CONFIG } from './configType'
-import md from '../components/buttonCarousel/README.md'
+import md from '../components/changecarousel/README.md'
 
 const config: CONFIG = {
-  name: 'Button Carousel',
-  render: buttonCarousel,
+  name: 'Change Carousel',
+  render: changecarousel,
   prop: {
     elems: makeDummyElem()
   },

@@ -1,0 +1,44 @@
+.kui_changecarousel {
+  width: 400px;
+  height: 200px;
+  position: relative;
+}
+.kui_changecarousel_item {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.kui_changecarousel_btnset {
+  position: absolute;
+  top: 150px;
+  text-align: center;
+  width: 100%;
+}
+
+.kui_changecarousel_btnset button {
+  border: none;
+  padding: 0;
+  margin: 4px;
+  width: 30px;
+  height: 20px;
+
+  background: rgba(1, 1, 1, 0);
+}
+.kui_changecarousel_btnset button:hover {
+  cursor: pointer;
+}
+.kui_changecarousel_btnset button div {
+  width: 100%;
+  height: 4px;
+  background: gray;
+}
+.kui_changecarousel_btnset button div.select{
+  background: white;
+
+}

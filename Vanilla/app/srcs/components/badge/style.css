@@ -1,7 +1,7 @@
-.badge {
+.kui_badge {
   position: relative;
 }
-.badge_icon {
+.kui_badge_icon {
   display: none;
   position: absolute;
   top:-8px;

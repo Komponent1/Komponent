@@ -1,4 +1,4 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/ree/master/Vanilla/app/srcs/components/autocomplete))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/autocomplete))
 
 ### How to Use
 
@@ -15,25 +15,21 @@ document.body.appendChild(autocomplete);
 
 ### Parameter
 
-|style| aaa  |bbb   |
-|---|---|---|
-|   s| s  | s  |
+|name|type|default|must|explain|
+|:---|:---|:---|:---|:---|
+|fetcher|`() => Promise<{data: string[]}>`|`undefined`|yes|서버로부터 데이터를 받아올 fetch method|
+|placeholder|`string`|`''`|no|input에 들어갈 placeholder 값|
 
 ### 기능
-1. 특정 언어에 대한 검색 자동완성을 지원
-2. 해당 언어를 클릭하면 input에 해당 요소를 삽입
+특정 단어를 입력시 해당 단어를 포함한 목록을 확인시켜주는 컴포넌트
 
-### 사용
-1. 데이터를 가져오는 API fethcer를 받아서 동작시킨다
+### structure(for styling)
+```html
+<div class='kui_autocomplete'>
+  <input class='kui_autocomplete_input' />
+  <ul class='kui_autocomplete_ul'>
+    <li class='kui_autocomplete_li' />
+  </ul>
+</div>
 
-~~~javascript
-paramter: {
-  fetcher: (any) => Promise<data>
-}
-~~~
-
-### 특이사항
-1. keyup과 click에 대한 Event binding의 차이를 구별할것
-
-### BUG
-1. UL이 추가적으로 생기는 문제 발생
+```

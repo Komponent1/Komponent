@@ -1,4 +1,4 @@
-.button {
+.kui_button {
   display: inline-block;
   position: relative;
 
@@ -18,11 +18,11 @@
   -ms-user-select: none;
   user-select: none;
 }
-.button:hover {
+.kui_button:hover {
   background-color: rgba(1,1,1, 0.1);  
   border: 1px solid rgba(1,1,1,1);
 }
-.button_wave {
+.kui_button_wave {
   --scale: 0;
   --duration: 0.3s;
   position: absolute;

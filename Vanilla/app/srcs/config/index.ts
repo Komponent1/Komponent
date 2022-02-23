@@ -1,6 +1,6 @@
 import autocomplete from './autocomplete';
 import carousel from './carousel';
-import buttoncarousel from './buttomcarousel';
+import changecarousel from './changecarousel';
 import contextmenu from './contextmenu';
 import infinitescroll  from './infinitescroll';
 import licontextmenu from './licontextmenu';
@@ -18,7 +18,7 @@ import onoffswitch from './onoffswitch';
 import dropdown from './dropdown';
 
 export const componentList = {
-  autocomplete, buttoncarousel, carousel, contextmenu, infinitescroll,
+  autocomplete, badge, button, changecarousel, carousel, contextmenu, infinitescroll,
   licontextmenu, scrollspy, tab, btnmenu, checkbox, list, dragablepannel,
-  togglemenu, badge, slider, button, onoffswitch, dropdown
+  togglemenu, slider, onoffswitch, dropdown
 };

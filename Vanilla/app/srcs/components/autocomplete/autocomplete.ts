@@ -5,10 +5,10 @@ type Prop = {
   fetcher: () => Promise<{ data: string[] | string }>,
   placeholder: string
 }
-function autocomplete({ fetcher, placeholder }: Prop): HTMLDivElement {
-  const wrapper = createElem('div', 'autocomplete') as HTMLDivElement;
-  const input = createElem('input', 'autocomplete_input') as HTMLInputElement;
-  const ul = createElem('ul', 'autocomplete_ul');
+function autocomplete({ fetcher, placeholder = '' }: Prop): HTMLDivElement {
+  const wrapper = createElem('div', 'kui_autocomplete') as HTMLDivElement;
+  const input = createElem('input', 'kui_autocomplete_input') as HTMLInputElement;
+  const ul = createElem('ul', 'kui_autocomplete_ul');
   input.setAttribute('placeholder', placeholder);
   wrapper.appendChild(input);
   wrapper.appendChild(ul);
@@ -16,7 +16,7 @@ function autocomplete({ fetcher, placeholder }: Prop): HTMLDivElement {
   const makelist = (datas: string[]) => {
     ul.innerHTML = '';
     for (let  i = 0; i < datas.length; i++) {
-      const li = createElem('li', 'autocomplete_li');
+      const li = createElem('li', 'kui_autocomplete_li');
       li.innerText = datas[i];
       li.addEventListener('click', e => {
         e.stopPropagation();
@@ -48,7 +48,7 @@ function autocomplete({ fetcher, placeholder }: Prop): HTMLDivElement {
     update();
   });
   window.addEventListener('click', e => {
-    if ((e.target as HTMLElement).closest('.autocomplete')) return;
+    if ((e.target as HTMLElement).closest('.kui_autocomplete')) return;
     else ul.style.display = 'none';
   })
 

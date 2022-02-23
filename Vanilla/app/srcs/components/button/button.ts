@@ -1,9 +1,13 @@
 import { createElem } from '../../utils';
 import './style.css';
 
-function button ({ text, act }): HTMLDivElement {
-  const wrapper = createElem('div', 'button') as HTMLDivElement;
-  const wave = createElem('div', 'button_wave');
+type Prop = {
+  text: string,
+  click: (e: MouseEvent) => void
+}
+function button ({ text = '', click = e => {} }: Prop): HTMLDivElement {
+  const wrapper = createElem('div', 'kui_button') as HTMLDivElement;
+  const wave = createElem('div', 'kui_button_wave');
   
   wrapper.innerText = text;
   wrapper.appendChild(wave);
@@ -24,7 +28,7 @@ function button ({ text, act }): HTMLDivElement {
       wave.style.setProperty('--scale', '0');
     }
 
-    act(e);
+    click(e);
   })
 
   return wrapper;

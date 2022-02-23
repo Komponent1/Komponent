@@ -7,7 +7,7 @@ const config: CONFIG = {
   render: button,
   prop: {
     text: 'BUTTON',
-    act: () => {}
+    click: () => {}
   },
   explain: md
 };
