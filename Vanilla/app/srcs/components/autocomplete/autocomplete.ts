@@ -2,7 +2,7 @@ import './autocomplete.css'
 import { createElem, debounce } from '../../utils';
 
 type Prop = {
-  fetcher: Function,
+  fetcher: () => Promise<{ data: string[] | string }>,
   placeholder: string
 }
 function autocomplete({ fetcher, placeholder }: Prop): HTMLDivElement {
@@ -13,7 +13,7 @@ function autocomplete({ fetcher, placeholder }: Prop): HTMLDivElement {
   wrapper.appendChild(input);
   wrapper.appendChild(ul);
 
-  const makelist = (datas) => {
+  const makelist = (datas: string[]) => {
     ul.innerHTML = '';
     for (let  i = 0; i < datas.length; i++) {
       const li = createElem('li', 'autocomplete_li');
@@ -30,7 +30,7 @@ function autocomplete({ fetcher, placeholder }: Prop): HTMLDivElement {
   }
 
   const update = async () => {
-    const { data } = await fetcher();
+    const { data } = await fetcher() as { data: string[] };
     const value = input.value;
 
     if (value === '') {
