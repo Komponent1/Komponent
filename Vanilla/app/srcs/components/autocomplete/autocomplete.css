@@ -5,34 +5,37 @@
   font-size: 20px;
 }
 .autocomplete_input {
-  padding: 1px 4px 1px 4px;
+  padding: 7px 10px;
   margin: 0;
   
-  width: 100%;
+  width: calc(100% - 24px);
   font-size: 20px;
   border: 2px solid black;
   border-radius: 5px;
 }
 .autocomplete_ul {
+  display: none;
+
   position: absolute;
   top: auto;
-  left: 0;
+  left: 1px;
   list-style-type: none;
   
-  width: 100%;
-  max-height: 60px;
+  width: calc(100% - 2px);
+  max-height: 100px;
   overflow-y: scroll;
   z-index: 10;
   margin: 0;
-  padding: 1px 4px 1px 4px;
 
-  border: 1px solid grey;
-  border-radius: 1px;
+  box-shadow: 0px 0px 5px black;
+  border-radius: 4px;
+  padding: 0px;
+  background-color: white;
 }
 .autocomplete_li {
-  width: 100%;
+  width: calc(100% - 20px);
   margin: 0;
-  padding: 0;
+  padding: 7px 10px;
 }
 .autocomplete_li:hover {
   background: skyblue;

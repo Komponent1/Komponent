@@ -1,32 +1,6 @@
 import './autocomplete.css'
 import { createElem, debounce } from '../../utils';
 
-const setAutoEvent = async (comp: HTMLElement, input: HTMLInputElement, classname: string, event: Event, fetcher: Function) => {
-  const prev = document.getElementsByClassName(classname);
-  if (prev.length !== 0) comp.removeChild(prev[0]);
-
-  const { data } = await fetcher();
-  if ((event.target as HTMLInputElement).value === '') return;
-    
-  const ul = createElem('ul', 'autocomplete_ul') as HTMLUListElement;
-  const lis = data.filter(
-    e => e.search((event.target as HTMLInputElement).value) !== -1 
-          && (event.target as HTMLInputElement).value !== ''
-  );
-
-  if (lis.length === 0) return;
-  lis.forEach(e => {
-    const li = createElem('li', 'autocomplete_li');
-    li.innerText = e;
-    li.addEventListener('click', e => {
-      input.value = (e.target as HTMLLIElement).innerText
-      /* forcedd event */
-      input.dispatchEvent(new Event('keyup'));
-    });
-    ul.appendChild(li);
-  });
-  comp.appendChild(ul);
-}
 type Prop = {
   fetcher: Function,
   placeholder: string
@@ -34,12 +8,49 @@ type Prop = {
 function autocomplete({ fetcher, placeholder }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'autocomplete') as HTMLDivElement;
   const input = createElem('input', 'autocomplete_input') as HTMLInputElement;
+  const ul = createElem('ul', 'autocomplete_ul');
   input.setAttribute('placeholder', placeholder);
   wrapper.appendChild(input);
-  
-  input.addEventListener('keyup', debounce(async event => {
-    await setAutoEvent(wrapper, input, 'autocomplete_ul', event, fetcher);
+  wrapper.appendChild(ul);
+
+  const makelist = (datas) => {
+    ul.innerHTML = '';
+    for (let  i = 0; i < datas.length; i++) {
+      const li = createElem('li', 'autocomplete_li');
+      li.innerText = datas[i];
+      li.addEventListener('click', e => {
+        e.stopPropagation();
+        input.value = (e.target as HTMLLIElement).innerText;
+        update();
+        ul.style.display = 'none';
+      });
+
+      ul.appendChild(li);
+    }
+  }
+
+  const update = async () => {
+    const { data } = await fetcher();
+    const value = input.value;
+
+    if (value === '') {
+      makelist(data);
+    } else {
+      makelist(data.filter(e => e.search(value) !== -1 && (value !== '')));
+    }
+  }
+
+  input.addEventListener('keyup', debounce(() => {
+    update();
   }, 500));
+  input.addEventListener('focusin', () => {
+    ul.style.display = 'block';
+    update();
+  });
+  window.addEventListener('click', e => {
+    if ((e.target as HTMLElement).closest('.autocomplete')) return;
+    else ul.style.display = 'none';
+  })
 
   return wrapper;
 };

@@ -11,8 +11,6 @@ function dropdown({ tag, options, setOtion }) {
   for (let i = 0; i < options.length; i++) {
     const item = createElem('div', 'dropdown_item');
     item.innerText = options[i];
-    if (i === 0) item.style.borderTop = '4px';
-    else if (i === options.length - 1) item.style.borderBottom = '4px';
 
     item.addEventListener('click', e => {
       e.stopPropagation();
