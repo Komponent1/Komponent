@@ -1,25 +1,25 @@
-.carousel {
+.kui_slidecarousel {
   position: relative;
   
   width: 400px;
   height: 200px;
   overflow: hidden;
 }
-.carousel_slider {
-  --idx: 1;
+.kui_slidecarousel_slider {
+  --x: -400px;
   --sec: 0.5;
 
   display: flex;
   width: 3000px;
 
-  transform: translateX(calc(400px * var(--idx) * -1));
-  transition: transform calc(var(--sec) * 1s) ease-out;
+  transform: translateX(var(--x));
+  transition: transform var(--sec);
 }
-.carousel_item {
+.kui_slidecarousel_item {
   width: 400px;
   height: 200px;
 }
-.carousel_rbutton {
+.kui_slidecarousel_rbutton {
   background: none;
   color: white;
   width: 40px;
@@ -32,7 +32,7 @@
   right: 10px;
   font-size: 30px;
 }
-.carousel_lbutton {
+.kui_slidecarousel_lbutton {
   background: none;
   color: white;
   width: 40px;

@@ -1,16 +1,16 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/changecarousel))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/slidecarousel))
 
 ### How to Use
 
 ~~~javascript
-import { changecarousel } from 'komponent/vanilla/component';
+import { slidecarousel } from 'komponent/vanilla/component';
 
-const changecarousel = changecarousel({ 
+const slidecarousel = slidecarousel({ 
   elems: /* Element of carousel elements */
   auto: true /* auto carousel move flag */
 });
 
-document.body.appendChild(changecarousel);
+document.body.appendChild(slidecarousel);
 ~~~
 
 ### Parameter
@@ -26,13 +26,12 @@ document.body.appendChild(changecarousel);
 ### structure(for styling)
 ```html
 <div class='kui_slidecarousel'>
-  <div class='kui_slidecarousel_item'/>
-  <div class='kui_slidecarousel_item'/>
-  <div class='kui_slidecarousel_btnset'>
-    <button><div class='select' /></button>
-    <button><div /></button>
-    <button><div /></button>
+  <div class='kui_slidecarousel_slider'>
+    <div class='kui_slidecarousel_item'/>
+    <div class='kui_slidecarousel_item'/>
   </div>
+  <div class='kui_slidecarousel_rbutton'/>
+  <div class='kui_slidecarousel_lbutton'/>
 </div>
 
 ```
