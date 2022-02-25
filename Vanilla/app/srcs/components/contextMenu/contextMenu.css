@@ -1,27 +1,26 @@
-.contextmenu {
+.kui_contextmenu {
   display: inline-block;
   border-radius: 2px;
   box-shadow: 1px 1px 1px 1px gray;
 }
 
-.contextmenu_menu {
+.kui_contextmenu_menu {
   display: block;
   position: relative;
   
   width: 200px;
   height: 20px;
 
-  padding: 3px 0 3px 10px;
+  padding: 5px 10px 5px 10px;
+  line-height: 20px;
   margin: 0;
-
-  border-bottom: 1px solid rgba(172, 172, 172, 0.2);
 }
-.contextmenu_menu:hover {
+.kui_contextmenu_menu:hover {
   cursor: pointer;
   background-color: rgba(172, 172, 172, 0.2);
 }
 
-.contextmenu_context {
+.kui_contextmenu_context {
   --top: 0;
   --left: 0;
 
@@ -38,4 +37,6 @@
 
   padding: 10px;
   margin: 0;
+
+  white-space: nowrap;
 }

@@ -1,24 +1,26 @@
 import './contextmenu.css'
 import { createElem } from '../../utils';
 
-type Data = {
-  menu: string,
-  context: string,
+type config = {
+  
 }
 type Prop = {
-  datas: Data[]
+  config: {
+    menu: string,
+    context: string,
+  }[]
 }
 // 단일 메뉴의 경우
-function contextMenu({ datas }: Prop): HTMLDivElement {
-  const wrapper = createElem('div', 'contextmenu') as HTMLDivElement;
+function contextMenu({ config }: Prop): HTMLDivElement {
+  const wrapper = createElem('div', 'kui_contextmenu') as HTMLDivElement;
 
   const menus = [];
   const contexts = [];
-  for (let i = 0; i < datas.length; i++) {
-    let menu = createElem('p', 'contextmenu_menu');
-    menu.innerText = datas[i].menu;
-    let context = createElem('p', 'contextmenu_context');
-    context.innerText = datas[i].context;
+  for (let i = 0; i < config.length; i++) {
+    let menu = createElem('p', 'kui_contextmenu_menu');
+    menu.innerText = config[i].menu;
+    let context = createElem('p', 'kui_contextmenu_context');
+    context.innerText = config[i].context;
     menu.appendChild(context);
     wrapper.appendChild(menu);
     

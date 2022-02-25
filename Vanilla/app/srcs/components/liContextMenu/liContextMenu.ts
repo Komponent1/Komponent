@@ -1,18 +1,21 @@
 import { createElem } from "../../utils";
 import './licontextmenu.css'
 
-type data = {
+type config = {
   name: string,
   shortcut?: string,
-  li?: data[],
+  li?: config[],
   act?: Function  
 }
-function makeContext(type: string, config: data[], parent: HTMLElement): HTMLUListElement {
+type Prop = {
+  config: config[]
+}
+function makeContext(type: string, config: config[], parent: HTMLElement): HTMLUListElement {
   const context = createElem(
     'ul',
-    type !== 'sub' ? 'licontextmenu_ul' : 'licontextmenu_subul');
+    type !== 'sub' ? 'kui_licontextmenu_ul' : 'kui_licontextmenu_subul');
   config.map(e => {
-    const li = createElem('li', 'licontextmenu_li');
+    const li = createElem('li', 'kui_licontextmenu_li');
     li.innerText = e.name;
     if (e.li) {
       const subul = makeContext('sub', e.li, li);
@@ -32,34 +35,47 @@ function makeContext(type: string, config: data[], parent: HTMLElement): HTMLULi
 
   return context as HTMLUListElement;
 }
-type Prop = {
-  datas: data[]
-}
-function liContextMenu({ datas }: Prop): HTMLDivElement {
-  const wrapper = createElem('div', 'licontextmenu');
+function liContextMenu({ config }: Prop): HTMLDivElement {
+  const wrapper = createElem('div', 'kui_licontextmenu');
   
-  datas.map(e => {
-    const icon = createElem('div', 'licontextmenu_icon');
-    icon.innerText = e.name;
+  config.map(e => {
+    const icon = createElem('div', 'kui_licontextmenu_icon');
+    icon.innerHTML = `<p>${e.name}</p>`;
     if (e.li) icon.appendChild(makeContext('main', e.li, icon));
     wrapper.appendChild(icon);
   });
 
   const icons = Array.from(wrapper.children) as HTMLElement[];
-  icons.map(icon => {
+  icons.map((icon, j) => {
     icon.addEventListener('click', event => {
       event.stopPropagation();
       for(let i = 0; i < icons.length; i++) {
-        if (icons[i].children.length !== 0) (icons[i].children[0] as HTMLElement).style.display = 'none';
+        if (i === j) {
+          if (icon.children.length !== 1 && !icon.classList.contains('select')) {
+            (icon.children[1] as HTMLElement).style.display = 'block';
+            icon.classList.add('select');
+          } else {
+            icon.classList.remove('select');
+            if (icon.children.length !== 1) {
+              (icon.children[1] as HTMLElement).style.display = 'none';
+            }
+          }
+        } else {
+          if (icons[i].children.length !== 1){
+            (icons[i].children[1] as HTMLElement).style.display = 'none';
+            icons[i].classList.remove('select');
+          } 
+        }
       }
-      if (icon.children.length !== 0) (icon.children[0] as HTMLElement).style.display = 'block';
+      
     })
   });
 
   document.body.addEventListener('click', event => {
-    if ((event.target as HTMLElement).classList.contains('licontextmenu')) return;
+    if ((event.target as HTMLElement).closest('.kui_licontextmenu')) return;
     for(let i = 0; i < icons.length; i++) {
-      if (icons[i].children.length !== 0) (icons[i].children[0] as HTMLElement).style.display = 'none';
+      if (icons[i].children.length !== 1) (icons[i].children[1] as HTMLElement).style.display = 'none';
+      icons[i].classList.remove('select');
     }
   })
 

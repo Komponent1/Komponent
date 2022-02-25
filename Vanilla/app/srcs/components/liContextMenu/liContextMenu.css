@@ -1,36 +1,47 @@
-.licontextmenu {
+.kui_licontextmenu {
   width: 100%;
   display: flex;
-  justify-content: space-around;
   border: 1px solid black;
   padding: 5px;
 }
-.licontextmenu_icon {
+.kui_licontextmenu_icon {
   position: relative;
-  box-shadow: 1px 1px 1px 1px gray;
-  padding: 5px;
+  border-radius: 5px;
 }
-.licontextmenu ul {
+.kui_licontextmenu p {
+  padding: 2px 5px;
+  margin: 0;
+  z-index: 11;
+}
+.kui_licontextmenu_icon:hover {
+  background-color: rgba(172, 172, 172, 0.2);
+}
+.kui_licontextmenu_icon.select {
+  background-color: rgba(172, 172, 172, 0.5);
+}
+.kui_licontextmenu ul {
   display: none;
   list-style-type: none;
   
   padding: 0;
   margin: 0;
-  box-shadow: 1px 1px 1px 1px gray;
+  box-shadow: 0px 0px 5px grey;
+  border-radius: 4px;
   background-color: white;
+  z-index: 10;
 }
-.licontextmenu_ul {
+.kui_licontextmenu_ul {
   position: absolute;
-  top: 28px;
+  top: auto;
   left: 0;
   width: 100px;
 }
-.licontextmenu_subul {
+.kui_licontextmenu_subul {
   position: absolute;
   top: 0;
   left: 100px;
 }
-.licontextmenu_li {
+.kui_licontextmenu_li {
   position: relative;
   padding: 3px;
 }

@@ -41,7 +41,7 @@ const config: CONFIG = {
   name: 'Li Context Menu',
   render: liContextMenu,
   prop: {
-    datas
+    config: datas
   },
   explain: md
 };

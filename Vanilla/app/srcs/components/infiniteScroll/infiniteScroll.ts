@@ -2,20 +2,19 @@ import './infinitescroll.css'
 import { createElem } from '../../utils';
 
 type Prop = {
-  fetcher: Function
+  fetcher: (idx: number) => Promise<{ data: string[] }>
 }
-
-function infiniteScroll({ fetcher }): HTMLDivElement {
+function infiniteScroll({ fetcher }: Prop): HTMLDivElement {
   let idx = 0;
-  const wrapper = createElem('div', 'infinitescroll') as HTMLDivElement;
-  const trigger = createElem('div', 'infinitescroll_trigger');
+  const wrapper = createElem('div', 'kui_infinitescroll') as HTMLDivElement;
+  const trigger = createElem('div', 'kui_infinitescroll_trigger');
   wrapper.appendChild(trigger);
   
   const fetchRender = async (idx: number) => {
     wrapper.removeChild(trigger);
     const { data } = await fetcher(idx);
     const renderItem = data.map((e, i) => 
-      `<div class="infinitescroll_li"><p>${e}</p></div>`
+      `<div class="kui_infinitescroll_li">${e}</div>`
     ).join('');
 
     wrapper.insertAdjacentHTML('beforeend', renderItem);
