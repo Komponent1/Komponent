@@ -16,3 +16,4 @@ export { default as slider } from './slider/slider';
 export { default as button } from './button/button';
 export { default as onoffswitch } from './onoffswitch/onoffswitch';
 export { default as dropdown } from './dropdown/dropdown';
+export { default as parallexscroll } from './parallexscroll/parallexscroll';
