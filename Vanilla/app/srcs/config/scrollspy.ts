@@ -1,7 +1,7 @@
 import { scrollSpy } from '../components'
 import { makeDummyElem } from '../utils'
 import { CONFIG } from './configType'
-import md from '../components/infiniteScroll/README.md'
+import md from '../components/scrollspy/README.md'
 
 const datas = Array.from({ length: 100 }).map((e, i) => i + '');
 
