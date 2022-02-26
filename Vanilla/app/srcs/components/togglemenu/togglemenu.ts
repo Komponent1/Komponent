@@ -2,14 +2,13 @@ import './style.css';
 import { createElem } from '../../utils';
 
 type Config = {
-  type: string
+  type: 'img'|'text'|'elem',
   src: string | HTMLElement,
-  
   act: Function
 };
 type Prop = {
   init?: number,
-  type: 'normal'|'must'|'multi',
+  type?: 'normal'|'must'|'multi',
   config: Config[]
 };
 function togglemenu ({ init, type = 'normal', config }: Prop): HTMLDivElement {
