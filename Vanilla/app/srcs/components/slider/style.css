@@ -1,11 +1,11 @@
-.slider {
+.kui_slider {
   --width: 0px;
 
   position: relative;
   width: var(--width);
   height: 20px;
 }
-.slider .slider_up {
+.kui_slider .kui_slider_up {
   display: inline-block;
 
   --scale: 0%;
@@ -15,7 +15,7 @@
   border-radius: 4px;
   margin-bottom: 6px;
 }
-.slider .slider_down {
+.kui_slider .kui_slider_down {
   display: inline-block;
 
   --scale: 100%;
@@ -25,10 +25,10 @@
   border-radius: 3px;
   margin-bottom: 7px;
 }
-.slider_marker {
+.kui_slider_marker {
   --value: 0px;
   position: absolute;
-  top: 0;
+  top: -1px;
   left: -10px;
 
   width: 20px;
@@ -37,6 +37,4 @@
   background: rgba(1,1,1,1);
 
   transform: translateX(var(--value));
-
-  
 }

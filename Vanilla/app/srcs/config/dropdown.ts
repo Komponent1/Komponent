@@ -8,7 +8,7 @@ const config: CONFIG = {
   prop: {
     tag: 'num',
     options: ['1', '2', '3'],
-    setOption: () => {},
+    setOption: (option: string, idx?:number) => {},
   },
   explain: md
 };

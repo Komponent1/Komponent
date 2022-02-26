@@ -1,16 +1,15 @@
 import { slider } from '../components'
-import { makeDummyElem } from '../utils'
 import { CONFIG } from './configType'
-import md from '../components/infiniteScroll/README.md'
+import md from '../components/slider/README.md'
 
-const datas = Array.from({ length: 100 }).map((e, i) => i + '');
 
 const config: CONFIG = {
   name: 'Slider',
   render: slider,
   prop: {
-    setValue: () => {},
+    setValue: (value: number) => {},
     width: 150,
+    init: 0.4
   },
   explain: md
 };

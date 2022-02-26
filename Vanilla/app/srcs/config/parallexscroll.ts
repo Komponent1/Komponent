@@ -27,7 +27,6 @@ const config: CONFIG = {
       },
       {
         elem: dummy('green'),
-        delay: 1,
       },
       {
         elem: dummy('red'),

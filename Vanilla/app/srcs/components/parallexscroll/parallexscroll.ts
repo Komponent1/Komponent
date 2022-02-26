@@ -4,7 +4,7 @@ import { createElem } from '../../utils';
 type Prop = {
   config: {
     elem: HTMLElement,
-    delay: number,
+    delay?: number,
   }[]
 }
 function parallexscroll({ config }: Prop) {
@@ -33,7 +33,7 @@ function parallexscroll({ config }: Prop) {
     layers.forEach((layer, i) => {
       if (scrollTop >= i * layers[i].offsetHeight) {
         layer.style.setProperty('--y', 
-          (scrollTop * (config[i].delay < 1 ? config[i].delay : 1)) - addheight(i) + 'px' );
+          (scrollTop * ((config[i].delay < 1 && config[i].delay) ? config[i].delay : 1)) - addheight(i) + 'px' );
       }
     });
   });

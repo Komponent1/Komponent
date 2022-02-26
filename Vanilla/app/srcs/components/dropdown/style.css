@@ -1,19 +1,21 @@
-.dropdown {
+.kui_dropdown {
   position: relative;
 }
-.dropdown_box {
+.kui_dropdown_box {
   width: 50px;
   height: 30px;
-  border: 2px solid rgba(172, 172, 172, 0.5);
+  border: 2px solid rgba(0, 0, 0, 0.4);
   border-radius: 4px;
   padding: 0 10px;
   line-height: 30px;
+
+  color: rgb(172, 172, 172);
 }
-.dropdown_box.active {
+.kui_dropdown_box.active {
   border: 2px solid rgba(1,1,1,1);
    
 }
-.dropdown_menu {
+.kui_dropdown_menu {
   display: none;
   position: absolute;
   top: auto;
@@ -24,10 +26,10 @@
   box-shadow: 0px 0px 5px black;
   border-radius: 4px;
 }
-.dropdown_item {
+.kui_dropdown_item {
   width: calc(100% - 20px);
   padding: 4px 10px;
 }
-.dropdown_item:hover {
+.kui_dropdown_item:hover {
   background: rgba(172, 172, 172, 0.2);
 }
