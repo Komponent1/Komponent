@@ -4,6 +4,7 @@ import { makeDiv } from "./utils";
 export const renderer = (name: string, renderFunc: Function, prop: Object, explain: string, app: HTMLDivElement) => {
   app.innerHTML = '';
   app.appendChild(makeDiv(name, explain, renderFunc({ ...prop })));
+  window.scrollTo(0, 0);
 }
 
 export default (path: string, name?: string, render?: Function, prop?: Object, explain?: string) => {
