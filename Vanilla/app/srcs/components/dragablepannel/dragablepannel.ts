@@ -2,7 +2,7 @@ import { createElem } from '../../utils';
 import './style.css';
 
 function dragable (pannel: HTMLElement): HTMLDivElement {
-  const item = createElem('div', 'dragable') as HTMLDivElement;
+  const item = createElem('div', 'kui_dragablepannel_drag') as HTMLDivElement;
   
   const move = (offsetX: number, offsetY: number) => {
     return (e: MouseEvent) => {
@@ -16,7 +16,7 @@ function dragable (pannel: HTMLElement): HTMLDivElement {
   
   let id = null;
   pannel.addEventListener('mousedown', e => {
-    if (id !== null || (e.target as HTMLElement).closest('.dragable') !== item) return;
+    if (id !== null || (e.target as HTMLElement).closest('.kui_dragablepannel_drag') !== item) return;
     id = move(e.offsetX, e.offsetY);
     pannel.addEventListener('mousemove', id);
   })
@@ -37,7 +37,7 @@ function dragable (pannel: HTMLElement): HTMLDivElement {
 };
 
 function dragablepannel ({ elems }): HTMLDivElement {
-  const wrapper = createElem('div', 'dragablepannel') as HTMLDivElement;
+  const wrapper = createElem('div', 'kui_dragablepannel') as HTMLDivElement;
   
   for (let i = 0; i < elems.length; i++) {
     const item = dragable(wrapper);

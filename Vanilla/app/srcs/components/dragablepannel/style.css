@@ -1,4 +1,4 @@
-.dragablepannel {
+.kui_dragablepannel {
   position: relative;
   width: 80%;
   height: 300px;
@@ -7,14 +7,11 @@
   border-radius: 10px;
 }
 
-.dragable {
+.kui_dragablepannel_drag {
   position: absolute;
-
-  background-color: black;
 
   --x: 20px;
   --y: 20px;
-
 
   transform: translate(var(--x), var(--y));
 }

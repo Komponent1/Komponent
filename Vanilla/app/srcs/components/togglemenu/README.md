@@ -1,21 +1,37 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/ree/master/Vanilla/app/srcs/components/tab))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/togglemenu))
 
-### 기능
-1. Nav를 클릭하면 해당 nav에 연결된 content를 하위에 표기한다
-2. Tab은 각각의 nav를 클릭시 해당 요소의 context를 보여준다.
-
-### 사용
-1. tab의 title과 해당하는 element를 리스트로 받아 사용
+### How to Use
 
 ~~~javascript
-type Tab = {
-  title: string,
-  elem: HTMLElement
-}
-parameter: {
-  tabs: Tab[]
-}
+import { togglemenu } from 'komponent/vanilla/component';
+
+const togglemenu = togglemenu({
+  init: /* first checked */
+  config = {
+
+  }
+});
+
+document.body.appendChild(togglemenu);
 ~~~
 
-### 특이사항
-1. 사이즈에 유의하며 작업
+### Parameter
+
+|name|type|default|must|explain|
+|:---|:---|:---|:---|:---|
+|config|`HTMLElement[]`|`undefined`|yes|드래그될 엘리먼트 리스트|
+
+### 기능
+특정 요소를 해당 패널 내부에서 드래그하여 이동할 수 있는 컴포넌트
+
+### structure(for styling)
+```html
+<div class='kui_dragablepannel'>
+  <div class='kui_dragablepannel_drag'>
+    <!-- element of parameter -->
+  </div>
+  <div class='kui_dragablepannel_drag' />
+  ...
+</div>
+
+```
