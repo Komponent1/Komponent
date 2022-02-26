@@ -1,21 +1,42 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/ree/master/Vanilla/app/srcs/components/tab))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/tab))
 
-### 기능
-1. Nav를 클릭하면 해당 nav에 연결된 content를 하위에 표기한다
-2. Tab은 각각의 nav를 클릭시 해당 요소의 context를 보여준다.
-
-### 사용
-1. tab의 title과 해당하는 element를 리스트로 받아 사용
+### How to Use
 
 ~~~javascript
-type Tab = {
-  title: string,
-  elem: HTMLElement
-}
-parameter: {
-  tabs: Tab[]
-}
+import { tab } from 'komponent/vanilla/component';
+
+const tab = tab({ 
+  config = [{
+    title: 'tab name',
+    elem: /* tab HTMLelement */
+  }]
+});
+
+document.body.appendChild(tab);
 ~~~
 
-### 특이사항
-1. 사이즈에 유의하며 작업
+### Parameter
+
+|name|type|default|must|explain|
+|:---|:---|:---|:---|:---|
+|config|`{ title: string, elem: HTMLElement}[]`|`undefined`|yes|tab의 이름과 tab 표시요소를 가진 config|
+
+### 기능
+엘리먼트를 탭에따라서 화면에 표기하는 컴포넌트
+
+### structure(for styling)
+```html
+<div class='kui_tab'>
+  <div class='kui_tab_nav'>
+    <div class='kui_tab_glider' />
+    <div class='kui_tab_navitem'>
+      <p />
+    </div>
+    ...
+  </div>
+  <div class='kui_tab_navitem'>
+    <!-- element of config -->
+  </div>
+</div>
+
+```

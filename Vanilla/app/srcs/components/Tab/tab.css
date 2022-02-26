@@ -1,27 +1,43 @@
-.tab {
+.kui_tab {
   width: 500px;
 
-  box-shadow: 3px 3px 3px 3px grey;
+  border: 1px solid rgba(172, 172, 172, 0.5);
   text-align: center;
 }
-.tab_nav {
+.kui_tab_nav {
+  --num: 1;
+  position: relative;
   width: 100%;
   
   display: flex;
   flex-direction: row;
-  background: grey;
-  color: orange;
+  background: rgba(172, 172, 172, 0.5);
+  color: black;
+  font-weight: 900;
 }
-.tab_navitem {
-  --num: 1;
-
+.kui_tab_navitem {
   width: calc(100% / var(--num));
 }
-.select {
-  background: white;
+.kui_tab_navitem {
+  z-index: 13;
 }
-.tab_item {
+.kui_tab_item {
   width: 100%;
 
   padding: 10px;
+}
+
+.kui_tab_glider {
+  --idx: 0;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 12;
+  background-color: white;
+
+  width: calc(100% / var(--num));
+  height: 100%;
+  transform: translateX(calc(100% * var(--idx)));
+  transition: transform 0.3s;
 }

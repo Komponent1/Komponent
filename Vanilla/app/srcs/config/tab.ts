@@ -29,7 +29,7 @@ const config: CONFIG = {
   name: 'Tab',
   render: tab,
   prop: {
-    tabs: dummies
+    config: dummies
   },
   explain: md
 };

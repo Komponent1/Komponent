@@ -27,7 +27,7 @@ document.body.appendChild(badge);
 ### structure(for styling)
 ```html
 <div class='kui_badge'>
-  <--! This for child element -->
+  <!-- This for child element -->
   <div class='kui_badge_icon' />
 </div>
 

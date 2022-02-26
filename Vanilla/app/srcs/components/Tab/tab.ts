@@ -6,14 +6,16 @@ type Tab = {
   elem: HTMLElement
 }
 type Prop = {
-  tabs: Tab[]
+  config: Tab[]
 };
-function Tab({ tabs }: Prop): HTMLDivElement {
-  const wrapper = createElem('div', 'tab') as HTMLDivElement;
-  const nav = createElem('div', 'tab_nav');
-  const item = createElem('div', 'tab_item');
+function Tab({ config }: Prop): HTMLDivElement {
+  const wrapper = createElem('div', 'kui_tab') as HTMLDivElement;
+  const nav = createElem('div', 'kui_tab_nav');
+  const item = createElem('div', 'kui_tab_item');
+  const glider = createElem('div', 'kui_tab_glider');
   wrapper.appendChild(nav);
   wrapper.appendChild(item);
+  nav.appendChild(glider);
 
   const click = (e: Event, idx: number) => {
     if (navitems[idx].classList.contains('select')) return;
@@ -21,21 +23,22 @@ function Tab({ tabs }: Prop): HTMLDivElement {
       if (navitems[i].classList.contains('select'))
         navitems[i].classList.remove('select');
     }
+    glider.style.setProperty('--idx', idx + '');
     navitems[idx].classList.add('select');
-    item.innerHTML = tabs[idx].elem.outerHTML;
+    item.innerHTML = config[idx].elem.outerHTML;
   }
 
-  const navitems = tabs.map(({ title }, i) => {
-    let navitem = createElem('div', 'tab_navitem') as HTMLDivElement;
+  nav.style.setProperty('--num', config.length + '')
+  const navitems = config.map(({ title }, i) => {
+    let navitem = createElem('div', 'kui_tab_navitem') as HTMLDivElement;
     if (i === 0) navitem.classList.add('select');
-    navitem.style.setProperty('--num', tabs.length + '');
     navitem.innerHTML = `<p>${title}</p>`
     navitem.addEventListener('click', e => click(e, i));
     nav.appendChild(navitem)
 
     return navitem;
   });
-  item.innerHTML = tabs[0].elem.outerHTML;
+  item.innerHTML = config[0].elem.outerHTML;
 
   return wrapper;
 };
