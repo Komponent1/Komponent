@@ -36,6 +36,8 @@ body {
   height: 70px;
   border-bottom: 1px solid rgba(172, 172, 172, 0.4);
   z-index: 1;
+
+  background-color: rgba(256, 256, 256, 0.8);
 }
 #header .title {
   margin: 10px;
@@ -64,6 +66,9 @@ body {
   padding: 2px 0 2px 20px;
   margin: 4px 0 4px 0;
   border-radius: 5px;
+
+  font-size: 13px;
+  color: rgb(70, 70, 70);
 }
 #menu li:hover {
   cursor: pointer;

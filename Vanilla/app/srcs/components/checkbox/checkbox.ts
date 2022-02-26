@@ -1,14 +1,18 @@
 import { createElem } from "../../utils";
 import './style.css';
 
-function checkbox ({ init, setChecked }): HTMLDivElement {
+type Prop = {
+  init?: boolean,
+  setChecked: (check: boolean) => any | void
+}
+function checkbox ({ init = false, setChecked }: Prop): HTMLDivElement {
   let checked = init;
 
-  const wrapper = createElem('div', 'checkbox') as HTMLDivElement;
-  const box = createElem('div', 'checkbox_outline');
+  const wrapper = createElem('div', 'kui_checkbox') as HTMLDivElement;
+  const box = createElem('div', 'kui_checkbox_outline');
   box.innerText = 'V';
-  const background = createElem('div', 'checkbox_background');
-  const wave = createElem('div', 'checkbox_wave');
+  const background = createElem('div', 'kui_checkbox_background');
+  const wave = createElem('div', 'kui_checkbox_wave');
 
   wrapper.addEventListener('mousedown', e => {
     wave.style.setProperty('--duration', '0.3s');
@@ -17,8 +21,8 @@ function checkbox ({ init, setChecked }): HTMLDivElement {
   });
   wrapper.addEventListener('mouseup', e => {
     e.stopPropagation();
-    setChecked();
     checked = !checked;
+    setChecked(checked);
     if (checked) {
       box.style.background = '#252553';
       box.style.border = '2px solid #252553';

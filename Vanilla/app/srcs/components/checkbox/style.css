@@ -1,8 +1,8 @@
-.checkbox {
+.kui_checkbox {
   display: inline-block;
   position: relative;
 }
-.checkbox_outline {
+.kui_checkbox_outline {
   display: inline-block;
 
   width: 16px;
@@ -15,7 +15,7 @@
   text-align: center;
   line-height: 16px;
 }
-.checkbox_background {
+.kui_checkbox_background {
   position: absolute;
   top: -10px;
   left: -10px;
@@ -27,10 +27,10 @@
 
   background: rgba(0, 0, 0, 0.05);
 }
-.checkbox_background:hover {
+.kui_checkbox_background:hover {
   opacity: 1;
 }
-.checkbox_wave {
+.kui_checkbox_wave {
   --duration: 0s;
   --scale: 0;
   position: absolute;

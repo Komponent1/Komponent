@@ -1,30 +1,35 @@
-.btnmenu {
+.kui_btnmenu {
   display: inline-block;
-  position: relative;  
+  position: relative;
 }
-.btnmenu_btn {
+.kui_btnmenu_btn {
   --color: 'rgba(0,0,0,0)';
   display: 'inline-block';
-  border-radius: 10px;;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
   border: 1px solid var(--color);
-  padding: 3px;
+  
+  text-align: center;
+  line-height: 20px;
 }
-.btnmenu_btn:hover {
+.kui_btnmenu_btn:hover {
   background-color: rgba(172, 172, 172, 0.4);
 }
-.btnmenu_ul {
+.kui_btnmenu_ul {
   display: none;
 
   position: absolute;
   top: auto;
   right: 0;
+  background-color: white;
+  box-shadow: 0px 0px 5px grey;
 
-  width: 100px;
-  border: 1px solid rgba(172, 172, 172, 0.5);
+  white-space: nowrap;
 }
-.btnmenu_li {
-  width: 100%;
+.kui_btnmenu_li {
+  padding: 5px 15px;
 }
-.btnmenu_li:hover {
+.kui_btnmenu_li:hover {
   background-color: rgba(172, 172, 172, 0.5);
 }

@@ -1,20 +1,40 @@
 ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/btnmenu))
 
-### 기능
-1. 특정 언어에 대한 검색 자동완성을 지원
-2. 해당 언어를 클릭하면 input에 해당 요소를 삽입
-
-### 사용
-1. 데이터를 가져오는 API fethcer를 받아서 동작시킨다
+### How to Use
 
 ~~~javascript
-paramter: {
-  fetcher: (any) => Promise<data>
-}
+import { btnmenu } from 'komponent/vanilla/component';
+
+const btnmenu = btnmenu({ 
+  title: /* button element(like image) or text */,
+  config = {
+    name: 'menu text',
+    act: /* action function of menu */
+  }[]
+});
+
+document.body.appendChild(btnmenu);
 ~~~
 
-### 특이사항
-1. keyup과 click에 대한 Event binding의 차이를 구별할것
+### Parameter
 
-### BUG
-1. UL이 추가적으로 생기는 문제 발생
+|name|type|default|must|explain|
+|:---|:---|:---|:---|:---|
+|title|`string \| HTMLElement`|`"="`|no|버튼에 들어갈 텍스트 / 엘리먼트|
+|config|`{ name: string, act: Function }[]`|`undefined`|yes|메뉴 텍스트 및 메뉴 동작|
+
+### 기능
+버튼을 누르면 해당하는 메뉴가 나오는 엘리먼트
+
+### structure(for styling)
+```html
+<div class='kui_btnmenu'>
+  <div class='kui_btnmenu_btn' />
+  <div class='kui_btnmenu_ul'>
+    <div class='kui_btnmenu_li' />
+    <div class='kui_btnmenu_li' />
+    ...
+  </div>
+</div>
+
+```

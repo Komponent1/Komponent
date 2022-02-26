@@ -1,10 +1,17 @@
 import './style.css';
 import { createElem } from '../../utils';
 
-function btnmenu({ menus }):HTMLDivElement {
-  const wrapper = createElem('div', 'btnmenu') as HTMLDivElement;
-  const btn = createElem('div', 'btnmenu_btn');
-  const ul = createElem('div', 'btnmenu_ul');
+type Prop = {
+  title?: string | HTMLElement
+  config: {
+    name: string,
+    act: () => {}
+  }[]
+}
+function btnmenu({ title = '=', config }: Prop):HTMLDivElement {
+  const wrapper = createElem('div', 'kui_btnmenu') as HTMLDivElement;
+  const btn = createElem('div', 'kui_btnmenu_btn');
+  const ul = createElem('div', 'kui_btnmenu_ul');
 
   const on = () => {
     ul.style.display = 'block';
@@ -19,18 +26,19 @@ function btnmenu({ menus }):HTMLDivElement {
     e.stopPropagation();
     ul.style.display === 'block' ? off() : on();
   })
-  btn.innerText = '=';
   
+  if (typeof(title) === 'string') btn.innerText = title;
+  else btn.appendChild(title);
   wrapper.appendChild(btn);
   wrapper.appendChild(ul);
-  for(let i = 0; i < menus.length; i++) {
-    const li = createElem('div', 'btnmenu_li');
+  for(let i = 0; i < config.length; i++) {
+    const li = createElem('div', 'kui_btnmenu_li');
     li.addEventListener('click', e => {
       e.stopPropagation();
-      menus[i].act();
+      config[i].act();
       off();
     });
-    li.innerText = menus[i].name
+    li.innerText = config[i].name
     ul.appendChild(li);
   }
 

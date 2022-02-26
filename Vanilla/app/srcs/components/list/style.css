@@ -1,27 +1,32 @@
-.list {
-  width: 80%; 
+.kui_list {
+  width: 80%;
+  border: 2px solid rgba(172, 172, 172, 0.5);
+  border-radius: 5px;
 }
-.list_li {
+.kui_list_li {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 
-  padding: 3px;
+  padding: 10px 15px;
 }
 
-.list_li:hover {
-  background-color: rgba(172,172,172, 0.5);
+.kui_list_li:hover {
+  background-color: rgba(172,172,172, 0.2);
 }
-.list_title {
+.kui_list_title {
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  padding: 10px 15px;
+  background-color: rgba(172, 172, 172, 0.5);
 }
-.list_space {
+.kui_list_space {
   width: 17px;
 }
-.list_item {
+.kui_list_item {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -32,6 +37,6 @@
   border-radius: 4px;
 }
 
-.list_item span {
+.kui_list_item span {
   margin-right: 5px;
 }

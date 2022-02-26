@@ -1,23 +1,34 @@
-ver 1.0 ([github link](https://github.com/Komponent1/Komponent/ree/master/Vanilla/app/srcs/components/checkbox))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/checkbox))
 
-### 기능
-
-1. 클릭시 체크가 활성화된다.
-2. 재 클릭시 체크가 해제된다.
-
-### 사용
-1. 반드시 checkbox는 멀티로 사용되는 경우가 많으므로 해당 요소의 check와 check 변경 state를 외부에서 받아온다
+### How to Use
 
 ~~~javascript
-    props: {
-        checked: boolean
-        setCheck: Function
-    }
+import { checkbox } from 'komponent/vanilla/component';
+
+const checkbox = checkbox({ 
+  init: /* checked state initialization */,
+  setChecked: /* Function of state change */
+});
+
+document.body.appendChild(checkbox);
 ~~~
 
-### 특이사항
-1. 요소의 크기에 유의하며 제작할것
-2. event handler와 내부 실행함수는 비동기적으로 수행됨
+### Parameter
 
-### BUG
-1. 슬라이드 이동중 FOUC가 꽤 자주 발생함
+|name|type|default|must|explain|
+|:---|:---|:---|:---|:---|
+|init|`boolean`|`false`|no|체크 최초 상태 정의|
+|setChecked|`(check: boolean) => any|void`|`undefined`|yes|체크 상태 변경시 동작할 액션|
+
+### 기능
+해당 요소에 대한 선택 여부를 체크하는 컴포넌트
+
+### structure(for styling)
+```html
+<div class='kui_checkbox'>
+  <div class='kui_checkbox_outline' />
+  <div class='kui_checkbox_wave' />
+  <div class='kui_checkbox_background' />
+</div>
+
+```
