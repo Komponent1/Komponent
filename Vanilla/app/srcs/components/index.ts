@@ -17,3 +17,4 @@ export { default as button } from './button/button';
 export { default as onoffswitch } from './onoffswitch/onoffswitch';
 export { default as dropdown } from './dropdown/dropdown';
 export { default as parallexscroll } from './parallexscroll/parallexscroll';
+export { default as pointline } from './pointline/pointline';

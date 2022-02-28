@@ -5,9 +5,13 @@ const app = express();
 const port = 5000
 
 app.use(express.static(path.resolve(__dirname, '../public')));
+const main = path.resolve(__dirname, '../public/main/index.html');
 const react = path.resolve(__dirname, '../public/react/index.html');
 const vanilla = path.resolve(__dirname, '../public/vanilla/index.html')
 const router = express.Router();
+router.get('/', (req, res) => {
+  res.sendFile(main);
+})
 router.get('/vanilla/*', (req, res) => {
   res.sendFile(vanilla);
 });

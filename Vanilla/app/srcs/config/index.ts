@@ -17,9 +17,10 @@ import button from './button';
 import onoffswitch from './onoffswitch';
 import dropdown from './dropdown';
 import parallexscroll from './parallexscroll';
+import pointline from './pointline';
 
 export const componentList = {
   autocomplete, badge, button, changecarousel, slidecarousel, contextmenu, infinitescroll,
   licontextmenu, scrollspy, tab, btnmenu, checkbox, list, dragablepannel,
-  togglemenu, slider, onoffswitch, dropdown, parallexscroll
+  togglemenu, slider, onoffswitch, dropdown, parallexscroll, pointline
 };

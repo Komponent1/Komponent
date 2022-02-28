@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dev Frontend</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Komponent</h1>
+    </header>
+    <section>
+      <div>
+        <button onclick="toLink('vanilla')">
+          Go To vanillaJS
+        </button>
+        <button onclick="toLink('react')">
+          Go To React
+        </button>
+    </div>
+    </section>
+
+    <script type="text/javascript">
+      function toLink (link) {
+        window.location.href = 'http://localhost:5000/' + link;
+      }
+    </script>
+  </body>
+</html>
