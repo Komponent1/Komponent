@@ -1,8 +1,6 @@
 .kui_parallexscroll {
   overflow-y: scroll;
-
   height: 500px;
-  width: 500px;
 }
 .kui_parallexscroll_layer {
   --y: 0;

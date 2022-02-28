@@ -1,24 +1,6 @@
 .kui_scrollspy {
+  position: relative;
   width: 800px;
-}
-.kui_scrollspy_nav {
-  display: flex;
-  flex-direction: row;
-
-  border: 1px solid black;
-}
-.kui_scrollspy_navitem {
-  --num: 0;
-  
-  width: calc(100% / var(--num));
-  height: 20px;
-  border: 1px solid black;
-}
-.kui_scrollspy_navitem.select {
-  background: grey;
-}
-.kui_scrollspy_navitem:hover {
-  background: grey;
 }
 .kui_scrollspy_itemwrap {
   width: 100%;
