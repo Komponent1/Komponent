@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 
 const app = express();
-const port = 5000
+const port = process.env.PORT || 5000;
 
 app.use(express.static(path.resolve(__dirname, '../public')));
 const main = path.resolve(__dirname, '../public/main/index.html');
