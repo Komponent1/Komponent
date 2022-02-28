@@ -14,10 +14,10 @@
     </header>
     <section>
       <div>
-        <button onclick="toLink('vanilla')">
+        <button onclick="toLink('/vanilla')">
           Go To vanillaJS
         </button>
-        <button onclick="toLink('react')">
+        <button onclick="toLink('/react')">
           Go To React
         </button>
     </div>
@@ -25,7 +25,7 @@
 
     <script type="text/javascript">
       function toLink (link) {
-        window.location.href = 'http://localhost:5000/' + link;
+        window.location.href = (process.env.URL || 'http://localhost:5000') + link;
       }
     </script>
   </body>
