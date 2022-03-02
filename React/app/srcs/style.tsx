@@ -32,6 +32,8 @@ export const header = styled.div`
   height: 70px;
   border-bottom: 1px solid rgba(172, 172, 172, 0.4);
   z-index: 1;
+
+  background-color: rgba(256, 256, 256, 0.8);
 `;
 export const title = styled.h1`
   margin: 10px;
@@ -61,7 +63,9 @@ export const li = styled.li<{ select: boolean }>`
   margin: 4px 0 4px 0;
   border-radius: 5px;
 
-  background-color: ${({ select }) => select ? '#2E5FF2': 'none'};
+  font-size: 13px;
+  color: ${({ select }) => select ? '#2E5FF2': 'rgb(70, 70, 70)'};
+  background-color: ${({ select }) => select ? '#cacde0': 'none'};
 
   &:hover {
     cursor: pointer;

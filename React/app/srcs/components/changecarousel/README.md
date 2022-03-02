@@ -1,14 +1,11 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/changecarousel))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/app/srcs/components/changecarousel))
 
 ### How to Use
 
 ~~~javascript
-import { changecarousel } from 'komponent/vanilla/component';
+import { ChangeCarousel } from 'komponent/react/component';
 
-const changecarousel = changecarousel({ 
-  elems: /* Element of carousel elements */
-  auto: true /* auto carousel move flag */
-});
+<Carousel >
 
 document.body.appendChild(changecarousel);
 ~~~

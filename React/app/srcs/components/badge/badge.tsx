@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import * as style from './style';
 
 type Prop = {
-  fetcher: () => Promise<{ data: string | number }>
+  fetcher: () => Promise<{ data: string | number }>,
+  children: React.Node
 };
-const Badge: React.FC = ({ fetcher, children }) => {
+const Badge: React.FC = ({ fetcher, children }: Prop) => {
   const [ count, setCount ] = useState<number>(0);
 
   useEffect(async () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import * as style from './style';
 
 export const Div: React.FC = ({ conf, children }) => (
-  <div>
+  <div className="explain">
     <style.mainTitle>{conf.name}</style.mainTitle>
     <h2>Example</h2>
     <style.mainExample>
@@ -51,6 +51,6 @@ export const DummyComp: React.FC = ({ color, width = '100%', height = '100%', ch
 const color = [ '#BF7950', '#8C634A', '#A6A6A6', '#B3D5F2'];
 export const makeDummyComps = (width = '100%', height = '100%'): React.FC[] => {
   return (
-    color.map((e, i) => <DummyComp key={i} color={e} widht={width} height={height}/>)
+    color.map((e, i) => <DummyComp key={i} color={e} width={width} height={height}/>)
   );
 }

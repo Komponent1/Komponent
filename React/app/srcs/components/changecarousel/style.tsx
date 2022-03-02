@@ -1,14 +1,12 @@
 import styled from 'styled-components'
 
-export const div = styled.div`
-  width: 500px;
-  height: 350px;
+export const div = styled.div<{ width: number, height: number }>`
   position: relative;
+
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
 `;
 export const item = styled.div<{ opcaity: number }>`
-  width: 100%;
-  height: 100%;
-
   position: absolute;
   top: 0;
   left: 0;

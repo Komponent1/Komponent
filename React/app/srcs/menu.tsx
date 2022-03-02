@@ -16,7 +16,7 @@ const Menu = () => {
 
   return (
     <style.menu>
-      <style.menuTitle>Compoenets</style.menuTitle>
+      <style.menuTitle>Components</style.menuTitle>
       {Object.entries(ComponentList).map(([key, conf], i) => (
         <Link to={`${key}`} key={i}>
           <style.li

@@ -1,5 +1,5 @@
 import autocomplete from './autocomplete';
-import buttoncarousel from './buttoncarousel';
+import buttoncarousel from './changecarousel';
 import carousel from './carousel';
 import contextmenu from './contextmenu';
 import infinitescroll from './infinitescroll';
@@ -11,9 +11,12 @@ import list from './list';
 import dragablepannel from './dragablepannel'
 import togglemenu from './togglemenu';
 import badge from './badge';
+import button from './button';
 
 export const ComponentList = {
   autocomplete,
+  badge,
+  button,
   buttoncarousel,
   carousel,
   contextmenu,
@@ -25,5 +28,5 @@ export const ComponentList = {
   list,
   dragablepannel,
   togglemenu,
-  badge
+  
 };
