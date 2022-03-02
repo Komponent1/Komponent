@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import * as style from './style';
 
+type Prop = {
+  fetcher: () => Promise<{ data: string | number }>
+};
 const Badge: React.FC = ({ fetcher, children }) => {
   const [ count, setCount ] = useState<number>(0);
 
@@ -10,9 +13,12 @@ const Badge: React.FC = ({ fetcher, children }) => {
   }, []);
 
   return (
-    <style.badge>
+    <style.badge className="kui_badge">
       {children}
-      <style.icon count={count}>{count}</style.icon>
+      <style.icon className="kui_badge_icon"
+        count={count}>
+        {count}
+      </style.icon>
     </style.badge>
   )
 };
