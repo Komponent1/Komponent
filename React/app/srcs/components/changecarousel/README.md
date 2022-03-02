@@ -5,7 +5,12 @@ ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/
 ~~~javascript
 import { ChangeCarousel } from 'komponent/react/component';
 
-<Carousel >
+<ChangeCarousel
+  auto={/* auto carousel changed flag */}
+  width='carousel width, recommend same of children'
+  height='carousel height, recommend same of children'>
+  <!-- element's of carousel -->
+</ChangeCarousel>
 
 document.body.appendChild(changecarousel);
 ~~~
@@ -16,6 +21,8 @@ document.body.appendChild(changecarousel);
 |:---|:---|:---|:---|:---|
 |elems|`HTMLElemet[]`|`undefined`|yes|캐러셀에 들어갈 엘리먼트 리스트|
 |auto|`boolean`|`false`|no|캐러셀이 자동으로 변경되는지에 대한 설정|
+|width|`string`|`100%`|no|캐러셀의 너비|
+|height|`string`|`100%`|no|캐러셀의 높이|
 
 ### 기능
 버튼을 클릭하면 보여지는 요소가 변경되는 캐러셀 엘리먼트

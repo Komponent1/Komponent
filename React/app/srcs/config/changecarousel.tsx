@@ -7,7 +7,9 @@ const config: CONFIG = {
   name: 'Change Carousel',
   comp: ChangeCarousel,
   prop: {
-    children: makeDummyComps('400px', '200px')
+    children: makeDummyComps('400px', '200px'),
+    width: '400px',
+    height: '200px',
   },
   explain: md
 };

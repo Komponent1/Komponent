@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-export const div = styled.div<{ width: number, height: number }>`
+export const div = styled.div<{ width: string, height: string }>`
   position: relative;
 
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
 `;
 export const item = styled.div<{ opcaity: number }>`
   position: absolute;
@@ -16,19 +16,25 @@ export const item = styled.div<{ opcaity: number }>`
 `;
 export const btnset = styled.div`
   position: absolute;
-  top: 200px;
+  bottom: 10%;
   text-align: center;
   width: 100%;
 `;
 export const btn = styled.button<{ select: boolean }>`
-  border: ${({ select }) => select ? '1px solid black' : 'none'};
-  background: ${({ select }) => select ? 'none' : 'black'};
-  
-  border-radius: 10px;
+  border: none;
   padding: 0;
-  margin: 10px;
-  width: 10px;
-  height: 10px;
+  margin: 4px;
+  width: 30px;
+  height: 20px;
+  background: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  div {
+    width: 100%;
+    height: 4px;
+    background: ${({ select }) => select ? 'white' : 'grey'};
+  }
 `;
-
-
