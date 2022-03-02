@@ -1,15 +1,15 @@
-import { slidecarousel } from "../components"
-import { makeDummyElem } from "../utils"
+import { SlideCarousel } from "../components"
+import { makeDummyComps } from "../utils"
 import md from '../components/slidecarousel/README.md'
 import { CONFIG } from "./configType";
 
 const config: CONFIG = {
   name: 'Slide Carousel',
-  render: slidecarousel,
+  comp: SlideCarousel,
   prop: {
-    elems: makeDummyElem(),
+    children: makeDummyComps('400px', '200px'),
     width: '400px',
-    height: '200px',
+    height: '200px'
   },
   explain: md
 };

@@ -1,6 +1,6 @@
 import autocomplete from './autocomplete';
 import buttoncarousel from './changecarousel';
-import carousel from './carousel';
+import slidecarousel from './slidecarousel';
 import contextmenu from './contextmenu';
 import infinitescroll from './infinitescroll';
 import scrollspy from './scrollspy';
@@ -18,7 +18,7 @@ export const ComponentList = {
   badge,
   button,
   buttoncarousel,
-  carousel,
+  slidecarousel,
   contextmenu,
   infinitescroll,
   scrollspy,

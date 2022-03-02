@@ -1,18 +1,16 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/slidecarousel))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/app/srcs/components/slidecarousel))
 
 ### How to Use
 
 ~~~javascript
-import { slidecarousel } from 'komponent/vanilla/component';
+import { SlideCarousel } from 'komponent/react/component';
 
-const slidecarousel = slidecarousel({ 
-  elems: /* Element of carousel elements */
-  auto: /* auto carousel move flag */
-  width: 'carousel width, recommend same of elems',
-  height: 'carousel height, recommend same of elems',
-});
-
-document.body.appendChild(slidecarousel);
+<SlideCarousel
+  auto={/* auto move of carousel */}
+  width='carousel width, recommend same of children'
+  height='carousel height, recommend same of children'>
+  <!-- components of carousel>
+</SlideCarousel>
 ~~~
 
 ### Parameter
@@ -25,7 +23,7 @@ document.body.appendChild(slidecarousel);
 |height|`string`|`100%`|no|캐러셀의 높이|
 
 ### 기능
-버튼을 클릭하면 보여지는 요소가 변경되는 캐러셀 엘리먼트
+버튼을 클릭하면 다음 요소로 이동되는 캐러셀 엘리먼트
 
 ### structure(for styling)
 ```html

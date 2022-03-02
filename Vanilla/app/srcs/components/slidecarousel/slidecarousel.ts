@@ -4,14 +4,19 @@ import { createElem } from '../../utils';
 type Prop = {
   elems: HTMLDivElement[],
   auto: boolean
+  width?: string,
+  height?: string
 }
-function carousel({ elems, auto = false }: Prop): HTMLDivElement {
+function carousel({ elems, auto = false, width = '100%', height = '100%' }: Prop): HTMLDivElement {
   let idx = 1;
   let isTransitioned = false;
   let id = null;
 
   const wrapper = createElem('div', 'kui_slidecarousel') as HTMLDivElement
+  wrapper.style.setProperty('--width', width);
+  wrapper.style.height = height;
   const slider = createElem('div', 'kui_slidecarousel_slider');
+  slider.style.setProperty('--num', elems.length + 2 + '');
   const items = [
     elems[elems.length - 1].cloneNode(true) as HTMLElement,
      ...elems,
@@ -21,8 +26,8 @@ function carousel({ elems, auto = false }: Prop): HTMLDivElement {
 
   const move = (idx: number, sec: number): void => {
     if (sec !== 0)isTransitioned = true;
-    slider.style.setProperty('--x', (idx * -400) + 'px');
     slider.style.setProperty('--sec', sec + 's');
+    slider.style.setProperty('--idx', idx + '');
   }
   const init = () => {
     for (let i = 0; i < items.length; i++) {
