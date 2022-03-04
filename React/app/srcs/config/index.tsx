@@ -12,6 +12,7 @@ import dragablepannel from './dragablepannel'
 import togglemenu from './togglemenu';
 import badge from './badge';
 import button from './button';
+import licontextmenu from './licontextmenu';
 
 export const ComponentList = {
   autocomplete,
@@ -21,6 +22,7 @@ export const ComponentList = {
   slidecarousel,
   contextmenu,
   infinitescroll,
+  licontextmenu,
   scrollspy,
   tab,
   btnmenu,

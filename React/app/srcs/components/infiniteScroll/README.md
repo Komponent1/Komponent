@@ -1,9 +1,9 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/infinitescroll))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/app/srcs/components/infinitescroll))
 
 ### How to Use
 
 ~~~javascript
-import { InfiniteScroll } from 'komponent/vanilla/component';
+import { InfiniteScroll } from 'komponent/react/component';
 
 <InfiniteScroll
   fetcher={/* pagination api function */}
