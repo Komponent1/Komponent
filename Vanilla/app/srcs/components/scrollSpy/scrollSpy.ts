@@ -1,13 +1,15 @@
 import './scrollspy.css';
 import { scrollnav } from '..';
-import { throttle, createElem } from '../../utils'
+import { createElem } from '../../utils'
 
 type Prop = {
-  elems: HTMLElement[]
+  elems: HTMLElement[],
+  height: string
 }
-function scrollSpy({ elems }: Prop): HTMLDivElement {
+function scrollSpy({ elems, height = '100%' }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'kui_scrollspy') as HTMLDivElement;
   const itemwrap = createElem('div', 'kui_scrollspy_itemwrap');
+  itemwrap.style.height = height;
   const items = [];
   for(let i = 0; i < elems.length; i++) {
     let item = createElem('div', 'kui_scrollspy_item');

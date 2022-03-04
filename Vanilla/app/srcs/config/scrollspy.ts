@@ -9,7 +9,8 @@ const config: CONFIG = {
   name: 'Scroll Spy',
   render: scrollSpy,
   prop: {
-    elems: makeDummyElem()
+    elems: makeDummyElem(),
+    height: '200px',
   },
   explain: md
 };
