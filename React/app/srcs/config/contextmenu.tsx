@@ -29,7 +29,7 @@ const config: CONFIG = {
   name: 'Context Menu',
   comp: ContextMenu,
   prop: {
-    datas
+    config: datas
   },
   explain: md
 };

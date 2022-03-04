@@ -5,9 +5,11 @@ ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanill
 ~~~javascript
 import { contextmenu } from 'komponent/vanilla/component';
 
-const contextmenu = contextmenu({ 
-  menu: 'text of menu',
-  context: 'text of contextmenu'
+const contextmenu = contextmenu({
+  config = {
+    menu: 'text of menu',
+    context: 'text of contextmenu'
+  }
 });
 
 document.body.appendChild(contextmenu);

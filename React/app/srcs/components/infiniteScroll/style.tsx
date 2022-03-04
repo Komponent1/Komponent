@@ -7,9 +7,15 @@ export const div = styled.div`
   overflow-y: scroll;
 `;
 export const item = styled.div`
-  width: calc(100% - 2px);
-  border: 1px solid grey;
+  width: calc(100% - 42px);
+  border: 1px solid rgba(172, 172, 172, 0.5);
 
-  height: 50px;
+  padding: 10px 20px;
+
+  &:hover {
+    background-color: rgba(172, 172, 172, 0.3);
+  }
 `;
-export const trigger = styled.div``;
+export const trigger = styled.div<{ show: boolean }>`
+  display: ${({ show }) => show ? 'block' : 'none'};
+`;

@@ -1,22 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react'
 import * as style from './style';
 
-const InfiniteScroll: React.FC = ({ fetcher }: { fetcher: Function }) => {
-  const [ idx, setIdx ] = useState<number>(0);
+type Prop = {
+  fetcher: (idx: number) => Promise<{ data: any[] }>
+}
+const InfiniteScroll: React.FC = ({ fetcher }: Prop) => {
+  const [ idx, setIdx ] = useState<number>(-1);
   const [ datas, setDatas ] = useState<any[]>([]);
   const [ loading, setLoading ] = useState<boolean>(false);
-  const ref = useRef<React.Ref>();
+  const [ display, setDisplay ] = useState<boolean>(true);
+  const ref = useRef<React.Ref>(null);
   const fetchData = async (idx: number) => {
     const { data } = await fetcher(idx);
+    console.log('fetch', loading, idx, datas, data);
     setDatas(prev => [...prev, ...data]);
   }
   
   useEffect(() => { 
     const observer = new IntersectionObserver(
       ([ entry ]) => {
-        if (entry.isIntersecting && !loading) {
-          setLoading(true);
-          setIdx(idx + 1);
+        if (entry.isIntersecting || !loading) {
+          setDisplay(false);
         }
       }
     )
@@ -24,17 +28,31 @@ const InfiniteScroll: React.FC = ({ fetcher }: { fetcher: Function }) => {
 
     return () => observer.unobserve(ref.current);
   }, []);
+  useEffect(() => {
+    if (display) return;
+    setLoading(true);
+  }, [ display ]);
+  useEffect(() => {
+    if (!loading) setDisplay(true);
+    else setIdx(prev => prev + 1);
+  }, [ loading ])
   useEffect(async () => {
+    if (!loading) return;
     await fetchData(idx);
-    setLoading(false);
   }, [ idx ]);
+  useEffect(() => {
+    setLoading(false);
+  }, [ datas ])
 
   return (
-    <style.div>
+    <style.div className='kui_infinitescroll'>
       {datas.map((e, i) => (
-        <style.item key={`infscroll_${i}`} >{e}</style.item>
+        <style.item className='kui_infinitescroll_li'
+          key={`infscroll_${i}`} >
+          {e}
+        </style.item>
       ))}
-      <style.trigger ref={ref} />
+      <style.trigger className='kui_infinitescroll_trigger' ref={ref} show={display}/>
     </style.div>
   )
 };
