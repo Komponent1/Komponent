@@ -1,12 +1,12 @@
 import './tab.css';
 import { createElem } from '../../utils';
 
-type Tab = {
+type Config = {
   title: string,
   elem: HTMLElement
 }
 type Prop = {
-  config: Tab[]
+  config: Config[]
 };
 function Tab({ config }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'kui_tab') as HTMLDivElement;

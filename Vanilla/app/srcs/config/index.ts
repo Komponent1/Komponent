@@ -22,6 +22,6 @@ import scrollnav from './scrollnav';
 
 export const componentList = {
   autocomplete, badge, button, changecarousel, slidecarousel, contextmenu, infinitescroll,
-  licontextmenu, scrollspy, tab, btnmenu, checkbox, list, dragablepannel,
-  togglemenu, slider, onoffswitch, dropdown, parallexscroll, pointline, scrollnav
+  licontextmenu, scrollspy, scrollnav, tab, btnmenu, checkbox, list, dragablepannel,
+  togglemenu, slider, onoffswitch, dropdown, parallexscroll, pointline
 };

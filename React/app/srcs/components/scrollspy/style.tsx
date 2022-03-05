@@ -1,32 +1,13 @@
 import styled from 'styled-components';
 
-const border = styled.div`
-  border: 1px solid black;
+export const div = styled.div`
+  position: relative;
 `;
-
-export const div = styled(border)`
-  width: 800px;
-`;
-export const nav = styled(border)`
-  display: flex;
-  flex-direction: row;
-
-  border: 1px solid black;
-`;
-export const navitem = styled<{num: number, select: boolean}>(border)`
-  width: calc(100% / ${({ num }) => num});
-  height: 20px;
-
-  background: ${({ select }) => select ? 'grey' : 'rgba(0, 0, 0 ,0)'};
-  &:hover {
-    background: grey;
-  }
-`;
-export const itemwrapper = styled(border)`
-  width: 100%;
-  height: 300px;
+export const itemwrapper = styled.div<{ height: string }>`
+  height: ${({ height }) => height};
+  
   overflow-y: scroll;
 `;
-export const item = styled(border)`
+export const item = styled.div`
   width: 100%;
 `;

@@ -13,6 +13,7 @@ import togglemenu from './togglemenu';
 import badge from './badge';
 import button from './button';
 import licontextmenu from './licontextmenu';
+import scrollnav from './scrollnav';
 
 export const ComponentList = {
   autocomplete,
@@ -23,6 +24,7 @@ export const ComponentList = {
   contextmenu,
   infinitescroll,
   licontextmenu,
+  scrollnav,
   scrollspy,
   tab,
   btnmenu,

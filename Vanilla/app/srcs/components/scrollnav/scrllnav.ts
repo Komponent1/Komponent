@@ -1,7 +1,11 @@
 import './style.css';
 import { createElem } from '../../utils'
 
-function scrollnav({ scrolldiv, elems }) {
+type Prop = {
+  scrolldiv: HTMLElement,
+  elems: HTMLElement[]
+}
+function scrollnav({ scrolldiv, elems }: Prop) {
   const wrapper = createElem('div', 'kui_scrollnav');
   const navitems = [];
   wrapper.style.setProperty('--num', elems.length + '');

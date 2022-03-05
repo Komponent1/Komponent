@@ -1,13 +1,13 @@
-import { scrollSpy } from '../components'
-import { makeDummyElem } from '../utils'
+import { Scrollspy } from '../components'
+import { makeDummyComps } from '../utils'
 import { CONFIG } from './configType'
 import md from '../components/scrollnav/README.md'
 
 const config: CONFIG = {
   name: 'Scroll Nav',
-  render: scrollSpy,
+  comp: Scrollspy,
   prop: {
-    elems: makeDummyElem(),
+    elems: makeDummyComps('400px', '200px'),
     height: '200px'
   },
   explain: md

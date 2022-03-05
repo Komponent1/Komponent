@@ -14,3 +14,4 @@ export { default as ToggleMenu } from './togglemenu/togglemenu';
 export { default as Badge } from './badge/badge';
 export { default as Button } from './button/button';
 export { default as LiContextMenu } from './licontextmenu/licontextmenu';
+export { default as ScrollNav } from './scrollnav/scrollnav';
