@@ -6,7 +6,7 @@ type Prop = {
   init?: number,
   setValue: (val: number) => void|any
 }
-const useSlider = (init: number, func: (val: number) => void|any, width: number) => {
+const useSlider: React.FC = (init: number, func: (val: number) => void|any, width: number) => {
   const sliderRef = useRef<React.Ref>(null);
   const markRef = useRef<React.Ref>(null);
   const [ value, setValue ] = useState<number>(init);
@@ -41,7 +41,7 @@ const useSlider = (init: number, func: (val: number) => void|any, width: number)
   return { value, sliderRef, markRef }
 }
 
-const Slider = ({ width = 100, setValue, init = 0 }: Prop) => {
+const Slider: React.FC = ({ width = 100, setValue, init = 0 }: Prop) => {
   const { value, sliderRef, markRef } = useSlider(init, setValue, width);
 
   return (

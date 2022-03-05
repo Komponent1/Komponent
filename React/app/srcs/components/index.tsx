@@ -16,3 +16,4 @@ export { default as Button } from './button/button';
 export { default as LiContextMenu } from './licontextmenu/licontextmenu';
 export { default as ScrollNav } from './scrollnav/scrollnav';
 export { default as Slider } from './slider/slider';
+export { default as OnOffSwitch } from './onoffswitch/onoffswitch';
