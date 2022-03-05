@@ -5,7 +5,7 @@ type Prop = {
   title?: string,
   config: {
     name: string,
-    act: Function
+    act: () => {}
   }[]
 }
 const BtnMenu: React.FC = ({ title = '=', config }: Prop) => {

@@ -30,7 +30,7 @@ const config: CONFIG = {
   name: 'List',
   comp: List,
   prop: {
-    lis
+    config: lis
   },
   explain: md
 };

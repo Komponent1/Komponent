@@ -6,10 +6,6 @@ ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/
 import { Btnmenu } from 'komponent/react/component';
 
 <BtnMenu title='button title' config={/* list of menu*/} />
-
-
-
-document.body.appendChild(btnmenu);
 ~~~
 
 ### Parameter

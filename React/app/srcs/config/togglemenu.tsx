@@ -10,12 +10,12 @@ const config: CONFIG = {
       {
         type: 'text',
         src: 't1',
-        act: () => alert(1)
+        act: () => {}
       },
       {
         type: 'text',
         src: 't2',
-        act: () => alert(2)
+        act: () => {}
       }
     ]
   },

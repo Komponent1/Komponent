@@ -1,16 +1,14 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/checkbox))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/app/srcs/components/checkbox))
 
 ### How to Use
 
 ~~~javascript
-import { checkbox } from 'komponent/vanilla/component';
+import { Checkbox } from 'komponent/react/component';
 
-const checkbox = checkbox({ 
-  init: /* checked state initialization */,
-  setChecked: /* Function of state change */
-});
-
-document.body.appendChild(checkbox);
+<Checkbox
+  init={/* state of init check state */}
+  setCheck={/* update check state in parent */}
+  />
 ~~~
 
 ### Parameter
