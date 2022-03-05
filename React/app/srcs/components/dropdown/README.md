@@ -1,17 +1,15 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/dropdown))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/app/srcs/components/dropdown))
 
 ### How to Use
 
 ~~~javascript
-import { dropdown } from 'komponent/vanilla/component';
+import { Dropdown } from 'komponent/react/component';
 
-const dropdown = dropdown({
-  tag: 'place holder of dropdown',
-  options: ['text', 'of', 'dropdown option']
-  setOption: /* Funtion of text, option */
-});
-
-document.body.appendChild(dropdown);
+<Dropdown 
+  tag='place holder of dropdown'
+  options={/* list of option string */}
+  setOtion={/* set parent state with option */}
+/>
 ~~~
 
 ### Parameter
@@ -24,7 +22,7 @@ document.body.appendChild(dropdown);
 
 
 ### 기능
-여러 옵션중 하나를 선택하는 select 컴포넌트
+여러 요소들중 선택하는 select 컴포넌트
 
 ### structure(for styling)
 ```html

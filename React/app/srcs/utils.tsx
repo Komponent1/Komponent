@@ -44,13 +44,13 @@ export function fetcher(datas: any[] | any): Promise<Obj> {
   return new Promise(timer({ data: datas }));
 }
 export const DummyComp: React.FC = ({ color, width = '100%', height = '100%', children }) => (
-  <div style={{ background: color, width: width, height: height }}>
+  <div style={{ background: color, width: width, height: height, textAlign: 'center', lineHeight: height }}>
     {children}
   </div>
 )
 const color = [ '#BF7950', '#8C634A', '#A6A6A6', '#B3D5F2'];
 export const makeDummyComps = (width = '100%', height = '100%'): React.FC[] => {
   return (
-    color.map((e, i) => <DummyComp key={i} color={e} width={width} height={height}/>)
+    color.map((e, i) => <DummyComp key={i} color={e} width={width} height={height}>TEST</DummyComp>)
   );
 }

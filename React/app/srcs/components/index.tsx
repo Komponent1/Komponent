@@ -17,3 +17,5 @@ export { default as LiContextMenu } from './licontextmenu/licontextmenu';
 export { default as ScrollNav } from './scrollnav/scrollnav';
 export { default as Slider } from './slider/slider';
 export { default as OnOffSwitch } from './onoffswitch/onoffswitch';
+export { default as Dropdown } from './dropdown/dropdown';
+export { default as ParallexScroll } from './parallexscroll/parallexscroll';

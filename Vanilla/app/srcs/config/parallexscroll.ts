@@ -32,7 +32,8 @@ const config: CONFIG = {
         elem: dummy('red'),
         delay: 1,
       }
-    ]
+    ],
+    height: '500px'
   },
   explain: md
 };
