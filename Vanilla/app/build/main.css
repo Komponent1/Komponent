@@ -132,37 +132,15 @@ body {
   border-radius: 3px;
 }
 .kui_scrollspy {
-  width: 800px;
-}
-.kui_scrollspy_nav {
-  display: flex;
-  flex-direction: row;
-
-  border: 1px solid black;
-}
-.kui_scrollspy_navitem {
-  --num: 0;
-  
-  width: calc(100% / var(--num));
-  height: 20px;
-  border: 1px solid black;
-}
-.kui_scrollspy_navitem.select {
-  background: grey;
-}
-.kui_scrollspy_navitem:hover {
-  background: grey;
+  position: relative;
 }
 .kui_scrollspy_itemwrap {
   width: 100%;
-  height: 250px;
 
   overflow-y: scroll;
 }
 .kui_scrollspy_item {
   width: 100%;
-  height: 250px;
-  border: 1px solid black;
 }
 .kui_infinitescroll {
   position: relative;
@@ -183,8 +161,6 @@ body {
 }
 
 .kui_tab {
-  width: 500px;
-
   border: 1px solid rgba(172, 172, 172, 0.5);
   text-align: center;
 }
@@ -201,14 +177,10 @@ body {
 }
 .kui_tab_navitem {
   width: calc(100% / var(--num));
-}
-.kui_tab_navitem {
   z-index: 13;
 }
 .kui_tab_item {
   width: 100%;
-
-  padding: 10px;
 }
 
 .kui_tab_glider {
@@ -226,25 +198,26 @@ body {
   transition: transform 0.3s;
 }
 .kui_slidecarousel {
+  --width: 0;
   position: relative;
-  
-  width: 400px;
-  height: 200px;
-  overflow: hidden;
+  overflow-x: hidden;
+
+  width: var(--width);
 }
 .kui_slidecarousel_slider {
-  --x: -400px;
+  --num: 0;
   --sec: 0.5;
+  --idx: 1;
 
   display: flex;
-  width: 3000px;
+  width: calc(var(--width) * var(--num));
 
-  transform: translateX(var(--x));
+  transform: translateX(calc(var(--width) * -1 * var(--idx)));
   transition: transform var(--sec);
 }
 .kui_slidecarousel_item {
-  width: 400px;
-  height: 200px;
+  width: var(--width);
+  height: 100%;
 }
 .kui_slidecarousel_rbutton {
   background: none;
@@ -255,7 +228,7 @@ body {
   border: none;
 
   position: absolute;
-  top: 80px;
+  top: calc(50% - 20px);
   right: 10px;
   font-size: 30px;
 }
@@ -268,13 +241,11 @@ body {
   border: none;
 
   position: absolute;
-  top: 80px;
+  top: calc(50% - 20px);
   left: 10px;
   font-size: 30px;
 }
 .kui_changecarousel {
-  width: 400px;
-  height: 200px;
   position: relative;
 }
 .kui_changecarousel_item {
@@ -290,7 +261,7 @@ body {
 }
 .kui_changecarousel_btnset {
   position: absolute;
-  top: 150px;
+  bottom: 10%;
   text-align: center;
   width: 100%;
 }
@@ -404,6 +375,9 @@ body {
 .kui_licontextmenu_li {
   position: relative;
   padding: 3px;
+}
+.kui_licontextmenu_li:after {
+  content: attr(data-content);
 }
 .kui_contextmenu {
   display: inline-block;
@@ -534,7 +508,7 @@ body {
 }
 
 .kui_list {
-  width: 80%;
+  width: 100%;
   border: 2px solid rgba(172, 172, 172, 0.5);
   border-radius: 5px;
 }
@@ -568,8 +542,6 @@ body {
 
   flex-grow: 1;
   flex-basis: 0;
-
-  border-radius: 4px;
 }
 
 .kui_list_item span {
@@ -578,7 +550,7 @@ body {
 
 .kui_dragablepannel {
   position: relative;
-  width: 80%;
+  width:100%;
   height: 300px;
 
   border: 1px solid rgba(0,0,0, 0.5);
@@ -788,9 +760,6 @@ body {
 }
 .kui_parallexscroll {
   overflow-y: scroll;
-
-  height: 500px;
-  width: 500px;
 }
 .kui_parallexscroll_layer {
   --y: 0;
@@ -798,3 +767,23 @@ body {
   transform: translateY(var(--y))
 }
 
+.kui_scrollnav {
+  --num: 0;
+
+  position: absolute;
+  top: calc(50% - var(--num) * 15px);
+  right: 0;
+  z-index: 99;
+}
+.kui_scrollnav_item {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(172, 172, 172, 0.5);
+  border: 1px solid black;
+}
+.kui_scrollnav_item.select {
+  background: grey;
+}
+.kui_scrollnav_item:hover {
+  background: grey;
+}
