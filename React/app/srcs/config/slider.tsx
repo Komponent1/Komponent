@@ -1,0 +1,17 @@
+import { Slider } from '../components'
+import { CONFIG } from './configType'
+import md from '../components/slider/README.md'
+
+
+const config: CONFIG = {
+  name: 'Slider',
+  comp: Slider,
+  prop: {
+    setValue: (value: number) => {},
+    width: 150,
+    init: 0.4
+  },
+  explain: md
+};
+
+export default config;
