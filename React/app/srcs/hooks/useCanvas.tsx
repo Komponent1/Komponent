@@ -1,26 +1,29 @@
+import React, { useState, useRef, useEffect } from 'react';
+
 type Point = [number, number];
-type Set = {
-  fillstyle: string,
-  strokestyle: string,
-  linewidth: number,
-  font: string,
+type Param = {
+  fillstyle?: string
+  strokestyle?: string
+  linewidth?: number,
+  font?: string,
+}
+type Set = Param & {
   range: [number, number]
 }
-function cvsUtil (
-  dom: HTMLCanvasElement,
-  init: { fillstyle: string, strokestyle: string, linewidth: number, font: string }
-  = {
-    fillstyle: 'black',
-    strokestyle: 'black',
-    linewidth: 1,
-    font: '10px serif'
-  }
-) {
-  const ctx = dom.getContext('2d');
-  const set: Set = {
-    ...init,
-    range: [0, 1]
-  };
+const useCanvas = ({
+  fillstyle = 'black',
+  strokestyle = 'black',
+  linewidth = 1,
+  font = '10px serif'
+}: Param) => {
+  const ref = useRef<React.Ref>(null);
+  const set: Set = { fillstyle, strokestyle, linewidth, font, range: [0, 1] };
+  let ctx = null;
+
+  useEffect(() => {
+    if (!ref) return;
+    ctx = (ref.current as HTMLCanvasElement).getContext('2d');
+  }, [ ref ]);
 
   const checkoption = (keys: string[], opt) => {
     const option = { ...set };
@@ -30,13 +33,15 @@ function cvsUtil (
 
     return option;
   };
+
   const drawLine = (points: Point[], option?: { strokestyle?: string, linewidth?: number }) => {
     const { strokestyle, linewidth } = option? checkoption(['strokestyle', 'linewidth'], option) : set;
     const { strokeStyle, lineWidth } = ctx;
-    
+
     ctx.strokeStyle = strokestyle;
     ctx.lineWidth = linewidth;
     ctx.lineCap = 'round';
+
     ctx.beginPath();
     ctx.moveTo(points[0][0], points[0][1]);
     for (let i = 1; i < points.length; i++) {
@@ -44,7 +49,7 @@ function cvsUtil (
     }
     ctx.stroke();
     ctx.closePath();
-    
+
     ctx.strokeStyle = strokeStyle;
     ctx.lineWidth = lineWidth;
   }
@@ -99,7 +104,6 @@ function cvsUtil (
     drawCircle(point, r, { range, fillstyle });
     drawArc(point, r, { range, strokestyle, linewidth });
   }
-
   const drawText = (text: string, point: Point, option?: { maxwidth?: number, fillstyle?: string, font?: string }) => {
     const { fillstyle, font } = option? checkoption(['fillstyle', 'font'], option) : set;
     const maxwidth = option?.maxwidth;
@@ -114,7 +118,9 @@ function cvsUtil (
     ctx.fillStyle = fillStyle;
   }
 
-  return { ctx, drawLine, drawRect, drawCircle, drawArc, drawStrokeRect, drawStrokeCircle, drawText };
-}
+  return { ref, cvs: {
+    drawLine, drawRect, drawCircle, drawStrokeCircle, drawStrokeRect, drawArc, drawText
+  } }
+};
 
-export default cvsUtil;
+export default useCanvas;

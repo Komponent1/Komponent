@@ -19,3 +19,4 @@ export { default as Slider } from './slider/slider';
 export { default as OnOffSwitch } from './onoffswitch/onoffswitch';
 export { default as Dropdown } from './dropdown/dropdown';
 export { default as ParallexScroll } from './parallexscroll/parallexscroll';
+export { default as Pointline } from './pointline/pointline'; 

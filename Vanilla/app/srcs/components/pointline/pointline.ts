@@ -2,7 +2,7 @@ import './style.css';
 import { createElem } from '../../utils';
 import cvsUtil from '../../canvas';
 
-function pointline({ width, height, num, text }) {
+function pointline({ width, height, num }) {
   const wrapper = createElem('div', 'kui_pointline');
   const dom = createElem('canvas', 'kui_pointline_canvas') as HTMLCanvasElement;
   dom.width = width;
