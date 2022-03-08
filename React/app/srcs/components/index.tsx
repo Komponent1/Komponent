@@ -22,3 +22,4 @@ export { default as ParallexScroll } from './parallexscroll/parallexscroll';
 export { default as Pointline } from './pointline/pointline'; 
 export { default as RadioButton } from './radiobutton/radiobutton';
 export { default as Rating } from './rating/rating';
+export { default as Chipsui } from './chipsui/chipsui';

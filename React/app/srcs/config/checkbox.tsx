@@ -3,10 +3,6 @@ import { Checkbox } from '../components'
 import { CONFIG } from './configType'
 import md from '../components/checkbox/README.md';
 
-const hook = () => {
-  
-}
-
 
 const config: CONFIG = {
   name: 'Check Box',
