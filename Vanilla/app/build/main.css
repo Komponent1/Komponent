@@ -787,3 +787,147 @@ body {
 .kui_scrollnav_item:hover {
   background: grey;
 }
+.kui_radiobutton {
+  --height: 30px;
+
+  display: flex;
+  flex-direction: row;
+  height: var(--height);
+}
+.kui_radiobutton_btnset {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  height: 100%;
+}
+.kui_radiobutton_button {
+  --scale: 0;
+  --opacity: 0;
+  --border: gray;
+
+  position: relative;
+  height: 100%;
+  width: var(--height);
+}
+.kui_radiobutton_button:hover {
+  --opacity: 1;
+}
+.kui_radiobutton
+.kui_radiobutton_round {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+
+  height: calc(var(--height) - 12px);
+  width: calc(var(--height) - 12px);
+
+  border: 2px solid var(--border);
+  border-radius: var(--height);
+}
+.kui_radiobutton_background {
+  opacity: var(--opacity);
+  position: absolute;
+  width: var(--height);
+  height: var(--height);
+  top: 0;
+  left: 0;
+  background-color: rgba(172, 172, 172, 0.3);
+  border-radius: var(--height);
+}
+.kui_radiobutton_icon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+
+  height: calc(var(--height) - 16px);
+  width: calc(var(--height) - 16px);
+
+  border-radius: var(--height);
+  background-color: black;
+  transform: scale(var(--scale));
+  transition: transform 0.3s;
+}
+
+.kui_radiobutton_button.select {
+  --scale: 1;
+  --border: black;
+}
+.kui_radiobutton_label {
+  
+}
+
+.kui_rating {
+  display: flex;
+  flex-direction: row;
+}
+.kui_rating_rate {
+  --on: 0;
+  --scale: 1;
+
+  font-size: 30px;
+  position: relative;
+  padding: 0 1px;
+
+  color: rgba(172, 172, 172, 0.8);
+  transform: scale(var(--scale));
+  transform-origin: 50% 70%;
+  transition: transform 0.5s;
+}
+.kui_rating_rate.hover {
+  --on: 0;
+  --scale: 1.2 !important;
+}
+.kui_rating_rate.select {
+  --on: 1 !important;
+  --scale: 1;
+}
+.kui_rating_rate::after {
+  content: '\2605';
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: var(--on);
+
+  color: orange;
+}
+.kui_chips {
+  display: flex;
+  flex-direction: row;
+}
+.kui_chups_wrapper {
+  
+}
+.kui_chips_input {
+  font-size: 15px;
+  border: none;
+}
+.kui_chips_input:focus {
+  outline: none;
+}
+.kui_chips_chip {
+  display: inline-flex;
+  align-items: center;
+
+  background: rgba(172, 172, 172, 0.3);
+  
+  padding: 4px 5px;
+  margin: 0 2px;
+  border-radius: 30px;
+}
+.kui_chips_chip > span {
+  margin-left: 10px;
+}
+.kui_chips_del {
+  display: block;
+  color: white;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  background: rgba(110, 110, 110, 1);
+  margin-left: 10px;
+
+  cursor: pointer;
+}
