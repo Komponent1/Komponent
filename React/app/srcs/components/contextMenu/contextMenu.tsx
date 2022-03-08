@@ -2,6 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Div } from '../utils';
 import * as style from './style';
 
+type Config = {
+  menu: string
+  context: string
+}
+type Prop = {
+  config: Config[]
+}
+
 const usePosition = () => {
   const [top, setTop] = useState<number>(0);
   const [left, setLeft] = useState<number>(0);
@@ -13,13 +21,12 @@ const usePosition = () => {
 
   return [top, left, setPosition];
 }
-
 const Context: React.FC = ({ top, left, visible, children }: { top: number, left: number, visible: boolean, children: React.Node }) => (
   <style.context top={top} left={left} visible={visible}>
     {children}
   </style.context>
 );
-const ContextItem: React.FC = ({ id, visible, setVisible, data }: { id: number, visible: number, setVisible: Function, data: Object }) => {
+const ContextItem: React.FC = ({ id, visible, setVisible, data }: { id: number, visible: number, setVisible: Function, data: Config }) => {
   const [top, left, setPosition] = usePosition();
   const onClick = e => {
     e.stopPropagation();
@@ -39,7 +46,7 @@ const ContextItem: React.FC = ({ id, visible, setVisible, data }: { id: number, 
 
 
 /* wrapper 역할 */
-const ContextMenu: React.FC = ({ datas }: { datas: any[] }) => {
+const ContextMenu: React.FC = ({ config }: Prop) => {
   const [visible, setVisible] = useState<number>(-1);
   const ref = useRef<HTMLDivElement>();
   
@@ -58,7 +65,7 @@ const ContextMenu: React.FC = ({ datas }: { datas: any[] }) => {
 
   return (
     <style.wrapper ref={ref}>
-      {datas.map((e, i) => 
+      {config.map((e, i) => 
         <ContextItem key={i} id={i} visible={visible} setVisible={setVisible} data={e} />      
       )}
     </style.wrapper>

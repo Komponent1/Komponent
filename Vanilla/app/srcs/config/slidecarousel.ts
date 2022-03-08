@@ -7,7 +7,9 @@ const config: CONFIG = {
   name: 'Slide Carousel',
   render: slidecarousel,
   prop: {
-    elems: makeDummyElem()
+    elems: makeDummyElem(),
+    width: '400px',
+    height: '200px',
   },
   explain: md
 };

@@ -44,7 +44,7 @@ const Dragable: React.FC = React.forwardRef(({ children, parent }, ref) => {
   }, [ id ]);
 
   return (
-    <style.dragable className='dragable' ref={ref} xy={xy}>
+    <style.dragable className='kui_dragablepannel_drag' ref={ref} xy={xy}>
       {children}
     </style.dragable>
   )
@@ -57,7 +57,7 @@ const DragablePannel: React.FC = ({ children }) => {
   );
 
   return (
-    <style.pannel ref={pannel}>
+    <style.pannel className='kui_dragablepannel' ref={pannel}>
       {Array.isArray(children) ? 
         (
           <>
@@ -68,7 +68,8 @@ const DragablePannel: React.FC = ({ children }) => {
             ))}
           </>
         ) : (
-          <Dragable ref={items.current[0]} parent={pannel}>
+          <Dragable
+            ref={items.current[0]} parent={pannel}>
             {children}
           </Dragable>
         )

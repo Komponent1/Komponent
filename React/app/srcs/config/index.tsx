@@ -1,6 +1,6 @@
 import autocomplete from './autocomplete';
-import buttoncarousel from './buttoncarousel';
-import carousel from './carousel';
+import buttoncarousel from './changecarousel';
+import slidecarousel from './slidecarousel';
 import contextmenu from './contextmenu';
 import infinitescroll from './infinitescroll';
 import scrollspy from './scrollspy';
@@ -11,19 +11,21 @@ import list from './list';
 import dragablepannel from './dragablepannel'
 import togglemenu from './togglemenu';
 import badge from './badge';
+import button from './button';
+import licontextmenu from './licontextmenu';
+import scrollnav from './scrollnav';
+import slider from './slider';
+import onoffswitch from './onoffswitch';
+import dropdown from './dropdown';
+import parallexscroll from './parallexscroll';
+import pointline from './pointline';
+import radiobutton from './radiobutton';
+import rating from './rating'
+import chipsui from './chipsui';
 
 export const ComponentList = {
-  autocomplete,
-  buttoncarousel,
-  carousel,
-  contextmenu,
-  infinitescroll,
-  scrollspy,
-  tab,
-  btnmenu,
-  checkbox,
-  list,
-  dragablepannel,
-  togglemenu,
-  badge
+  autocomplete, badge, button, buttoncarousel, slidecarousel, contextmenu,
+  infinitescroll, licontextmenu, scrollnav, scrollspy, tab, btnmenu, checkbox,
+  list, dragablepannel, togglemenu, slider, onoffswitch, dropdown, parallexscroll,
+  pointline, radiobutton, rating, chipsui
 };

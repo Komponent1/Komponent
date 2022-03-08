@@ -9,6 +9,6 @@ export const togglemenu = styled.div`
 `;
 export const icon = styled.div<{ select: boolean, last: boolean }>`
   border-right: ${({ last }) => !last ? '1px solid rgba(172, 172, 172, 0.5)' : 'none'};
-  background: ${({ select }) => select ? 'rgba(172, 172, 172, 0.1)' : 'none'};
-
+  background: ${({ select }) => select ? 'rgba(172, 172, 172, 0.5)' : 'none'};
+  padding: 2px 5px;
 `;

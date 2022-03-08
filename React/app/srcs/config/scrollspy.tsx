@@ -7,7 +7,8 @@ const config: CONFIG = {
   name: 'Scroll Spy',
   comp: Scrollspy,
   prop: {
-    children: makeDummyComps('100%', '300px')
+    children: makeDummyComps('400px', '200px'),
+    height: '200px'
   },
   explain: md
 };

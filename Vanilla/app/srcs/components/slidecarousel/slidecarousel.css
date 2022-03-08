@@ -1,23 +1,24 @@
 .kui_slidecarousel {
+  --width: 0;
   position: relative;
-  
-  width: 400px;
-  height: 200px;
-  overflow: hidden;
+  overflow-x: hidden;
+
+  width: var(--width);
 }
 .kui_slidecarousel_slider {
-  --x: -400px;
+  --num: 0;
   --sec: 0.5;
+  --idx: 1;
 
   display: flex;
-  width: 3000px;
+  width: calc(var(--width) * var(--num));
 
-  transform: translateX(var(--x));
+  transform: translateX(calc(var(--width) * -1 * var(--idx)));
   transition: transform var(--sec);
 }
 .kui_slidecarousel_item {
-  width: 400px;
-  height: 200px;
+  width: var(--width);
+  height: 100%;
 }
 .kui_slidecarousel_rbutton {
   background: none;
@@ -28,7 +29,7 @@
   border: none;
 
   position: absolute;
-  top: 80px;
+  top: calc(50% - 20px);
   right: 10px;
   font-size: 30px;
 }
@@ -41,7 +42,7 @@
   border: none;
 
   position: absolute;
-  top: 80px;
+  top: calc(50% - 20px);
   left: 10px;
   font-size: 30px;
 }

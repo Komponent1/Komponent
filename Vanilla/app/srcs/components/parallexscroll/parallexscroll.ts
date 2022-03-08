@@ -5,10 +5,12 @@ type Prop = {
   config: {
     elem: HTMLElement,
     delay?: number,
-  }[]
+  }[],
+  height?: string
 }
-function parallexscroll({ config }: Prop) {
+function parallexscroll({ config, height = '100%' }: Prop) {
   const wrapper  = createElem('div', 'kui_parallexscroll');
+  wrapper.style.height = height;
   const layers: HTMLElement[] = [];
 
   for (let i = 0; i < config.length; i++) {
@@ -31,7 +33,7 @@ function parallexscroll({ config }: Prop) {
     }
 
     layers.forEach((layer, i) => {
-      if (scrollTop >= i * layers[i].offsetHeight) {
+      if (scrollTop >= i * layer.offsetHeight) {
         layer.style.setProperty('--y', 
           (scrollTop * ((config[i].delay < 1 && config[i].delay) ? config[i].delay : 1)) - addheight(i) + 'px' );
       }

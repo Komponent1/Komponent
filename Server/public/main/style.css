@@ -1,3 +1,27 @@
-.komponent_header {
-  
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
 }
+#komponent > header {
+  color: #2E5FF2;
+  font-size: 40px;
+
+  margin-left: 40px;
+}
+#komponent > section {
+  margin-left: 40px;
+}
+.linkbtn {
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+
+  background: rgba(172, 172, 172, 0.3);
+  border-radius: 8px;
+}
+.linkbtn:hover {
+  cursor: pointer;
+  background: rgba(172, 172, 172, 0.5);
+}
+

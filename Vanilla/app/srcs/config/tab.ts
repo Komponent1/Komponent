@@ -5,6 +5,8 @@ import md from '../components/tab/README.md'
 
 const dummyelem = (text: string) => {
   const div = createElem('div');
+  div.style.width = '500px';
+  div.style.height = '150px';
   div.innerHTML = `<p>${text}</p>`;
   
   return div;

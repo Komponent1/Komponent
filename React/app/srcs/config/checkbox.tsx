@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { Checkbox } from '../components'
 import { CONFIG } from './configType'
-import md from '../components/buttonCarousel/README.md';
-
-const hook = () => {
-  
-}
+import md from '../components/checkbox/README.md';
 
 
 const config: CONFIG = {

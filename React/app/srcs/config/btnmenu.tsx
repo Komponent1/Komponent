@@ -21,7 +21,7 @@ const config: CONFIG = {
   name: 'Btn Menu',
   comp: BtnMenu,
   prop: {
-    menus: dummies
+    config: dummies
   },
   explain: md
 };

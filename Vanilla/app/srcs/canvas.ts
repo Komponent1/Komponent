@@ -49,7 +49,6 @@ function cvsUtil (
     ctx.lineWidth = lineWidth;
   }
   const drawRect = (points: [Point, Point], option?: { fillstyle?: string }) => {
-    console.log(set)
     const { fillstyle } = option? checkoption(['fillstyle'], option) : set;
     const { fillStyle } = ctx;
 

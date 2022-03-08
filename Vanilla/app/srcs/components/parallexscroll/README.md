@@ -6,7 +6,10 @@ ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanill
 import { parallexscroll } from 'komponent/vanilla/component';
 
 const parallexscroll = parallexscroll({
-  setValue: /* set value of on / off function */
+  config = {
+    elem: /* element of scroll */,
+    delay: /* delay movement of scroll(0 ~ 1) */
+  }
 });
 
 document.body.appendChild(parallexscroll);

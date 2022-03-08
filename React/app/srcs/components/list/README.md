@@ -1,15 +1,41 @@
-ver 1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/list))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/app/srcs/components/list))
 
-### 기능
-
-1. data를 받아서 리스트를 나열한다
-2. 리스트를 추가 할 수 있다
-3. 리스트를 삭제할 수 있다
-    - 삭제시 checkbox를 통해 멀티로 삭제할 수 있다
-
-### 사용
-1. list를 구성할 수 있는 데이터를 받을 api를 기준으로 하는것과 data자체를 내려받는 2가지 타입으로 나뉘어서 사용
+### How to Use
 
 ~~~javascript
-    
+import { List } from 'komponent/react/component';
+
+<List
+  checkoption={/* if need of checkbox in list */}
+  config={/* list data */}
+/>
 ~~~
+
+### Parameter
+
+|name|type|default|must|explain|
+|:---|:---|:---|:---|:---|
+|checkoption|`(checked: boolean[]) => any\|void`|`undefined`|no|리스트에 체크를 할때 해야할 상위 동작, 통상 check리스트의 업데이트 활용|
+|config|`{ name: string, [key: string]: string }[]`|`undefined`|yes|list의 요소, 최소 1개 이상의 요소가 반드시 있어야한다|
+
+### 기능
+리스트 데이터를 받아서 화면에 표기하는 컴포넌트
+
+### structure(for styling)
+```html
+<div class='kui_list'>
+  <div class='kui_list_title'>
+    <div class='kui_list_item' />
+    <div class='kui_list_item' />
+    ...
+  </div>
+  <div class='kui_kui_list_li'>
+    <div class='kui_list_item' />
+    <div class='kui_list_item' />
+    ...
+  </div>
+  <div class='kui_kui_list_li'/>
+  ...
+</div>
+
+```

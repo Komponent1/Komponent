@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as style from './style';
 
-const useAutoComplete = (fetcher: Function) => {
+export const useAutoComplete = (fetcher: () => Promise<{data: string[]}>) => {
   const [text, setText] = useState<string>('');
   const [lis, setLis] = useState<string[]>([]);
 
@@ -14,27 +14,27 @@ const useAutoComplete = (fetcher: Function) => {
 }
 type Prop = {
   placeholder: string,
-  fetcher?: Function
+  fetcher: () => Promise<{data: string[]}>
 }
-
 const Autocomplete: React.FC = ({placeholder, fetcher}: Prop) => {
   const [lis, text, setText] = useAutoComplete(fetcher);
   const [focus, setFocus] = useState<boolean>(false);
 
   return (
-    <style.div className="autocomplete">
-      <style.input
+    <style.div className="kui_autocomplete">
+      <style.input className="kui_autocomplete_input"
         placeholder={placeholder}
         value={text}
         onChange={e => setText(e.target.value)}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}/>
-        <style.ul
+        <style.ul className="kui_autocomplete_ul"
           show={lis.length !== 0 && focus}>
           {lis.map((li, i) => (
-            <style.li key={i} onClick={() => {
-              setText(li)
-            }}>
+            <style.li className="kui_autocomplete_input"
+              key={i} onClick={() => {
+                setText(li)
+              }}>
               {li}
             </style.li>
           ))}

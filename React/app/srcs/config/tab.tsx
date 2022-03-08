@@ -4,31 +4,23 @@ import { DummyComp } from '../utils'
 import { CONFIG } from './configType'
 import md from '../components/tab/README.md'
 
-const Item = ({ text }): React.FC => (
-  <DummyComp color='white' height='200px'>
-    {text}
+const Item: React.FC = ({ text }) => (
+  <DummyComp color='white' height='150px' width='500px'>
+    <p>{text}</p>
   </DummyComp>
 );
 const dummies = [
-  {
-    title: 'Tab1',
-    comp: <Item text='This is Tab 1'/>
-  },
-  {
-    title: 'Tab2',
-    comp: <Item text='This is Tab 2'/>
-  },
-  {
-    title: 'Tab3',
-    comp: <Item text='This is Tab 3'/>
-  }
+  <Item key={1} text='This is Tab 1'/>,
+  <Item key={2} text='This is Tab 2'/>,
+  <Item key={3} text='This is Tab 3'/>
 ]
 
 const config: CONFIG = {
   name: 'Tab',
   comp: Tab,
   prop: {
-    tabs: dummies
+    titles: ['Tab1', 'Tab2', 'Tab3'],
+    children: dummies
   },
   explain: md
 };
