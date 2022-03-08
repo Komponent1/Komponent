@@ -20,10 +20,11 @@ import dropdown from './dropdown';
 import parallexscroll from './parallexscroll';
 import pointline from './pointline';
 import radiobutton from './radiobutton';
+import rating from './rating'
 
 export const ComponentList = {
   autocomplete, badge, button, buttoncarousel, slidecarousel, contextmenu,
   infinitescroll, licontextmenu, scrollnav, scrollspy, tab, btnmenu, checkbox,
   list, dragablepannel, togglemenu, slider, onoffswitch, dropdown, parallexscroll,
-  pointline, radiobutton
+  pointline, radiobutton, rating
 };

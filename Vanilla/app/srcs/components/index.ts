@@ -20,3 +20,4 @@ export { default as parallexscroll } from './parallexscroll/parallexscroll';
 export { default as pointline } from './pointline/pointline';
 export { default as scrollnav } from './scrollnav/scrllnav';
 export { default as radiobutton } from './radiobutton/radiobutton';
+export { default as rating } from './rating/rating';
