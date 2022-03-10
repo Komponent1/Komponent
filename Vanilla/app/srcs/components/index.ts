@@ -22,3 +22,4 @@ export { default as scrollnav } from './scrollnav/scrllnav';
 export { default as radiobutton } from './radiobutton/radiobutton';
 export { default as rating } from './rating/rating';
 export { default as chipsui } from './chipsui/chipsui';
+export { default as tip } from './tip/tip';

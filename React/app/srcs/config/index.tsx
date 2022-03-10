@@ -22,10 +22,11 @@ import pointline from './pointline';
 import radiobutton from './radiobutton';
 import rating from './rating'
 import chipsui from './chipsui';
+import tip from './tip';
 
 export const ComponentList = {
   autocomplete, badge, button, buttoncarousel, slidecarousel, contextmenu,
   infinitescroll, licontextmenu, scrollnav, scrollspy, tab, btnmenu, checkbox,
   list, dragablepannel, togglemenu, slider, onoffswitch, dropdown, parallexscroll,
-  pointline, radiobutton, rating, chipsui
+  pointline, radiobutton, rating, chipsui, tip
 };

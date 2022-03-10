@@ -22,10 +22,11 @@ import scrollnav from './scrollnav';
 import radiobutton from './radiobutton';
 import rating from './rating';
 import chips from './chips';
+import tip from './tip';
 
 export const componentList = {
   autocomplete, badge, button, changecarousel, slidecarousel, contextmenu, infinitescroll,
   licontextmenu, scrollspy, scrollnav, tab, btnmenu, checkbox, list, dragablepannel,
   togglemenu, slider, onoffswitch, dropdown, parallexscroll, pointline,
-  radiobutton, rating, chips
+  radiobutton, rating, chips, tip
 };
