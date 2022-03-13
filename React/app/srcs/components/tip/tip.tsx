@@ -4,8 +4,9 @@ import * as style from './style';
 type Prop = {
   children: React.Node,
   text: string
+  position: 'bottom'|'right'|'left'|'top'
 }
-const Tip: React.FC = ({ children, text }: Prop) => {
+const Tip: React.FC = ({ children, text, position = 'bottom' }: Prop) => {
   const [hover, setHover] = useState<boolean>(false);
 
   return (
@@ -14,7 +15,8 @@ const Tip: React.FC = ({ children, text }: Prop) => {
       onMouseLeave={() => setHover(false)}>
       <style.background className='kui_tip_background'/>
       {children}
-      <style.tip className='kui_tip_tip' hover={hover}>
+      <style.tip className='kui_tip_tip'
+        hover={hover} position={position}>
         {text}
       </style.tip>
     </style.div>

@@ -18,7 +18,7 @@ const config: CONFIG = {
   render: tip,
   prop: {
     elem: elem(),
-    text: 'this is tip'
+    text: 'this is tip',
   },
   explain: md
 };

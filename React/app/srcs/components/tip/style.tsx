@@ -19,10 +19,20 @@ export const background = styled.div`
     opacity: 1;
   }
 `;
-export const tip = styled.div<{ hover: boolean }>`
+export const tip = styled.div<{ hover: boolean, position: string }>`
   position: absolute;
-  top: 200%;
-  left: 50%;
+  ${({ position }) => {
+    switch(position) {
+      case 'top':
+        return 'top: -200%;left: 50%;';
+      case 'left':
+        return 'top: 0;left: -100%;';
+      case 'right':
+        return 'left: 200%;top: 0;';
+      default:
+        return 'top: -200%;left: 50%;';
+    }
+  }}
   
   font-size: 8px;
   background: rgb(172, 172, 172);
@@ -32,7 +42,18 @@ export const tip = styled.div<{ hover: boolean }>`
 
   white-space: nowrap;
 
-  transform: translateX(-50%) scale(${({ hover }) => hover ? 1 : 0});
+  transform: translateX(${({ position }) => {
+    switch(position) {
+      case 'top':
+        return '-50%';
+      case 'left':
+        return '-100%';
+      case 'right':
+        return '0';
+      default:
+        return '-50%';
+    }
+  }}) scale(${({ hover }) => hover ? 1 : 0});
   transform-origin: center top;
   transition: trasnform 50ms;
 `;
