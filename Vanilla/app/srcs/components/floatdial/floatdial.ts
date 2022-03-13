@@ -7,6 +7,7 @@ type Prop = {
     icon: string
     type: 'img'|'text',
     tip?: string,
+    act: Function;
   }[]
 }
 function floatdial ({ config }: Prop): HTMLDivElement {
@@ -24,6 +25,7 @@ function floatdial ({ config }: Prop): HTMLDivElement {
       case 'text':
         li.innerText = item.icon;
     }
+    li.addEventListener('click', () => item.act());
     if (i === config.length - 1) {
       li.ontransitionend = () => {
         if (wrapper.style.getPropertyValue('--scale') === '0') {

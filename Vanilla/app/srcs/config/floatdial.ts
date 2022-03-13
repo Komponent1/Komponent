@@ -10,11 +10,13 @@ const config: CONFIG = {
       {
         icon: '1',
         type: 'text',
-        tip: 'this is tip'
+        tip: 'this is tip',
+        act: () => { console.log('1') }
       },
       {
         icon: '2',
         type: 'text',
+        act: () => { console.log(2) }
       }
     ]
   },
