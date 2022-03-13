@@ -19,6 +19,7 @@ const config: CONFIG = {
   prop: {
     elem: elem(),
     text: 'this is tip',
+    position: 'right'
   },
   explain: md
 };

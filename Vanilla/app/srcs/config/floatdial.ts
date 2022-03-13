@@ -6,7 +6,17 @@ const config: CONFIG = {
   name: 'Float Dial',
   render: floatdial,
   prop: {
-    
+    config: [
+      {
+        icon: '1',
+        type: 'text',
+        tip: 'this is tip'
+      },
+      {
+        icon: '2',
+        type: 'text',
+      }
+    ]
   },
   explain: md
 };

@@ -20,13 +20,13 @@ function tip ({ elem, text, position = 'bottom' }: Prop): HTMLDivElement {
       break;
     case 'right':
       tip.style.left = '200%';
-      tip.style.top = '0';
-      tip.style.transform = 'scale(var(--hover))';
+      tip.style.top = '50%';
+      tip.style.transform = 'scale(var(--hover)) translateY(-50%)';
       break;
     case 'left':
-      tip.style.top = '0';
+      tip.style.top = '50%';
       tip.style.left = '-100%';
-      tip.style.transform = 'scale(var(--hover)) translateX(-100%)';
+      tip.style.transform = 'scale(var(--hover)) translate(-100%, -50%)';
       break;
     default:
       tip.style.top = '200%';
