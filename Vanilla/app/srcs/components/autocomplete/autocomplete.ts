@@ -4,9 +4,9 @@ import { createElem, debounce } from '../../utils';
 type Prop = {
   fetcher: (value?: string) => Promise<{ data: string[] | string }>,
   placeholder: string,
-  type: 'server'|'local'
+  type?: 'server'|'local'
 }
-function autocomplete({ fetcher, placeholder = '' }: Prop): HTMLDivElement {
+function autocomplete({ fetcher, placeholder = '', type = 'server' }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'kui_autocomplete') as HTMLDivElement;
   const input = createElem('input', 'kui_autocomplete_input') as HTMLInputElement;
   const ul = createElem('ul', 'kui_autocomplete_ul');
