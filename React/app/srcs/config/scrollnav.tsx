@@ -7,7 +7,7 @@ const config: CONFIG = {
   name: 'Scroll Nav',
   comp: Scrollspy,
   prop: {
-    elems: makeDummyComps('400px', '200px'),
+    children: makeDummyComps('400px', '200px'),
     height: '200px'
   },
   explain: md
