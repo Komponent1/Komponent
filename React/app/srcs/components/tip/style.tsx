@@ -26,9 +26,9 @@ export const tip = styled.div<{ hover: boolean, position: string }>`
       case 'top':
         return 'top: -200%;left: 50%;';
       case 'left':
-        return 'top: 0;left: -100%;';
+        return 'top: 50%;left: -100%;';
       case 'right':
-        return 'left: 200%;top: 0;';
+        return 'left: 200%;top: 50%;';
       default:
         return 'top: -200%;left: 50%;';
     }
@@ -42,16 +42,16 @@ export const tip = styled.div<{ hover: boolean, position: string }>`
 
   white-space: nowrap;
 
-  transform: translateX(${({ position }) => {
+  transform: translate(${({ position }) => {
     switch(position) {
       case 'top':
-        return '-50%';
+        return '-50%, 0';
       case 'left':
-        return '-100%';
+        return '-100%, -50%';
       case 'right':
-        return '0';
+        return '0, -50%';
       default:
-        return '-50%';
+        return '-50%, 0';
     }
   }}) scale(${({ hover }) => hover ? 1 : 0});
   transform-origin: center top;

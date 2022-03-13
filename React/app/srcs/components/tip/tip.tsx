@@ -6,7 +6,7 @@ type Prop = {
   text: string
   position: 'bottom'|'right'|'left'|'top'
 }
-const Tip: React.FC = ({ children, text, position = 'bottom' }: Prop) => {
+const Tip: React.FC = ({ children, text, position = 'left' }: Prop) => {
   const [hover, setHover] = useState<boolean>(false);
 
   return (

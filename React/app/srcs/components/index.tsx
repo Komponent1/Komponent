@@ -24,3 +24,4 @@ export { default as RadioButton } from './radiobutton/radiobutton';
 export { default as Rating } from './rating/rating';
 export { default as Chipsui } from './chipsui/chipsui';
 export { default as Tip } from './tip/tip';
+export { default as Floatdial } from './floatdial/floatdial';

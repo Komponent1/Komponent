@@ -23,10 +23,11 @@ import radiobutton from './radiobutton';
 import rating from './rating'
 import chipsui from './chipsui';
 import tip from './tip';
+import floatdial from './floatdial';
 
 export const ComponentList = {
   autocomplete, badge, button, buttoncarousel, slidecarousel, contextmenu,
   infinitescroll, licontextmenu, scrollnav, scrollspy, tab, btnmenu, checkbox,
   list, dragablepannel, togglemenu, slider, onoffswitch, dropdown, parallexscroll,
-  pointline, radiobutton, rating, chipsui, tip
+  pointline, radiobutton, rating, chipsui, tip, floatdial
 };
