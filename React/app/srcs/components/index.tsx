@@ -25,3 +25,4 @@ export { default as Rating } from './rating/rating';
 export { default as Chipsui } from './chipsui/chipsui';
 export { default as Tip } from './tip/tip';
 export { default as Floatdial } from './floatdial/floatdial';
+export { default as Loading } from './loading/loading';
