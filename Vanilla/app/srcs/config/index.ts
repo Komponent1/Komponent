@@ -25,10 +25,11 @@ import chips from './chips';
 import tip from './tip';
 import floatdial from './floatdial';
 import loading from './loading';
+import sortedlist from './sortedlist';
 
 export const componentList = {
   autocomplete, badge, button, changecarousel, slidecarousel, contextmenu, infinitescroll,
   licontextmenu, scrollspy, scrollnav, tab, btnmenu, checkbox, list, dragablepannel,
   togglemenu, slider, onoffswitch, dropdown, parallexscroll, pointline,
-  radiobutton, rating, chips, tip, floatdial, loading
+  radiobutton, rating, chips, tip, floatdial, loading, sortedlist
 };

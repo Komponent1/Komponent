@@ -25,3 +25,4 @@ export { default as chipsui } from './chipsui/chipsui';
 export { default as tip } from './tip/tip';
 export { default as floatdial } from './floatdial/floatdial';
 export { default as loading } from './loading/loading';
+export { default as sortedlist } from './sortedlist/sortedlist';
