@@ -1,0 +1,33 @@
+.kui_filterdropdown {
+  position: relative;
+}
+.kui_filterdropdown_input {
+  display: block;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  margin: 0;
+  border: none;
+
+  background: #E4E5E6;
+}
+.kui_filterdropdown_ul {
+  display: none;
+  position: absolute;
+  top: 2.6rem;
+
+  width: 100%;
+  background: #E4E5E6;
+
+  box-shadow: 0 0 5px grey;
+  border-radius: 0.4rem;
+
+  z-index: 11;
+}
+.kui_filterdropdown_li {
+  width: calc(100% - 20px);
+  padding: 4px 10px;
+}
+.kui_filterdropdown_li:hover {
+  background: rgba(172, 172, 172, 0.2);
+}
