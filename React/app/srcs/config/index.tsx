@@ -26,10 +26,12 @@ import tip from './tip';
 import floatdial from './floatdial';
 import loading from './loading'
 import sortedlist from './sortedlist';
+import filterdropdown from './filterdropdown';
 
 export const ComponentList = {
   autocomplete, badge, button, buttoncarousel, slidecarousel, contextmenu,
   infinitescroll, licontextmenu, scrollnav, scrollspy, tab, btnmenu, checkbox,
   list, dragablepannel, togglemenu, slider, onoffswitch, dropdown, parallexscroll,
-  pointline, radiobutton, rating, chipsui, tip, floatdial, loading, sortedlist
+  pointline, radiobutton, rating, chipsui, tip, floatdial, loading, sortedlist,
+  filterdropdown
 };
