@@ -27,7 +27,7 @@ const Filterdropdown: React.FC = ({ placeholder, init, list, setOption }: Prop) 
   const [value, setValue] = useState<string>(init ? init : '');
   
   return (
-    <style.div className='kui_fliterdropdown'>
+    <style.div className='kui_filterdropdown'>
       <style.input className='kui_filterdropdown_input'
         placeholder={placeholder ? placeholder : ''}
         onFocus={() => setDisplay(true)}
