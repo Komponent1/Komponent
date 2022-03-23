@@ -44,7 +44,7 @@ export const menu = styled.div`
   left: 0;
   top: 0;
 
-  height: 100vh;
+  height: calc(100vh - 20px);
   width: 200px;
   overflow-y: scroll;
   border-right: 1px solid rgba(172, 172, 172, 0.4);
