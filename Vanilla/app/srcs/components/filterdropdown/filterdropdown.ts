@@ -35,6 +35,11 @@ function filterdropdown({ placeholder, init, list, setOption }: Prop): HTMLDivEl
     if (value === '') makeLi(list, ul, input);
     else makeLi(list.filter(l => l.search(value) !== -1), ul, input);
   });
+  window.addEventListener('click', e => {
+    if (!(e.target as HTMLDivElement).closest('.kui_filterdropdown')) {
+      ul.style.display = 'none';
+    }
+  })
 
   makeLi(list, ul, input);
 

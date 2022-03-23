@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as style from './style';
 
 const MakeLi: React.FC = ({ list, setDisplay, setValue, setOption }) => (
@@ -26,6 +26,17 @@ const Filterdropdown: React.FC = ({ placeholder, init, list, setOption }: Prop) 
   const [display, setDisplay] = useState<boolean>(false);
   const [value, setValue] = useState<string>(init ? init : '');
   
+  useEffect(() => {
+    const click = (e: MouseEvent) => {
+      if ((e.target as HTMLElement).closest('.kui_ftilerdropdown')) return;
+      setDisplay(false);
+    };
+
+    window.addEventListener('click', click);
+
+    return () => window.removeEventListener('click', click);
+  }, []);
+
   return (
     <style.div className='kui_filterdropdown'>
       <style.input className='kui_filterdropdown_input'
@@ -37,7 +48,7 @@ const Filterdropdown: React.FC = ({ placeholder, init, list, setOption }: Prop) 
         show={display}>
         {value === '' ?
           <MakeLi list={list} setDisplay={setDisplay} setValue={setValue} setOption={setOption}/> :
-          <MakeLi list={list.filter(e => e.search(value) !== -1)} setDisplay={setDisplay} setValue={setValue} />
+          <MakeLi list={list.filter(e => e.search(value) !== -1)} setDisplay={setDisplay} setValue={setValue} setOption={setOption}/>
         }
       </style.menu>
     </style.div>
