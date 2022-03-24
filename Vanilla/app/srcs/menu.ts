@@ -10,7 +10,7 @@ type tComp = {
 } 
 function makeCategory (title: string, list: tComp, init) {
   const config = Object.entries(list).map(([key, conf]) => ({
-    text: key,
+    text: conf.name,
     act: (event: MouseEvent) => {
       router(key, conf.name, conf.render, conf.prop, conf.explain);
     }
