@@ -27,3 +27,4 @@ export { default as floatdial } from './floatdial/floatdial';
 export { default as loading } from './loading/loading';
 export { default as sortedlist } from './sortedlist/sortedlist';
 export { default as filterdropdown } from './filterdropdown/filterdropdown';
+export { default as opendrawer } from './opendrawer/opendrawer';
