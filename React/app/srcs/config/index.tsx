@@ -39,8 +39,9 @@ import floatdial from './public/floatdial';
 import loading from './public/loading';
 import filterdropdown from './public/filterdropdown';
 import opendrawer from './public/opendrawer';
+import multiopendrawer from './public/multiopendrawer';
 const PUBLIC = {
-  opendrawer, btnmenu, checkbox, togglemenu, slider, button, onoffswitch, dropdown, scrollnav, radiobutton, tip, floatdial, loading, filterdropdown
+  multiopendrawer, opendrawer, btnmenu, checkbox, togglemenu, slider, button, onoffswitch, dropdown, scrollnav, radiobutton, tip, floatdial, loading, filterdropdown
 }
 
 

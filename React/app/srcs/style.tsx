@@ -49,7 +49,32 @@ export const menu = styled.div`
   overflow-y: scroll;
   border-right: 1px solid rgba(172, 172, 172, 0.4);
 
-  padding: 10px;
+  padding: 5px 20px;
+
+  >.kui_multiopendrawer {
+    padding: 5px 20px;
+  }
+
+  & li {
+    border-radius: 5px;
+
+    font-size: 0.8rem;
+    color: rgb(70, 70, 70);
+  }
+
+  & li:hover {
+    cursor: pointer;
+    background-color: rgba(172, 172, 172, 0.2); 
+  }
+
+  & li.select {
+    background-color: #cacde0;
+    color: #2E5FF2;
+  }
+
+  & li.select:hover {
+    background-color: #bbbed3;
+  }
 `;
 export const menuTitle = styled.h2`
   padding-left: 15px;

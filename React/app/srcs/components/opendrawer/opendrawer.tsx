@@ -3,7 +3,7 @@ import * as style from './style';
 
 type Config = {
   text: string,
-  act: (e: MouseEvent, value: string) => void | any
+  act: (e: React.MouseEvent, value?: string) => void | any
 }
 type Prop = {
   title: string

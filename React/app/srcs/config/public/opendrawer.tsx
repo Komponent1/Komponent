@@ -1,6 +1,6 @@
 import { Opendrawer } from '../../components';
 import md from '../../components/opendrawer/README.md';
-import { CONFIG } from './configType';
+import { CONFIG } from '../configType';
 
 const config: CONFIG = {
   name: 'Open Drawer',

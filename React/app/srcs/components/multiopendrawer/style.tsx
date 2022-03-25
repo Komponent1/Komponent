@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const div = styled.div`
+export const div = styled.div<{ direction: string }>`
+  display: flex;
+  flex-direction: ${({ direction }) => direction};
+`;
+export const drawer = styled.div`
 
 `;
 export const head = styled.div`
@@ -33,4 +37,3 @@ export const li = styled.li`
   margin: 0;
   padding: 0.2rem 0.6rem;
 `;
-

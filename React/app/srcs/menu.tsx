@@ -1,56 +1,47 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { categoryList } from './config';
-import { Opendrawer } from './components';
+import { Multiopendrawer } from './components';
 import * as style from './style';
 
 const Menu = () => {
-  const [ select, setSelect ] = useState<number>([-1, 0]);
+  const ref = useRef<React.Ref>(null);
   const navigate = useNavigate();
-  
-  useEffect(() => {
-    const paths = window.location.pathname.split('/').filter(e => e !== '');
-    const path = paths[paths.length - 1];
-    if (path !== 'react') {
-      Object.entries(categoryList).forEach(([key, category], i) => {
-        const j = Object.keys(category).findIndex(e => e === path);
-        if (j !== -1) setSelect([i, j]);
-      })
-    }
-  }, []);
+  const paths = window.location.pathname.split('/').filter(e => e !== '');
+  const path = paths[paths.length - 1];
+  const idx = path !== 'react' ? Object.entries(categoryList).findIndex(([key, category]) => 
+     Object.keys(category).findIndex(e => e === path) !== -1
+  ) : -1;
 
   useEffect(() => {
-    
-  }, [ select ])
+    if (!ref) return;
+    if (path !== 'react') {
+      console.log(Array.from(ref.current.getElementsByClassName('kui_multiopendrawer_li')));
+      /*  update select class in path ===, but dont have li key */        
+    }
+  }, [ ref ]);
+  
+  const config = Object.entries(categoryList).map(([title, category]) => ({
+    title,
+    list: Object.entries(category).map(([key, conf]) => ({
+      text: conf.name,
+      act: (e, value) => {        
+        const lis = e.target.closest('.kui_multiopendrawer').getElementsByClassName('kui_multiopendrawer_li') as HTMLCollection;
+        Array.from(lis).map(li => {
+          if (li === e.target) li.classList.add('select');
+          else li.classList.remove('select');
+        })
+        navigate(key);
+      }
+    }))
+  }));
 
   return (
-    <style.menu>
+    <style.menu ref={ref}>
       <style.menuTitle>Components</style.menuTitle>
-      {Object.entries(categoryList).map(([title, category], i) => {
-        const config = Object.entries(category).map(([key, conf], j) => ({
-          text: conf.name, act: () => {
-            setSelect([i, j]);
-            navigate(key)
-          }
-        }))
-
-        return (
-          <Opendrawer key={i} title={title} config={config} init={select[0] === i}/>
-        );
-      })}
+      <Multiopendrawer config={config} init={idx}/>
     </style.menu>
   );
 }
 
 export default Menu;
-
-/*
-<Link to={`${key}`} key={i}>
-            <style.li
-              select={select === i}
-              onClick={e => setSelect(i)}
-              >
-              {conf.name}
-            </style.li>
-          </Link>
-*/

@@ -20,4 +20,8 @@ function makeCategory (title: string, list: tComp, init) {
   menu.appendChild(Opendrawer);
 }
 Object.entries(categoryList).forEach(([key, conf]) => makeCategory(key, conf, false));
-Array.from(document.getElementById('menu').getElementsByClassName('kui_opendrawer_li')).forEach(e => e.classList.add('menu_li'));
+Array.from(document.getElementById('menu')
+  .getElementsByClassName('kui_opendrawer_li'))
+  .forEach(e => {
+    e.classList.add('menu_li')
+  });

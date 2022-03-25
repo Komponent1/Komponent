@@ -29,3 +29,4 @@ export { default as Loading } from './loading/loading';
 export { default as Sortedlist } from './sortedlist/sortedlist';
 export { default as Filterdropdown } from './filterdropdown/filterdropdown';
 export { default as Opendrawer } from './opendrawer/opendrawer';
+export { default as Multiopendrawer } from './multiopendrawer/multiopendrawer';
