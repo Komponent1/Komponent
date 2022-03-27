@@ -48,7 +48,7 @@ body {
   top: 0;
   left: 0;
   width: 200px;
-  height: 100vh;
+  height: calc(100vh - 20px);
   overflow-y: scroll;
   border-right: 1px solid rgba(172, 172, 172, 0.4);
 
@@ -60,25 +60,27 @@ body {
   margin-top: 100px;
 }
 
-#menu li {
-  list-style-type: none;
-  width: calc(100% - 20px);
-  padding: 2px 0 2px 20px;
-  margin: 4px 0 4px 0;
+#menu {
+  padding: 5px 20px;
+}
+#menu .kui_opendrawer {
+  padding: 5px 20px;
+}
+#menu ul li {
   border-radius: 5px;
 
-  font-size: 13px;
+  font-size: 0.8rem;
   color: rgb(70, 70, 70);
 }
 #menu li:hover {
   cursor: pointer;
   background-color: rgba(172, 172, 172, 0.2);
 }
-#menu .select {
+#menu ul li.select {
   background-color: #cacde0;
   color: #2E5FF2;
 }
-#menu .select:hover {
+#menu ul li.select:hover {
   background-color: #bbbed3;
 }
 

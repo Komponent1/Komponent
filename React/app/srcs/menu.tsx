@@ -1,32 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { ComponentList } from './config';
+import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { categoryList, componentList } from './config';
+import { Multiopendrawer } from './components';
 import * as style from './style';
 
 const Menu = () => {
-  const [ select, setSelect ] = useState<number>(-1);
-  
+  const ref = useRef<React.Ref>(null);
+  const navigate = useNavigate();
+  const paths = window.location.pathname.split('/').filter(e => e !== '');
+  const path = paths[paths.length - 1];
+  const idx = path !== 'react' ? Object.entries(categoryList).findIndex(([key, category]) => 
+     Object.keys(category).findIndex(e => e === path) !== -1
+  ) : -1;
+
   useEffect(() => {
-    const paths = window.location.pathname.split('/').filter(e => e !== '');
-    const path = paths[paths.length - 1];
+    if (!ref) return;
     if (path !== 'react') {
-      setSelect(Object.entries(ComponentList).findIndex(([key, _]) => key === path))
+      ref.current.getElementsByClassName('kui_multiopendrawer_li')[
+        Object.keys(componentList).findIndex(e => e === path)
+      ].classList.add('select');
     }
-  }, []);
+  }, [ ref ]);
+  
+  const config = Object.entries(categoryList).map(([title, category]) => ({
+    title,
+    list: Object.entries(category).map(([key, conf]) => ({
+      text: conf.name,
+      act: (e, value) => {        
+        const lis = e.target.closest('.kui_multiopendrawer').getElementsByClassName('kui_multiopendrawer_li') as HTMLCollection;
+        Array.from(lis).map(li => {
+          if (li === e.target) li.classList.add('select');
+          else li.classList.remove('select');
+        })
+        navigate(key);
+      }
+    }))
+  }));
 
   return (
-    <style.menu>
+    <style.menu ref={ref}>
       <style.menuTitle>Components</style.menuTitle>
-      {Object.entries(ComponentList).map(([key, conf], i) => (
-        <Link to={`${key}`} key={i}>
-          <style.li
-            select={select === i}
-            onClick={e => setSelect(i)}
-            >
-            {conf.name}
-          </style.li>
-        </Link>
-      ))}
+      <Multiopendrawer config={config} init={idx}/>
     </style.menu>
   );
 }

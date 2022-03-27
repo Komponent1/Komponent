@@ -83,3 +83,7 @@ Komponent Project is make variouse elements & show them.
 24. Toggle Menu
   - [vanilla](https://komponent.herokuapp.com/react/vanilla/togglemenu)
   - [react](https://komponent.herokuapp.com/react/togglemenu)
+
+25. Tip
+  - [vanilla](https://komponent.herokuapp.com/react/vanilla/tip)
+  - [react](https://komponent.herokuapp.com/react/tip)
