@@ -48,7 +48,7 @@ body {
   top: 0;
   left: 0;
   width: 200px;
-  height: 100vh;
+  height: calc(100vh - 20px);
   overflow-y: scroll;
   border-right: 1px solid rgba(172, 172, 172, 0.4);
 
@@ -60,25 +60,27 @@ body {
   margin-top: 100px;
 }
 
-#menu li {
-  list-style-type: none;
-  width: calc(100% - 20px);
-  padding: 2px 0 2px 20px;
-  margin: 4px 0 4px 0;
+#menu {
+  padding: 5px 20px;
+}
+#menu .kui_opendrawer {
+  padding: 5px 20px;
+}
+#menu ul li {
   border-radius: 5px;
 
-  font-size: 13px;
+  font-size: 0.8rem;
   color: rgb(70, 70, 70);
 }
 #menu li:hover {
   cursor: pointer;
   background-color: rgba(172, 172, 172, 0.2);
 }
-#menu .select {
+#menu ul li.select {
   background-color: #cacde0;
   color: #2E5FF2;
 }
-#menu .select:hover {
+#menu ul li.select:hover {
   background-color: #bbbed3;
 }
 
@@ -931,3 +933,272 @@ body {
 
   cursor: pointer;
 }
+.kui_tip {
+  --hover: 0;
+  position: relative;
+}
+.kui_tip:hover {
+  --hover: 1;
+}
+.kui_tip_background {
+  background: rgba(172, 172, 172, 0.3);
+  position: absolute;
+  top: -60%;
+  left: -60%;
+
+  opacity: var(--hover);
+  width: 220%;
+  height: 220%;
+
+  border-radius: 100%;
+}
+.kui_tip_tip {
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  
+  font-size: 8px;
+  padding: 3px;
+  border-radius: 3px;
+  background: rgb(120, 120, 120);
+  white-space: nowrap;
+  color: white;
+
+  transform: scale(var(--hover)) translateX(-50%);
+  transform-origin: center top;
+  transition: transform 50ms;
+}
+
+.kui_floatdial {
+  --display: none;
+  --scale: 0;
+  position: relative;
+}
+.kui_floatdial_button {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: rgb(150, 150, 150);
+
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+
+  box-shadow: 1px 1px 5px rgb(172, 172, 172);
+}
+.kui_floatdial_button:hover {
+  transform: rotate(45deg);
+  transform-origin: center;
+  transition: transform 0.5s;
+}
+.kui_floatdial_list {
+  display: var(--display);
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  transform: translate(-50%, -100%);
+}
+
+.kui_floatdial_item {
+  margin-bottom: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  
+  font-size: 15px;
+  text-align: center;
+  line-height: 30px;
+
+  box-shadow: 1px 1px 5px rgba(172, 172, 172);
+  background: white;
+
+  transform: scale(var(--scale), var(--scale));
+  transform-origin: center;
+  transition: transform 0.3s;
+}
+.kui_floatdial_list > .kui_tip > .kui_tip_background{
+  display: none !important;
+}
+.kui_floatdial_list > .kui_tip > .kui_tip_tip {
+  left: -50% !important;
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0, 0);
+  } to {
+    transform: scale(1, 1);
+  }
+}
+.kui_floatdial_item.anim {
+  animation: appear 0.3s;
+}
+
+.kui_loading {
+  width: 100%;
+  height: 100%;
+  line-height: 100%;
+  text-align: center;
+}
+.kui_loading_circle {
+  display: inline-block;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+
+  border-top: 10px solid rgb(90, 90, 90);
+  border-right: 10px solid rgb(172, 172, 172);
+  border-bottom: 10px solid rgb(172, 172, 172);
+  border-left: 10px solid rgb(172, 172, 172);
+}
+@keyframes spin {
+  from {
+    transform: rotate(45deg);
+  } to {
+    transform: rotate(405deg);
+  }
+}
+.kui_loading_circle.linearspin {
+  animation: spin 1s infinite linear;
+}
+.kui_loading_circle.delayspin {
+  position: relative;
+  border: 10px solid rgb(90, 90, 90); 
+}
+.kui_loading_circle.delayspin::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  border-top: 10px solid rgb(172, 172, 172, 0);
+  border-left: 10px solid rgb(172, 172, 172);
+  border-right: 10px solid rgb(172, 172, 172, 0);
+  border-bottom: 10px solid rgb(172, 172, 172);
+
+  animation: spin 1.5s infinite ease 0.2s;
+}
+.kui_loading_circle.delayspin::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  border-top: 10px solid rgb(172, 172, 172);
+  border-left: 10px solid rgb(172, 172, 172, 0);
+  border-right: 10px solid rgb(172, 172, 172);
+  border-bottom: 10px solid rgb(172, 172, 172, 0);
+
+  animation: spin 1.5s infinite ease;
+}
+
+@keyframes scale {
+  0% {
+    transform: scaleY(1);
+  } 30% {
+    transform: scaleY(1.7);
+  } 60% {
+    transform: scaleY(1);
+  } 100% {
+    transform: scaleY(1);
+  }
+}
+.kui_loading_lines {
+  display: inline-flex;
+}
+.kui_loading_line {
+  --delay: 0;
+  width: 10px;
+  height: 40px;
+  margin: 0 3px;
+
+  background: rgb(90, 90, 90);
+
+  transform-origin: center;
+  animation: scale 1.2s infinite ease var(--delay);
+}
+
+.kui_sortedlist {
+  width: 800px;
+}
+.kui_filterdropdown {
+  position: relative;
+}
+.kui_filterdropdown_input {
+  display: block;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  margin: 0;
+  border: none;
+
+  background: #E4E5E6;
+}
+.kui_filterdropdown_ul {
+  display: none;
+  position: absolute;
+  top: 2.6rem;
+
+  width: 100%;
+  background: #E4E5E6;
+  max-height: 15rem;
+  overflow-y: scroll;
+
+  box-shadow: 0 0 5px grey;
+  border-radius: 0.4rem;
+
+  z-index: 11;
+}
+.kui_filterdropdown_li {
+  width: calc(100% - 20px);
+  padding: 4px 10px;
+}
+.kui_filterdropdown_li:hover {
+  background: rgba(172, 172, 172, 0.2);
+}
+
+.kui_opendrawer {
+  --height: 0;
+}
+.kui_opendrawer_head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.kui_opendrawer_head:hover {
+  cursor: pointer;
+}
+.kui_opendrawer_name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.kui_opendrawer_btn {
+  padding-top: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 0.5rem;
+}
+.kui_opendrawer_ul {
+  max-height: var(--height);
+  transition: max-height 0.3s;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+}
+.kui_opendrawer_li {
+  margin: 0;
+  padding: 0.2rem 0.6rem;
+}
+
+.kui_multiopendrawer {
+  display: flex;
+  flex-direction: row
+}
+

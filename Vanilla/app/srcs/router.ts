@@ -7,10 +7,10 @@ export const renderer = (name: string, renderFunc: Function, prop: Object, expla
   window.scrollTo(0, 0);
 }
 
-export default (path: string, name?: string, render?: Function, prop?: Object, explain?: string) => {
+export default (path: string, name?: string, render?: Function, prop?: Object, explain?: string, isback?: boolean) => {
   const app = document.getElementById('root') as HTMLDivElement;
 
-  window.history.pushState({}, path, window.location.origin + '/vanilla/' + path);
+  if (!isback) window.history.pushState({}, path, window.location.origin + '/vanilla/' + path);
   if (name) renderer(name, render, prop, explain, app, path);
   else home(app);
 };
