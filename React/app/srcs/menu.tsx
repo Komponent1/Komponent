@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { categoryList } from './config';
+import { categoryList, componentList } from './config';
 import { Multiopendrawer } from './components';
 import * as style from './style';
 
@@ -16,8 +16,9 @@ const Menu = () => {
   useEffect(() => {
     if (!ref) return;
     if (path !== 'react') {
-      console.log(Array.from(ref.current.getElementsByClassName('kui_multiopendrawer_li')));
-      /*  update select class in path ===, but dont have li key */        
+      ref.current.getElementsByClassName('kui_multiopendrawer_li')[
+        Object.keys(componentList).findIndex(e => e === path)
+      ].classList.add('select');
     }
   }, [ ref ]);
   

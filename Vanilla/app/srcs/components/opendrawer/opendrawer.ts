@@ -22,7 +22,7 @@ function opendrawer ({ title, config, init = false }: Prop): HTMLDivElement {
   wrapper.appendChild(head);
   const ul = createElem('ul', 'kui_opendrawer_ul');
   wrapper.appendChild(ul);
-  ul.style.setProperty('--height', init ? '10rem' : '0');
+  wrapper.style.setProperty('--height', init ? '100vh' : '0');
   config.forEach(conf => {
     const li = createElem('li', 'kui_opendrawer_li');
     li.innerText = conf.text;
@@ -31,11 +31,11 @@ function opendrawer ({ title, config, init = false }: Prop): HTMLDivElement {
   });
 
   head.addEventListener('click', () => {
-    if (ul.style.getPropertyValue('--height') === '10rem') {
-      ul.style.setProperty('--height', '0');
+    if (wrapper.style.getPropertyValue('--height') === '100vh') {
+      wrapper.style.setProperty('--height', '0');
       btn.innerText = '\u25bc'
     } else {
-      ul.style.setProperty('--height', '10rem');
+      wrapper.style.setProperty('--height', '100vh');
       btn.innerText = '\u25b2'
     }
   })

@@ -1,21 +1,23 @@
-er1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/app/srcs/components/multiopendrawer))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/multiopendrawer))
 
 ### How to Use
 
 ~~~javascript
-import { Multiopendrawer } from 'komponent/react/component';
+import { multiopendrawer } from 'komponent/vanilla/component';
 
-<Multiopendrawer
-  config={[
+const MultiOpenDrawer = multiopendrawer({
+  config: {
     title: 'string of drawer title',
       list: {
       text: 'string of drawer list title',
       act: /* action function when click list */
     }[]
-  }]}
-  direction={/* direction of drawer layout */}
-  init={/* first open id (if no = -1) */}
-/>
+  }[],
+  direction: /* direction of drawer layout */
+  init: /* first open id (if no = -1) */
+});
+
+document.body.appendChild(MultiOpenDrawer);
 ~~~
 
 ### Parameter

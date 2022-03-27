@@ -63,7 +63,7 @@ body {
 #menu {
   padding: 5px 20px;
 }
-#menu > .kui_opendrawer {
+#menu .kui_opendrawer {
   padding: 5px 20px;
 }
 #menu ul li {

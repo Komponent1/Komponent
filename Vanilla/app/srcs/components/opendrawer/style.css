@@ -1,5 +1,5 @@
 .kui_opendrawer {
-  
+  --height: 0;
 }
 .kui_opendrawer_head {
   display: flex;
@@ -19,8 +19,6 @@
   font-size: 0.5rem;
 }
 .kui_opendrawer_ul {
-  --height: 0;
-
   max-height: var(--height);
   transition: max-height 0.3s;
   list-style-type: none;

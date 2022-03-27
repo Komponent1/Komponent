@@ -25,6 +25,12 @@ document.body.appendChild(OpenDrawer);
 |config|`아래 참고`|`undefined`|yes|셀렉터의 선택 요소들|
 |init|`boolean`|`false`|no|최초에 리스트 오픈 여부|
 
+```typescript
+type Config = {
+  text: string,
+  act: (e: MouseEvent, value: string) => void | any
+}
+```
 
 ### 기능
 버튼을 통해 특정 요소의 on/off를 활성화 하는 컴포넌트

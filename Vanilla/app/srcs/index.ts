@@ -3,6 +3,7 @@ import './markdown.css'
 import './menu';
 import './header';
 import home from './home';
+import initMenu from './menu';
 import router from './router';
 import { componentList } from './config';
 
@@ -12,13 +13,16 @@ const init = (): void => {
 
   switch(path) {
     case 'vanilla':
+      initMenu();
       home(app);
       break;
     case undefined:
+      initMenu();
       router('');
       break;
     default:
       const conf = componentList[path];
+      initMenu(path);
       router(path, conf.name, conf.render, conf.prop, conf.explain);
   }
 };

@@ -25,8 +25,8 @@ export const btn = styled.div`
   margin-left: 0.5rem;
   font-size: 0.5rem;
 `;
-export const ul = styled.ul<{ height: number }>`
-  max-height: ${({ height }) => height}rem;
+export const ul = styled.ul<{ height: string }>`
+  max-height: ${({ height }) => height}vh;
   transition: max-height 0.3s;
   list-style-type: none;
   padding: 0;

@@ -28,7 +28,7 @@ const Multiopendrawer: React.FC = ({ config, direction = 'column', init = -1 }: 
               {select[i] ? '\u25b2' : '\u25bc'}
             </style.btn>
           </style.head>
-          <style.ul className='kui_multiopendrawer_ul' height={select[i] ? 10 : 0}>
+          <style.ul className='kui_multiopendrawer_ul' height={select[i] ? 100 : 0}>
             {conf.list.map((li, j) => (
               <style.li className='kui_multiopendrawer_li' key={j}
                 onClick={e => {
