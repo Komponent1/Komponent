@@ -1,0 +1,35 @@
+.kui_btnmenu {
+  display: inline-block;
+  position: relative;
+}
+.kui_btnmenu_btn {
+  --color: 'rgba(0,0,0,0)';
+  display: 'inline-block';
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--color);
+  
+  text-align: center;
+  line-height: 20px;
+}
+.kui_btnmenu_btn:hover {
+  background-color: rgba(172, 172, 172, 0.4);
+}
+.kui_btnmenu_ul {
+  display: none;
+
+  position: absolute;
+  top: auto;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 0px 5px grey;
+
+  white-space: nowrap;
+}
+.kui_btnmenu_li {
+  padding: 5px 15px;
+}
+.kui_btnmenu_li:hover {
+  background-color: rgba(172, 172, 172, 0.5);
+}

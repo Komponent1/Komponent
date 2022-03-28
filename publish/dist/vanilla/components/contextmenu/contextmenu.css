@@ -1,0 +1,42 @@
+.kui_contextmenu {
+  display: inline-block;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px 1px gray;
+}
+
+.kui_contextmenu_menu {
+  display: block;
+  position: relative;
+  
+  width: 200px;
+  height: 20px;
+
+  padding: 5px 10px 5px 10px;
+  line-height: 20px;
+  margin: 0;
+}
+.kui_contextmenu_menu:hover {
+  cursor: pointer;
+  background-color: rgba(172, 172, 172, 0.2);
+}
+
+.kui_contextmenu_context {
+  --top: 0;
+  --left: 0;
+
+  display: none;
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  z-index: 99;
+
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px gray;
+  
+  background-color: rgb(240, 240, 240);
+
+  padding: 10px;
+  margin: 0;
+
+  white-space: nowrap;
+}

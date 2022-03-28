@@ -1,0 +1,27 @@
+{
+  "name": "@seolim/komponent",
+  "version": "0.0.2",
+  "description": "Component package",
+  "module": "dist/index.js",
+  "main": "dist/index.js",
+  "dependencies": {
+    "@seolim/komponent": "^0.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.1",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7"
+  },
+  "scripts": {
+    "heroku-prebuild": "cd Server/app && npm install",
+    "start": "cd Server/app && npm start",
+    "ptest": "rm -rf dist && mkdir dist && babel --config-file ./config/babel.config.json srcs -d dist --copy-files"
+  }
+}

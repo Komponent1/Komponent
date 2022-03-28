@@ -1,0 +1,13 @@
+FROM node:16-alpine
+
+COPY publish /usr/app
+COPY React/app/srcs /usr/react
+COPY Vanilla/app/srcs /usr/vanilla
+WORKDIR /usr/app
+
+ENV NODE_ENV=development
+ENV CHOKIDAR_USEPOLLING=true
+
+RUN npm install
+
+CMD ["tail", "-f", "/dev/null"]

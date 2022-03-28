@@ -1,0 +1,47 @@
+.kui_slidecarousel {
+  position: relative;
+  
+  width: 400px;
+  height: 200px;
+  overflow: hidden;
+}
+.kui_slidecarousel_slider {
+  --x: -400px;
+  --sec: 0.5;
+
+  display: flex;
+  width: 3000px;
+
+  transform: translateX(var(--x));
+  transition: transform var(--sec);
+}
+.kui_slidecarousel_item {
+  width: 400px;
+  height: 200px;
+}
+.kui_slidecarousel_rbutton {
+  background: none;
+  color: white;
+  width: 40px;
+  height: 30px;
+  font-weight: bold;
+  border: none;
+
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  font-size: 30px;
+}
+.kui_slidecarousel_lbutton {
+  background: none;
+  color: white;
+  width: 40px;
+  height: 30px;
+  font-weight: bold;
+  border: none;
+
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  font-size: 30px;
+}
