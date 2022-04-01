@@ -1,0 +1,35 @@
+.kui_tip {
+  --hover: 0;
+  position: relative;
+}
+.kui_tip:hover {
+  --hover: 1;
+}
+.kui_tip_background {
+  background: rgba(172, 172, 172, 0.3);
+  position: absolute;
+  top: -60%;
+  left: -60%;
+
+  opacity: var(--hover);
+  width: 220%;
+  height: 220%;
+
+  border-radius: 100%;
+}
+.kui_tip_tip {
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  
+  font-size: 8px;
+  padding: 3px;
+  border-radius: 3px;
+  background: rgb(120, 120, 120);
+  white-space: nowrap;
+  color: white;
+
+  transform: scale(var(--hover)) translateX(-50%);
+  transform-origin: center top;
+  transition: transform 50ms;
+}

@@ -1,22 +1,41 @@
 import styled from 'styled-components';
 
 export const div = styled.div`
-  width: 500px;
+  width: 400px;
+  position: relative;
+
+  font-size: 20px;
 `;
 export const input = styled.input`
-  width: calc(100% - 6px);
-  padding: 3px;
+  padding: 7px 10px;
+  margin: 0;
+
+  width: calc(100% - 24px);
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
 `;
-export const ul = styled.div<{ show: boolean }>`
+export const ul = styled.ul<{ show: boolean }>`
   display: ${({ show }) => show ? 'block' : 'none'};
   
-  width: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  position: absolute;
+  top: auto;
+  left: 1px;
+  list-style-type: none;
 
-  border: 1px solid black;
+  width: calc(100% - 2px);
+  max-height: 100px;
+  overflow-y: scroll;
+  z-index: 10;
+  margin: 0;
+
+  box-shadow: 0px 0px 5px black;
+  border-radius: 4px;
+  padding: 0px;
+  background-color: white;
 `;
-export const li = styled.div`
+export const li = styled.li`
   width: calc(100% - 20px);
-  padding: 10px;
+  margin: 0;
+  padding: 7px 10px;
 `;

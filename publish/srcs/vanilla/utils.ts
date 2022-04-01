@@ -65,8 +65,8 @@ export function makeDummyElem(): HTMLElement[] {
   const elems = colors.map(e => {
     const elem = document.createElement('div');
     elem.style.backgroundColor = e;
-    elem.style.width = '100%';
-    elem.style.height = '100%';
+    elem.style.width = '400px';
+    elem.style.height = '200px';
 
     return elem;
   })

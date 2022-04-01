@@ -21,8 +21,7 @@ document.body.appendChild(badge);
 |click|`(e: MouseEvent) => void`|`e => {}`|no|버튼 클릭시(`mouseup`) 작동할 동작|
 
 ### 기능
-서버로부터 특정 요소의 여부를 확인하여 해당 요소를 엘리먼트의 우상단에 표기, 
-주로 새로운 요소에 대한 알람으로 활용된다.
+마우스 클릭시 적용된 동작을 하는 컴포넌트
 
 ### structure(for styling)
 ```html

@@ -1,33 +1,11 @@
 .kui_scrollspy {
-  width: 800px;
-}
-.kui_scrollspy_nav {
-  display: flex;
-  flex-direction: row;
-
-  border: 1px solid black;
-}
-.kui_scrollspy_navitem {
-  --num: 0;
-  
-  width: calc(100% / var(--num));
-  height: 20px;
-  border: 1px solid black;
-}
-.kui_scrollspy_navitem.select {
-  background: grey;
-}
-.kui_scrollspy_navitem:hover {
-  background: grey;
+  position: relative;
 }
 .kui_scrollspy_itemwrap {
   width: 100%;
-  height: 250px;
 
   overflow-y: scroll;
 }
 .kui_scrollspy_item {
   width: 100%;
-  height: 250px;
-  border: 1px solid black;
 }

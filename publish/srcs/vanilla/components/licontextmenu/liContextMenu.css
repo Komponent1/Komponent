@@ -45,3 +45,6 @@
   position: relative;
   padding: 3px;
 }
+.kui_licontextmenu_li:after {
+  content: attr(data-content);
+}

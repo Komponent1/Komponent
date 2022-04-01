@@ -1,6 +1,4 @@
 .kui_tab {
-  width: 500px;
-
   border: 1px solid rgba(172, 172, 172, 0.5);
   text-align: center;
 }
@@ -17,14 +15,10 @@
 }
 .kui_tab_navitem {
   width: calc(100% / var(--num));
-}
-.kui_tab_navitem {
   z-index: 13;
 }
 .kui_tab_item {
   width: 100%;
-
-  padding: 10px;
 }
 
 .kui_tab_glider {

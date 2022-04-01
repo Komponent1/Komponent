@@ -7,6 +7,7 @@ import { scrollspy } from 'komponent/vanilla/component';
 
 const scrollspy = scrollspy({ 
   elems: /* Element of inside  */
+  height: 'wrap item height, recommand same of elems'
 });
 
 document.body.appendChild(scrollspy);
@@ -17,6 +18,7 @@ document.body.appendChild(scrollspy);
 |name|type|default|must|explain|
 |:---|:---|:---|:---|:---|
 |elems|`HTMLElement[]`|`undefined`|yes|scolling에 잡힐 각 object|
+|height|`string`|`100%`|no|item wrap height|
 
 
 ### 기능

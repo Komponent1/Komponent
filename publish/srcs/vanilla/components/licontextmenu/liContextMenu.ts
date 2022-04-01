@@ -18,6 +18,7 @@ function makeContext(type: string, config: config[], parent: HTMLElement): HTMLU
     const li = createElem('li', 'kui_licontextmenu_li');
     li.innerText = e.name;
     if (e.li) {
+      li.setAttribute('data-content', '>')
       const subul = makeContext('sub', e.li, li);
       li.addEventListener('click', event => {
         event.stopPropagation();

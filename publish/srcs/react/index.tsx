@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import * as style from './style';
 import 'highlight.js/styles/atom-one-dark.css';
+import './markdown.css';
 
 import Menu from './menu';
 import Main from './main';

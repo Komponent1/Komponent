@@ -1,0 +1,68 @@
+.kui_radiobutton {
+  --height: 30px;
+
+  display: flex;
+  flex-direction: row;
+  height: var(--height);
+}
+.kui_radiobutton_btnset {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  height: 100%;
+}
+.kui_radiobutton_button {
+  --scale: 0;
+  --opacity: 0;
+  --border: gray;
+
+  position: relative;
+  height: 100%;
+  width: var(--height);
+}
+.kui_radiobutton_button:hover {
+  --opacity: 1;
+}
+.kui_radiobutton
+.kui_radiobutton_round {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+
+  height: calc(var(--height) - 12px);
+  width: calc(var(--height) - 12px);
+
+  border: 2px solid var(--border);
+  border-radius: var(--height);
+}
+.kui_radiobutton_background {
+  opacity: var(--opacity);
+  position: absolute;
+  width: var(--height);
+  height: var(--height);
+  top: 0;
+  left: 0;
+  background-color: rgba(172, 172, 172, 0.3);
+  border-radius: var(--height);
+}
+.kui_radiobutton_icon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+
+  height: calc(var(--height) - 16px);
+  width: calc(var(--height) - 16px);
+
+  border-radius: var(--height);
+  background-color: black;
+  transform: scale(var(--scale));
+  transition: transform 0.3s;
+}
+
+.kui_radiobutton_button.select {
+  --scale: 1;
+  --border: black;
+}
+.kui_radiobutton_label {
+  
+}

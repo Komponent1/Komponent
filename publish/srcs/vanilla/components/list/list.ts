@@ -1,5 +1,5 @@
 import { createElem } from '../../utils';
-import { checkbox } from '../'
+import { checkbox } from '..'
 import './style.css';
 
 type Config = {
