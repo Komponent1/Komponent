@@ -1,6 +1,6 @@
 {
   "name": "@seolim/komponent",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Component package",
   "module": "dist/main.bundle.js",
   "main": "dist/main.bundle.js",
