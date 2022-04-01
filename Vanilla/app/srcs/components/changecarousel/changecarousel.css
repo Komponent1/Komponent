@@ -1,6 +1,4 @@
 .kui_changecarousel {
-  width: 400px;
-  height: 200px;
   position: relative;
 }
 .kui_changecarousel_item {
@@ -16,7 +14,7 @@
 }
 .kui_changecarousel_btnset {
   position: absolute;
-  top: 150px;
+  bottom: 10%;
   text-align: center;
   width: 100%;
 }

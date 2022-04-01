@@ -2,10 +2,11 @@ import './autocomplete.css'
 import { createElem, debounce } from '../../utils';
 
 type Prop = {
-  fetcher: () => Promise<{ data: string[] | string }>,
-  placeholder: string
+  fetcher: (value?: string) => Promise<{ data: string[] | string }>,
+  placeholder: string,
+  type?: 'server'|'local'
 }
-function autocomplete({ fetcher, placeholder = '' }: Prop): HTMLDivElement {
+function autocomplete({ fetcher, placeholder = '', type = 'server' }: Prop): HTMLDivElement {
   const wrapper = createElem('div', 'kui_autocomplete') as HTMLDivElement;
   const input = createElem('input', 'kui_autocomplete_input') as HTMLInputElement;
   const ul = createElem('ul', 'kui_autocomplete_ul');
@@ -21,15 +22,14 @@ function autocomplete({ fetcher, placeholder = '' }: Prop): HTMLDivElement {
       li.addEventListener('click', e => {
         e.stopPropagation();
         input.value = (e.target as HTMLLIElement).innerText;
-        update();
-        ul.style.display = 'none';
+        localupdate();
       });
 
       ul.appendChild(li);
     }
   }
 
-  const update = async () => {
+  const localupdate = async () => {
     const { data } = await fetcher() as { data: string[] };
     const value = input.value;
 
@@ -39,13 +39,17 @@ function autocomplete({ fetcher, placeholder = '' }: Prop): HTMLDivElement {
       makelist(data.filter(e => e.search(value) !== -1 && (value !== '')));
     }
   }
+  const serverupdate = async (value: string) => {
+    const { data } = await fetcher(value) as { data: string[] };
+    makelist(data);
+  }
 
   input.addEventListener('keyup', debounce(() => {
-    update();
+    localupdate();
   }, 500));
   input.addEventListener('focusin', () => {
     ul.style.display = 'block';
-    update();
+    localupdate();
   });
   window.addEventListener('click', e => {
     if ((e.target as HTMLElement).closest('.kui_autocomplete')) return;

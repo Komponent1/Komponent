@@ -1,21 +1,40 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/ree/master/Vanilla/app/srcs/components/tab))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/app/srcs/components/togglemenu))
 
-### 기능
-1. Nav를 클릭하면 해당 nav에 연결된 content를 하위에 표기한다
-2. Tab은 각각의 nav를 클릭시 해당 요소의 context를 보여준다.
-
-### 사용
-1. tab의 title과 해당하는 element를 리스트로 받아 사용
+### How to Use
 
 ~~~javascript
-type Tab = {
-  title: string,
-  elem: HTMLElement
-}
-parameter: {
-  tabs: Tab[]
-}
+import { ToggleMenu } from 'komponent/react/component';
+
+<ToggleMenu
+  type='type of toggle menu'
+  config={/* attribute of toggle button */}
+/>
 ~~~
 
-### 특이사항
-1. 사이즈에 유의하며 작업
+### Parameter
+
+|name|type|default|must|explain|
+|:---|:---|:---|:---|:---|
+|type|`'nomal'\|'must'\|'multi'`|no|버튼 선택 타입|
+|config|`Config[](아래 참고)`|`undefined`|yes|토글버튼의 요소들|
+
+```typescript
+type Config = {
+  type: 'img'|'text'|'elem',
+  src: string | HTMLElement,
+  act: Function
+}
+```
+
+### 기능
+특정 버튼을 클릭함으로써 해당 속성을 활성화 시키는 멀티버튼
+
+### structure(for styling)
+```html
+<div class='kui_togglemenu'>
+  <div class='kui_togglemenu_icon'/>
+  <div class='kui_togglemenu_icon'/>
+  ...
+</div>
+
+```

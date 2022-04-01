@@ -1,20 +1,31 @@
-ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/Vanilla/app/srcs/components/btnmenu))
+ver1.0 ([github link](https://github.com/Komponent1/Komponent/tree/master/React/app/srcs/components/badge))
 
-### 기능
-1. 특정 언어에 대한 검색 자동완성을 지원
-2. 해당 언어를 클릭하면 input에 해당 요소를 삽입
-
-### 사용
-1. 데이터를 가져오는 API fethcer를 받아서 동작시킨다
+### How to Use
 
 ~~~javascript
-paramter: {
-  fetcher: (any) => Promise<data>
-}
+import { Badge } from 'komponent/react/component';
+
+<Badge fetcher={/* data of  */}>
+  <children component of apply badge/>
+</Badge>
 ~~~
 
-### 특이사항
-1. keyup과 click에 대한 Event binding의 차이를 구별할것
+### Parameter
 
-### BUG
-1. UL이 추가적으로 생기는 문제 발생
+|name|type|default|must|explain|
+|:---|:---|:---|:---|:---|
+|fetcher|`() => Promise<{data: number \| string}>`|`undefined`|yes|서버로 부터 받아온 정보(반드시 숫자로 변경하여 넘겨줄것)|
+|childern|`ReactNode`|`undefined`|yes|badge가 적용될 엘리먼트|
+
+### 기능
+서버로부터 특정 요소의 여부를 확인하여 해당 요소를 엘리먼트의 우상단에 표기, 
+주로 새로운 요소에 대한 알람으로 활용된다.
+
+### structure(for styling)
+```html
+<div class='kui_badge'>
+  <!-- This for child element -->
+  <div class='kui_badge_icon' />
+</div>
+
+```

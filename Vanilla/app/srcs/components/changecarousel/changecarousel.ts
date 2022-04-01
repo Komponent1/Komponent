@@ -2,15 +2,19 @@ import './changecarousel.css'
 import { createElem } from '../../utils'; 
 
 type Prop = {
+  width?: string,
+  height?: string,
   elems: HTMLDivElement[],
   auto: boolean
 }
-function changeCarousel({ elems, auto = true }: Prop): HTMLDivElement {
+function changeCarousel({ elems, auto = true, width = '100%', height = '100%' }: Prop): HTMLDivElement {
   let idx = 0;
   let isChanged = false;
   let id = null;
 
   const wrapper = createElem('div', 'kui_changecarousel') as HTMLDivElement;
+  wrapper.style.width = width;
+  wrapper.style.height = height;
   const btnset = createElem('div', 'kui_changecarousel_btnset');
   let btns = [];
 

@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const pannel = styled.div`
-  width: 80%;
+  width: 100%;
   height: 300px;
+
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 `;
 export const dragable = styled.div<{ xy: number[] }>`
   position: absolute;

@@ -1,0 +1,34 @@
+.kui_rating {
+  display: flex;
+  flex-direction: row;
+}
+.kui_rating_rate {
+  --on: 0;
+  --scale: 1;
+
+  font-size: 30px;
+  position: relative;
+  padding: 0 1px;
+
+  color: rgba(172, 172, 172, 0.8);
+  transform: scale(var(--scale));
+  transform-origin: 50% 70%;
+  transition: transform 0.5s;
+}
+.kui_rating_rate.hover {
+  --on: 0;
+  --scale: 1.2 !important;
+}
+.kui_rating_rate.select {
+  --on: 1 !important;
+  --scale: 1;
+}
+.kui_rating_rate::after {
+  content: '\2605';
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: var(--on);
+
+  color: orange;
+}

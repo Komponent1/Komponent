@@ -1,0 +1,20 @@
+.kui_scrollnav {
+  --num: 0;
+
+  position: absolute;
+  top: calc(50% - var(--num) * 15px);
+  right: 0;
+  z-index: 99;
+}
+.kui_scrollnav_item {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(172, 172, 172, 0.5);
+  border: 1px solid black;
+}
+.kui_scrollnav_item.select {
+  background: grey;
+}
+.kui_scrollnav_item:hover {
+  background: grey;
+}

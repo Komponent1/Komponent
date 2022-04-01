@@ -48,7 +48,7 @@ body {
   top: 0;
   left: 0;
   width: 200px;
-  height: 100vh;
+  height: calc(100vh - 20px);
   overflow-y: scroll;
   border-right: 1px solid rgba(172, 172, 172, 0.4);
 
@@ -60,25 +60,27 @@ body {
   margin-top: 100px;
 }
 
-#menu li {
-  list-style-type: none;
-  width: calc(100% - 20px);
-  padding: 2px 0 2px 20px;
-  margin: 4px 0 4px 0;
+#menu {
+  padding: 5px 20px;
+}
+#menu .kui_opendrawer {
+  padding: 5px 20px;
+}
+#menu ul li {
   border-radius: 5px;
 
-  font-size: 13px;
+  font-size: 0.8rem;
   color: rgb(70, 70, 70);
 }
 #menu li:hover {
   cursor: pointer;
   background-color: rgba(172, 172, 172, 0.2);
 }
-#menu .select {
+#menu ul li.select {
   background-color: #cacde0;
   color: #2E5FF2;
 }
-#menu .select:hover {
+#menu ul li.select:hover {
   background-color: #bbbed3;
 }
 
@@ -132,37 +134,15 @@ body {
   border-radius: 3px;
 }
 .kui_scrollspy {
-  width: 800px;
-}
-.kui_scrollspy_nav {
-  display: flex;
-  flex-direction: row;
-
-  border: 1px solid black;
-}
-.kui_scrollspy_navitem {
-  --num: 0;
-  
-  width: calc(100% / var(--num));
-  height: 20px;
-  border: 1px solid black;
-}
-.kui_scrollspy_navitem.select {
-  background: grey;
-}
-.kui_scrollspy_navitem:hover {
-  background: grey;
+  position: relative;
 }
 .kui_scrollspy_itemwrap {
   width: 100%;
-  height: 250px;
 
   overflow-y: scroll;
 }
 .kui_scrollspy_item {
   width: 100%;
-  height: 250px;
-  border: 1px solid black;
 }
 .kui_infinitescroll {
   position: relative;
@@ -183,8 +163,6 @@ body {
 }
 
 .kui_tab {
-  width: 500px;
-
   border: 1px solid rgba(172, 172, 172, 0.5);
   text-align: center;
 }
@@ -201,14 +179,10 @@ body {
 }
 .kui_tab_navitem {
   width: calc(100% / var(--num));
-}
-.kui_tab_navitem {
   z-index: 13;
 }
 .kui_tab_item {
   width: 100%;
-
-  padding: 10px;
 }
 
 .kui_tab_glider {
@@ -226,25 +200,26 @@ body {
   transition: transform 0.3s;
 }
 .kui_slidecarousel {
+  --width: 0;
   position: relative;
-  
-  width: 400px;
-  height: 200px;
-  overflow: hidden;
+  overflow-x: hidden;
+
+  width: var(--width);
 }
 .kui_slidecarousel_slider {
-  --x: -400px;
+  --num: 0;
   --sec: 0.5;
+  --idx: 1;
 
   display: flex;
-  width: 3000px;
+  width: calc(var(--width) * var(--num));
 
-  transform: translateX(var(--x));
+  transform: translateX(calc(var(--width) * -1 * var(--idx)));
   transition: transform var(--sec);
 }
 .kui_slidecarousel_item {
-  width: 400px;
-  height: 200px;
+  width: var(--width);
+  height: 100%;
 }
 .kui_slidecarousel_rbutton {
   background: none;
@@ -255,7 +230,7 @@ body {
   border: none;
 
   position: absolute;
-  top: 80px;
+  top: calc(50% - 20px);
   right: 10px;
   font-size: 30px;
 }
@@ -268,13 +243,11 @@ body {
   border: none;
 
   position: absolute;
-  top: 80px;
+  top: calc(50% - 20px);
   left: 10px;
   font-size: 30px;
 }
 .kui_changecarousel {
-  width: 400px;
-  height: 200px;
   position: relative;
 }
 .kui_changecarousel_item {
@@ -290,7 +263,7 @@ body {
 }
 .kui_changecarousel_btnset {
   position: absolute;
-  top: 150px;
+  bottom: 10%;
   text-align: center;
   width: 100%;
 }
@@ -404,6 +377,9 @@ body {
 .kui_licontextmenu_li {
   position: relative;
   padding: 3px;
+}
+.kui_licontextmenu_li:after {
+  content: attr(data-content);
 }
 .kui_contextmenu {
   display: inline-block;
@@ -534,7 +510,7 @@ body {
 }
 
 .kui_list {
-  width: 80%;
+  width: 100%;
   border: 2px solid rgba(172, 172, 172, 0.5);
   border-radius: 5px;
 }
@@ -568,8 +544,6 @@ body {
 
   flex-grow: 1;
   flex-basis: 0;
-
-  border-radius: 4px;
 }
 
 .kui_list_item span {
@@ -578,7 +552,7 @@ body {
 
 .kui_dragablepannel {
   position: relative;
-  width: 80%;
+  width:100%;
   height: 300px;
 
   border: 1px solid rgba(0,0,0, 0.5);
@@ -788,13 +762,443 @@ body {
 }
 .kui_parallexscroll {
   overflow-y: scroll;
-
-  height: 500px;
-  width: 500px;
 }
 .kui_parallexscroll_layer {
   --y: 0;
 
   transform: translateY(var(--y))
+}
+
+.kui_scrollnav {
+  --num: 0;
+
+  position: absolute;
+  top: calc(50% - var(--num) * 15px);
+  right: 0;
+  z-index: 99;
+}
+.kui_scrollnav_item {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(172, 172, 172, 0.5);
+  border: 1px solid black;
+}
+.kui_scrollnav_item.select {
+  background: grey;
+}
+.kui_scrollnav_item:hover {
+  background: grey;
+}
+.kui_radiobutton {
+  --height: 30px;
+
+  display: flex;
+  flex-direction: row;
+  height: var(--height);
+}
+.kui_radiobutton_btnset {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  height: 100%;
+}
+.kui_radiobutton_button {
+  --scale: 0;
+  --opacity: 0;
+  --border: gray;
+
+  position: relative;
+  height: 100%;
+  width: var(--height);
+}
+.kui_radiobutton_button:hover {
+  --opacity: 1;
+}
+.kui_radiobutton
+.kui_radiobutton_round {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+
+  height: calc(var(--height) - 12px);
+  width: calc(var(--height) - 12px);
+
+  border: 2px solid var(--border);
+  border-radius: var(--height);
+}
+.kui_radiobutton_background {
+  opacity: var(--opacity);
+  position: absolute;
+  width: var(--height);
+  height: var(--height);
+  top: 0;
+  left: 0;
+  background-color: rgba(172, 172, 172, 0.3);
+  border-radius: var(--height);
+}
+.kui_radiobutton_icon {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+
+  height: calc(var(--height) - 16px);
+  width: calc(var(--height) - 16px);
+
+  border-radius: var(--height);
+  background-color: black;
+  transform: scale(var(--scale));
+  transition: transform 0.3s;
+}
+
+.kui_radiobutton_button.select {
+  --scale: 1;
+  --border: black;
+}
+.kui_radiobutton_label {
+  
+}
+
+.kui_rating {
+  display: flex;
+  flex-direction: row;
+}
+.kui_rating_rate {
+  --on: 0;
+  --scale: 1;
+
+  font-size: 30px;
+  position: relative;
+  padding: 0 1px;
+
+  color: rgba(172, 172, 172, 0.8);
+  transform: scale(var(--scale));
+  transform-origin: 50% 70%;
+  transition: transform 0.5s;
+}
+.kui_rating_rate.hover {
+  --on: 0;
+  --scale: 1.2 !important;
+}
+.kui_rating_rate.select {
+  --on: 1 !important;
+  --scale: 1;
+}
+.kui_rating_rate::after {
+  content: '\2605';
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: var(--on);
+
+  color: orange;
+}
+.kui_chips {
+  display: flex;
+  flex-direction: row;
+}
+.kui_chups_wrapper {
+  
+}
+.kui_chips_input {
+  font-size: 15px;
+  border: none;
+}
+.kui_chips_input:focus {
+  outline: none;
+}
+.kui_chips_chip {
+  display: inline-flex;
+  align-items: center;
+
+  background: rgba(172, 172, 172, 0.3);
+  
+  padding: 4px 5px;
+  margin: 0 2px;
+  border-radius: 30px;
+}
+.kui_chips_chip > span {
+  margin-left: 10px;
+}
+.kui_chips_del {
+  display: block;
+  color: white;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%;
+  background: rgba(110, 110, 110, 1);
+  margin-left: 10px;
+
+  cursor: pointer;
+}
+.kui_tip {
+  --hover: 0;
+  position: relative;
+}
+.kui_tip:hover {
+  --hover: 1;
+}
+.kui_tip_background {
+  background: rgba(172, 172, 172, 0.3);
+  position: absolute;
+  top: -60%;
+  left: -60%;
+
+  opacity: var(--hover);
+  width: 220%;
+  height: 220%;
+
+  border-radius: 100%;
+}
+.kui_tip_tip {
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  
+  font-size: 8px;
+  padding: 3px;
+  border-radius: 3px;
+  background: rgb(120, 120, 120);
+  white-space: nowrap;
+  color: white;
+
+  transform: scale(var(--hover)) translateX(-50%);
+  transform-origin: center top;
+  transition: transform 50ms;
+}
+
+.kui_floatdial {
+  --display: none;
+  --scale: 0;
+  position: relative;
+}
+.kui_floatdial_button {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: rgb(150, 150, 150);
+
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+
+  box-shadow: 1px 1px 5px rgb(172, 172, 172);
+}
+.kui_floatdial_button:hover {
+  transform: rotate(45deg);
+  transform-origin: center;
+  transition: transform 0.5s;
+}
+.kui_floatdial_list {
+  display: var(--display);
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  transform: translate(-50%, -100%);
+}
+
+.kui_floatdial_item {
+  margin-bottom: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  
+  font-size: 15px;
+  text-align: center;
+  line-height: 30px;
+
+  box-shadow: 1px 1px 5px rgba(172, 172, 172);
+  background: white;
+
+  transform: scale(var(--scale), var(--scale));
+  transform-origin: center;
+  transition: transform 0.3s;
+}
+.kui_floatdial_list > .kui_tip > .kui_tip_background{
+  display: none !important;
+}
+.kui_floatdial_list > .kui_tip > .kui_tip_tip {
+  left: -50% !important;
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0, 0);
+  } to {
+    transform: scale(1, 1);
+  }
+}
+.kui_floatdial_item.anim {
+  animation: appear 0.3s;
+}
+
+.kui_loading {
+  width: 100%;
+  height: 100%;
+  line-height: 100%;
+  text-align: center;
+}
+.kui_loading_circle {
+  display: inline-block;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+
+  border-top: 10px solid rgb(90, 90, 90);
+  border-right: 10px solid rgb(172, 172, 172);
+  border-bottom: 10px solid rgb(172, 172, 172);
+  border-left: 10px solid rgb(172, 172, 172);
+}
+@keyframes spin {
+  from {
+    transform: rotate(45deg);
+  } to {
+    transform: rotate(405deg);
+  }
+}
+.kui_loading_circle.linearspin {
+  animation: spin 1s infinite linear;
+}
+.kui_loading_circle.delayspin {
+  position: relative;
+  border: 10px solid rgb(90, 90, 90); 
+}
+.kui_loading_circle.delayspin::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  border-top: 10px solid rgb(172, 172, 172, 0);
+  border-left: 10px solid rgb(172, 172, 172);
+  border-right: 10px solid rgb(172, 172, 172, 0);
+  border-bottom: 10px solid rgb(172, 172, 172);
+
+  animation: spin 1.5s infinite ease 0.2s;
+}
+.kui_loading_circle.delayspin::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  border-top: 10px solid rgb(172, 172, 172);
+  border-left: 10px solid rgb(172, 172, 172, 0);
+  border-right: 10px solid rgb(172, 172, 172);
+  border-bottom: 10px solid rgb(172, 172, 172, 0);
+
+  animation: spin 1.5s infinite ease;
+}
+
+@keyframes scale {
+  0% {
+    transform: scaleY(1);
+  } 30% {
+    transform: scaleY(1.7);
+  } 60% {
+    transform: scaleY(1);
+  } 100% {
+    transform: scaleY(1);
+  }
+}
+.kui_loading_lines {
+  display: inline-flex;
+}
+.kui_loading_line {
+  --delay: 0;
+  width: 10px;
+  height: 40px;
+  margin: 0 3px;
+
+  background: rgb(90, 90, 90);
+
+  transform-origin: center;
+  animation: scale 1.2s infinite ease var(--delay);
+}
+
+.kui_sortedlist {
+  width: 800px;
+}
+.kui_filterdropdown {
+  position: relative;
+}
+.kui_filterdropdown_input {
+  display: block;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  margin: 0;
+  border: none;
+
+  background: #E4E5E6;
+}
+.kui_filterdropdown_ul {
+  display: none;
+  position: absolute;
+  top: 2.6rem;
+
+  width: 100%;
+  background: #E4E5E6;
+  max-height: 15rem;
+  overflow-y: scroll;
+
+  box-shadow: 0 0 5px grey;
+  border-radius: 0.4rem;
+
+  z-index: 11;
+}
+.kui_filterdropdown_li {
+  width: calc(100% - 20px);
+  padding: 4px 10px;
+}
+.kui_filterdropdown_li:hover {
+  background: rgba(172, 172, 172, 0.2);
+}
+
+.kui_opendrawer {
+  --height: 0;
+}
+.kui_opendrawer_head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.kui_opendrawer_head:hover {
+  cursor: pointer;
+}
+.kui_opendrawer_name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.kui_opendrawer_btn {
+  padding-top: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 0.5rem;
+}
+.kui_opendrawer_ul {
+  max-height: var(--height);
+  transition: max-height 0.3s;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+}
+.kui_opendrawer_li {
+  margin: 0;
+  padding: 0.2rem 0.6rem;
+}
+
+.kui_multiopendrawer {
+  display: flex;
+  flex-direction: row
 }
 

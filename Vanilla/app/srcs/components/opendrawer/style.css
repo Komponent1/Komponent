@@ -1,0 +1,32 @@
+.kui_opendrawer {
+  --height: 0;
+}
+.kui_opendrawer_head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.kui_opendrawer_head:hover {
+  cursor: pointer;
+}
+.kui_opendrawer_name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.kui_opendrawer_btn {
+  padding-top: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 0.5rem;
+}
+.kui_opendrawer_ul {
+  max-height: var(--height);
+  transition: max-height 0.3s;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+}
+.kui_opendrawer_li {
+  margin: 0;
+  padding: 0.2rem 0.6rem;
+}

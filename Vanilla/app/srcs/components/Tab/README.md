@@ -34,7 +34,7 @@ document.body.appendChild(tab);
     </div>
     ...
   </div>
-  <div class='kui_tab_navitem'>
+  <div class='kui_tab_item'>
     <!-- element of config -->
   </div>
 </div>

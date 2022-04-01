@@ -24,7 +24,7 @@ document.body.appendChild(dropdown);
 
 
 ### 기능
-버튼을 통해 특정 요소의 on/off를 활성화 하는 컴포넌트
+여러 옵션중 하나를 선택하는 select 컴포넌트
 
 ### structure(for styling)
 ```html

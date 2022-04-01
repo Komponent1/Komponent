@@ -32,6 +32,8 @@ export const header = styled.div`
   height: 70px;
   border-bottom: 1px solid rgba(172, 172, 172, 0.4);
   z-index: 1;
+
+  background-color: rgba(256, 256, 256, 0.8);
 `;
 export const title = styled.h1`
   margin: 10px;
@@ -42,12 +44,37 @@ export const menu = styled.div`
   left: 0;
   top: 0;
 
-  height: 100vh;
+  height: calc(100vh - 20px);
   width: 200px;
   overflow-y: scroll;
   border-right: 1px solid rgba(172, 172, 172, 0.4);
 
-  padding: 10px;
+  padding: 5px 20px;
+
+  >.kui_multiopendrawer {
+    padding: 5px 20px;
+  }
+
+  & li {
+    border-radius: 5px;
+
+    font-size: 0.8rem;
+    color: rgb(70, 70, 70);
+  }
+
+  & li:hover {
+    cursor: pointer;
+    background-color: rgba(172, 172, 172, 0.2); 
+  }
+
+  & li.select {
+    background-color: #cacde0;
+    color: #2E5FF2;
+  }
+
+  & li.select:hover {
+    background-color: #bbbed3;
+  }
 `;
 export const menuTitle = styled.h2`
   padding-left: 15px;
@@ -61,7 +88,9 @@ export const li = styled.li<{ select: boolean }>`
   margin: 4px 0 4px 0;
   border-radius: 5px;
 
-  background-color: ${({ select }) => select ? '#2E5FF2': 'none'};
+  font-size: 13px;
+  color: ${({ select }) => select ? '#2E5FF2': 'rgb(70, 70, 70)'};
+  background-color: ${({ select }) => select ? '#cacde0': 'none'};
 
   &:hover {
     cursor: pointer;

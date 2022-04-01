@@ -15,7 +15,7 @@ function button ({ text = '', click = e => {} }: Prop): HTMLDivElement {
   wrapper.addEventListener('mousedown', e => {
     wave.ontransitionend = () => {};
     
-    wave.style.setProperty('--duration', '0.5s');
+    wave.style.setProperty('--duration', '0.3s');
     wave.style.opacity = '1';
     wave.style.top = (e.clientY - wrapper.offsetTop - 100) + 'px';
     wave.style.left = (e.clientX - wrapper.offsetLeft - 100) + 'px';
