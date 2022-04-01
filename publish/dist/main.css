@@ -1,0 +1,667 @@
+.kui_scrollspy {
+  width: 800px;
+}
+.kui_scrollspy_nav {
+  display: flex;
+  flex-direction: row;
+
+  border: 1px solid black;
+}
+.kui_scrollspy_navitem {
+  --num: 0;
+  
+  width: calc(100% / var(--num));
+  height: 20px;
+  border: 1px solid black;
+}
+.kui_scrollspy_navitem.select {
+  background: grey;
+}
+.kui_scrollspy_navitem:hover {
+  background: grey;
+}
+.kui_scrollspy_itemwrap {
+  width: 100%;
+  height: 250px;
+
+  overflow-y: scroll;
+}
+.kui_scrollspy_item {
+  width: 100%;
+  height: 250px;
+  border: 1px solid black;
+}
+.kui_infinitescroll {
+  position: relative;
+
+  width: 500px;
+  height: 300px;
+  border: 2px solid black;
+  overflow-y: scroll;
+}
+.kui_infinitescroll_li {
+  width: calc(100% - 42px);
+  border: 1px solid rgba(172, 172, 172, 0.5);
+
+  padding: 10px 20px;
+}
+.kui_infinitescroll_li:hover {
+  background-color: rgba(172, 172, 172, 0.3);
+}
+
+.kui_tab {
+  width: 500px;
+
+  border: 1px solid rgba(172, 172, 172, 0.5);
+  text-align: center;
+}
+.kui_tab_nav {
+  --num: 1;
+  position: relative;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: row;
+  background: rgba(172, 172, 172, 0.5);
+  color: black;
+  font-weight: 900;
+}
+.kui_tab_navitem {
+  width: calc(100% / var(--num));
+}
+.kui_tab_navitem {
+  z-index: 13;
+}
+.kui_tab_item {
+  width: 100%;
+
+  padding: 10px;
+}
+
+.kui_tab_glider {
+  --idx: 0;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 12;
+  background-color: white;
+
+  width: calc(100% / var(--num));
+  height: 100%;
+  transform: translateX(calc(100% * var(--idx)));
+  transition: transform 0.3s;
+}
+.kui_slidecarousel {
+  position: relative;
+  
+  width: 400px;
+  height: 200px;
+  overflow: hidden;
+}
+.kui_slidecarousel_slider {
+  --x: -400px;
+  --sec: 0.5;
+
+  display: flex;
+  width: 3000px;
+
+  transform: translateX(var(--x));
+  transition: transform var(--sec);
+}
+.kui_slidecarousel_item {
+  width: 400px;
+  height: 200px;
+}
+.kui_slidecarousel_rbutton {
+  background: none;
+  color: white;
+  width: 40px;
+  height: 30px;
+  font-weight: bold;
+  border: none;
+
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  font-size: 30px;
+}
+.kui_slidecarousel_lbutton {
+  background: none;
+  color: white;
+  width: 40px;
+  height: 30px;
+  font-weight: bold;
+  border: none;
+
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  font-size: 30px;
+}
+.kui_changecarousel {
+  width: 400px;
+  height: 200px;
+  position: relative;
+}
+.kui_changecarousel_item {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.kui_changecarousel_btnset {
+  position: absolute;
+  top: 150px;
+  text-align: center;
+  width: 100%;
+}
+
+.kui_changecarousel_btnset button {
+  border: none;
+  padding: 0;
+  margin: 4px;
+  width: 30px;
+  height: 20px;
+
+  background: rgba(1, 1, 1, 0);
+}
+.kui_changecarousel_btnset button:hover {
+  cursor: pointer;
+}
+.kui_changecarousel_btnset button div {
+  width: 100%;
+  height: 4px;
+  background: gray;
+}
+.kui_changecarousel_btnset button div.select{
+  background: white;
+
+}
+.kui_autocomplete {
+  width: 400px;
+  position: relative;
+
+  font-size: 20px;
+}
+.kui_autocomplete_input {
+  padding: 7px 10px;
+  margin: 0;
+  
+  width: calc(100% - 24px);
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.kui_autocomplete_ul {
+  display: none;
+
+  position: absolute;
+  top: auto;
+  left: 1px;
+  list-style-type: none;
+  
+  width: calc(100% - 2px);
+  max-height: 100px;
+  overflow-y: scroll;
+  z-index: 10;
+  margin: 0;
+
+  box-shadow: 0px 0px 5px black;
+  border-radius: 4px;
+  padding: 0px;
+  background-color: white;
+}
+.kui_autocomplete_li {
+  width: calc(100% - 20px);
+  margin: 0;
+  padding: 7px 10px;
+}
+.kui_autocomplete_li:hover {
+  background: skyblue;
+}
+.kui_licontextmenu {
+  width: 100%;
+  display: flex;
+  border: 1px solid black;
+  padding: 5px;
+}
+.kui_licontextmenu_icon {
+  position: relative;
+  border-radius: 5px;
+}
+.kui_licontextmenu p {
+  padding: 2px 5px;
+  margin: 0;
+  z-index: 11;
+}
+.kui_licontextmenu_icon:hover {
+  background-color: rgba(172, 172, 172, 0.2);
+}
+.kui_licontextmenu_icon.select {
+  background-color: rgba(172, 172, 172, 0.5);
+}
+.kui_licontextmenu ul {
+  display: none;
+  list-style-type: none;
+  
+  padding: 0;
+  margin: 0;
+  box-shadow: 0px 0px 5px grey;
+  border-radius: 4px;
+  background-color: white;
+  z-index: 10;
+}
+.kui_licontextmenu_ul {
+  position: absolute;
+  top: auto;
+  left: 0;
+  width: 100px;
+}
+.kui_licontextmenu_subul {
+  position: absolute;
+  top: 0;
+  left: 100px;
+}
+.kui_licontextmenu_li {
+  position: relative;
+  padding: 3px;
+}
+.kui_contextmenu {
+  display: inline-block;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px 1px gray;
+}
+
+.kui_contextmenu_menu {
+  display: block;
+  position: relative;
+  
+  width: 200px;
+  height: 20px;
+
+  padding: 5px 10px 5px 10px;
+  line-height: 20px;
+  margin: 0;
+}
+.kui_contextmenu_menu:hover {
+  cursor: pointer;
+  background-color: rgba(172, 172, 172, 0.2);
+}
+
+.kui_contextmenu_context {
+  --top: 0;
+  --left: 0;
+
+  display: none;
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  z-index: 99;
+
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px gray;
+  
+  background-color: rgb(240, 240, 240);
+
+  padding: 10px;
+  margin: 0;
+
+  white-space: nowrap;
+}
+
+.kui_btnmenu {
+  display: inline-block;
+  position: relative;
+}
+.kui_btnmenu_btn {
+  --color: 'rgba(0,0,0,0)';
+  display: 'inline-block';
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--color);
+  
+  text-align: center;
+  line-height: 20px;
+}
+.kui_btnmenu_btn:hover {
+  background-color: rgba(172, 172, 172, 0.4);
+}
+.kui_btnmenu_ul {
+  display: none;
+
+  position: absolute;
+  top: auto;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 0px 5px grey;
+
+  white-space: nowrap;
+}
+.kui_btnmenu_li {
+  padding: 5px 15px;
+}
+.kui_btnmenu_li:hover {
+  background-color: rgba(172, 172, 172, 0.5);
+}
+
+.kui_checkbox {
+  display: inline-block;
+  position: relative;
+}
+.kui_checkbox_outline {
+  display: inline-block;
+
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  background: white; 
+
+  color: white;
+  text-align: center;
+  line-height: 16px;
+}
+.kui_checkbox_background {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  opacity: 0;
+
+  background: rgba(0, 0, 0, 0.05);
+}
+.kui_checkbox_background:hover {
+  opacity: 1;
+}
+.kui_checkbox_wave {
+  --duration: 0s;
+  --scale: 0;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.2);
+
+  transform: scale(var(--scale), var(--scale));
+  transform-origin: center;
+  transition: transform var(--duration);
+}
+
+.kui_list {
+  width: 80%;
+  border: 2px solid rgba(172, 172, 172, 0.5);
+  border-radius: 5px;
+}
+.kui_list_li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 15px;
+}
+
+.kui_list_li:hover {
+  background-color: rgba(172,172,172, 0.2);
+}
+.kui_list_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 10px 15px;
+  background-color: rgba(172, 172, 172, 0.5);
+}
+.kui_list_space {
+  width: 17px;
+}
+.kui_list_item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  flex-grow: 1;
+  flex-basis: 0;
+
+  border-radius: 4px;
+}
+
+.kui_list_item span {
+  margin-right: 5px;
+}
+
+.kui_dragablepannel {
+  position: relative;
+  width: 80%;
+  height: 300px;
+
+  border: 1px solid rgba(0,0,0, 0.5);
+  border-radius: 10px;
+}
+
+.kui_dragablepannel_drag {
+  position: absolute;
+
+  --x: 20px;
+  --y: 20px;
+
+  transform: translate(var(--x), var(--y));
+}
+
+.kui_togglemenu {
+  border: 1px solid rgba(172, 172, 172, 0.5);
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: row;
+}
+.kui_togglemenu_icon {
+  border-right: 1px solid rgba(172, 172, 172, 0.5);
+  padding: 2px 5px;
+}
+.kui_togglemenu .select {
+  background: rgba(172, 172, 172, 0.5)
+}
+.kui_badge {
+  position: relative;
+}
+.kui_badge_icon {
+  display: none;
+  position: absolute;
+  top:-8px;
+  right:-8px;
+
+  width: 15px;
+  height: 15px;
+  border-radius: 8px;
+  
+  background: blue;
+  color: white;
+  font-size: 10px;
+  text-align: center;
+}
+.kui_slider {
+  --width: 0px;
+
+  position: relative;
+  width: var(--width);
+  height: 20px;
+}
+.kui_slider .kui_slider_up {
+  display: inline-block;
+
+  --scale: 0%;
+  background: rgba(1,1,1,1);
+  width: var(--scale);
+  height: 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+.kui_slider .kui_slider_down {
+  display: inline-block;
+
+  --scale: 100%;
+  background: rgba(1,1,1,0.3);
+  width: var(--scale);
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 7px;
+}
+.kui_slider_marker {
+  --value: 0px;
+  position: absolute;
+  top: -1px;
+  left: -10px;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: rgba(1,1,1,1);
+
+  transform: translateX(var(--value));
+}
+.kui_button {
+  display: inline-block;
+  position: relative;
+
+  padding: 4px 15px;
+  color: black;
+  overflow: hidden;
+
+  border: 1px solid rgba(1,1,1,0.5);
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s, border 0.3s;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.kui_button:hover {
+  background-color: rgba(1,1,1, 0.1);  
+  border: 1px solid rgba(1,1,1,1);
+}
+.kui_button_wave {
+  --scale: 0;
+  --duration: 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+
+  background-color: rgba(1,1,1,0.3);
+  transform: scale(var(--scale), var(--scale));
+  transform-origin: center;
+  transition: transform var(--duration), opacity var(--duration);
+}
+
+.kui_onoffswitch {
+  position: relative;
+
+  width: 40px;
+}
+.kui_onoffswitch_icon {
+  --x: -10%;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+
+  position: absolute;
+  top: 2px;
+  left: 0;
+
+  box-shadow: 1px 1px 5px black;
+  background: white;
+
+  transform: translateX(var(--x));
+  transition: transform 0.3s;
+}
+.kui_onoffswitch_leftbar {
+  display: inline-block;
+  --width: 0%;
+  background: rgba(1,1,1,1);
+
+  width: var(--width);
+  height: 14px;
+  border-radius: 14px;
+
+  transition: width 0.3s;
+}
+.kui_onoffswitch_rightbar {
+  display: inline-block;
+  --width: 100%;
+  background: rgba(1,1,1,0.4);
+
+  width: var(--width);
+  height: 14px;
+  border-radius: 14px;
+
+  transition: width 0.3s;
+}
+
+.kui_dropdown {
+  position: relative;
+}
+.kui_dropdown_box {
+  width: 50px;
+  height: 30px;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  padding: 0 10px;
+  line-height: 30px;
+
+  color: rgb(172, 172, 172);
+}
+.kui_dropdown_box.active {
+  border: 2px solid rgba(1,1,1,1);
+   
+}
+.kui_dropdown_menu {
+  display: none;
+  position: absolute;
+  top: auto;
+  left: 1px;
+
+  width: 72px;
+  background: white;
+  box-shadow: 0px 0px 5px black;
+  border-radius: 4px;
+}
+.kui_dropdown_item {
+  width: calc(100% - 20px);
+  padding: 4px 10px;
+}
+.kui_dropdown_item:hover {
+  background: rgba(172, 172, 172, 0.2);
+}
+.kui_parallexscroll {
+  overflow-y: scroll;
+
+  height: 500px;
+  width: 500px;
+}
+.kui_parallexscroll_layer {
+  --y: 0;
+
+  transform: translateY(var(--y))
+}
+
