@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import * as style from './style';
 import { Checkbox } from '../';
-import useFetch from '../../hooks/useFetch';
 
 type Config = {
   name: string,

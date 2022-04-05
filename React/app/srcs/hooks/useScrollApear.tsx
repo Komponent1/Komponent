@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef }from 'react';
 import { throttle } from '../utils';
 /*
   이 hook은 스크롤시 오브젝트가 상단으로 사라지는 동작을 진행하는 훅이다.
@@ -7,7 +7,7 @@ import { throttle } from '../utils';
   disappearPosition은 오브젝트가 상단으로 올라가는 높이이다.
 */
 const useScrollAppear = (scrollTop: number, eventDelay: number, disapearPosition: string): React.Ref => {
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const scrollingEvent = () => {
