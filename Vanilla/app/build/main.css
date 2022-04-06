@@ -48,20 +48,15 @@ body {
   top: 0;
   left: 0;
   width: 200px;
-  height: calc(100vh - 20px);
+  height: calc(100vh - 180px);
   overflow-y: scroll;
   border-right: 1px solid rgba(172, 172, 172, 0.4);
 
   padding: 10px;
 }
-#menu h2 {
-  padding-left: 15px;
-  color: #2E5FF2;
-  margin-top: 100px;
-}
 
 #menu {
-  padding: 5px 20px;
+  padding: 90px 20px;
 }
 #menu .kui_opendrawer {
   padding: 5px 20px;
@@ -75,6 +70,13 @@ body {
 #menu li:hover {
   cursor: pointer;
   background-color: rgba(172, 172, 172, 0.2);
+}
+#menu .title {
+  pointer-events: none;
+  cursor: default;
+  background-color: none !important;
+  font-weight: 800;
+  color: grey;
 }
 #menu ul li.select {
   background-color: #cacde0;

@@ -19,22 +19,23 @@ const Menu = () => {
     lis.forEach(li => {
       if (Object.keys(categoryList).findIndex(e => e === li.textContent) !== -1) li.classList.add('title');
     })
+    
+  }, [ ref ]);
+  useEffect(() => {
+    if (!ref) return;
+    const lis = Array.from(ref.current.getElementsByClassName('kui_multiopendrawer_li')) as HTMLElement[];
     if (path !== 'react') {
       const [_, cat, item] = paths;
-      lis.find(li => li.textContent === allList[cat][item].name).classList.add('select');
+      lis.forEach(li => {
+        if (li.textContent === allList[cat][item].name) li.classList.add('select');
+        else li.classList.remove('select');
+      });
     }
-  }, [ ref ]);
+  }, [ path ]);
 
   const singleConfig = (list: any, path: string) => Object.entries(list).map(([link, conf]: [string, any]) => ({
     text: conf.name,
-    act: (e: React.MouseEvent) => {
-      const lis = e.target.closest('.kui_multiopendrawer').getElementsByClassName('kui_multiopendrawer_li') as HTMLCollection;
-        Array.from(lis).map(li => {
-          if (li === e.target) li.classList.add('select');
-          else li.classList.remove('select');
-        });
-      navigate(`${path}/${link}`);
-    },
+    act: () => navigate(`${path}/${link}`)
   }))
 
   const compnentConfig = () => {

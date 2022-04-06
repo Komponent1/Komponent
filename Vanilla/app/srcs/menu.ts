@@ -37,6 +37,7 @@ const initMenu = (path: string) => {
   })
 
   lis.forEach((li) => {
+    li.classList.remove('select');
     if (paths.length > 1) {
       try {
         if (li.textContent === allList[paths[1]][paths[2]].name) li.classList.add('select');

@@ -31,7 +31,10 @@ const init = (): void => {
 };
 
 window.onpopstate = () => {
-  const paths = window.location.pathname.split('/').filter(e => e !== '');
+  const path = window.location.pathname
+
+  initMenu(path);
+  router(path, true);
 
   // switch(path) {
   //   case 'vanilla':
