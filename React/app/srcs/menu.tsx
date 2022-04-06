@@ -35,7 +35,7 @@ const Menu = () => {
 
   const singleConfig = (list: any, path: string) => Object.entries(list).map(([link, conf]: [string, any]) => ({
     text: conf.name,
-    act: () => navigate(`${path}/${link}`)
+    act: () => navigate(`${path}/${link}`),
   }))
 
   const compnentConfig = () => {
