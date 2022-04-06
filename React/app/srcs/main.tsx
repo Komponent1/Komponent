@@ -3,9 +3,9 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import { componentList } from './config';
+import { componentList, hookList } from './config';
 import * as style from './style';
-import { Div } from './utils';
+import { Div, HookDiv } from './utils';
 
 const codestyle = {
   display: 'block',
@@ -34,12 +34,19 @@ const Main = () => {
       <Routes>
         <Route path='/' element={<Home />}/>
         {Object.entries(componentList).map(([key, conf], i) => (
-            <Route key={i} path={`${key}`}
-              element={
-                <Div conf={conf}>
-                  <conf.comp {...conf.prop}/>
-                </Div>
-              }/>
+          <Route key={i} path={`component/${key}`}
+            element={
+              <Div conf={conf}>
+                <conf.comp {...conf.prop}/>
+              </Div>
+          }/>
+        ))}
+        {Object.entries(hookList).map(([key, conf], i) => (
+          <Route key={i} path={`hook/${key}`}
+            element={
+              <HookDiv conf={conf} />
+            }
+            />
         ))}
       </Routes>
     </style.main>

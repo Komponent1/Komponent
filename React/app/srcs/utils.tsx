@@ -11,6 +11,12 @@ export const Div: React.FC = ({ conf, children }) => (
     {conf.explain ? <div dangerouslySetInnerHTML={{ __html: conf.explain }} />: null}
   </div>
 );
+export const HookDiv: React.FC = ({ conf }) => (
+  <div className="explain">
+    <style.mainTitle>{conf.name}</style.mainTitle>
+    {conf.explain ? <div dangerouslySetInnerHTML={{ __html: conf.explain }} />: null}
+  </div>
+);
 /* set returnType is type of listener  */
 export function throttle (func: any, delay: number): (this: Window, ev: Event) => any {
   let thorttled = false;
