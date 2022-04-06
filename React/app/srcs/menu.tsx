@@ -41,7 +41,7 @@ const Menu = () => {
     let config = [];
     const category = Object.keys(categoryList);
 
-    for(let key of  category) {
+    for(let key of category) {
       config.push({
         text: key,
         act: () => {},
@@ -49,9 +49,6 @@ const Menu = () => {
     }
     return config;
   }
-  
-  
-  
   const hookConfig =  singleConfig(hookList, 'hook');
 
   const config = [
