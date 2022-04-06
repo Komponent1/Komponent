@@ -44,15 +44,15 @@ export const menu = styled.div`
   left: 0;
   top: 0;
 
-  height: calc(100vh - 20px);
+  height: calc(100vh - 180px);
   width: 200px;
   overflow-y: scroll;
   border-right: 1px solid rgba(172, 172, 172, 0.4);
 
-  padding: 5px 20px;
+  padding: 90px 20px;
 
-  >.kui_multiopendrawer {
-    padding: 5px 20px;
+  & .kui_multiopendrawer_drawer {
+    padding: 10px 20px;
   }
 
   & li {
@@ -64,7 +64,15 @@ export const menu = styled.div`
 
   & li:hover {
     cursor: pointer;
-    background-color: rgba(172, 172, 172, 0.2); 
+    background-color: rgba(172, 172, 172, 0.2);
+  }
+
+  & .title {
+    pointer-events: none;
+    cursor: default;
+    background-color: none !important;
+    font-weight: 800;
+    color: grey;
   }
 
   & li.select {
@@ -76,10 +84,11 @@ export const menu = styled.div`
     background-color: #bbbed3;
   }
 `;
-export const menuTitle = styled.h2`
+export const menuTitle = styled.h2<{ top: string }>`
   padding-left: 15px;
   color: #2E5FF2;
-  margin-top: 100px;
+  margin: 0;
+  margin-top: ${({ top }) => top};
 `;
 export const li = styled.li<{ select: boolean }>`
   list-style-type: none;

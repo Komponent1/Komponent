@@ -10,7 +10,7 @@ import list from './layout/list';
 import dragablepannel from './layout/dragablepannel';
 import parallexscroll from './layout/parallexscroll';
 import sortedlist from './layout/sortedlist';
-const LAYOUT = {
+const layout = {
   slidecarousel, changecarousel, contextmenu, infinitescroll, licontextmenu, scrollspy, tab, list, dragablepannel, parallexscroll, sortedlist
 }
 
@@ -20,7 +20,7 @@ import badge from './link-data/badge';
 import pointline from './link-data/pointline';
 import rating from './link-data/rating';
 import chips from './link-data/chips';
-const DATA_LINK = {
+const data_link = {
   autocomplete, badge, pointline, rating, chips
 }
 
@@ -40,14 +40,17 @@ import loading from './public/loading';
 import filterdropdown from './public/filterdropdown';
 import opendrawer from './public/opendrawer';
 import multiopendrawer from './public/multiopendrawer';
-const PUBLIC = {
+const common = {
   multiopendrawer, opendrawer, btnmenu, checkbox, togglemenu, slider, button, onoffswitch, dropdown, scrollnav, radiobutton, tip, floatdial, loading, filterdropdown
 }
 
 
 export const componentList = {
-  ...PUBLIC, ...LAYOUT, ...DATA_LINK
+  ...common, ...layout, ...data_link
 };
 export const categoryList = {
-  PUBLIC, LAYOUT, DATA_LINK
+  common, layout, data_link
+}
+export const allList = {
+  component: componentList
 }

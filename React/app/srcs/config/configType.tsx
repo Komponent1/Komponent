@@ -6,3 +6,7 @@ export type CONFIG = {
   prop: Object
   explain: string
 };
+export type HookCONFIG = {
+  name: string,
+  explain: string
+}
