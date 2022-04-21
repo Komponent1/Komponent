@@ -1,0 +1,40 @@
+.code_editor {
+  position: relative;
+
+  font-size: 1rem !important;
+}
+.code_editor .input {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 0;
+  left: 0;
+  
+  z-index: 1;
+  background-color: transparent;
+
+  resize: none;
+  border: none;
+
+  color: rgba(0,0,0,0);
+  caret-color: white;
+}
+.code_editor pre {
+  position: absolute;
+  display: block;
+  width: 500px;
+  height: 500px;
+  top: 0;
+  left: 0;
+
+  z-index: 0;
+
+  color: white;
+  margin: 0;
+}
+.code_editor pre code {
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+}

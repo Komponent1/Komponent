@@ -1,3 +1,5 @@
+import { editor } from "./utils";
+
 const home = (app: HTMLElement) => {
   app.innerHTML = `
     <h1>HELLO! THIS IS KOMPONENT</h1>
@@ -7,6 +9,9 @@ const home = (app: HTMLElement) => {
         npm i @seolim/kompoent
     </code>
   `
+
+  
+  app.appendChild(editor())
 };
 
 export default home;
