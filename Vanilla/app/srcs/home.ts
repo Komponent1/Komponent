@@ -11,7 +11,7 @@ const home = (app: HTMLElement) => {
   `
 
   
-  app.appendChild(editor())
+  app.appendChild(editor('javascript'))
 };
 
 export default home;
