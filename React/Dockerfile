@@ -1,7 +1,7 @@
-FROM node:16-alpine
+FROM node:14-alpine
 
-COPY app /usr/app
-WORKDIR /usr/app
+COPY app /app
+WORKDIR /app
 
 ENV NODE_ENV=development
 ENV CHOKIDAR_USEPOLLING=true
@@ -10,4 +10,4 @@ RUN npm install
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD tail -f /dev/null
