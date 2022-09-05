@@ -2,7 +2,7 @@ version: 2.1
 
 jobs:
   react-publish:
-    working_directory: ~/React/app
+    working_directory: ~/Komponent/React/app
     docker:
       - image: cimg/node:14.20.0
     
