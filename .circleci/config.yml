@@ -29,13 +29,14 @@ jobs:
           environment:
             NODE_ENV: product
           command: npm run build
+
       - run:
           name: authentication
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+          command: npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
 
       - run:
           name: deploy
-          command: npm publish --access=public
+          command: npm publish --access=public dist
 
 workflows:
   version: 2
