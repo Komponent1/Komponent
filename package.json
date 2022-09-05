@@ -1,8 +1,0 @@
-{
-  "name": "komponent",
-  "version": "0.1.0",
-  "scripts": {
-    "heroku-prebuild": "cd Server/app && npm install",
-    "start": "cd Server/app && npm start"
-  }
-}
