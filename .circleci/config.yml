@@ -1,0 +1,46 @@
+version: 2.1
+
+jobs:
+  react-publish:
+    working_directory: ~/React/app
+    docker:
+      - image: cimg/node:14.20.0
+    
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies
+      
+      - run:
+          name: install node_modules
+          command: npm install;
+      
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ "package.json" }}
+      
+      - run:
+          name: npm build
+          environment:
+            NODE_ENV: product
+          command: npm run build
+      - run:
+          name: authentication
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+
+      - run:
+          name: deploy
+          command: npm publish --access=public
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - react-deploy:
+          filters:
+            branches:
+              only: deploy-react
