@@ -16,7 +16,7 @@ jobs:
       
       - run:
           name: install node_modules
-          command: npm install;
+          command: ls;npm install;
       
       - save_cache:
           paths:
