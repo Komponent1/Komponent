@@ -13,6 +13,5 @@
     "removeComments": true,
     "typeRoots": ["index.d.ts", "node_modules/@types"]
   },
-  "include": ["./component"],
   "exclude": ["node_modules", "dist"]
 }
