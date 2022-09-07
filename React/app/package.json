@@ -4,14 +4,15 @@
   "description": "",
   "main": "dist/index.js",
   "dependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "storybook": "^6.5.10",
-    "styled-components": "^5.3.5",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-controls": "^6.5.10",
     "@storybook/addon-docs": "^6.5.10",
-    "@storybook/react": "^6.5.10"
+    "@storybook/react": "^6.5.10",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "storybook": "^6.5.10"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",
@@ -23,11 +24,9 @@
     "@storybook/addon-links": "^6.5.10",
     "@storybook/builder-webpack5": "^6.5.10",
     "@storybook/manager-webpack5": "^6.5.10",
-    
     "@storybook/testing-library": "0.0.13",
     "@types/react": "^16.14.31",
     "@types/react-dom": "^16.9.16",
-    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "babel-loader": "^8.2.5",

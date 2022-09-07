@@ -1,0 +1,60 @@
+import { Meta, Story, Description, Props, Preview } from '@storybook/addon-docs/blocks';
+import Button, { ButtonProps } from '../../component/button/button';
+
+# Button
+
+### Props
+<Props of={Button} />
+
+### able or disable
+<Preview>
+  <Button disabled={true}>disable</Button>
+  <Button disabled={false}>able</Button>
+</Preview>
+
+### Size of Button
+<Preview>
+  <Button size="small">small</Button>
+  <Button>medium</Button>
+  <Button size="large">large</Button>
+  <Button size="big">big</Button>
+</Preview>
+
+### Wide Button
+<Preview>
+  <Button size="wide">wide</Button>
+</Preview>
+
+### color of Button
+<Preview>
+  <Button color="normal">normal</Button>
+  <Button color="alert">alert</Button>
+  <Button color="semantic">semantic</Button>
+</Preview>
+
+### design of Button
+<Preview>
+  <Button color="normal" design="block">normal</Button>
+  <Button color="normal" design="outline">normal</Button>
+  <Button color="normal" design="text">normal</Button>
+  
+  <Button color="alert" design="block">alert</Button>
+  <Button color="alert" design="outline">alert</Button>
+  <Button color="alert" design="text">alert</Button>
+  
+  <Button color="semantic" design="block">semantic</Button>
+  <Button color="semantic" design="outline">semantic</Button>
+  <Button color="semantic" design="text">semantic</Button>
+</Preview>
+
+### Corner of Button
+
+<Preview>
+  <Button corner="round">round</Button>
+  <Button corner="square">square</Button>
+  
+  <Button design="outline" corner="round">round</Button>
+  <Button design="outline" corner="square">square</Button>
+</Preview>
+
+

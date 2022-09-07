@@ -4,10 +4,9 @@ module.exports = {
     "es2021": true
   },
   "extends": ["airbnb", "airbnb-typescript"],
-  "overrides": [],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    project: ["./**/**/tsconfig.json", "*/tsconfig.json"]
+    project: ["./**/**/tsconfig.lint.json", "*/tsconfig.lint.json"]
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {},
