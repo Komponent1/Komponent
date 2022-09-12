@@ -1,5 +1,14 @@
+export const createEm = (value: number) => `${value / 16}em`;
 export const color = {
-  /** main color */
+  primary: '#024eee',
+  secondary: '#aae5f6',
+  danger: '#ee024d',
+  success: '#2d02ee',
+  warning: '#eea302',
+  info: '#02c3ee',
+  light: '#f0f0f0',
+  dark: '#262626',
+  /** main color variation */
   blue100: '#c5cbfa',
   blue200: '#9da9f8',
   blue300: '#7086f5',
@@ -42,6 +51,11 @@ export const color = {
   white: 'white',
   white300: '#f0f0f0',
   white400: '#dedede',
+
+  black900: '#000000',
+  black800: '#262626',
+  black700: '#434343',
+  black600: '#555555',
 };
 export const size = {
   xxxs: 8,
@@ -76,7 +90,41 @@ export const padding = {
   xxl: 11,
   xxxl: 12,
 };
-
+export const typography = {
+  display4: `
+    font-size: 112px;
+    font-weight: 900;
+  `,
+  display3: `
+    font-size: 56px;
+    font-weight: 900;
+  `,
+  display2: `
+    font-size: 45px;
+    font-weight: 900;
+  `,
+  display1: `
+    font-size: 34px;
+    font-weight: 900;
+  `,
+  headline: `
+    font-size: ${size.xxxl}px;
+    font-weight: 800;
+  `,
+  title: `
+    font-size: ${size.xl}px;
+    font-weight: 700;
+  `,
+  subtitle: `
+    font-size: ${size.m}px;
+  `,
+  body: `
+    font-size: ${size.s}px;
+  `,
+  caption: `
+    font-size: ${size.xxs}px;
+  `,
+};
 export default {
-  color, size, padding, margin,
+  createEm, color, size, padding, margin,
 };
