@@ -52,10 +52,10 @@
   },
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && tsc && cp package.json dist",
+    "build": "npm run clean && tsc && cp deploy.package.json dist/package.json",
     "lint:component": "eslint component",
     "lint:example": "eslint example",
-    "dev": "npm build && webpack-dev-server --config example/configuration/webpack.config.js",
+    "dev": "npm run build && webpack-dev-server --config example/configuration/webpack.config.js",
     "storybook": "start-storybook -p 8000",
     "build-storybook": "build-storybook"
   },
