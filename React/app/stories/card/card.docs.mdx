@@ -1,0 +1,41 @@
+import { Meta, Story, Description, ArgsTable, Preview } from '@storybook/addon-docs';
+import { Card, CardContent, CardMedia, CardHeader } from '../../component/card';
+
+# Card
+
+### Card design
+<Preview>
+  <div style={{ display: "flex", width: "100%", gap: '20px' }}>
+  <Card width={240}>
+    <CardMedia src="https://mblogthumb-phinf.pstatic.net/MjAxODAyMDJfMTcx/MDAxNTE3NTUxOTIxNDcz.4p7O7MZoKYKwd9FSAVZBdJQEayDerw9nzUCPKNzfSL4g.Cx4zwz5E5GiYeUS1EGelbBU4Z2gPj9jn0ZjCQxD55gsg.JPEG.phjphk12/image_3575628891517551874701.jpg?type=w800" />
+    <CardHeader
+      title="title"
+      subtitle="subtitle"
+    />
+    <CardContent>
+      Description
+    </CardContent>
+  </Card>
+
+  <Card width={240} design="shadow">
+    <CardHeader
+      title="title"
+      subtitle="subtitle"
+    />
+    <CardMedia src="https://mblogthumb-phinf.pstatic.net/MjAxODAyMDJfMTcx/MDAxNTE3NTUxOTIxNDcz.4p7O7MZoKYKwd9FSAVZBdJQEayDerw9nzUCPKNzfSL4g.Cx4zwz5E5GiYeUS1EGelbBU4Z2gPj9jn0ZjCQxD55gsg.JPEG.phjphk12/image_3575628891517551874701.jpg?type=w800" />
+    <CardContent>
+      Description
+    </CardContent>
+  </Card>
+
+  <Card width={240}>
+    <CardHeader
+      title="title"
+      subtitle="subtitle"
+    />
+    <CardContent>
+      Description
+    </CardContent>
+  </Card>
+  </div>
+</Preview>

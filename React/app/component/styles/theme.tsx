@@ -56,6 +56,8 @@ export const color = {
   black800: '#262626',
   black700: '#434343',
   black600: '#555555',
+  black500: '#7b7b7b',
+  black400: '#9d9d9d',
 };
 export const size = {
   xxxs: 8,
@@ -126,5 +128,5 @@ export const typography = {
   `,
 };
 export default {
-  createEm, color, size, padding, margin,
+  createEm, color, size, padding, margin, typography,
 };

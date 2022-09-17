@@ -9,7 +9,9 @@ module.exports = {
     project: ["./**/**/tsconfig.lint.json", "*/tsconfig.lint.json"]
   },
   "plugins": ["react", "@typescript-eslint"],
-  "rules": {},
+  "rules": {
+    "import/prefer-default-export": 0,
+  },
   "overrides": [
     {
       "files": ["*.stories.tsx"],
