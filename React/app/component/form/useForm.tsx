@@ -1,39 +1,50 @@
 import {
-  useState, useRef, RefObject, useEffect,
+  useState, useRef, RefObject, useEffect, ChangeEvent, Dispatch, SetStateAction,
 } from 'react';
 
 type ValidateFunction<Type> = (value: Type) => boolean;
-export type FormControl<Type> = {
+type UseFormParams<Type> = {
+  validator: ValidateFunction<Type>,
+  initValue?: Type,
+  valueSet?: Type[],
+};
+export type FormControl<Type, H extends HTMLElement> = {
   value: Type | undefined;
-  onChange: (targetValue: Type) => boolean;
+  setValue: Dispatch<SetStateAction<Type | undefined>>;
+  values: Type[] | undefined;
+  setValues: Dispatch<SetStateAction<Type[] | undefined>>;
+  onChange: (e: ChangeEvent<any>) => boolean;
   touched: boolean;
   invalid: boolean;
-  ref: RefObject<HTMLElement>;
+  ref: RefObject<H>;
 };
-export default function useForm<Type>(
-  validator: ValidateFunction<Type>,
-): FormControl<Type> {
-  const ref = useRef<HTMLElement>(null);
-  const [value, setValue] = useState<Type>();
+export default function useForm<Type, H extends HTMLElement>({
+  validator,
+  initValue = undefined,
+  valueSet = undefined,
+}: UseFormParams<Type>): FormControl<Type, H> {
+  const ref = useRef<H>(null);
+  const [value, setValue] = useState<Type | undefined>(initValue);
+  const [values, setValues] = useState<Type[] | undefined>(valueSet);
   const [touched, setTouched] = useState<boolean>(false);
   const [invalid, setInvalid] = useState<boolean>(true);
 
   useEffect(() => {
-    ref.current?.addEventListener('touchend', () => {
+    ref.current?.addEventListener('mousedown', () => {
       setTouched(true);
-    });
+    }, false);
   }, [ref]);
 
-  const onChange = (targetValue: Type) => {
-    const isValid = validator(targetValue);
+  const onChange = (e: ChangeEvent<any>) => {
+    const isValid = validator(e.target.value);
     setInvalid(isValid);
-    if (!validator(targetValue)) return false;
+    if (!validator(e.target.value)) return false;
 
-    setValue(targetValue);
+    setValue(e.target.value);
     return true;
   };
 
   return {
-    value, onChange, touched, invalid, ref,
+    value, setValue, values, setValues, onChange, touched, invalid, ref,
   };
 }

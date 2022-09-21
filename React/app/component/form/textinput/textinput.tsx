@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import * as S from './style';
 import { FormControl } from '../useForm';
 
 export type TextInputProps = {
   /** input 값 변수(state) */
-  control: FormControl<string>,
+  control: FormControl<string, HTMLInputElement>,
   /** text-input 타입 */
   type?: 'password' | 'email' | 'text';
   /** 변경 가능여부 */
@@ -16,16 +16,16 @@ export type TextInputProps = {
   /** input 크기 */
   scale?: S.TextInputScale;
 };
-const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
+function TextInput({
   placeholder = '',
   id = 'srui-form-textinput',
   type = 'text',
   disabled = false,
   scale = 'medium',
   control,
-}: TextInputProps, ref) => {
+}: TextInputProps) {
   const changeFunction = (e: React.ChangeEvent<HTMLInputElement>) => {
-    control.onChange(e.target.value);
+    control.onChange(e);
   };
 
   return (
@@ -39,10 +39,10 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(({
       onChange={changeFunction}
       scale={scale}
       invalid={control.touched && control.invalid}
-      ref={ref}
+      ref={control.ref}
     />
   );
-});
+}
 TextInput.defaultProps = {
   placeholder: '',
   type: 'text',

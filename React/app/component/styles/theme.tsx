@@ -127,6 +127,33 @@ export const typography = {
     font-size: ${size.xxs}px;
   `,
 };
+export const formScales = {
+  small: `
+    width: calc(100% - ${(padding.xs - 1) * 4}px);
+    font-size: ${size.xs}px;
+    padding: ${padding.xs - 1}px ${(padding.xs - 1) * 2}px;
+  `,
+  medium: `
+    width: calc(100% - ${(padding.m - 1) * 4}px);
+    font-size: ${size.m}px;
+    padding: ${padding.m - 1}px ${(padding.m - 1) * 2}px;
+  `,
+  large: `
+    width: calc(100% - ${(padding.xl - 1) * 4}px);
+    font-size: ${size.xl}px;
+    padding: ${padding.xl - 1}px ${(padding.xl - 1) * 2}px;
+  `,
+  big: `
+    width: calc(100% - ${(padding.xxxl - 1) * 4}px);
+    font-size: ${size.xxxl}px;
+    padding: ${padding.xxxl - 1}px ${(padding.xxxl - 1) * 2}px;
+  `,
+};
+
+export const etcStyle = {
+  floatingShadow: 'box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
+};
+
 export default {
-  createEm, color, size, padding, margin, typography,
+  createEm, color, size, padding, margin, typography, formScales, etcStyle,
 };

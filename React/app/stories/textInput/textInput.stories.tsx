@@ -15,11 +15,13 @@ export default {
 } as Meta;
 
 const Template: Story<typeof TextInput> = (args) => {
-  const ref = useRef(null);
   const validator = () => true;
-  const control = useForm<string>(validator);
+  const control = useForm<string, HTMLInputElement>({
+    validator,
+    initValue: '',
+  });
 
-  return <TextInput ref={ref} control={control} {...args} />;
+  return <TextInput control={control} {...args} />;
 };
 export const general = Template.bind({});
 general.args = {
