@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 type Data = { [key: string]: any };
 type Column = {
-  value: string,
-  label?: string
+  value: string;
+  label?: string;
   sort?: (a: { [key: string]: any; }, b: { [key: string]: any; }) => number,
 };
 export type DataSource = {

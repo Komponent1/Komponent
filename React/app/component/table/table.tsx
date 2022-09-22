@@ -20,7 +20,7 @@ function Table({
         <S.thead>
           <S.tr>
             {columns.map((col) => (
-              <S.th>
+              <S.th key={`table_head_col_${col.value}`}>
                 {col.label ? col.label : col.value}
                 {col.sort && <S.sortIcon type="button" onClick={() => sort(col)}>▼</S.sortIcon>}
               </S.th>
@@ -30,9 +30,9 @@ function Table({
       )}
       <S.tbody>
         {datas.map((data) => (
-          <S.tr>
+          <S.tr key={`table_row_${data[Object.keys(data)[0]]}`}>
             {columns.map((col) => (
-              <S.td>
+              <S.td key={`table_row_col_${data[col.value]}`}>
                 {data[col.value]}
               </S.td>
             ))}

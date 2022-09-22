@@ -56,6 +56,9 @@ export const optionBox = styled.ul<{
   margin: 0;
   padding: 0;
   border-radius: 5px;
+  position: absolute;
+  top: auto;
+  z-index: 999;
 
   display: ${({ open }) => (open ? 'block' : 'none')};
   ${theme.etcStyle.floatingShadow};

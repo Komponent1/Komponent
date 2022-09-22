@@ -1,0 +1,120 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import Button, { ButtonProps } from '../../component/button/button';
+
+<Meta title="component/Button" component={Button} />
+
+# Button
+
+버튼(Button)은 유저의 액션에 반응하여 동작을 실행할 수 있습니다.
+
+아래와 같이 사용합니다.
+
+```tsx
+import { Button } from '@seolim/react-ui';
+
+const Component = () => (
+  <Button>Button</Button>
+);
+```
+
+버튼은 3가지 테마(`color`)를 제공합니다.
+
+<Canvas>
+  <Story name="normal"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button color="normal">normal</Button>
+  </Story>
+  <Story name="alert"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button color="alert">alert</Button>
+  </Story>
+  <Story name="semantic"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button color="semantic">semantic</Button>
+  </Story>
+</Canvas>
+
+버튼은 기본적으로 몇가지 스타일(`design`, `corner`)의 조합을 제공합니다.
+
+<Canvas>
+  <Story name="block round"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button corner="round">Round Block</Button>
+  </Story>
+  <Story name="outline round"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button design="outline" corner="round">Round Block</Button>
+  </Story>
+  <Story name="text round"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button design="text" corner="round">Text</Button>
+  </Story>
+  <Story name="block squre"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button>Round Block</Button>
+  </Story>
+  <Story name="outline square"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button design="outline">Round Block</Button>
+  </Story>
+  <Story name="text squre"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button design="text">Text</Button>
+  </Story>
+</Canvas>
+
+버튼은 기본적으로 4개의 크기를 제공합니다.
+
+<Canvas>
+  <Story name="small"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button size="small">small</Button>
+  </Story>
+  <Story name="medium"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button size="medium">medium</Button>
+  </Story>
+  <Story name="large"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button size="large">large</Button>
+  </Story>
+  <Story name="big"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button size="big">big</Button>
+  </Story>
+  <Story name="big"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Button size="wide">wide</Button>
+  </Story>
+</Canvas>
+
+### Props
+<ArgsTable of={Button} />

@@ -1,0 +1,113 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import Table, { TableProps } from '../../component/table/table';
+import { useDataSource } from '../../component/table/datasource';
+
+<Meta title="component/Table" component={Table} />
+
+# Table
+
+테이블은 데이터리스트를 정보와 함께 열거하는 시각화 컴포넌트입니다. 로우마다 하나의 데이터를 표현하고 컬럼은 데이터의 속성을 표현합니다.
+
+테이블은 함께 주어지는 useDataSource와 함께 사용하여 데이터를 관리합니다.
+
+
+```tsx
+import { useDataSource, Table } from '@seolim/react-ui/table';
+
+const Component = () => {
+  const rawData = [ ... ];
+  const columns = [ ... ];
+
+  const dataSource = useDataSource(rawData, columns);
+  return <Table dataSource={dataSource} />
+}
+```
+
+테이블은 2가지 디자인(`design`)을 제공합니다. **primary**(have columns header)와 **primary-no-col**(no columns header)입니다.
+
+export const rawData = [
+    { name: 'test1', number: 5, message: 'abcdefghijklmnop1' },
+    { name: 'test4', number: 1, message: 'abcdefghijklmnop2' },
+    { name: 'test2', number: 3, message: 'abcdefghijklmnop3' },
+    { name: 'test3', number: 2, message: 'abcdefghijklmnop4' },
+    { name: 'test6', number: 4, message: 'abcdefghijklmnop5' },
+    { name: 'test5', number: 6, message: 'abcdefghijklmnop6' },
+  ];
+export const columns = [
+    {
+      value: 'name',
+      label: '이름',
+      sort: (a, b) => (a > b ? 1 : -1),
+    },
+    {
+      value: 'number',
+      label: '순번',
+      sort: (a, b) => (a > b ? 1 : -1),
+    },
+    {
+      value: 'message',
+      label: '메시지',
+    },
+  ];
+
+export const Template = () => {
+  const dataSource = useDataSource(rawData, columns);
+  return <Table dataSource={dataSource} />;
+}
+
+**primary**
+
+<Canvas>
+  <Story name="primary">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+
+
+export const primarynoTemplate = () => {
+  const dataSource = useDataSource(rawData, columns);
+  return <Table design="primary-no-col" dataSource={dataSource} />;
+}
+
+**primary-no-col**
+
+<Canvas>
+  <Story name="primary-no-col">
+    {primarynoTemplate.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={Table} />
+
+### useDataSource
+
+`useDataSource`는 `<Table>` 컴포넌트에 제공하는 데이터 포맷을 생성하는 훅(hook)입니다.
+
+테이블을 구성할 데이터 리스트(`rawData`)와 테이블을 구성할 컬럼 리스트(`columns`)를 받아 `<Table>`에 적용될 데이터포맷(`dataSource`)를 반환합니다. 아래와 같은 타입을 따릅니다.
+
+```typescript
+/** rawData 타입 */
+type Data = { [key: string]: any };
+/** columns 타입 */
+type Column = {
+  /** 데이터 key, 데이터의 순서를 해당 값으로 조절할 수 있다. */
+  value: string;
+  /** 테이블에 표기될 컬럼 이름, 없을시 key(value)값이 표기된다. */
+  label?: string;
+  /** sorting 옵션, 없을시 해당 컬럼에 대한 소팅은 동작하지 않는다. */
+  sort?: (a: { [key: string]: any; }, b: { [key: string]: any; }) => number,
+};
+/** useDataSource의 리턴 타입 */
+type DataSource = {
+  /** 데이터 리스트 */
+  datas: Data[];
+  /** 컬럼 리스트 */
+  columns: Column[];
+  /** sorting함수 */
+  sort: (col: Column) => void;
+};
+type useDataSource: (rawData: Data[], columns?: Column[]) => DataSource;
+```

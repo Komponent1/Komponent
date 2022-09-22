@@ -17,7 +17,7 @@ export type SelectProps = {
   label?: string[];
 };
 function Select({
-  id = 'srui-form-nativeselect',
+  id = undefined,
   width = undefined,
   disabled = false,
   scale = 'medium',
@@ -30,7 +30,7 @@ function Select({
   };
   useEffect(() => {
     const closeOptionBox = (e: MouseEvent) => {
-      if (!(e.target as HTMLElement).closest(`#${id}`)) setOpen(false);
+      if (!(e.target as HTMLElement).closest('.srui-form-select')) setOpen(false);
     };
     window.addEventListener('click', closeOptionBox);
     return () => window.removeEventListener('click', closeOptionBox);
@@ -43,7 +43,7 @@ function Select({
       );
     }
     const onClick = (value: any) => {
-      control.setValue(value);
+      control.onChange({ v: value });
       setOpen(false);
     };
 
@@ -67,6 +67,7 @@ function Select({
 
   return (
     <S.div
+      className="srui-form-select"
       id={id}
       ref={control.ref}
     >
@@ -93,7 +94,7 @@ function Select({
   );
 }
 Select.defaultProps = {
-  id: 'srui-form-nativeselect',
+  id: undefined,
   width: undefined,
   disabled: false,
   scale: 'medium',

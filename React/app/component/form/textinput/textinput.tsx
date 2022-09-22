@@ -11,21 +11,21 @@ export type TextInputProps = {
   disabled?: boolean;
   /** 플레이스 홀더 */
   placeholder?: string;
-  /** element id(라벨과 동일하게 설정) */
+  /** element id(라벨과 동일하게 설정), 아이디는 모든 폼요소가 다르게 설정되어야 합니다. */
   id?: string;
   /** input 크기 */
   scale?: S.TextInputScale;
 };
 function TextInput({
   placeholder = '',
-  id = 'srui-form-textinput',
+  id = undefined,
   type = 'text',
   disabled = false,
   scale = 'medium',
   control,
 }: TextInputProps) {
   const changeFunction = (e: React.ChangeEvent<HTMLInputElement>) => {
-    control.onChange(e);
+    control.onChange({ e });
   };
 
   return (
@@ -46,7 +46,7 @@ function TextInput({
 TextInput.defaultProps = {
   placeholder: '',
   type: 'text',
-  id: 'srui-form-textinput',
+  id: undefined,
   scale: 'medium',
   disabled: false,
 };

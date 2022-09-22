@@ -27,7 +27,7 @@ function NativeSelect({
   control,
 }: NativeSelectProps) {
   const changeFunction = (e: ChangeEvent<HTMLSelectElement>) => {
-    control.onChange(e);
+    control.onChange({ e });
   };
 
   const makeOption = useCallback(() => {

@@ -1,0 +1,221 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { Select, NativeSelect, useForm } from '../../component/form';
+
+<Meta title="form/Select" component={Select} />
+
+# Select
+
+셀렉트(Select)는 폼(form)요소 중 여러 값 세트중 하나의 값을 선택하는 컴포넌트입니다.
+
+유저의 선택에 따라 데이터를 갱신하고 폼을 통해 데이터를 서브밋(submit)합니다.
+
+모든 폼은 `useForm`을 통해 `FormControl`을 생성해 사용할 수 있습니다. select는 `width`와 `label`의 설정을 권장합니다. 
+
+```tsx
+import { useForm, Select } from '@seolim/react-ui/form';
+
+const Component = () => {
+  /** any는 사용하는 데이터의 타입으로 변경하면 됩니다. */
+  const valueSet = [ ... ];
+  /**
+   * label은 valueSet과 대응되어 셀렉트내에서 값을 표현합니다.
+   * 따라서 반드시 valueSet과 길이가 일치해야합니다.
+  */
+  const label = [ ... ];
+  const validator: ValidateFunction<any> = (value) => { ... };
+  const control = useForm<any, HTMLDivElement>({
+    validator, valueSet
+  });
+
+  return <Select control={control} width={320} label={label} />;
+}
+```
+
+셀렉트는 4개의 크기(`scale`)를 제공합니다.
+
+export const validator = () => true;
+
+export const valueSet = [ 'apple', 'orange', 'peach', 'fruits' ];
+
+export const smallTemplate = () => {
+  const control = useForm({
+    validator, valueSet
+  });
+  return <Select scale="small" control={control} width={120} />
+}
+export const mediumTemplate = () => {
+  const control = useForm({
+    validator, valueSet
+  });
+  return <Select scale="medium" control={control} width={120} />
+}
+export const largeTemplate = () => {
+  const control = useForm({
+    validator, valueSet
+  });
+  return <Select scale="large" control={control} width={120} />
+}
+export const bigTemplate = () => {
+  const control = useForm({
+    validator, valueSet
+  });
+  return <Select scale="big" control={control} width={120} />
+}
+
+<Canvas>
+  <Story name="small"
+    parameters={{ layout: 'centered' }}>
+    {smallTemplate.bind({})}
+  </Story>
+  <Story name="medium"
+    parameters={{ layout: 'centered' }}>
+    {mediumTemplate.bind({})}
+  </Story>
+  <Story name="large"
+    parameters={{ layout: 'centered' }}>
+    {largeTemplate.bind({})}
+  </Story>
+  <Story name="big"
+    parameters={{ layout: 'centered' }}>
+    {bigTemplate.bind({})}
+  </Story>
+</Canvas>
+
+셀렉트는 사용가능과 불가능이 구분(`disabled`)되어 표현됩니다.
+
+export const ableTemplate = () => {
+  const control = useForm({
+    validator, valueSet
+  });
+  return <Select disabled={false} control={control} width={120} />
+}
+export const disableTemplate = () => {
+  const control = useForm({
+    validator, valueSet
+  });
+  return <Select disabled={true} control={control} width={120} />
+}
+
+<Canvas>
+  <Story name="able"
+    parameters={{ layout: 'centered' }}>
+    {ableTemplate.bind({})}
+  </Story>
+  <Story name="disable"
+    parameters={{ layout: 'centered' }}>
+    {disableTemplate.bind({})}
+  </Story>
+</Canvas>
+
+셀렉트는 라벨값에 따라 표기되는 옵션(option)의 이름을 변경할 수 있습니다. 반드시 라벨 리스트의 길이와 값 리스트의 길이는 일치해야합니다.
+
+아래는 label값을 `[ '사과', '오렌지', '복숭아', '과일들' ]` 에 대응한 경우입니다.
+
+export const labelTemplate = () => {
+  const control = useForm({
+    validator, valueSet
+  });
+  const label = [ '사과', '오렌지', '복숭아', '과일들' ];
+  return <Select control={control} width={120} label={label}/>
+}
+
+<Canvas>
+  <Story name="label"
+    parameters={{ layout: 'centered' }}>
+    {labelTemplate.bind({})}
+  </Story>
+</Canvas>
+
+폼 컨트롤(`formControl`)에 설정된 검증함수(validator)에 따라 검증 통과여부를 알 수 있습니다. 아래는 'apple'선택만이 검증함수를 통과합니다.
+
+export const validTemplate = () => {
+  const control = useForm({
+    validator: (value) => (value === 'apple'),
+    valueSet,
+  });
+  return <Select control={control} width={120}/>
+};
+
+<Canvas>
+  <Story name="valid"
+    parameters={{ layout: 'centered' }}>
+    {validTemplate.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={Select} />
+
+### NativeSelect
+
+SRUI의 select는 HTML5의 `<select>`를 사용하지 않았습니다. HTML5에서 제공하는 `<select>`요소를 직접 사용하려면 `<NativeSelect />`를 사용할 수 있습니다. `<Select />`와 동일하게 동작합니다.
+
+```tsx
+import { useForm, NativeSelect } from '@seolim/react-ui/form';
+
+const Component = () => {
+  const valueSet = [ ... ];
+  const label = [ ... ];
+  const validator: ValidateFunction<any> = (value) => { ... };
+  /** NativeSelect는 generic을 다르게 설정해주어야 합니다. */
+  const control = useForm<any, HTMLSelectElement>({
+    validator, valueSet
+  });
+
+  return <Select control={control} width={320} label={label} />;
+}
+```
+
+export const nativeTemplate = () => {
+  const control = useForm({
+    validator,
+    valueSet,
+  });
+  return <NativeSelect control={control} width={120}/>
+}
+
+<Canvas>
+  <Story name="nativeSelect"
+    parameters={{ layout: 'centered' }}>
+    {nativeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+### useForm
+
+`useForm`은 모든 폼요소에 공통적으로 사용되는 데이터 포맷을 셍성하는 훅(hook)입니다.
+
+데이터의 검증에 사용되는 함수(`validator`)와 초기값(`initValue`), 셀렉트같은 여러 데이터를 초기로 받는 폼을 위한 데이터세트(`valueSet`)를 받아서 `formControl`을 반환합니다. 아래와 같은 타입을 따릅니다.
+
+```typescript
+/** 데이터 검증 함수 */
+type ValidateFunction<Type> = (value: Type) => boolean;
+/** useForm 반환값 */
+type FormControl<Type, H extends HTMLElement> = {
+  /** 폼의 요소 값(<input value={value}) /> */
+  value: Type | undefined;
+  /** 값 변경함수, 외부에서 값을 변경해야 할 경우 사용(비 사용 권장) */
+  setValue: Dispatch<SetStateAction<Type | undefined>>;
+  /** select와 같은 요소의 데이터 세트, 이외 요소엔 존재하지 않습니다. */
+  values: Type[] | undefined;
+  /** select와 같은 요소의 데이터 세트를 변경시 사용 */
+  setValues: Dispatch<SetStateAction<Type[] | undefined>>;
+  /** 폼 내 값 변경에 대한 이벤트 핸들러(비사용 권장) */
+  onChange: ({ e, v }: { e?: ChangeEvent<any>, v?: Type }) => void;
+  /** 폼을 한번이라도 변경했는지에 대한 여부 */
+  touched: boolean;
+  /** 데이터가 검증함수(validator)를 통과했는지에 대한 여부 */
+  invalid: boolean;
+  /** element ref(비사용 권장) */
+  ref: RefObject<H>;
+};
+type useForm = <Type, H extends HTMLElement>({
+  /** 데이터 검증 함수 */
+  validator?: ValidateFunction<Type> = () => false,
+  /** 초기값, 설정을 권장합니다 */
+  initValue?: Type = undefined,
+  /** select와 같은 요소의 데이터 세트, 이외 요소엔 사용하지 않습니다. */
+  valueSet?: Type[] = undefined,
+}): FormControl<Type, H>
+```

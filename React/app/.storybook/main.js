@@ -1,5 +1,6 @@
 module.exports = {
   "stories": [
+    "../stories/intro.stories.tsx",
     "../stories/**/*.stories.mdx",
     "../stories/**/*.stories.@(js|jsx|ts|tsx)"
   ],
@@ -13,5 +14,6 @@ module.exports = {
   "framework": "@storybook/react",
   "core": {
     "builder": "@storybook/builder-webpack5"
-  }
+  },
+  "staticDirs": ["../public"],
 }

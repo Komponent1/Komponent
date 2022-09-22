@@ -1,0 +1,144 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { Card, CardContent, CardMedia, CardHeader } from '../../component/card';
+import Button, { ButtonProps } from '../../component/button/button';
+
+<Meta title="component/Card" component={Card} />
+
+# Card
+
+카드는 기본적으로 데이터를 시각화 하는 도구로 통상 특정 정보의 디테일로 들어가는 진입점 역할을 합니다.
+
+기본적으로 카드는 몇가지 요소로 구성으로 되어있는데, 필수적으로 헤더와 액션이 포함되고 부가적으로 미디어와 설명(데스크립션)이 포함됩니다. 디자인 구성이 아래와 같이 다양하게 나타날 수 있습니다.
+
+<Story name="layout">
+  <img src={'/card_show.png'} width="500px"/>
+</Story>
+
+이중 액션은 다양한 형태로 나타나는데, collapse(확장 UI), 공유, 아이콘, 버튼등등 다양한 형태로 나타납니다. 
+
+```tsx
+import { Card, CardHeader, CardMedia, CardContent } from '@seolim/react-ui';
+
+const Component = () => (
+  <Card>
+    <CardHeader
+      title="title"
+      subtitle="subtitle"/>
+    <CardMedia src="image src" />
+    <CardContent>
+      description of Card
+    </CardContent>
+  </Card>
+);
+```
+
+카드는 `<Card>`, `<CardHeader>`, `<CardMedia>`, `<CardContent>` 의 조합을 통해 구현할 수 있습니다.
+
+<Canvas>
+  <Story name="media-title-description"
+    parameters={{
+      layout: 'centered'
+    }}>
+      <Card width={240}>
+        <CardMedia src="/card_img.png" />
+        <CardHeader
+          title="title"
+          subtitle="subtitle"
+        />
+        <CardContent>
+          Description
+        </CardContent>
+      </Card>
+  </Story>
+  <Story name="title-media-desciption"
+    parameters={{
+      layout: 'centered'
+    }}>
+      <Card width={240}>
+        <CardHeader
+          title="title"
+          subtitle="subtitle"
+        />
+        <CardMedia src="/card_img.png" />
+        <CardContent>
+          Description
+        </CardContent>
+      </Card>
+  </Story>
+  <Story name="title-description"
+    parameters={{
+      layout: 'centered'
+    }}>
+      <Card width={240}>
+        <CardHeader
+          title="title"
+          subtitle="subtitle"
+        />
+        <CardContent>
+          Description
+        </CardContent>
+      </Card>
+  </Story>
+</Canvas>
+
+`<Card>`는 카드를 감싸는 레이아웃입니다.
+
+`<CardHeader>`는 타이틀과 간략 설명을 포함합니다.
+
+`<CardMedia>`는 카드에 적용될 이미지를 포함합니다.
+
+`<CardContent>`는 카드의 설명, 옵션, 액션을 포함하는 바디입니다.
+
+카드는 2가지 디자인과 액션에 대한 UX(floating)을 제공합니다. border는 액션없이, shadow는 액션을 포함하는것을 권장합니다.
+
+<Canvas>
+  <Story name="border"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Card width="240px">
+      <CardHeader
+        title="title"
+        subtitle="subtitle"
+      />
+      <CardMedia src="/card_img.png" />
+      <CardContent>
+        Description
+      </CardContent>
+    </Card>
+  </Story>
+  
+  <Story name="shodow"
+    parameters={{
+      layout: 'centered'
+    }}>
+    <Card width={240} design="shadow" action={() => {}}>
+      <CardHeader
+        title="title"
+        subtitle="subtitle"
+      />
+      <CardMedia src="/card_img.png" />
+      <CardContent>
+        Description
+      </CardContent>
+    </Card>
+  </Story>
+</Canvas>
+
+### Props
+
+**Card**
+
+<ArgsTable of={Card} />
+
+**CardHeader**
+
+<ArgsTable of={CardHeader} />
+
+**CardMedia**
+
+<ArgsTable of={CardMedia} />
+
+**CardContent**
+
+<ArgsTable of={CardContent} />
