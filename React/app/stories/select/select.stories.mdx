@@ -31,35 +31,61 @@ const Component = () => {
 }
 ```
 
-셀렉트는 4개의 크기(`scale`)를 제공합니다.
-
 export const validator = () => true;
 
 export const valueSet = [ 'apple', 'orange', 'peach', 'fruits' ];
+
+셀렉트는 2개의 디자인(`design`)을 제공합니다.
+
+export const normalTemplate = () => {
+  const control = useForm({
+    validator, valueSet
+  });
+  return <Select control={control} />
+}
+export const underlineTemplate = () => {
+  const control = useForm({
+    validator, valueSet
+  });
+  return <Select design="underline" control={control} />
+}
+
+<Canvas>
+  <Story name="normal"
+    parameters={{ layout: 'centered' }}>
+    {normalTemplate.bind({})}
+  </Story>
+  <Story name="underline"
+    parameters={{ layout: 'centered' }}>
+    {underlineTemplate.bind({})}
+  </Story>
+</Canvas>
+
+셀렉트는 4개의 크기(`scale`)를 제공합니다.
 
 export const smallTemplate = () => {
   const control = useForm({
     validator, valueSet
   });
-  return <Select scale="small" control={control} width={120} />
+  return <Select scale="small" control={control} />
 }
 export const mediumTemplate = () => {
   const control = useForm({
     validator, valueSet
   });
-  return <Select scale="medium" control={control} width={120} />
+  return <Select scale="medium" control={control} />
 }
 export const largeTemplate = () => {
   const control = useForm({
     validator, valueSet
   });
-  return <Select scale="large" control={control} width={120} />
+  return <Select scale="large" control={control} />
 }
 export const bigTemplate = () => {
   const control = useForm({
     validator, valueSet
   });
-  return <Select scale="big" control={control} width={120} />
+  return <Select scale="big" control={control} />
 }
 
 <Canvas>
@@ -87,13 +113,13 @@ export const ableTemplate = () => {
   const control = useForm({
     validator, valueSet
   });
-  return <Select disabled={false} control={control} width={120} />
+  return <Select disabled={false} control={control} />
 }
 export const disableTemplate = () => {
   const control = useForm({
     validator, valueSet
   });
-  return <Select disabled={true} control={control} width={120} />
+  return <Select disabled={true} control={control} />
 }
 
 <Canvas>
@@ -116,7 +142,7 @@ export const labelTemplate = () => {
     validator, valueSet
   });
   const label = [ '사과', '오렌지', '복숭아', '과일들' ];
-  return <Select control={control} width={120} label={label}/>
+  return <Select control={control} label={label}/>
 }
 
 <Canvas>
@@ -133,7 +159,7 @@ export const validTemplate = () => {
     validator: (value) => (value === 'apple'),
     valueSet,
   });
-  return <Select control={control} width={120}/>
+  return <Select control={control}/>
 };
 
 <Canvas>
@@ -172,7 +198,7 @@ export const nativeTemplate = () => {
     validator,
     valueSet,
   });
-  return <NativeSelect control={control} width={120}/>
+  return <NativeSelect control={control}/>
 }
 
 <Canvas>

@@ -15,6 +15,8 @@ export type SelectProps = {
   scale?: S.FormScalesType;
   /** select 라벨 */
   label?: string[];
+  /** select 스타일 */
+  design?: S.SelectDesign;
 };
 function Select({
   id = undefined,
@@ -22,11 +24,19 @@ function Select({
   disabled = false,
   scale = 'medium',
   label = undefined,
+  design = 'normal',
   control,
 }: SelectProps) {
-  const [open, setOpen] = useState(false);
-  const optionBoxOpen = () => {
-    if (!disabled) setOpen(true);
+  const [open, setOpen] = useState<boolean>(false);
+  const [transition, setTransition] = useState<number>(0.5);
+  const toggleOptionBox = () => {
+    if (disabled) return;
+
+    if (!open) setOpen(true);
+    else setTransition(0.5);
+  };
+  const transitionEnd = () => {
+    if (open && transition === 0.5) setOpen(false);
   };
   useEffect(() => {
     const closeOptionBox = (e: MouseEvent) => {
@@ -35,11 +45,15 @@ function Select({
     window.addEventListener('click', closeOptionBox);
     return () => window.removeEventListener('click', closeOptionBox);
   }, []);
+  useEffect(() => {
+    if (open) setTransition(1);
+    else setTransition(0.5);
+  }, [open]);
 
   const makeOption = useCallback(() => {
     if (!control.values || control.values?.length === 0) {
       return (
-        <S.option value="">no data</S.option>
+        <S.option scale={scale} value="">no data</S.option>
       );
     }
     const onClick = (value: any) => {
@@ -53,6 +67,7 @@ function Select({
           key={`selectoption_${value}`}
           onClick={() => onClick(value)}
           value={value}
+          scale={scale}
         >
           {label ? label[i] : value}
         </S.option>
@@ -70,6 +85,7 @@ function Select({
       className="srui-form-select"
       id={id}
       ref={control.ref}
+      scale={scale}
     >
       <S.select
         disabled={disabled}
@@ -77,13 +93,16 @@ function Select({
         width={width}
         invalid={control.touched && control.invalid}
         open={open}
-        onClick={optionBoxOpen}
+        design={design}
+        onClick={toggleOptionBox}
       >
         {control.value
           ? labelPipe(control.value)
           : '선택하기'}
       </S.select>
       <S.optionBox
+        onTransitionEnd={transitionEnd}
+        transition={transition}
         scale={scale}
         open={open}
         width={width}
@@ -99,6 +118,7 @@ Select.defaultProps = {
   disabled: false,
   scale: 'medium',
   label: undefined,
+  design: 'normal',
 };
 
 export default Select;
