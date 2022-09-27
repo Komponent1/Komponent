@@ -49,8 +49,10 @@ export const color = {
   sky500: '#00a9ed',
 
   white: 'white',
+  white200: '#f9f9f9',
   white300: '#f0f0f0',
   white400: '#dedede',
+  white500: '#cccccc',
 
   black900: '#000000',
   black800: '#262626',

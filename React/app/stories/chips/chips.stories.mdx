@@ -1,0 +1,179 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { Chip, Chips, useChips } from '../../component/chips';
+import { ChipsInput, useForm } from '../../component/form';
+
+<Meta title="component/Chips" component={Chips} />
+
+# Chips
+
+칩(Chip)이란 간략하게 정보를 보여주는 UI입니다.
+
+```typescript
+import { Chip } from '@seolim/react-ui/chips';
+
+const Component = () => {
+  return (
+    <Chip>
+      chip
+    </Chip>
+  );
+}
+```
+
+칩의 컬러는 기본적으로 4개를 제공합니다.(커스터마이즈는 이후 버전에 제공 예정입니다)
+
+<Canvas>
+  <Story name="chip-color-grey"
+    parameters={{ layout: 'centered' }}>
+    <Chip>grey</Chip>
+  </Story>
+  <Story name="chip-color-primary"
+    parameters={{ layout: 'centered' }}>
+    <Chip color="primary">primary</Chip>
+  </Story>
+  <Story name="chip-color-semantic"
+    parameters={{ layout: 'centered' }}>
+    <Chip color="semantic">semantic</Chip>
+  </Story>
+  <Story name="chip-color-danger"
+    parameters={{ layout: 'centered' }}>
+    <Chip color="danger">danger</Chip>
+  </Story>
+</Canvas>
+
+칩은 4가지의 크기(scale)을 제공합니다.
+
+<Canvas>
+  <Story name="chip-color-small"
+    parameters={{ layout: 'centered' }}>
+    <Chip scale="small">small</Chip>
+  </Story>
+  <Story name="chip-scale-medium"
+    parameters={{ layout: 'centered' }}>
+    <Chip>medium</Chip>
+  </Story>
+  <Story name="chip-scale-large"
+    parameters={{ layout: 'centered' }}>
+    <Chip scale="large">large</Chip>
+  </Story>
+  <Story name="chip-scale-big"
+    parameters={{ layout: 'centered' }}>
+    <Chip scale="big">big</Chip>
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={Chip} />
+
+# Chips
+
+칩스(Chips)는 칩 리스트 UI입니다. `useChips`를 활용하여 여러 칩을 동시에 관리할 수 있습니다.
+
+칩스는 단독으로 쓰이지 않고 input등의 요소와 함께 쓰입니다. SRUI는 ChipsInput을 제공합니다.
+
+```typescript
+import { Chips, useChips } from '@seolim/react-ui/chips';
+
+const Component = () => {
+  const { chips } = useChips([ ...chip_data_set`string` ]);
+
+  return (
+    <Chips chips={chips} />
+  );
+}
+```
+
+칩과 동일한 스타일을 제공합니다.
+
+export const greysTemplate = () => {
+  const { chips } = useChips(['This', 'is', 'grey']);
+  return (
+    <Chips chips={chips} />
+  );
+}
+export const primarysTemplate = () => {
+  const { chips } = useChips(['This', 'is', 'primary']);
+  return (
+    <Chips chips={chips} color="primary"/>
+  );
+}
+export const semanticsTemplate = () => {
+  const { chips } = useChips(['This', 'is', 'semantic']);
+  return (
+    <Chips chips={chips} color="semantic"/>
+  );
+}
+export const dangersTemplate = () => {
+  const { chips } = useChips(['This', 'is', 'semantic']);
+  return (
+    <Chips chips={chips} color="danger"/>
+  );
+}
+
+<Canvas>
+  <Story name="chips-color-grey"
+    parameters={{ layout: 'centered' }}>
+    {greysTemplate.bind({})}
+  </Story>
+  <Story name="chips-color-primary"
+    parameters={{ layout: 'centered' }}>
+    {primarysTemplate.bind({})}
+  </Story>
+  <Story name="chips-color-semantic"
+    parameters={{ layout: 'centered' }}>
+    {semanticsTemplate.bind({})}
+  </Story>
+  <Story name="chips-color-danger"
+    parameters={{ layout: 'centered' }}>
+    {dangersTemplate.bind({})}
+  </Story>
+</Canvas>
+
+칩스는 삭제(delete)와 생성(update)옵션을 제공합니다. 칩 또한 onDelete를 Prop으로 제공하지만 동작을 직접 제어해야합니다.
+
+칩스는 `useChips`에서 제공하는 `deleteChip`과 `updateChip`을 통해 데이터를 갱신할 수 있습니다.
+
+`deleteChip`을 적용한 칩은 삭제버튼이 추가됩니다.
+
+export const deleteTemplate = () => {
+  const { chips, deleteChip } = useChips(['This', 'is', 'delete', 'option']);
+  return (
+    <Chips chips={chips} onDelete={deleteChip}/>
+  );
+}
+
+<Canvas>
+  <Story name="chips-delete"
+    parameters={{ layout: 'centered' }}>
+    {deleteTemplate.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={Chips} />
+
+### useChips
+
+`useChips`는 `<Chips>`의 사용이 요구되는 훅(hook)입니다.
+
+초기 데이터를 받아 생성됩니다.
+```typescript
+/** useChip에서 사용되는 칩 데이터 포맷 */
+type ChipData = {
+  /** 삭제에 활용되는 chip id */
+  id: number,
+  /** 칩 스트링 */
+  value: string
+};
+type returnType = {
+  /** 적용되어있는 칩 데이터 */
+  chips: ChipData;
+  /** 칩 삭제 함수 */
+  deleteChip: (target: ChipData) -> void;
+  /** 칩 추가 함수, forward는 데이터를 앞에(true) 추가할지 뒤에(false) 추가할지 여부 */
+  updateChip: (value: string, forward?: boolean) => void;
+};
+type useChips = (init?: string[]) => returnType;
+```
