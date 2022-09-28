@@ -101,6 +101,7 @@ export const optionBox = styled.ul<{
   border-radius: 5px;
   position: absolute;
   top: auto;
+  background: white;
   z-index: 999;
 
   transition: transform 0.1s ease-in, opacity 0.1s ease-in;
