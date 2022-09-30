@@ -11,13 +11,13 @@ module.exports = {
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "import/prefer-default-export": 0,
+    "react/jsx-props-no-spreading": 0,
   },
   "overrides": [
     {
       "files": ["*.stories.tsx"],
         "rules": {
           "react/function-component-definition": 0,
-          "react/jsx-props-no-spreading": 0,
         }
     }
    ],

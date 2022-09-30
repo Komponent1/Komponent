@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import * as S from './style';
 import { FormControl } from '../useForm';
 
-export type TextInputProps = {
+export type TextInputProps = HTMLAttributes<HTMLInputElement> & {
   /** input 값 변수(state) */
   control: FormControl<string, HTMLInputElement>,
   /** text-input 타입 */
@@ -23,6 +23,7 @@ function TextInput({
   disabled = false,
   scale = 'medium',
   control,
+  ...args
 }: TextInputProps) {
   const changeFunction = (e: React.ChangeEvent<HTMLInputElement>) => {
     control.onChange({ e });
@@ -40,6 +41,7 @@ function TextInput({
       scale={scale}
       invalid={control.touched && control.invalid}
       ref={control.ref}
+      {...args}
     />
   );
 }

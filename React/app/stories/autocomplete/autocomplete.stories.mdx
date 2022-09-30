@@ -1,0 +1,112 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { AutoTextInput, useForm, AutoChipsInput } from '../../component/form';
+
+<Meta title="form/AutoComplete" component={AutoTextInput} />
+
+# AutoComplete
+
+자동완성(auto complete)는 인풋(input)등의 입력 UI에서 특정 커멘드를 입력했을 때, 해당 입력 커멘드로 입력 가능한 필드(혹은 내용)을 열거하는 시스템입니다.
+
+SRUI의 자동완성은 `useAutoComplete` 훅(hook) 통해 구현됩니다.
+
+`useAutoComplete`는 동기(sync) 혹은 비동기(async)적으로 자동완성된 데이터세트를 관리합니다. 아래는 사용 예시입니다.
+
+```typescript
+import { useAutoComplete } from '@seolim/react-ui/autocomplete';
+
+const Component = () => {
+  const { values, onChagne } = useAutoComplete(
+    controlValue: /** api callback함수 또는 string value set */,
+  );
+
+  return (
+    <>
+      <input onChange={(e) => onChange({ e })} />
+      <ul>
+        {values.map((value) =>(
+          <li>{value}</li>
+        )}
+      </ul>
+    </>
+  );
+}
+```
+
+`useAutoComplete`의 파라미터와 리턴 타입은 각각 아래와 같습니다.
+
+```typescript
+type UseAutocompleteParam = {
+  /** 미리 값이 주어지는 경우는 string[], 서버로부터 데이터를 확인하면 callback함수를 설정 */
+  controlValue: string[] | (text: string) => Promise<string[]>;;
+};
+type UseAutoCompleteReturn = {
+  /** values를 서치하기 위한 값, 사용하지 않는것을 권장 */
+  value: string;
+  /** 서치된 자동완성 문자열 리스트 */
+  values: string[];
+  /** onChange는 서치 데이터를 변경하는 작업, event를 직접 받거나 값을 받아 시행할 수 있다. */
+  onChange: ({
+    e?: ChangeEvent<HTMLInputElement>,
+    v?: string
+  }) => void
+}
+```
+
+SRUI는 `useAutoComplete` 훅(hook)을 사용한 `<AutoTextInput>`, `<AutoChipsInput>`, 두개의 AutoCompleteForm을 제공합니다.
+
+### AutoTextInput
+
+자동 텍스트 인풋(`<AutoTextInput>`은 텍스트인풋(`<TextInput>`)에 자동완성 기능이 추가된 데이터 인풋입니다.
+
+기본적인 모든 기능은 [TextInput](https://6333d80e63299bb883b10717-apzaycryrx.chromatic.com/?path=/docs/form-textinput--text)과 동일합니다.
+
+export const validator = () => true;
+export const Template = () => {
+  const control = useForm({
+    validator, initValue: '',
+  });
+  return (
+    <AutoTextInput placeholder="text" type="text" control={control} controlValue={['This', 'Is', 'Simple']}/>
+  );
+};
+
+<Canvas>
+  <Story name="auto text input"
+    parameters={{ layout: 'centered' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={AutoTextInput} />
+
+### AutoChipsInput
+
+자동 칩스 인풋(`<AutoChipsInput>`)은 칩스 인풋(`<ChipsInput>`)에 자동완성 기능이 추가된 데이터 인풋입니다.
+
+기본적인 모든 기능은 [ChipsInput](https://6333d80e63299bb883b10717-apzaycryrx.chromatic.com/?path=/docs/component-chips-input--chips-input-design-normal)과 동일합니다.
+
+export const cTemplate = () => {
+  const control = useForm({ initValue: ['normal'] });
+  return (
+    <AutoChipsInput
+      design="underline"
+      control={control}
+      controlValue={['this', 'is', 'simple', 'set', 'of', 'kompoent']}
+    />
+  );
+};
+
+<Canvas>
+  <Story name="auto chips input"
+    parameters={{ layout: 'centered' }}
+  >
+    {cTemplate.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={AutoChipsInput} />

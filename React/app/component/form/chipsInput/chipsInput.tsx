@@ -1,12 +1,12 @@
 import React, {
-  ChangeEventHandler, KeyboardEventHandler, useState,
+  ChangeEventHandler, HTMLAttributes, KeyboardEventHandler, useState,
 } from 'react';
 import { Chip, Chips, useChips } from '../../chips';
 import { ChipData } from '../../chips/useChips';
 import { FormControl } from '../useForm';
 import * as S from './style';
 
-export type ChipsInputProps = {
+export type ChipsInputProps = HTMLAttributes<HTMLInputElement> & {
   /** FormControl 요소 */
   control: FormControl<string[], HTMLInputElement>,
   /** 내부 칩 크기요소 */
@@ -21,6 +21,7 @@ function ChipsInput({
   scale = 'medium',
   disabled = false,
   design = 'normal',
+  ...args
 }: ChipsInputProps) {
   const { chips, deleteChip, updateChip } = useChips(control.value);
   const [text, setText] = useState<string>('');
@@ -72,6 +73,7 @@ function ChipsInput({
         ref={control.ref}
         onFocus={onFocus}
         onBlur={onBlur}
+        {...args}
       />
     </S.chipsInput>
   );
