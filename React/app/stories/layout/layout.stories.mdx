@@ -1,0 +1,47 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { LayoutProvider, useLayout } from '../../component/layout';
+
+<Meta title="system|layout/layout" component={LayoutProvider} />
+
+# Layout
+
+웹페이지 제작에 있어 레이아웃(Layout)은 전체적인 페이지의 틀을 잡고 UI의 향상을 꾀합니다.
+
+현대 레이아웃에서 헤더(header), 메인(main), 푸터(footer)를 기본적으로 가지고, 이외에 사이드(aside)나 네비게이터(nav)등을 가집니다. 이는 HTML5에 추가된 시멘틱 요소에서 잘 드러납니다.
+
+SRUI는 `<LayoutProvider>`를 통해 레이아웃의 구성요소들을 관리합니다. **버전 0.1 기준으로 layoutProvider는 헤더(header)와 푸터(footer)를 제어합니다.**
+
+```typescript
+import { LayoutProvider, Header, Footer } from '@seolim/react-ui/layout';
+
+const App = () => (
+  <LayoutProvider>
+    <Header>
+      Header
+    </Header>
+      {...main}
+    <Footer>
+      Footer
+    </Footer>
+  </LayoutProvider>
+);
+```
+
+`useLayout`은 프로바이더가 제공한 컴포넌트들의 사용 여부를 제어할 수 있습니다.
+
+(**0.1버전 기준**)
+```typescript
+import { useLayout } from '@seolim/react-ui/layout';
+
+type useLayout = (
+  /** 해당 페이지의 header 존재 여부 */
+  haeder: boolean;
+  /** 해당 페이지의 footer 존재 여부 */
+  footer: boolean;
+) => ({
+  /** 랜더 후 헤더의 가시를 제어하는 함수 */
+  updateHeader: (state: boolean) => void;
+  /** 랜더 후 푸터의 가시를 제어하는 함수 */
+  updateFooter: (state: boolean) => void;
+});
+```

@@ -1,0 +1,30 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { Header } from '../../component/layout';
+
+<Meta title="system|layout/header" component={Header} />
+
+# Header
+
+헤더(Header)는 페이지 상단에서 페이지의 정보를 보여주는 UI입니다.
+
+SRUI는 헤더를 `<LayoutProvider>`와 `useLayout`을 통해 페이지별로 제어할 수 있습니다.
+
+헤더는 총 3개의 디자인(design)를 제공합니다.
+
+**top**: 기본 세팅으로 페이지 최상단에 위치하고 스크롤에 반응하지 않습니다.
+
+**always**: 스크롤과 관계없이 항상 최상단에 헤더가 위치합니다.
+
+**scroll**: 스크롤에 따라 헤더의 위치가 변경되며 기본적으론 top과 동일한 디자인을 가진다.
+
+```typescript
+import { Header } from '@seolim/react-ui/layout';
+
+const Component = () => (
+  <Header>
+    {...header content}
+  </Header>
+);
+```
+
+<ArgsTable of={Header} />
