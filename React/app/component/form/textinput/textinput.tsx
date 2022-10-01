@@ -15,6 +15,8 @@ export type TextInputProps = HTMLAttributes<HTMLInputElement> & {
   id?: string;
   /** input 크기 */
   scale?: S.TextInputScale;
+  /** input 디자인 */
+  design?: S.SelectDesign;
 };
 function TextInput({
   placeholder = '',
@@ -22,6 +24,7 @@ function TextInput({
   type = 'text',
   disabled = false,
   scale = 'medium',
+  design = 'normal',
   control,
   ...args
 }: TextInputProps) {
@@ -41,6 +44,7 @@ function TextInput({
       scale={scale}
       invalid={control.touched && control.invalid}
       ref={control.ref}
+      design={design}
       {...args}
     />
   );
@@ -51,6 +55,7 @@ TextInput.defaultProps = {
   id: undefined,
   scale: 'medium',
   disabled: false,
+  design: 'normal',
 };
 
 export default TextInput;

@@ -30,20 +30,6 @@ const selectScale = {
     width: 168,
   },
 };
-const setWidth = (scale: ChipsInputScale, width?: SelectWidthType, pad?: boolean) => {
-  if (width) {
-    if (pad) {
-      return (typeof (width) !== 'number'
-        ? `calc(${width} - ${selectScale[scale].paddingRL * 2}px)`
-        : `${width - (selectScale[scale].paddingRL * 2)}px`);
-    }
-    return (typeof (width) !== 'number' ? width : `${width}px`);
-  }
-  if (pad) {
-    return `${selectScale[scale].width - (selectScale[scale].paddingRL * 2)}px`;
-  }
-  return `${selectScale[scale].width}px`;
-};
 
 const setDesign = (design: ChipsInputDesign, invalid: boolean, focus: boolean) => {
   if (design === 'normal') {

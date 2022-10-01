@@ -32,37 +32,42 @@ const selectScale = {
     width: 168,
   },
 };
-const setWidth = (scale: FormScalesType, width?: SelectWidthType, pad?: boolean) => {
-  if (width) {
-    if (pad) {
-      return (typeof (width) !== 'number'
-        ? `calc(${width} - ${selectScale[scale].paddingRL * 2}px)`
-        : `${width - (selectScale[scale].paddingRL * 2)}px`);
-    }
-    return (typeof (width) !== 'number' ? width : `${width}px`);
-  }
-  if (pad) {
-    return `${selectScale[scale].width - (selectScale[scale].paddingRL * 2)}px`;
-  }
-  return `${selectScale[scale].width}px`;
-};
+const setDesign = (design: SelectDesign, invalid: boolean) => {
+  if (design === 'normal') {
+    return `
+      border: 1px solid ${invalid ? theme.color.danger : theme.color.blue100};
+      border-radius: 5px;
 
+      &:focus {
+        outline: 1px solid ${theme.color.blue100}
+      }
+    `;
+  }
+  return `
+    border-bottom: 2px solid ${invalid ? theme.color.danger : theme.color.blue100};
+    border-radius: 5px 5px 0 0;
+
+    &:focus {
+      background: ${theme.color.white200} !important
+    }
+
+    &:hover {
+      background: ${theme.color.white200};
+    }
+  `;
+};
 export const Input = styled.input<{
   scale?: TextInputScale;
   invalid: boolean;
   disabled: boolean;
+  design: SelectDesign;
 }>`
-  border: 1px solid ${({ invalid }) => (invalid ? theme.color.danger : theme.color.blue100)};
   border-radius: 5px;
   outline: none;
+  border: none;
 
   ${({ scale }) => (scale && theme.formScales[scale] ? theme.formScales[scale] : theme.formScales.medium)};
-
-  ${({ disabled }) => (disabled === false
-    ? `&:focus {
-      outline: 1px solid ${theme.color.blue100};
-    }`
-    : null)}
+  ${({ design, invalid }) => setDesign(design, invalid)}
 `;
 export const autoTextInput = styled.div`
   position: relative;

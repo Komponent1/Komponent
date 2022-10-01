@@ -23,9 +23,40 @@ const Component = () => {
 }
 ```
 
-텍스트 인풋은 기본적으로 3가지 타입(`type`)을 제공합니다. 이는 HTML5의 텍스트 타입(email, password, text)과 동일하게 동작합니다.
-
 export const validator = () => true;
+
+텍스트 인풋은 2개의 디자인을 제공합니다.
+
+export const normalTemplate = () => {
+  const control = useForm({
+    validator, initValue: '',
+  });
+  return <TextInput placeholder="normal" control={control}/>
+}
+export const underlineTemplate = () => {
+  const control = useForm({
+    validator, initValue: '',
+  });
+  return <TextInput placeholder="underline" design="underline" control={control}/>
+}
+
+<Canvas>
+  <Story name="design-normal"
+    parameters={{
+      layout: 'centered',
+    }}>
+    {normalTemplate.bind({})}
+  </Story>
+  <Story name="design-underline"
+    parameters={{
+      layout: 'centered',
+    }}>
+    {underlineTemplate.bind({})}
+  </Story>
+  
+</Canvas>
+
+텍스트 인풋은 기본적으로 3가지 타입(`type`)을 제공합니다. 이는 HTML5의 텍스트 타입(email, password, text)과 동일하게 동작합니다.
 
 export const textTemplate = () => {
   const control = useForm({
@@ -47,19 +78,19 @@ export const passwordTemplate = () => {
 }
 
 <Canvas>
-  <Story name="text"
+  <Story name="type-text"
     parameters={{
       layout: 'centered',
     }}>
     {textTemplate.bind({})}
   </Story>
-  <Story name="email"
+  <Story name="type-email"
     parameters={{
       layout: 'centered',
     }}>
     {emailTemplate.bind({})}
   </Story>
-  <Story name="password"
+  <Story name="type-password"
     parameters={{
       layout: 'centered',
     }}>
@@ -95,25 +126,25 @@ export const bigTemplate = () => {
 };
 
 <Canvas>
-  <Story name="small"
+  <Story name="scale-small"
     parameters={{
       layout: 'centered',
     }}>
     {smallTemplate.bind({})}
   </Story>
-  <Story name="medium"
+  <Story name="scale-medium"
     parameters={{
       layout: 'centered',
     }}>
     {mediumTemplate.bind({})}
   </Story>
-  <Story name="large"
+  <Story name="scale-large"
     parameters={{
       layout: 'centered',
     }}>
     {largeTemplate.bind()}
   </Story>
-  <Story name="big"
+  <Story name="scale-big"
     parameters={{
       layout: 'centered',
     }}>
