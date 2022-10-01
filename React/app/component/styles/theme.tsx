@@ -151,6 +151,10 @@ export const formScales = {
     padding: ${padding.xxxl - 1}px ${(padding.xxxl - 1) * 2}px;
   `,
 };
+export const zIndex = {
+  modal: 1000,
+  loading: 1100,
+};
 
 export const etcStyle = {
   floatingShadow: 'box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
@@ -163,5 +167,14 @@ export const boxSize = {
 };
 
 export default {
-  createEm, color, size, padding, margin, typography, formScales, etcStyle, boxSize,
+  createEm,
+  color,
+  size,
+  padding,
+  margin,
+  typography,
+  formScales,
+  etcStyle,
+  zIndex,
+  boxSize,
 };
