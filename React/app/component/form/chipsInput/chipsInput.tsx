@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { Chip, Chips, useChips } from '../../chips';
 import { ChipData } from '../../chips/useChips';
-import { FormControl } from '../useForm';
+import { FormControl } from '../useFormControl';
 import * as S from './style';
 
 export type ChipsInputProps = HTMLAttributes<HTMLInputElement> & {
@@ -27,6 +27,7 @@ function ChipsInput({
   const [text, setText] = useState<string>('');
   const [focus, setFocus] = useState<boolean>(false);
   const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === 'Enter') e.preventDefault();
     if (e.key === 'Enter' && text !== '') {
       control.onChange({
         v: [...chips.map((chip) => chip.value), (e.target as HTMLInputElement).value],

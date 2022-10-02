@@ -1,5 +1,5 @@
 import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
-import { AutoTextInput, useForm, AutoChipsInput } from '../../component/form';
+import { AutoTextInput, useFormControl, AutoChipsInput } from '../../component/form';
 
 <Meta title="form/AutoComplete" component={AutoTextInput} />
 
@@ -62,7 +62,7 @@ SRUI는 `useAutoComplete` 훅(hook)을 사용한 `<AutoTextInput>`, `<AutoChipsI
 
 export const validator = () => true;
 export const Template = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return (
@@ -89,7 +89,7 @@ export const Template = () => {
 기본적인 모든 기능은 [ChipsInput](https://6333d80e63299bb883b10717-apzaycryrx.chromatic.com/?path=/docs/component-chips-input--chips-input-design-normal)과 동일합니다.
 
 export const cTemplate = () => {
-  const control = useForm({ initValue: ['normal'] });
+  const control = useFormControl({ initValue: ['normal'] });
   return (
     <AutoChipsInput
       design="underline"

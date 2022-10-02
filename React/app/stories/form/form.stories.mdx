@@ -1,0 +1,133 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { useForm, Form, ChipsInput, TextInput } from '../../component/form';
+import { Button } from '../../component';
+
+<Meta title="form/form" component={Form} />
+
+# Form
+
+폼(Form)은 데이터를 전송하는 UI입니다. 
+
+SRUI는 폼시스템을 `useForm`을 통해 생성한 `FormControl`리스트를 통해 폼요소(input 등)를 제어하고 제출(submit)합니다.
+
+`useForm`은 폼을 사용하기 위한 `FormControl` 리스트를 반환합니다. `FormControl`은 `useFormControl`을 통해 생성된 데이터 포맷으로 SRUI의 form 요소들에 적용되 유저 입력을 제어합니다.
+
+`<Form>`은 제출함수(`submit`)을 통해 데이터를 제출하므로 `useForm`의 호출 시 callback함수의 작성에 주의합니다.
+
+```typescript
+import { useForm, Form, TextInput } from '@seolim/react-ui/form';
+import { Button } from '@seolim/react-ui';
+
+const Component = () => {
+  const { controls, submit } = useForm([ 
+    /** formControl Initialize */
+    {
+      id: 'data_name' /** 해당 이름으로 데이터 포맷을 생성함 */
+      type: 'control을 사용하는 폼 타입'
+      controlOption: { /** useFormControl의 파라미터 */ }
+    }
+  ], submitFunction);
+
+  return (
+    <Form submit={submit}>
+      <TextInput control={controls.data_name}>
+      <Button />
+    </Form>
+  );
+}
+```
+
+### useFormControl
+
+`useFormControl`은 모든 폼요소에 공통적으로 사용되는 데이터 포맷을 셍성하는 훅(hook)입니다.
+
+단일으로 Form요소를 사용하는 경우 활용할 수 있습니다. useForm과 달리 별도의 submit을 제공하지 않습니다.
+
+데이터의 검증에 사용되는 함수(`validator`)와 초기값(`initValue`), 셀렉트같은 여러 데이터를 초기로 받는 폼을 위한 데이터세트(`valueSet`)를 받아서 `formControl`을 반환합니다. 아래와 같은 타입을 따릅니다.
+
+```typescript
+/** 데이터 검증 함수 */
+type ValidateFunction<Type> = (value: Type) => boolean;
+/** useFormControl 반환값 */
+type FormControl<Type, H extends HTMLElement> = {
+  /** 폼의 요소 값(<input value={value}) /> */
+  value: Type | undefined;
+  /** 값 변경함수, 외부에서 값을 변경해야 할 경우 사용(비 사용 권장) */
+  setValue: Dispatch<SetStateAction<Type | undefined>>;
+  /** select와 같은 요소의 데이터 세트, 이외 요소엔 존재하지 않습니다. */
+  values: Type[] | undefined;
+  /** select와 같은 요소의 데이터 세트를 변경시 사용 */
+  setValues: Dispatch<SetStateAction<Type[] | undefined>>;
+  /** 폼 내 값 변경에 대한 이벤트 핸들러(비사용 권장) */
+  onChange: ({ e, v }: { e?: ChangeEvent<any>, v?: Type }) => void;
+  /** 폼을 한번이라도 변경했는지에 대한 여부 */
+  touched: boolean;
+  /** 데이터가 검증함수(validator)를 통과했는지에 대한 여부 */
+  invalid: boolean;
+  /** element ref(비사용 권장) */
+  ref: RefObject<H>;
+};
+type useFormControl = <Type, H extends HTMLElement>({
+  /** 데이터 검증 함수 */
+  validator?: ValidateFunction<Type> = () => false,
+  /** 초기값, 설정을 권장합니다 */
+  initValue?: Type = undefined,
+  /** select와 같은 요소의 데이터 세트, 이외 요소엔 사용하지 않습니다. */
+  valueSet?: Type[] = undefined,
+}): FormControl<Type, H>
+```
+
+### useForm
+
+`useForm`은 form요소를 위한 control을 설정된 값(Parameter)을 통해 생성합니다.
+
+useForm을 생성하기 위한 초기값은 아래와 같은 인터페이스로 구성되 있습니다.
+
+```typescript
+type UseFormParams = {
+  /** 서비에 보낼 데이터의 key값 */
+  id: string;
+  /** 생성하는 formControl 타입 */
+  type: FormType;
+  /** useFormControl에 적용하는 파라미터(validator, initValue, valueSet) */
+  controlOption: UseFormControlParams<any>;
+}[];
+type useForm = (
+  forms: UseFormParams,
+  /** 데이터 전송 함수 */
+  callback: Function
+) => ({
+  /** 생성된 FormControl포맷 오브젝트, 폼요소에 대응합니다. */
+  controls: { [key: string]: FormControl<any, any> };
+  /** Form에 등록하는 전송함수, submit event trigger로 동작합니다. */
+  submit: () => void;
+});
+```
+
+(버진 0.1.9기준) FormType은 아래와 같습니다.
+'select': `<Select>`
+'multi-text-input': `<ChipsInput>`, `<AutoChipsInput>`
+'text-input': `<TextInput>`, `<AutoTextInput>`
+
+export const Template = () => {
+  const { controls, submit } = useForm([
+    { id: 'name', type: 'text-input', controlOption: { initValue: '' } },
+    { id: 'tag', type: 'multi-text-input', controlOption: {} },
+  ], (data) => alert(JSON.stringify(data)));
+  return (
+    <Form submit={submit}>
+      <label>NAME</label>
+      <TextInput control={controls.name} />
+      <label>TAG</label>
+      <ChipsInput control={controls.tag} />
+      <Button>Submit</Button>
+    </Form>
+  );
+};
+
+<Canvas>
+  <Story name="form"
+    parameters={{ layout: 'centered' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

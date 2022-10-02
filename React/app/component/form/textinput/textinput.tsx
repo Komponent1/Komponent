@@ -1,6 +1,6 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, KeyboardEventHandler } from 'react';
 import * as S from './style';
-import { FormControl } from '../useForm';
+import { FormControl } from '../useFormControl';
 
 export type TextInputProps = HTMLAttributes<HTMLInputElement> & {
   /** input 값 변수(state) */
@@ -31,6 +31,9 @@ function TextInput({
   const changeFunction = (e: React.ChangeEvent<HTMLInputElement>) => {
     control.onChange({ e });
   };
+  const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === 'Enter') e.preventDefault();
+  };
 
   return (
     <S.Input
@@ -45,6 +48,7 @@ function TextInput({
       invalid={control.touched && control.invalid}
       ref={control.ref}
       design={design}
+      onKeyDown={onKeyDown}
       {...args}
     />
   );

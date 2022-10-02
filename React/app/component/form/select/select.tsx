@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import * as S from './selectStyle';
-import { FormControl } from '../useForm';
+import { FormControl } from '../useFormControl';
 
 export type SelectProps = {
   /** useForm control */

@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { HTMLAttributes } from 'react';
 import * as S from './style';
 
-export type ButtonProps = {
+export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
   /** 클릭 이벤트 핸들러 */
   onClick?: (event?: React.MouseEvent) => void;
   /** 버튼 사용 여부 */
@@ -19,7 +19,14 @@ export type ButtonProps = {
 };
 
 function Button({
-  onClick, disabled, size, corner, color, design, children,
+  onClick = () => {},
+  disabled = false,
+  size = 'medium',
+  corner = 'square',
+  color = 'normal',
+  design = 'block',
+  children = 'button',
+  ...args
 }: ButtonProps) {
   return (
     <S.button
@@ -30,6 +37,7 @@ function Button({
       corner={corner}
       color={color}
       design={design}
+      {...args}
     >
       {children}
     </S.button>

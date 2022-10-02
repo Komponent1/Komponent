@@ -42,6 +42,7 @@ function AutoChipsInput({
     }
   }, [open, control.ref.current?.clientWidth]);
   const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === 'Enter') e.preventDefault();
     if (e.key === 'Enter' && text !== '') {
       control.onChange({
         v: [...chips.map((chip) => chip.value), (e.target as HTMLInputElement).value],

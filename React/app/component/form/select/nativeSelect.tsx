@@ -1,7 +1,7 @@
 import React, {
   ChangeEvent, useCallback,
 } from 'react';
-import { FormControl } from '../useForm';
+import { FormControl } from '../useFormControl';
 import * as S from './nativeSelectStyle';
 
 export type NativeSelectProps = {

@@ -1,5 +1,5 @@
 import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
-import { TextInput, useForm } from '../../component/form';
+import { TextInput, useFormControl } from '../../component/form';
 
 <Meta title="form/TextInput" component={TextInput} />
 
@@ -9,14 +9,14 @@ import { TextInput, useForm } from '../../component/form';
 
 유저의 입력에 따라 데이터를 갱신하고 폼을 통해 데이터를 서브밋(submit)합니다.
 
-모든 폼은 `useForm`을 통해 `FormControl`을 생성해 사용할 수 있습니다.
+모든 폼은 `useFormControl`을 통해 `FormControl`을 생성해 사용할 수 있습니다.
 
 ```tsx
-import { useForm, TextInput } from '@seolim/react-ui/form';
+import { useFormControl, TextInput } from '@seolim/react-ui/form';
 
 const Component = () => {
   const validator: ValidateFunction<string> = (value) => { ... };
-  const control = useForm<string, HTMLInputElement>({
+  const control = useFormControl<string, HTMLInputElement>({
     validator, initValue: '',
   });
   return <TextInput control={control} />;
@@ -28,13 +28,13 @@ export const validator = () => true;
 텍스트 인풋은 2개의 디자인을 제공합니다.
 
 export const normalTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="normal" control={control}/>
 }
 export const underlineTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="underline" design="underline" control={control}/>
@@ -59,19 +59,19 @@ export const underlineTemplate = () => {
 텍스트 인풋은 기본적으로 3가지 타입(`type`)을 제공합니다. 이는 HTML5의 텍스트 타입(email, password, text)과 동일하게 동작합니다.
 
 export const textTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="text" type="text" control={control}/>
 };
 export const emailTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="email" type="email" control={control}/>
 }
 export const passwordTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="password" type="password" control={control}/>
@@ -101,25 +101,25 @@ export const passwordTemplate = () => {
 텍스트 인풋은 총 4개의 크기(`scale`)를 제공합니다.
 
 export const smallTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="small"  scale="small" control={control}/>
 };
 export const mediumTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="medium"  scale="medium" control={control}/>
 };
 export const largeTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="large"  scale="large" control={control}/>
 };
 export const bigTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="big"  scale="big" control={control}/>
@@ -155,13 +155,13 @@ export const bigTemplate = () => {
 텍스트인풋은 사용과 사용불가에 따라 구별(`disabled`)할 수 있습니다.
 
 export const ableTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="able" disabled={false} control={control}/>
 };
 export const disableTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator, initValue: '',
   });
   return <TextInput placeholder="disable" disabled={true} control={control}/>
@@ -181,7 +181,7 @@ export const disableTemplate = () => {
 폼 컨트롤(`formControl`)에 설정된 검증함수(validator)에 따라 검증 통과여부를 알 수 있습니다. 아래는 'valid'라는 텍스트를 입력해야 검증함수를 통과합니다.
 
 export const validTemplate = () => {
-  const control = useForm({
+  const control = useFormControl({
     validator: (text) => (text === 'valid'),
     initValue: '',
   });
@@ -200,16 +200,16 @@ export const validTemplate = () => {
 
 <ArgsTable of={TextInput} />
 
-### useForm
+### useFormControl
 
-`useForm`은 모든 폼요소에 공통적으로 사용되는 데이터 포맷을 셍성하는 훅(hook)입니다.
+`useFormControl`은 모든 폼요소에 공통적으로 사용되는 데이터 포맷을 셍성하는 훅(hook)입니다.
 
 데이터의 검증에 사용되는 함수(`validator`)와 초기값(`initValue`), 셀렉트같은 여러 데이터를 초기로 받는 폼을 위한 데이터세트(`valueSet`)를 받아서 `formControl`을 반환합니다. 아래와 같은 타입을 따릅니다.
 
 ```typescript
 /** 데이터 검증 함수 */
 type ValidateFunction<Type> = (value: Type) => boolean;
-/** useForm 반환값 */
+/** useFormControl 반환값 */
 type FormControl<Type, H extends HTMLElement> = {
   /** 폼의 요소 값(<input value={value}) /> */
   value: Type | undefined;
@@ -228,7 +228,7 @@ type FormControl<Type, H extends HTMLElement> = {
   /** element ref(비사용 권장) */
   ref: RefObject<H>;
 };
-type useForm = <Type, H extends HTMLElement>({
+type useFormControl = <Type, H extends HTMLElement>({
   /** 데이터 검증 함수 */
   validator?: ValidateFunction<Type> = () => false,
   /** 초기값, 설정을 권장합니다 */

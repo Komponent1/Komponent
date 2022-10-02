@@ -1,5 +1,5 @@
 import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
-import { ChipsInput, useForm } from '../../component/form';
+import { ChipsInput, useFormControl } from '../../component/form';
 
 <Meta title="form/Chips Input" component={ChipsInput} />
 
@@ -12,10 +12,10 @@ import { ChipsInput, useForm } from '../../component/form';
 모든 폼요소와 마찬가지로 useFomr을 사용하며 초기 데이터를 반드시 초기화 할 것을 권장합니다.`({ init })`
 
 ```typescript
-import { ChipsInput, useForm } from '@seolim/react-ui/form';
+import { ChipsInput, useFormControl } from '@seolim/react-ui/form';
 
 const Component = () => {
-  const control = useForm<string[], HTMLInputElement>({ init: [] });
+  const control = useFormControl<string[], HTMLInputElement>({ init: [] });
 
   return (
     <ChipsInput control={control} />
@@ -30,7 +30,7 @@ const Component = () => {
 칩스 인풋은 두가지 스타일을 제공합니다. 
 
 export const normalChipsInputTemplate = () => {
-  const control = useForm({ initValue: ['normal'] });
+  const control = useFormControl({ initValue: ['normal'] });
   return (
     <ChipsInput
       control={control}
@@ -38,7 +38,7 @@ export const normalChipsInputTemplate = () => {
   );
 }
 export const underlineChipsInputTemplate = () => {
-  const control = useForm({ initValue: ['underline'] });
+  const control = useFormControl({ initValue: ['underline'] });
   return (
     <ChipsInput
       design="underline"
@@ -61,41 +61,3 @@ export const underlineChipsInputTemplate = () => {
 ### Props
 
 <ArgsTable of={ChipsInput} />
-
-### useForm
-
-`useForm`은 모든 폼요소에 공통적으로 사용되는 데이터 포맷을 셍성하는 훅(hook)입니다.
-
-데이터의 검증에 사용되는 함수(`validator`)와 초기값(`initValue`), 셀렉트같은 여러 데이터를 초기로 받는 폼을 위한 데이터세트(`valueSet`)를 받아서 `formControl`을 반환합니다. 아래와 같은 타입을 따릅니다.
-
-```typescript
-/** 데이터 검증 함수 */
-type ValidateFunction<Type> = (value: Type) => boolean;
-/** useForm 반환값 */
-type FormControl<Type, H extends HTMLElement> = {
-  /** 폼의 요소 값(<input value={value}) /> */
-  value: Type | undefined;
-  /** 값 변경함수, 외부에서 값을 변경해야 할 경우 사용(비 사용 권장) */
-  setValue: Dispatch<SetStateAction<Type | undefined>>;
-  /** select와 같은 요소의 데이터 세트, 이외 요소엔 존재하지 않습니다. */
-  values: Type[] | undefined;
-  /** select와 같은 요소의 데이터 세트를 변경시 사용 */
-  setValues: Dispatch<SetStateAction<Type[] | undefined>>;
-  /** 폼 내 값 변경에 대한 이벤트 핸들러(비사용 권장) */
-  onChange: ({ e, v }: { e?: ChangeEvent<any>, v?: Type }) => void;
-  /** 폼을 한번이라도 변경했는지에 대한 여부 */
-  touched: boolean;
-  /** 데이터가 검증함수(validator)를 통과했는지에 대한 여부 */
-  invalid: boolean;
-  /** element ref(비사용 권장) */
-  ref: RefObject<H>;
-};
-type useForm = <Type, H extends HTMLElement>({
-  /** 데이터 검증 함수 */
-  validator?: ValidateFunction<Type> = () => false,
-  /** 초기값, 설정을 권장합니다 */
-  initValue?: Type = undefined,
-  /** select와 같은 요소의 데이터 세트, 이외 요소엔 사용하지 않습니다. */
-  valueSet?: Type[] = undefined,
-}): FormControl<Type, H>
-```

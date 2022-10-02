@@ -1,53 +1,34 @@
-import {
-  useState, useRef, RefObject, useEffect, ChangeEvent, Dispatch, SetStateAction,
-} from 'react';
+import { useFormControl, FormControl, UseFormControlParams } from './useFormControl';
 
-type ValidateFunction<Type> = (value?: Type) => boolean;
-type UseFormParams<Type> = {
-  validator?: ValidateFunction<Type>,
-  initValue?: Type,
-  valueSet?: Type[],
-};
-export type FormControl<Type, H extends HTMLElement> = {
-  value: Type | undefined;
-  setValue: Dispatch<SetStateAction<Type | undefined>>;
-  values: Type[] | undefined;
-  setValues: Dispatch<SetStateAction<Type[] | undefined>>;
-  onChange: ({ e, v }: { e?: ChangeEvent<any>, v?: Type }) => void;
-  touched: boolean;
-  invalid: boolean;
-  ref: RefObject<H>;
-};
-export default function useForm<Type, H extends HTMLElement>({
-  validator = () => true,
-  initValue = undefined,
-  valueSet = undefined,
-}: UseFormParams<Type>): FormControl<Type, H> {
-  const ref = useRef<H>(null);
-  const [value, setValue] = useState<Type | undefined>(initValue);
-  const [values, setValues] = useState<Type[] | undefined>(valueSet);
-  const [touched, setTouched] = useState<boolean>(false);
-  const [invalid, setInvalid] = useState<boolean>(false);
-
-  useEffect(() => {
-    ref.current?.addEventListener('mousedown', () => {
-      setTouched(true);
-    }, false);
-  }, [ref]);
-
-  const onChange = ({ e, v }: { e?: ChangeEvent<any>, v?: Type }) => {
-    let isValid = true;
-    if (e) {
-      setValue(e.target.value);
-      isValid = validator(e.target.value);
-    } else {
-      setValue(v);
-      isValid = validator(v);
+type FormType =
+  'multi-text-input'
+  | 'select'
+  | 'text-input';
+type UseFormParams = {
+  id: string;
+  type: FormType;
+  controlOption: UseFormControlParams<any>;
+}[];
+export const useForm = (forms: UseFormParams, callback: Function) => {
+  const controls = forms.reduce<{ [key: string]: FormControl<any, any> }>((acc, cur) => {
+    if (cur.type === 'select') {
+      acc[cur.id] = useFormControl<string, HTMLDivElement>(cur.controlOption);
+    } else if (cur.type === 'multi-text-input') {
+      acc[cur.id] = useFormControl<string[], HTMLInputElement>(cur.controlOption);
+    } else if (cur.type === 'text-input') {
+      acc[cur.id] = useFormControl<string, HTMLInputElement>(cur.controlOption);
     }
-    setInvalid(!isValid);
+    return acc;
+  }, {});
+
+  const submit = () => {
+    const data = Object.keys(controls)
+      .reduce<{ [key: string]: any }>((acc, cur) => {
+      acc[cur] = controls[cur].value;
+      return acc;
+    }, {});
+    callback(data);
   };
 
-  return {
-    value, setValue, values, setValues, onChange, touched, invalid, ref,
-  };
-}
+  return { controls, submit };
+};
