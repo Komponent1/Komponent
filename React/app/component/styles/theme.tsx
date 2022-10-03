@@ -33,6 +33,7 @@ export const color = {
   purple600: '#900ae8',
   purple700: '#750de1',
   /** complementary */
+  yellow100: '#FFF9C4',
   yellow300: '#f4ed6d',
   yellow500: '#eee424',
   yellow800: '#eea302', /** main */

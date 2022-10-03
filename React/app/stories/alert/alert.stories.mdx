@@ -1,0 +1,147 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { Alert, useAlert } from '../../component/alert';
+import { Button } from '../../component';
+
+<Meta title="system|layout/alert" component={Alert}/>
+
+# Alert
+
+경고(alert)는 특정 행동에 대한 문제를 사용자에게 상기시키는 역할을 합니다.
+
+모든 요소의 최상단에 띄워지며 popup의 형태로 표현됩니다. SRUI는 최상단 루트(root) 바깥에 경고창 엘리먼트를 생성합니다.
+
+```typescript
+import { Alert } from '@seolim/react-ui/alert';
+
+const Component = () => (
+  <Alert comment="alert" id={0} />
+);
+```
+
+SRUI는 두개의 경고 타입(type)을 제공합니다.
+
+<Canvas>
+  <Story name="danger"
+    parameters={{ layout: 'centered' }}>
+    <Alert type="danger" id={0} comment="danger"/>
+  </Story>
+  <Story name="warning"
+    parameters={{ layout: 'centered' }}>
+    <Alert type="warning" id={0} comment="warning" />
+  </Story>
+</Canvas>
+
+SRUI는 4개의 경고창 크기(scale)를 제공합니다.
+
+<Canvas>
+  <Story name="small"
+    parameters={{ layout: 'centered' }}>
+    <Alert scale="small" id={0} comment="small" />
+  </Story>
+  <Story name="medium"
+    parameters={{ layout: 'centered' }}>
+    <Alert scale="medium" id={0} comment="medium" />
+  </Story>
+  <Story name="large"
+    parameters={{ layout: 'centered' }}>
+    <Alert scale="large" id={0} comment="large"/>
+  </Story>
+  <Story name="big"
+    parameters={{ layout: 'centered' }}>
+    <Alert scale="big" id={0} comment="big" />
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={Alert} />
+
+# useAlert
+
+`useAlert` 훅(hook)은 경고창을 유저의 event에 의거하여 생성하는 함수을 제공합니다.
+
+```typescript
+import { useAlert } from '@seolim/react-ui/alert';
+
+const Component = () => {
+  const { alert } = useAlert();
+
+  return (
+    <Button onClick={() => alert('comment')} />
+  );
+};
+```
+
+`useAlert`는 위치(position)과 경고창의 인스턴트 시간(time)을 받아 경고 함수를 제공하고 함수는 `<Alert />`의 요소를 받아서 동작합니다.(id는 자동으로 생성됩니다)
+
+```typescript
+type AlertType = 'warning' | 'danger';
+type AlertScale = 'small' | 'medium' | 'large' | 'big';
+/** 경고창이 등장할 위치 l = left, r = right, t = top, b = bottom */
+type AlertPosition = 'lt' | 'lb' | 'rt' | 'rb';
+type useAlert = (
+  /** 경고창이 등장할 위치 */
+  position: AlertPosition = 'rb',
+  /** 경고창이 사라질때까지 시간 */
+  time: number = 5000,
+) => {
+  alret: (
+    /** 경고창 메시지 */
+    comment: string;
+    alertOption: {
+      /** 경고창 타입(디자인) */
+      type?: AlertType;
+      /** 경고창 크기 */
+      scale?: AlertScale;
+    }
+  ) => void
+}
+```
+
+export const ltTemplate = () => {
+  const { alert } = useAlert('lt');
+  return (
+      <Button onClick={() => alert('left-top')}>left-top</Button>
+  );
+}
+export const lbTemplate = () => {
+  const { alert } = useAlert('lb');
+  return (
+      <Button onClick={() => alert('left-bottom')}>left-bottm</Button>
+  );
+}
+export const rtTemplate = () => {
+  const { alert } = useAlert('rt');
+  return (
+      <Button onClick={() => alert('right-top')}>right-top</Button>
+  );
+}
+export const rbTemplate = () => {
+  const { alert } = useAlert('rb');
+  return (
+      <Button onClick={() => alert('right-bottom')}>right-bottom</Button>
+  );
+}
+
+`useAlert`는 좌상단, 좌하단, 우상단, 우하단 4위치에 스택형태로 쌓입니다.
+
+생성된 경고창은 일정 시간(디폴트 5초)이 지난 후 지워집니다.
+
+<Canvas>
+  <Story name="left-top"
+    parameters={{ layout: 'centered' }}>
+    {ltTemplate.bind({})}
+  </Story>
+  <Story name="left-bottom"
+    parameters={{ layout: 'centered' }}>
+    {lbTemplate.bind({})}
+  </Story>
+  <Story name="right-top"
+    parameters={{ layout: 'centered' }}>
+    {rtTemplate.bind({})}
+  </Story>
+  <Story name="right-bottom"
+    parameters={{ layout: 'centered' }}>
+    {rbTemplate.bind({})}
+  </Story>
+</Canvas>
