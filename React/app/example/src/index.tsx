@@ -1,16 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { Alert, useAlert } from '../../component/alert';
-import { Button } from '../../component';
+import { ImgInput, useFormControl } from '../../component/form';
 
 function App() {
-  const { alert } = useAlert('rb');
+  const control = useFormControl<File, HTMLInputElement>({});
 
   return (
     <div>
-      <Button onClick={() => alert('This is IT', { type: 'warning' })} />
-      <Button onClick={() => alert('This is problem This is problem This is problem')} />
-      <Alert type="warning" id={0} comment="warming" />
+      <ImgInput control={control} />
     </div>
   );
 }

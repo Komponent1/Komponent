@@ -7,4 +7,4 @@ export { default as ChipsInput } from './chipsInput/chipsInput';
 export { default as Form } from './form';
 export { default as AutoTextInput } from './textinput/autoTextInput';
 export { default as AutoChipsInput } from './chipsInput/autoChipsInput';
-
+export { default as ImgInput } from './imgInput/imgInput';

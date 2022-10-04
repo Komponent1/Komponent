@@ -11,6 +11,7 @@ export type FormControl<Type, H extends HTMLElement> = {
   onChange: ({ e, v }: { e?: ChangeEvent<any>, v?: Type }) => void;
   touched: boolean;
   invalid: boolean;
+  setInvalid: Dispatch<SetStateAction<boolean>>;
   ref: RefObject<H>;
 };
 
@@ -56,6 +57,7 @@ export function useFormControl<Type, H extends HTMLElement>({
     onChange,
     touched,
     invalid,
+    setInvalid,
     ref,
   };
 }
