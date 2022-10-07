@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ImgInput, useFormControl } from '../../component/form';
+import { Button } from '../../component';
 
 function App() {
-  const control = useFormControl<File, HTMLInputElement>({});
-
   return (
     <div>
-      <ImgInput control={control} />
+      <Button />
     </div>
   );
 }

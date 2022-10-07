@@ -1,0 +1,145 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { HttpProvider } from '../../component/http';
+
+<Meta title="system/http" component={HttpProvider} />
+
+# Http(beta)
+
+SURI는 `HttpClient`를 제공합니다. `HttpClient`가 제공하는 기능은 아래와 같습니다.
+
+(ver 2.0)
+
+1. HTTP 통신에 제공되는 get/post/path/delete에 해당하는 interface
+
+2. `Interceptor`를 통한 HTTP 통신 인터셉트
+
+`HttpClient`는 `<HttpProvider>`를 통해 프로바이더내부에서 전역적으로 사용됩니다.
+
+```typescript
+import { HttpProvider } from '@seolim/react-ui/http';
+
+const Component = () => {
+  return (
+    <HttpProvider baseurl={} rootInterceptors={[]}>
+      {...}
+    </HttpProvider>
+  );
+}
+```
+
+<ArgsTable of={HttpProvider} />
+
+`HttpClient`는 `useHttpClient` 훅(hook)을 통해 내부 컴포넌트에서 사용가능합니다.
+
+`useHttpClient`선언 시 인터셉터(interceptor)를 설정할 수 있습니다.
+
+```typescript
+import { useHttpClient } from '@selim/react-ui/http';
+
+const Component = () => {
+  const { httpClient } = useHttpClient([...interceptors]);
+  const [ data, setData ] = useState<DataType>();
+  useEffect(() => {
+    const data = httpClient.get<DataType>(
+      'path',
+      RequestConfig,
+      dataFlatFunction
+    ).then((data) => setData(data));
+  }, [])
+
+  return (
+    <div>{data}</div>
+  )
+}
+```
+
+`HttpClient`는 아래와 같은 인터페이스를 가집니다.
+
+`path`는 요청 패스입니다.
+
+`config`는 request를 구현하는 httpOption입니다. header는 반드시 `Header` 인터페이스로 넘겨주어야 합니다.
+
+`flat`은 response를 처리하는 콜백함수(callback)입니다. 주로 사용하려는 형태의 데이터로 변환하는 작업을 포함합니다. 선언되지 않을시 reponse 그대로 반환합니다.
+
+```typescript
+interface HttpClient {
+  public interceptors: Interceptor[];
+
+  constructor(baseurl: string, interceptors: Interceptor[]): void
+  
+  async get<D>(
+    path: string,
+    config?: RequestInit,
+    flat?: (res: Response) => Promise<D>,
+  ): Promise<D | Response> 
+  
+  async post<D>(
+    path: string,
+    config?: RequestInit,
+    flat?: (res: Response) => Promise<D>,
+  ): Prmoise<D | Response> 
+  
+  async patch<D>(
+    path: string,
+    config?: RequestInit,
+    flat?: (res: Response) => Promise<D>,
+  ): Promise<D | Response>
+  
+  async delete<D>(
+    path: string,
+    config?: RequestInit,
+    flat?: (res: Response) => Promise<D>,
+  ): Promise<D | Response>
+}
+```
+
+`useHttpClient`는 아래와 같은 인터페이스를 가집니다.
+
+```typescript
+type useHttpClient = (interceptor: Interceptor[]) => ({ HttpClient });
+```
+
+### Interceptor
+
+인터셉터(`Interceptor`)는 HttpClient의 동작 앞단과 뒤단에 붙어 http를 보내기 전 request를 핸들링하거나, response의 결과로 작업을 진행합니다.
+
+인터셉터는 아래와 같은 용도로 활용할 수 있습니다.
+
+1. API 요청 처리에 반드시 포함하는 헤더가 있는 경우 인터셉터를 통해 Header를 조작
+
+2. API 요청 전 반드시 검사해야하는 로직을 가지는 경우 인터셉터를 통해 검증(실패시 에러 throw를 요구합니다)
+
+3. Respose에 대한 에러 처리
+
+4. 기타...
+
+인터셉터는 아래와 같은 인터페이스를 가집니다.
+
+forward는 request를 보내기 전 적용되고 backward는 response에 대해 대응합니다.
+
+```typescript
+type ForwardFunction = (req: Request) => Request
+type BackwordFunction = (res: Response) => Promise<void>;
+class Interceptor {
+  public forward: ForwardFunction;
+  public backward: BackwordFunction;
+
+  constructor(
+    forward: ForwardFunction,
+    backward?: BackwordFunction,
+  ): void
+}
+```
+
+인터셉터의 작성은 별도의 파일을 권장합니다. 해당 인터페이스들은 재사용될 수 있습니다.
+
+```typescript
+import { Interceptor, useHttpClient } from '@seolim/react-ui/http';
+
+const interceptor = new Interceptor((req) => req, (res) => res)
+cosnt Component = () => {
+  const { httpClient } = useHttpClient([interceptor]);
+
+  ...
+}
+```
