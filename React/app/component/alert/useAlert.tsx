@@ -1,5 +1,7 @@
+/* eslint-disable no-param-reassign */
 import React from 'react';
 import ReactDOM, { unmountComponentAtNode } from 'react-dom';
+import { renderPortal } from '../lib';
 import Alert, { AlertProps } from './alert';
 import { AlertScale, AlertType } from './style';
 
@@ -36,27 +38,6 @@ export const useAlert = (
       scale?: AlertScale,
     },
   ) => {
-    let div = document.getElementById(`srui-alert-root_${position}`);
-    if (div === null) {
-      div = document.createElement('div');
-      div.id = `srui-alert-root_${position}`;
-      div.style.position = 'fixed';
-      if (position.match('l')) {
-        div.style.left = '0';
-        div.style.alignItems = 'flex-start';
-      } else if (position.match('r')) {
-        div.style.right = '0';
-        div.style.alignItems = 'flex-end';
-      }
-      if (position.match('t')) {
-        div.style.top = '0';
-      } else if (position.match('b')) {
-        div.style.bottom = '0';
-      }
-      div.style.display = 'flex';
-      div.style.flexDirection = 'column';
-      document.body.appendChild(div);
-    }
     const { type, scale } = (alertOption || { type: 'danger', scale: 'medium' });
     const newAlert = {
       comment,
@@ -66,13 +47,36 @@ export const useAlert = (
     };
     stack = [...stack, newAlert];
 
-    ReactDOM.render(
+    const positioning = () => {
+      const style: { [key: string]: string } = {};
+      if (position.match('l')) {
+        style.left = '0';
+        style['align-items'] = 'flex-start';
+      } else if (position.match('r')) {
+        style.right = '0';
+        style['align-items'] = 'flex-end';
+      }
+      if (position.match('t')) {
+        style.top = '0';
+      } else if (position.match('b')) {
+        style.bottom = '0';
+      }
+      return style;
+    };
+
+    renderPortal(
+      `srui-alert-root_${position}`,
       <>
         {stack.map((config) => (
           <Alert {...config} key={config.id} />
         ))}
       </>,
-      div,
+      {
+        display: 'flex',
+        'flex-direction': 'column',
+        position: 'fixed',
+        ...positioning(),
+      },
     );
 
     setTimeout(() => {

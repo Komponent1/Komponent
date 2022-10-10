@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { ReactNode } from 'react';
-import ReactDOM, { unmountComponentAtNode } from 'react-dom';
+import { unmountComponentAtNode } from 'react-dom';
+import { renderPortal } from '../lib';
 import Modal, { CloseType } from './modal';
 
 export type UseModalReturn = {
@@ -30,26 +31,17 @@ export const useModal = (
     }
   };
   const openModal = () => {
-    let div = document.getElementById('srui-modal-root');
-    if (!div) {
-      div = document.createElement('div');
-      div.id = 'srui-modal-root';
-      document.body.appendChild(div);
-    }
-    window.addEventListener('keydown', closeWithESC);
-
-    ReactDOM.render(
-      (
-        <Modal
-          closeModal={closeModal}
-          header={config.header}
-          onAction={config.onAction}
-        >
-          {children}
-        </Modal>
-      ),
-      div,
+    renderPortal(
+      'srui-modal-root',
+      <Modal
+        closeModal={closeModal}
+        header={config.header}
+        onAction={config.onAction}
+      >
+        {children}
+      </Modal>,
     );
+    window.addEventListener('keydown', closeWithESC);
   };
 
   return {

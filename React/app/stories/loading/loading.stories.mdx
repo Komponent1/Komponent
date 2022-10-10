@@ -1,0 +1,122 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { Spinner, Dots, Skeleton } from '../../component/loading';
+
+<Meta title="component/loading" component={Spinner} />
+
+# Loading
+
+로딩(Loading)은 유저가 요청한 동작이 진행되고 있음을 알려주는 UI입니다.
+
+SRUI는 3가지 로딩 타입을 제공합니다.
+
+모든 로딩은 2가지 크기(scale)와 속도(speed)를 제공합니다.
+
+### 점(Dots)
+
+```typescript
+import { Dots } from '@seolim/react-ui/loading';
+
+const Component = () => <Dots />;
+```
+
+**크기**
+
+<Canvas>
+  <Story name="dots-scale-small"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>small</span>
+    <Dots scale="small"/>
+  </Story>
+  <Story name="dots-scale-medium"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>medium</span>
+    <Dots scale="medium"/>
+  </Story>
+  <Story name="dots-scale-large"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>large</span>
+    <Dots scale="large"/>
+  </Story>
+  <Story name="dots-scale-big"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>big</span>
+    <Dots scale="big"/>
+  </Story>
+</Canvas>
+
+**속도**
+
+<Canvas>
+  <Story name="dots-speed-slow"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>slow</span>
+    <Dots speed="slow"/>
+  </Story>
+  <Story name="dots-speed-medium"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>medium</span>
+    <Dots speed="medium"/>
+  </Story>
+  <Story name="dots-speed-fast"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>fast</span>
+    <Dots speed="fast"/>
+  </Story>
+</Canvas>
+
+<ArgsTable of={Dots} />
+
+### 스피너(spinner)
+
+```typescript
+import { Spinner } from '@seolim/react-ui/loading';
+
+const Component = () => <Spinner />;
+```
+
+**크기**
+
+<Canvas>
+  <Story name="spinner-scale-small"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>small</span>
+    <Spinner scale="small"/>
+  </Story>
+  <Story name="spinner-scale-medium"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>medium</span>
+    <Spinner scale="medium"/>
+  </Story>
+  <Story name="spinner-scale-large"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>large</span>
+    <Spinner scale="large"/>
+  </Story>
+  <Story name="spinner-scale-big"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>big</span>
+    <Spinner scale="big"/>
+  </Story>
+</Canvas>
+
+**속도**
+
+<Canvas>
+  <Story name="spinner-speed-slow"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>slow</span>
+    <Spinner speed="slow"/>
+  </Story>
+  <Story name="spinner-speed-medium"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>medium</span>
+    <Spinner speed="medium"/>
+  </Story>
+  <Story name="spinner-speed-fast"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>fast</span>
+    <Spinner speed="fast"/>
+  </Story>
+</Canvas>
+
+<ArgsTable of={Spinner} />
