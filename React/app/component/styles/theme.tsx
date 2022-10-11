@@ -1,5 +1,5 @@
 export const createEm = (value: number) => `${value / 16}em`;
-export const color = {
+export const color: { [key in string]: string } = {
   primary: '#024eee',
   secondary: '#aae5f6',
   danger: '#ee024d',

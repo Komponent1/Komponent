@@ -1,0 +1,80 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { Avatar } from '../../component';
+
+<Meta title="component/avatar" component={Avatar} />
+
+# Avatar
+
+아바타(Avatar)는 개인(혹은 정보)을 표현하는 작은 뱃지와 같은 역할을 합니다.
+
+아바타의 형태는 아미지미나 아이콘일 수 있고 문자일 수 도 있습니다.
+
+```typescript
+import { Avatar } from '@seolim/react-ui';
+
+const Component = () => <Avatar src="" alt="" />
+```
+
+SRUI는 내부에 이미지, 컴포넌트, 텍스트를 표시할 수 있습니다.
+
+이미지는 **src**, 컴포넌트와 텍스트는 children을 넘겨주면 됩니다.
+
+SRUI의 아바타는 이미지의 로드 실패를 설정할 수 있습니다. alt를 설정하면 이미지 로드 중, 혹은 실패시 설정한 alt를 화면에 표시합니다.
+
+우선 순위는 이미지 > alt > children 순서입니다.
+
+<Canvas>
+  <Story name="avatar-type-img"
+    parameters={{ layout: 'centered' }}>
+    <Avatar src={'/card_img.png'} alt="K"/>
+  </Story>
+</Canvas>
+
+SRUI는 기본적으로 4가지 크기(scale)을 제공하지만 크기는 자율적으로 조절할 수 있습니다. 단 숫자(px)만 가능합니다.
+
+<Canvas>
+  <Story name="avatar-scale-small"
+    parameters={{ layout: 'centered' }}>
+    <span>small</span>
+    <Avatar src={'/card_img.png'} alt="K" scale="small"/>
+  </Story>
+  <Story name="avatar-scale-medium"
+    parameters={{ layout: 'centered' }}>
+    <span>medium</span>
+    <Avatar src={'/card_img.png'} alt="K" scale="medium"/>
+  </Story>
+  <Story name="avatar-scale-large"
+    parameters={{ layout: 'centered' }}>
+    <span>large</span>
+    <Avatar src={'/card_img.png'} alt="K" scale="large"/>
+  </Story>
+  <Story name="avatar-scale-big"
+    parameters={{ layout: 'centered' }}>
+    <span>big</span>
+    <Avatar src={'/card_img.png'} alt="K" scale="big"/>
+  </Story>
+</Canvas>
+
+SRUI는 3가지 디자인을 제공하고 색을 커스텀할 수 있습니다. 내부의 theme에 선언된 색을 사용할 수 도 있습니다.
+
+<Canvas>
+  <Story name="avatar-design-square"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>square</span>
+    <Avatar design="sqaure" color="danger">S</Avatar>
+  </Story>
+  <Story name="avatar-design-round"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>round</span>
+    <Avatar design="round" color="success">R</Avatar>
+  </Story>
+  <Story name="avatar-design-circle"
+    parameters={{ layout: 'centered' }}>
+    <span style={{ marginRight: '10px' }}>circle</span>
+    <Avatar design="circle">C</Avatar>
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={Avatar} />

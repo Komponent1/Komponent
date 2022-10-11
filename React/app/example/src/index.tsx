@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from '../../component';
+import { Avatar } from '../../component';
 
 function App() {
   return (
     <div>
-      <Button />
+      <Avatar>
+        L
+      </Avatar>
     </div>
   );
 }
