@@ -10,5 +10,6 @@ export const parameters = {
     storySort: {
       order: ['intro', 'components', 'form']
     }
-  }
+  },
+  viewMode: 'docs',
 }
