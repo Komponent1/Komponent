@@ -1,0 +1,155 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { Tooltip, Tip, useToolTip } from '../../component/tooltip';
+import { Button } from '../../component';
+
+<Meta title="component/tip" component={Tooltip} />
+
+# TIP / Tooltip
+
+팁(tip)은 UI가 어떻게 사용해야하는지, 혹은 데이터가 어떤 정보를 포함하는지를 유저에게 알려줍니다.
+
+```tsx
+import { Tip } from '@seolim/react-ui';
+
+const Component = () => <Tip tip="tip content"/>
+```
+
+SRUI는 팁의 크기(scale)와 방향(position)을 제어합니다. 방향값은 꼬리표 방향과 반대임에 주의합니다.
+
+**scale**
+
+<Canvas>
+  <Story name="tip-scale-small"
+    parameters={{ layout: 'centered' }}>
+    <Tip tip="small" scale="small"/>
+  </Story>
+  <Story name="tip-scale-medium"
+    parameters={{ layout: 'centered' }}>
+    <Tip tip="medium" scale="medium"/>
+  </Story>
+  <Story name="tip-scale-large"
+    parameters={{ layout: 'centered' }}>
+    <Tip tip="large" scale="large"/>
+  </Story>
+  <Story name="tip-scale-big"
+    parameters={{ layout: 'centered' }}>
+    <Tip tip="big" scale="big"/>
+  </Story>
+</Canvas>
+
+**position**
+
+<Canvas>
+  <Story name="tip-position-left"
+    parameters={{ layout: 'centered' }}>
+    <Tip tip="left" position="left" />
+  </Story>
+  <Story name="tip-position-right"
+    parameters={{ layout: 'centered' }}>
+    <Tip tip="right" position="right" />
+  </Story>
+  <Story name="tip-position-top"
+    parameters={{ layout: 'centered' }}>
+    <Tip tip="top" position="top" />
+  </Story>
+  <Story name="tip-position-bottom"
+    parameters={{ layout: 'centered' }}>
+    <Tip tip="bottom" position="bottom" />
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={Tip} />
+
+### Tooltip
+
+툴팁(Tooltip)은 팁을 좀더 유용하게 활용할 수 있도록 돕습니다.
+
+툴팁은 특정 오브젝트를 감싸는 래퍼(Wrapper)의 형태를 띕니다. 툴팁으로 감싸진 요소는 MouseEnter 이벤트가 발생하면 설정한 팁을 띄우고 MouseLeave 이벤트가 발생하면 팁을 지웁니다.
+
+```tsx
+import { Tooltip, Butotn } from '@seolim/react-ui';
+
+const Component = () => (
+  <Tooltip tip="overlap tip">
+    <Button>tip</Button>
+  </Tooltip>
+);
+```
+
+툴팁은 tip과 동일하게 크기(scale), 방향(position)을 설정할 수 있습니다.
+
+<Canvas>
+  <Story name="tooltip-position-left"
+    parameters={{ layout: 'centered' }}>
+    <Tooltip tip="left" position="left">
+      <Button>left</Button>
+    </Tooltip>
+  </Story>
+  <Story name="tooltip-position-right"
+    parameters={{ layout: 'centered' }}>
+    <Tooltip tip="right" position="right">
+      <Button>right</Button>
+    </Tooltip>
+  </Story>
+  <Story name="tooltip-position-top"
+    parameters={{ layout: 'centered' }}>
+    <Tooltip tip="top" position="top">
+      <Button>top</Button>
+    </Tooltip>
+  </Story>
+  <Story name="tooltip-position-bottom"
+    parameters={{ layout: 'centered' }}>
+    <Tooltip tip="bottom" position="bottom">
+      <Button>bottom</Button>
+    </Tooltip>
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={Tooltip} />
+
+### useTooltip
+
+`useTooltip`은 팁을 손쉽게 이용하기 위한 hook을 제공합니다.
+
+`useTooltip`은 생성하는 tip을 랜더링 컴포넌트 내부가 아닌 body레벨 element에 생성되므로 이에 주의합니다.(`createPortal`을 참고합니다)
+
+```typescript
+type useTooltip = (
+  /** 팁 내용 */
+  tip: string,
+  /** 팁을 띄울 element ref, 위치 계산값 */
+  ref: RefObject<HTMLElement>,
+  /** 팁 포지션 */
+  position: 'left' | 'top' | 'right' | 'bottom' = 'top',
+) => {
+  /** tip 생성 이벤트 함수 */
+  onAppear,
+  /** tip 삭제 이벤트 함수 */
+  onDisappear,
+}
+```
+
+아래와 같이 활용할 수 있습니다.
+
+```tsx
+import { useTooltip } from '@seolim/react-ui/tip';
+
+const Component = () => {
+  const ref = useRef(null);
+  const { onAppear, onDisappear } = useTooltip('usetooltip', ref)
+
+  return (
+    <div
+      onMouseEnter={onAppear}
+      onMouseLeave={onDisappear}
+      ref={ref}
+    >
+      {...content}
+    </div>
+  )
+}
+````
