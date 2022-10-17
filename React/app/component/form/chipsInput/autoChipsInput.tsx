@@ -1,10 +1,12 @@
 import React, {
   useState, useEffect, KeyboardEventHandler, ChangeEventHandler,
 } from 'react';
+import ReactDOM from 'react-dom';
 import { AutoControlFunction, useAutocomplete } from '../../autocomplete/useAutocomplete';
 import { ChipsInputProps } from './chipsInput';
 import { Chip, Chips, useChips } from '../../chips';
 import { ChipData } from '../../chips/useChips';
+import { getLeft, getTop } from '../../lib';
 import * as S from './style';
 
 export type AutoChipsInputProps = ChipsInputProps & {
@@ -25,7 +27,6 @@ function AutoChipsInput({
   const [text, setText] = useState<string>('');
   const [focus, setFocus] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
-  const [width, setWidth] = useState<number>(0);
   useEffect(() => {
     const closeOptionBox = (e: MouseEvent) => {
       if (!(e.target as HTMLElement).closest('.srui-form-auto-chips-input')) setOpen(false);
@@ -36,11 +37,6 @@ function AutoChipsInput({
   useEffect(() => {
     onChange({ v: text });
   }, [text]);
-  useEffect(() => {
-    if (open && control.ref.current) {
-      setWidth(control.ref.current.clientWidth);
-    }
-  }, [open, control.ref.current?.clientWidth]);
   const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === 'Enter') e.preventDefault();
     if (e.key === 'Enter' && text !== '') {
@@ -78,6 +74,41 @@ function AutoChipsInput({
   const onBlur = () => {
     setFocus(false);
   };
+  const makeOption = () => values.map((value) => (
+    <S.option
+      key={`selectoption_${value}`}
+      onClick={() => onClick(value)}
+      value={value}
+      scale={scale}
+    >
+      {value}
+    </S.option>
+  ));
+  const openMenu = () => {
+    const rootId = 'srui-menu-popup-root';
+    const style = { position: 'absolute', top: '0', left: '0' };
+    let container = document.getElementById(rootId);
+    if (!container) {
+      container = document.createElement('div');
+      container.id = rootId;
+      if (style) {
+        (container as HTMLElement).style.cssText = Object.entries(style).map(([key, value]) => `${key}: ${value}`).join(';');
+      }
+      document.body.appendChild(container);
+    }
+
+    return ReactDOM.createPortal(
+      <S.optionBox
+        scale={scale}
+        width={control.ref.current?.clientWidth}
+        left={getLeft(control.ref.current)}
+        top={getTop(control.ref.current)}
+      >
+        {makeOption()}
+      </S.optionBox>,
+      container,
+    );
+  };
   return (
     <S.autoChipsInput
       className="srui-form-auto-chips-input"
@@ -104,22 +135,7 @@ function AutoChipsInput({
           {...args}
         />
       </S.chipsInput>
-      <S.optionBox
-        open={open}
-        scale={scale}
-        width={width}
-      >
-        {values.map((value) => (
-          <S.option
-            key={`selectoption_${value}`}
-            onClick={() => onClick(value)}
-            value={value}
-            scale={scale}
-          >
-            {value}
-          </S.option>
-        ))}
-      </S.optionBox>
+      {open ? openMenu() : null}
     </S.autoChipsInput>
   );
 }

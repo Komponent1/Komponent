@@ -73,19 +73,20 @@ export const autoTextInput = styled.div`
   position: relative;
 `;
 export const optionBox = styled.ul<{
-  open: boolean;
   scale: FormScalesType;
-  width: number;
+  width?: number;
+  left?: number;
+  top?: number;
 }>`
   list-style-type: none;
   margin: 0;
   border-radius: 5px;
   position: absolute;
-  top: auto;
+  top: ${({ top }) => top}px;
+  left: ${({ left }) => left}px;
   background: white;
   z-index: 999;
 
-  display: ${({ open }) => (open ? 'block' : 'none')};
   ${theme.etcStyle.popupShadow};
   
   padding: ${({ scale }) => selectScale[scale].paddingTB}px 0;

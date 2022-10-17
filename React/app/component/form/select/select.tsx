@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { unmountComponentAtNode } from 'react-dom';
 import * as S from './selectStyle';
 import { FormControl } from '../useFormControl';
+import { renderPortal, getTop, getLeft } from '../../lib';
 
 export type SelectProps = {
   /** useForm control */
@@ -28,27 +30,21 @@ function Select({
   control,
 }: SelectProps) {
   const [open, setOpen] = useState<boolean>(false);
-  const [transition, setTransition] = useState<number>(0.5);
-  const toggleOptionBox = () => {
-    if (disabled) return;
 
-    if (!open) setOpen(true);
-    else setTransition(0.5);
-  };
-  const transitionEnd = () => {
-    if (open && transition === 0.5) setOpen(false);
+  const closeMenu = () => {
+    const div = document.getElementById('srui-menu-popup-root') as HTMLElement;
+    unmountComponentAtNode(div);
   };
   useEffect(() => {
     const closeOptionBox = (e: MouseEvent) => {
-      if (!(e.target as HTMLElement).closest('.srui-form-select')) setOpen(false);
+      if (!(e.target as HTMLElement).closest('.srui-form-select')) {
+        setOpen(false);
+        closeMenu();
+      }
     };
     window.addEventListener('click', closeOptionBox);
     return () => window.removeEventListener('click', closeOptionBox);
   }, []);
-  useEffect(() => {
-    if (open) setTransition(1);
-    else setTransition(0.5);
-  }, [open]);
 
   const makeOption = useCallback(() => {
     if (!control.values || control.values?.length === 0) {
@@ -74,10 +70,38 @@ function Select({
       ))
     );
   }, [control.values]);
-
+  const openBox = useCallback(() => {
+    renderPortal(
+      'srui-menu-popup-root',
+      <S.optionBox
+        top={getTop(control.ref.current)}
+        left={getLeft(control.ref.current)}
+        scale={scale}
+        width={width}
+      >
+        {makeOption()}
+      </S.optionBox>,
+      {
+        position: 'absolute',
+        top: '0',
+        left: '0',
+      },
+    );
+  }, [control.ref.current, open]);
   const labelPipe = (value: any) => {
     if (!label || !control.values) return value;
     return label[control.values.findIndex((e) => e === value)];
+  };
+  const toggleOptionBox = () => {
+    if (disabled) return;
+
+    if (!open) {
+      setOpen(true);
+      openBox();
+    } else {
+      setOpen(false);
+      closeMenu();
+    }
   };
 
   return (
@@ -100,15 +124,6 @@ function Select({
           ? labelPipe(control.value)
           : '선택하기'}
       </S.select>
-      <S.optionBox
-        onTransitionEnd={transitionEnd}
-        transition={transition}
-        scale={scale}
-        open={open}
-        width={width}
-      >
-        {makeOption()}
-      </S.optionBox>
     </S.div>
   );
 }

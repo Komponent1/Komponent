@@ -86,9 +86,10 @@ export const autoChipsInput = styled.div`
   position: relative;
 `;
 export const optionBox = styled.ul<{
-  open: boolean;
   scale: ChipsInputScale;
-  width: number;
+  width?: number;
+  left?: number;
+  top?: number;
 }>`
   list-style-type: none;
   margin: 0;
@@ -98,7 +99,10 @@ export const optionBox = styled.ul<{
   background: white;
   z-index: 999;
 
-  display: ${({ open }) => (open ? 'block' : 'none')};
+  position: absolute;
+  top: ${({ top }) => top}px;
+  left: ${({ left }) => left}px;
+
   ${theme.etcStyle.popupShadow};
   
   padding: ${({ scale }) => selectScale[scale].paddingTB}px 0;

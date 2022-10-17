@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
 import theme from '../../styles/theme';
 
 export type SelectWidthType = string | number | undefined;
@@ -90,26 +91,33 @@ export const select = styled.div<{
   width: ${({ scale, width }) => setWidth(scale, width, true)};
   padding: ${({ scale }) => `${selectScale[scale].paddingTB}px ${selectScale[scale].paddingRL}px`};
 `;
+const appearAnim = keyframes`
+    from {
+      transform: scale(0);
+      opacity: 0.5;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+`;
 export const optionBox = styled.ul<{
-  open: boolean;
   width: SelectWidthType;
   scale: FormScalesType;
-  transition: number;
+  top?: number;
+  left?: number;
 }>`
   list-style-type: none;
   margin: 0;
   border-radius: 5px;
   position: absolute;
-  top: auto;
+  top: ${({ top }) => top}px;
+  left: ${({ left }) => left}px;
   background: white;
   z-index: 999;
 
-  transition: transform 0.1s ease-in, opacity 0.1s ease-in;
-  opacity: ${({ transition }) => (transition === 0.5 ? 0 : 1)};
-  transform: scale(${({ transition }) => transition});
-  transform-origin: top;
-
-  display: ${({ open }) => (open ? 'block' : 'none')};
+  animation: ${appearAnim} 0.2s ease-out;
+  transform-origin: top right;
   ${theme.etcStyle.popupShadow};
   
   padding: ${({ scale }) => selectScale[scale].paddingTB}px 0;
