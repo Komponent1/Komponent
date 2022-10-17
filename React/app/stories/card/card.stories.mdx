@@ -1,5 +1,5 @@
 import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
-import { Card, CardContent, CardMedia, CardHeader } from '../../component/card';
+import { Card, CardContent, CardMedia, CardHeader, CardLoading } from '../../component/card';
 import Button, { ButtonProps } from '../../component/button/button';
 
 <Meta title="component/Card" component={Card} />
@@ -40,7 +40,7 @@ const Component = () => (
       layout: 'centered'
     }}>
       <Card width={240}>
-        <CardMedia src="/card_img.png" />
+        <CardMedia src="/card_img.ng" />
         <CardHeader
           title="title"
           subtitle="subtitle"
@@ -125,6 +125,43 @@ const Component = () => (
   </Story>
 </Canvas>
 
+### CardLoading
+
+카드는 데이터 로딩에 따른 로딩 UI(`<CardLoading />`)를 별도로 제공합니다. 스켈레톤의 형태를 띄고 진행되며 카드와 동일한 형태를 띌 수 있습니다.
+
+```typescript
+import { CardLoading, Card } from '@seolim/react-ui/card';
+
+const Component = () => {
+  const { data, loading } = useFetch('api');
+
+  return (
+    <>
+      {(loading || !data)
+        ? <CardLoading />
+        : <Card />}
+    </>
+  )
+}
+```
+
+로딩카드는 본인이 가질 로딩 요소를 선택할 수 있습니다. `content` 프로퍼티를 통해 전달합니다.
+
+<Canvas>
+  <Story name="card_loading_hmc"
+    parameters={{ layout: 'centered' }}>
+    <CardLoading width={240} content={['header', 'media', 'content']} />
+  </Story>
+  <Story name="card_loading_mhc"
+    parameters={{ layout: 'centered' }}>
+    <CardLoading width={240} content={['media', 'header', 'content']} />
+  </Story>
+  <Story name="card_loading_hc"
+    parameters={{ layout: 'centered' }}>
+    <CardLoading width={240} content={['header', 'content']} />
+  </Story>
+</Canvas>
+
 ### Props
 
 **Card**
@@ -142,3 +179,7 @@ const Component = () => (
 **CardContent**
 
 <ArgsTable of={CardContent} />
+
+**CardLoading**
+
+<ArgsTable of={CardLoading} />

@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
+import { Skeleton } from '../../loading';
 import * as S from './style';
 
 export type CardMediaProps = {
@@ -12,18 +13,34 @@ export type CardMediaProps = {
 function CardMedia({
   src,
   children = undefined,
-  maxHeight = 240,
+  maxHeight = 120,
 }: CardMediaProps) {
+  const [load, setLoad] = useState<boolean>(false);
+  const [err, setErr] = useState<boolean>(false);
+
   return (
     <S.div>
-      <S.img src={src} maxHeight={maxHeight} />
+      <S.img
+        src={src}
+        maxHeight={maxHeight}
+        load={load}
+        err={err}
+        onError={() => setErr(true)}
+        onLoad={() => setLoad(true)}
+      />
+      {!load ? (
+        <Skeleton
+          width="100%"
+          height={maxHeight}
+        />
+      ) : null}
       {children}
     </S.div>
   );
 }
 CardMedia.defaultProps = {
   children: undefined,
-  maxHeight: 240,
+  maxHeight: 120,
 };
 
 export default CardMedia;

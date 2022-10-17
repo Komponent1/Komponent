@@ -1,26 +1,24 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { Avatar, Tooltip } from '../../component';
-import { useTooltip, Tip } from '../../component/tooltip';
+import { Grid } from '../../component';
+import {
+  Card, CardContent, CardHeader, CardMedia, CardLoading
+} from '../../component/card';
 
 function App() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { onAppear, onDisappear } = useTooltip('test', ref);
+  const datas = [
+    { title: '1', src: '', content: 'text1' },
+    { title: '2', src: '', content: 'text2' },
+    { title: '3', src: '', content: 'text3' },
+    { title: '4', src: '', content: 'text4' },
+  ];
 
   return (
-    <div>
-      <Tooltip
-        tip="test"
-        position="left"
-        style={{
-          position: 'absolute',
-          top: 100,
-          left: 100,
-        }}
-      >
-        <div style={{ width: 20, height: 20, background: 'black' }}/>
-      </Tooltip>
-    </div>
+    <Grid breakPoint={[1024, 900, 800, 700, 600]}>
+      {datas.map((data) => (
+        <CardLoading content={['media', 'header', 'content']} />
+      ))}
+    </Grid>
   );
 }
 
