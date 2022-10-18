@@ -19,12 +19,12 @@ export const chip = styled.div<{
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  background: ${({ color }) => background[color]};
+  background: ${({ color }) => (background[color] ? background[color] : color)};
   border-radius: 300px;
   ${({ scale }) => theme.formScales[scale]};
   width: auto;
   ${({ isDelete }) => (isDelete ? 'padding-right: 7px' : null)};
-  color: ${({ color }) => (color !== 'grey' ? 'white' : 'black')};
+  color: ${({ color }) => (color === 'primary' || color === 'semantic' || color === 'danger' ? 'white' : 'black')};
 `;
 export const chips = styled.div`
   display: inline-flex;

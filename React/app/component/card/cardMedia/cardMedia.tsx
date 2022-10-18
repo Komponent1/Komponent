@@ -1,8 +1,8 @@
-import React, { ReactNode, useState } from 'react';
+import React, { HTMLAttributes, ReactNode, useState } from 'react';
 import { Skeleton } from '../../loading';
 import * as S from './style';
 
-export type CardMediaProps = {
+export type CardMediaProps = HTMLAttributes<HTMLImageElement> & {
   /** 이미지 url */
   src: string;
   /** 이미지 내부에 위치할 엘리먼트 position: absolute로 고정할 것 */
@@ -14,6 +14,7 @@ function CardMedia({
   src,
   children = undefined,
   maxHeight = 120,
+  ...args
 }: CardMediaProps) {
   const [load, setLoad] = useState<boolean>(false);
   const [err, setErr] = useState<boolean>(false);
@@ -27,6 +28,7 @@ function CardMedia({
         err={err}
         onError={() => setErr(true)}
         onLoad={() => setLoad(true)}
+        {...args}
       />
       {!load ? (
         <Skeleton

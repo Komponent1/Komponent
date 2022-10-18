@@ -28,6 +28,7 @@ export const header = styled.header<{
 }>`
   display: ${({ hasHeader }) => (hasHeader ? 'flex' : 'none')};
   flex-direction: row;
+  align-items: center;
   ${({ design, opacity, margin }) => designSet[design](opacity, margin)};
   height: ${theme.boxSize.headerHeight}px;
   width: 100%;

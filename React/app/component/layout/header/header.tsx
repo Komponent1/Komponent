@@ -1,11 +1,12 @@
 import React, {
+  HTMLAttributes,
   ReactNode, useContext, useEffect, useState,
 } from 'react';
 import theme from '../../styles/theme';
 import { LayoutContext } from '../layoutProvider';
 import * as S from './style';
 
-export type HeaderProps = {
+export type HeaderProps = HTMLAttributes<HTMLDivElement> & {
   /** ReactNode */
   children: ReactNode;
   /** 헤더의 디자인 값 */
@@ -17,6 +18,7 @@ function Header({
   children,
   design = 'top',
   color = 'white',
+  ...args
 }: HeaderProps) {
   const { hasHeader } = useContext(LayoutContext);
   const [margin, setMargin] = useState<number>(-theme.boxSize.headerHeight);
@@ -67,6 +69,7 @@ function Header({
         hasHeader={hasHeader}
         design={design === 'scroll' ? 'top' : design}
         color={color}
+        {...args}
       >
         {children}
       </S.header>
@@ -79,6 +82,7 @@ function Header({
             design={design}
             margin={margin}
             color={color}
+            {...args}
           >
             {children}
           </S.header>

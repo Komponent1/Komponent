@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react';
+import React, { HTMLAttributes, ReactNode, useMemo } from 'react';
 import { XCircleFill } from 'react-bootstrap-icons';
 import * as S from './style';
 import theme from '../styles/theme';
@@ -9,7 +9,7 @@ const buttonColor = {
   semantic: 'white',
   danger: 'white',
 };
-export type ChipProps = {
+export type ChipProps = HTMLAttributes<HTMLDivElement> & {
   /** child element */
   children: ReactNode;
   /** chip 크기 옵션 */
@@ -24,6 +24,7 @@ function Chip({
   scale = 'medium',
   onDelete = undefined,
   color = 'grey',
+  ...args
 }: ChipProps) {
   const isDelete = useMemo(() => onDelete !== undefined, [onDelete]);
 
@@ -33,6 +34,7 @@ function Chip({
       scale={scale}
       isDelete={isDelete}
       color={color}
+      {...args}
     >
       <S.text
         isDelete={isDelete}

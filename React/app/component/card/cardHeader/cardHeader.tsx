@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import * as S from './style';
 import { Skeleton } from '../../loading';
 
-export type CardHeaderProps = {
+export type CardHeaderProps = HTMLAttributes<HTMLDivElement> & {
   /** 카드 이름(필수) */
   title: string;
   /** 카드 부연 */
@@ -14,9 +14,10 @@ function CardHeader({
   title,
   subtitle = undefined,
   loading = false,
+  ...args
 }: CardHeaderProps) {
   return (
-    <S.header>
+    <S.header {...args}>
       {loading
         ? <Skeleton type="text" width="70%" height="24px" />
         : (

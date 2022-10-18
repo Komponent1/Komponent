@@ -5,7 +5,7 @@ export type CardContentDisplay = 'row' | 'column';
 export const cardContent = styled.div<{
   display: CardContentDisplay,
 }>`
-  width: 100%;
+  width: calc(100% - ${theme.padding.xl * 2});
   ${({ display }) => (display === 'row'
     ? 'display: flex;flex-direction: row'
     : null)};

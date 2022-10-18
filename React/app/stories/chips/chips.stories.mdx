@@ -20,7 +20,9 @@ const Component = () => {
 }
 ```
 
-칩의 컬러는 기본적으로 4개를 제공합니다.(커스터마이즈는 이후 버전에 제공 예정입니다)
+칩의 컬러는 기본적으로 4개를 제공합니다. 혹은 커스텀된 색상을 이용해도 됩니다.
+
+(글씨의 default 색은 검정색입니다)
 
 <Canvas>
   <Story name="chip-color-grey"
@@ -38,6 +40,10 @@ const Component = () => {
   <Story name="chip-color-danger"
     parameters={{ layout: 'centered' }}>
     <Chip color="danger">danger</Chip>
+  </Story>
+  <Story name="chip-color-custom"
+    parameters={{ layout: 'centered' }}>
+    <Chip color="#aff43f">custom</Chip>
   </Story>
 </Canvas>
 

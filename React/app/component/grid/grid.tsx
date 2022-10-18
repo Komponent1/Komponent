@@ -12,12 +12,14 @@ function Grid({
   columns = 4,
   breakPoint = [],
   gap = 10,
+  ...args
 }: GridProps) {
   return (
     <S.grid
       columns={columns}
       breakPoint={breakPoint}
       gap={gap}
+      {...args}
     >
       {children}
     </S.grid>

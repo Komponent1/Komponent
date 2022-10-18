@@ -77,6 +77,7 @@ export const input = styled.input<{
   outline: none;
   background: rgba(0,0,0,0);
 
+  flex: 1 1 0;
   &:focus {
     outline: none;
     border: none;
@@ -84,6 +85,7 @@ export const input = styled.input<{
 `;
 export const autoChipsInput = styled.div`
   position: relative;
+  display: flex;
 `;
 export const optionBox = styled.ul<{
   scale: ChipsInputScale;

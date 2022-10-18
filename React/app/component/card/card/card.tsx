@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import * as S from './style';
 
-export type CardProps = {
+export type CardProps = HTMLAttributes<HTMLDivElement> & {
   /** <CardConent>, <CardMedia>, <CardHeader> 혹은 기타 엘리먼트 */
   children?: ReactNode;
   /** 카드의 레이아웃 디자인 */
@@ -22,6 +22,7 @@ function Card({
   maxWidth = undefined,
   minWidth = undefined,
   action = undefined,
+  ...args
 }: CardProps) {
   const onAction = () => {
     if (action) action();
@@ -35,6 +36,7 @@ function Card({
       minWidth={minWidth}
       isAction={action !== undefined}
       onClick={onAction}
+      {...args}
     >
       {children}
     </S.card>

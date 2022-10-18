@@ -113,7 +113,8 @@ export const button = styled.button<{
   outline: none;
   border: none;
   transition: background 0.2s ease-out;
-  
+  cursor: pointer;
+
   ${({ color, design }) => createLayout(color, design)};
   
   ${({ size }) => (size && sizes[size] ? sizes[size] : sizes.medium)};
