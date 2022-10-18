@@ -3,7 +3,8 @@ import { useFormControl, FormControl, UseFormControlParams } from './useFormCont
 type FormType =
   'multi-text-input'
   | 'select'
-  | 'text-input';
+  | 'text-input'
+  | 'img-input';
 type UseFormParams = {
   id: string;
   type: FormType;
@@ -17,6 +18,8 @@ export const useForm = (forms: UseFormParams, callback: Function) => {
       acc[cur.id] = useFormControl<string[], HTMLInputElement>(cur.controlOption);
     } else if (cur.type === 'text-input') {
       acc[cur.id] = useFormControl<string, HTMLInputElement>(cur.controlOption);
+    } else if (cur.type === 'img-input') {
+      acc[cur.id] = useFormControl<File, HTMLInputElement>(cur.controlOption);
     }
     return acc;
   }, {});

@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
-import { useModal, Modal } from '../../component/modal';
+import { useModal, Modal, ModalPortal } from '../../component/modal';
 import { Button } from '../../component';
 
 <Meta title="system/modal" component={Modal} />
@@ -9,18 +10,6 @@ import { Button } from '../../component';
 모달(Modal)은 페이지위에 작은 화면을 생성해 부가적인 작업을 실행시킬수 있는 UI이자 시스템(system)입니다.
 
 SRUI는 모달을 기본적인 모달(Wrapper)와 useModal을 통해 제공합니다.
-
-```typescript
-import { useModal } from '@seolim/react-ui/modal';
-
-const Component = () => {
-  const { openModal } = useModal('This is Modal', {});
-
-  return (
-    <button onClick={openModal} />
-  )
-}
-```
 
 SRUI의 모달은 헤더, 바디, 액션의 구조로 나뉘어 있습니다.
 
@@ -33,6 +22,22 @@ SRUI의 모달은 3개의 액션을 기본으로 제공합니다.
 1. ESC(Escape)키를 이용한 모달 종료
 2. 모달 외부 클릭을 통한 모달 종료
 3. 버튼을 통한 모달 종료(닫기/확인 버튼)
+
+### useModal
+
+`useModal`은 모달 바디에 적용될 `ReactNode`와 모달에 적용될 옵션(`config`)을 파라미터로 받습니다.
+
+```typescript
+import { useModal } from '@seolim/react-ui/modal';
+
+const Component = () => {
+  const { openModal } = useModal('This is Modal', {});
+
+  return (
+    <button onClick={openModal} />
+  )
+}
+```
 
 export const Template = () => {
   const { openModal } = useModal('Modal Default', {
@@ -50,7 +55,9 @@ export const Template = () => {
   </Story>
 </Canvas>
 
-`useModal`은 모달 바디에 적용될 `ReactNode`와 모달에 적용될 옵션(`config`)을 파라미터로 받습니다.
+`useModal`은 `ReactDOM.render`를 사용합니다.(이는 18버전에서 deprecated되었습니다. 18 major이후 업데이트 예정입니다)
+
+따라서 state를 property로 전달할 수 없습니다.(`ReactDOM.render`은 새로운 트리를 만듭니다) 따라서 notification이나 데이터의 조작이 없는 경우(정적 props를 요구하는 경우)에 활용합니다.
 
 ```typescript
 /* 종료 방식 선언 */
@@ -73,4 +80,46 @@ type useModal = (
 })
 ```
 
+### modalPortal
+
+`<ModalPortal/>`은 `ReactDOM.createPortal`을 활용합니다. 따라서 `useModal`과 달리 동적 props를 활용하여 데이터를 조작할 수 있습니다.
+
+모달 내에서 state를 변경하는 경우 활용합니다.
+
+`useModal`과 달리 `<ModalPortal/>`은 root를 직접 html에 추가해 주어야 합니다.
+
+```typescript
+import { ModalPortal } from '@seolim/react-ui/modal';
+
+const Component = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  return (
+    {open ? <ModalPortal children={<JSX>} /> : null}
+  )
+}
+```
+
+export const portalTemplate = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}></Button>
+      {open ? (
+        <ModalPortal
+          closeModal={() => setOpen(false)}
+        >
+          <p>TEST</p>
+        </ModalPortal>
+      ) : null}
+    </>
+  );
+};
+
+<Canvas>
+  <Story name="portal"
+    parameters={{ layout: 'centered' }}>
+    {portalTemplate.bind({})}
+  </Story>
+</Canvas>
 
