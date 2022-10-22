@@ -38,6 +38,7 @@ function AutoChipsInput({
     onChange({ v: text });
   }, [text]);
   const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.nativeEvent.isComposing) return;
     if (e.key === 'Enter') e.preventDefault();
     if (e.key === 'Enter' && text !== '') {
       control.onChange({

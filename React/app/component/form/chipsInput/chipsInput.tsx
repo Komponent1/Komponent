@@ -27,6 +27,7 @@ function ChipsInput({
   const [text, setText] = useState<string>('');
   const [focus, setFocus] = useState<boolean>(false);
   const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.nativeEvent.isComposing) return;
     if (e.key === 'Enter') e.preventDefault();
     if (e.key === 'Enter' && text !== '') {
       control.onChange({

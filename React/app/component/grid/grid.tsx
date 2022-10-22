@@ -16,6 +16,7 @@ function Grid({
 }: GridProps) {
   return (
     <S.grid
+      className="srui-grid"
       columns={columns}
       breakPoint={breakPoint}
       gap={gap}

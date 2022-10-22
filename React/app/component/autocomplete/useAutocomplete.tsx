@@ -19,6 +19,7 @@ export const useAutocomplete = ({
           .filter((init) => init.includes(e ? e.target.value : v as string)),
       );
     } else {
+      if (controlValue.length === 0) return;
       const valueSet = await (controlValue as AutoControlFunction)(
         e ? e.target.value : v as string,
       );

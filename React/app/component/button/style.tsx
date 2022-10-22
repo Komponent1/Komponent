@@ -119,4 +119,6 @@ export const button = styled.button<{
   
   ${({ size }) => (size && sizes[size] ? sizes[size] : sizes.medium)};
   border-radius: ${({ corner }) => ((corner && corner === 'round') ? '300px' : '6px')};
+
+  white-space: nowrap;
 `;
