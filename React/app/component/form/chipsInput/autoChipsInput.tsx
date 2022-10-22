@@ -49,6 +49,9 @@ function AutoChipsInput({
     }
     if (e.key === 'Backspace' && text === '' && chips.length !== 0) {
       deleteChip(chips[chips.length - 1]);
+      control.onChange({
+        v: chips.slice(0, -1).map((data) => data.value),
+      });
     }
   };
   const onDelete = (chip: ChipData) => {
