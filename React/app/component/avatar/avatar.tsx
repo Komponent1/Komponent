@@ -11,8 +11,8 @@ export type AvatarProps = HTMLAttributes<HTMLDivElement> & {
   /** image url */
   src?: string;
   /** image 실패, 로드시 대체 요소 */
-  alt?: ReactNode | string;
   /** text나 아이콘을 입력시 요구, 이미지보다 우선순위가 낮습니다 */
+  alt?: string;
   children?: ReactNode;
 };
 function Avatar({
@@ -20,11 +20,10 @@ function Avatar({
   design = 'circle',
   color = 'primary',
   src = undefined,
-  alt = undefined,
   children = undefined,
+  alt,
   ...args
 }: AvatarProps) {
-  const [error, setError] = useState<boolean>(true);
   return (
     <S.avatar
       scale={scale}
@@ -32,13 +31,10 @@ function Avatar({
       color={color}
       {...args}
     >
-      {alt && error ? alt : null}
       {src ? (
         <S.img
-          error={error}
+          alt={alt}
           src={src}
-          onLoad={() => setError(false)}
-          onError={() => setError(true)}
         />
       ) : null}
       {children && !src && !alt ? children : null}

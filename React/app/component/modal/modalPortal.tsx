@@ -8,6 +8,7 @@ export type ModalPortalProps = {
   closeModal?: (type: CloseType) => void;
   header?: string;
   onAction?: () => (void | Promise<void>);
+  width?: number | string;
 };
 function modalPortal({
   children,
@@ -15,12 +16,14 @@ function modalPortal({
   closeModal = () => {},
   onAction = undefined,
   header = undefined,
+  width = 480,
 }: ModalPortalProps) {
   return createPortal(
     <Modal
       header={header}
       onAction={onAction}
       closeModal={closeModal}
+      width={width}
     >
       {children}
     </Modal>,

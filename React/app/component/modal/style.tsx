@@ -13,9 +13,11 @@ export const modalBackground = styled.div`
   display: flex;
   align-items: center;
 `;
-export const modal = styled.div`
+export const modal = styled.div<{
+  width: number | string;
+}>`
   background: white;
-  width: 480px;
+  width: ${({ width }) => (typeof (width) === 'number' ? `${width}px` : width)};
   margin: auto;
   border-radius: 5px;
 `;

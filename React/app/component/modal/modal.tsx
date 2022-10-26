@@ -8,10 +8,12 @@ export type ModalProps = {
   closeModal: (type: CloseType) => void;
   header?: string;
   onAction?: () => (void | Promise<void>);
+  width?: string | number;
 };
 function Modal({
   header = undefined,
   onAction = undefined,
+  width = 480,
   closeModal,
   children,
 }: ModalProps) {
@@ -30,7 +32,10 @@ function Modal({
       className="srui-modal-background"
       onClick={closeOutSide}
     >
-      <S.modal className="srui-modal">
+      <S.modal
+        className="srui-modal"
+        width={width}
+      >
         {header
           ? <S.modalHeader>{header}</S.modalHeader>
           : null}
@@ -48,6 +53,7 @@ function Modal({
 Modal.defaultProps = {
   header: undefined,
   onAction: undefined,
+  width: 480,
 };
 
 export default Modal;

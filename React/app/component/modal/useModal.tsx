@@ -12,6 +12,7 @@ export type ModalConfig = {
   header?: string;
   closeRequest?: () => void;
   onAction?: () => void
+  width?: number | string,
 };
 export const useModal = (
   children: ReactNode,
@@ -37,6 +38,7 @@ export const useModal = (
         closeModal={closeModal}
         header={config.header}
         onAction={config.onAction}
+        width={config.width}
       >
         {children}
       </Modal>,

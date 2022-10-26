@@ -36,13 +36,9 @@ export const avatar = styled.div<{
   color: white;
   font-size: ${({ scale }) => (typeof (scale) === 'number' ? scale * 0.6 : Scale[scale] * 0.6)}px;
 `;
-export const img = styled.img<{
-  error: boolean
-}>`
+export const img = styled.img`
   width: 100%;
   height: 100%;
-
-  display: ${({ error }) => (!error ? 'inline-block' : 'none')};
 
   position: absolute;
   top: 0;
