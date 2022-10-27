@@ -29,7 +29,7 @@ function Bookmark({
       <S.images src={img} alt="" />
       <S.information>
         <S.title>{title}</S.title>
-        <S.description>{url}</S.description>
+        <S.url>{url}</S.url>
         <S.description>{description}</S.description>
 
       </S.information>
