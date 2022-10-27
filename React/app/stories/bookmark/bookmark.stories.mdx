@@ -1,0 +1,96 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import Bookmark, { BookmarkProps } from '../../component/bookmark/bookmark';
+import OgBookmark from '../../component/bookmark';
+
+<Meta title="component/Bookmark" component={Bookmark} />
+
+# Bookmark
+
+북마크(Bookmark)는 주어진 정보에 따라 이동하는 페이지에 대한 프리뷰를 보여줍니다.
+
+SRUI는 북마크를 표현할 수 있는 UI를 제공합니다. 북마크는 소셜 공유 meta tag인 [open graph](https://ogp.me/)나 [twitter](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started)를 활용하기를 권장합니다.
+
+```tsx
+import { Bookmark } from '@seolim/react-ui';
+
+const Component = () => (
+  <Bookmark
+    title="bookmark"
+    url="url"
+    img="img_src"
+    description="description"
+  />
+);
+```
+
+아래는 네이버(naver.com)를 기준으로 open graph 태그를 활용하여 작성한 예제입니다.
+
+<Canvas>
+  <Story name="naver_example"
+    parameters={{ layout: 'centered' }}>
+    <Bookmark
+      title="네이버"
+      description="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요"
+      url="https://naver.com"
+      img="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"
+      style={{ width: '480px' }}
+    />
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={Bookmark} />
+
+### OgBookmark
+
+SRUI는 ogtable 정보를 받아오는 promise 함수를 포함한 로딩을 가져올 수 있습니다.
+
+SRUI는 `open-grpah-scraper`를 이용한 서버측 데이터를 받아오는 것을 권장합니다.
+
+* `open-graph-scraper`는 node module입니다. 브라우저에서 사용할 수 없습니다.
+
+아래는 활용 예제입니다.
+
+```tsx
+/** 서버측 의사코드 */
+import ogs from 'open-graph-scraper';
+
+const getMeta = async (req: Request, res: Response) => {
+  const { result, error } = ogs({ req.query.url });
+
+  if (error) return res.status(500).end();
+  return res.status(200).json({ result });
+}
+router.get('/meta', getMeta);
+
+/** OgBookmark */
+import { OgBookmark } from '@seolim/react-ui/bookmark';
+
+const Component = () => {
+  const originUrl = 'url';
+  const originTitle = 'title';
+
+  const getOgData = async () => {
+    const { result } = fetch(`/meta?url=${originUrl}`);
+    return ({
+      title: result.ogTitle,
+      description: result.ogDescription,
+      img: result.ogImage.url,
+      url: result.ogUrl,
+    })
+  }
+
+  return (
+    <OgBookmark
+      requestPromise={getOgData}
+      originUrl={originUrl}
+      originTitle={originTitle}
+    />
+  );
+}
+```
+
+### Props
+
+<ArgsTable of={OgBookmark} />
