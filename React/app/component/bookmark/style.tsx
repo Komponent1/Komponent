@@ -8,6 +8,7 @@ export const bookmark = styled.div`
   width: 100%;
 
   cursor: pointer;
+  border: 1px solid ${theme.color.white400};
 `;
 export const images = styled.img`
   flex-grow: 0;
@@ -17,8 +18,7 @@ export const images = styled.img`
 `;
 export const information = styled.div`
   flex-grow: 1;
-  border: 1px solid ${theme.color.white400};
-  padding: 15px 5px;
+  padding: 15px 12px;
   display: flex;
   flex-direction: column;
   justify-content: start;
