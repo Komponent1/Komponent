@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import theme from '../../styles/theme';
 
 export type CardDesign = 'border' | 'shadow';
 export type CardWidth = number | string;
@@ -18,7 +17,7 @@ export const card = styled.div<{
 
   border-radius: 4px;
   ${({ design, color, borderWidth }) => (design === 'border'
-    ? `border: ${borderWidth} solid ${color}`
+    ? `border: ${borderWidth}px solid ${color}`
     : 'box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 34%) 0px 1px 1px 0px, rgb(0 0 0 / 30%) 0px 1px 3px 0px')};
 
   transition: transform 0.5s ease-out;
