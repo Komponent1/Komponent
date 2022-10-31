@@ -1,4 +1,5 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
+import theme from '../../styles/theme';
 import * as S from './style';
 
 export type CardProps = HTMLAttributes<HTMLDivElement> & {
@@ -14,6 +15,10 @@ export type CardProps = HTMLAttributes<HTMLDivElement> & {
   minWidth?: S.CardWidth;
   /** 카드 클릭시 진행될 액션 */
   action?: Function;
+  /** border 색깔 */
+  color?: string;
+  /** border 두께 */
+  borderWidth?: number;
 };
 function Card({
   children = '',
@@ -22,6 +27,8 @@ function Card({
   maxWidth = undefined,
   minWidth = undefined,
   action = undefined,
+  color = theme.color.white500,
+  borderWidth = 1,
   ...args
 }: CardProps) {
   const onAction = () => {
@@ -32,6 +39,8 @@ function Card({
     <S.card
       design={design}
       width={width}
+      color={color}
+      borderWidth={borderWidth}
       maxWidth={maxWidth}
       minWidth={minWidth}
       isAction={action !== undefined}
@@ -49,5 +58,7 @@ Card.defaultProps = {
   maxWidth: undefined,
   minWidth: undefined,
   action: undefined,
+  color: theme.color.white500,
+  borderWidth: 1,
 };
 export default Card;
