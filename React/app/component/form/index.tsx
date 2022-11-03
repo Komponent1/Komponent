@@ -8,3 +8,4 @@ export { default as Form } from './form';
 export { default as AutoTextInput } from './textinput/autoTextInput';
 export { default as AutoChipsInput } from './chipsInput/autoChipsInput';
 export { default as ImgInput } from './imgInput/imgInput';
+export { default as AreaInput } from './areainput/areainput';
