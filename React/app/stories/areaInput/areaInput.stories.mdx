@@ -1,0 +1,72 @@
+import { Meta, Story, Description, ArgsTable, Canvas } from '@storybook/addon-docs';
+import { AreaInput, useFormControl } from '../../component/form';
+
+<Meta title="form/AreaInput" component={AreaInput} />
+
+# AreaInput
+
+에어리어인풋(AreaInput)은 폼(form)요소 중 멀티라인 텍스트를 입력하는 컴포넌트입니다.
+
+유저의 입력에 따라 데이터를 갱신하고 폼을 통해 데이터를 서브밋(submit)합니다.
+
+모든 폼은 `useFormControl`을 통해 `FormControl`을 생성해 사용할 수 있습니다.
+
+```tsx
+import { useFormControl, AreaInput } from '@seolim/react-ui/form';
+
+const Component = () => {
+  const control = useFormControl<string, HTMLTextAreaElement>({
+    initValue: '',
+  });
+  return <AreaInput control={control} />
+}
+```
+
+에어리어 인풋은 2개의 디자인을 제공합니다.
+
+export const normalTemplate = () => {
+  const control = useFormControl({ initValue: '' });
+  return <AreaInput control={control} placeholder="normal" design="normal" width={240} />
+}
+
+export const underlineTemplate = () => {
+  const control = useFormControl({ initValue: '' });
+  return <AreaInput control={control} placeholder="underline" design="underline" width={240} />
+}
+
+<Canvas>
+  <Story name="design-normal"
+    parameters={{ layout: 'centered' }}>
+    {normalTemplate.bind({})}
+  </Story>
+  <Story name="design-underline"
+    parameters={{ layout: 'centered' }}>
+    {underlineTemplate.bind({})}
+  </Story>
+</Canvas>
+
+AreaInput의 높이는 `rows` 속성과 `scale` 속성에 따라 컨트롤됩니다. `rows`는 라인 줄 수를 컨트롤하고 scale은 font크기와 padding값을 컨트롤합니다.
+
+export const ScaleTemplate = () => {
+  const control = useFormControl({ initValue: '' });
+  return <AreaInput control={control} placeholder="rows: 3, scale: big" scale="big" rows={3} width={360} />
+}
+export const ScaleTemplate2 = () => {
+  const control = useFormControl({ initValue: '' });
+  return <AreaInput control={control} placeholder="rows: 5, scale: small" scale="small" rows={5} width={360} />
+}
+
+<Canvas>
+  <Story name="scale-big-example"
+    parameters={{ layout: 'centered' }}>
+    {ScaleTemplate.bind({})}
+  </Story>
+  <Story name="scale-small-example"
+    parameters={{ layout: 'centered' }}>
+    {ScaleTemplate2.bind({})}
+  </Story>
+</Canvas>
+
+### Props
+
+<ArgsTable of={AreaInput} />
