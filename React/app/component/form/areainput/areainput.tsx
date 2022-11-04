@@ -17,6 +17,8 @@ export type AreaInputProps = HTMLAttributes<HTMLTextAreaElement> & {
   design?: S.SelectDesign;
   /** 폰트 크기 및 패딩 값 조작 */
   scale?: S.FormScalesType;
+  /** input 변경 가능 / 불가능 */
+  disabled?: boolean;
 };
 function AreaInput({
   id = undefined,
@@ -25,6 +27,7 @@ function AreaInput({
   design = 'normal',
   rows = 5,
   scale = 'medium',
+  disabled = false,
   control,
   ...args
 }: AreaInputProps) {
@@ -45,6 +48,7 @@ function AreaInput({
       width={width}
       design={design}
       scale={scale}
+      disabled={disabled}
       {...args}
     />
   );
@@ -56,6 +60,7 @@ AreaInput.defaultProps = {
   width: '100%',
   design: 'normal',
   scale: 'medium',
+  disabled: false,
 };
 
 export default AreaInput;
