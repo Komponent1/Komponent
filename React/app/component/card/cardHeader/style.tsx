@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import theme from '../../styles/theme';
 
 export const header = styled.div`
-  width: 100%;
+  width: calc(100% - ${theme.padding.xl * 2});
   padding: ${theme.padding.xl}px;
 `;
 export const title = styled.div`
