@@ -109,6 +109,9 @@ export const optionBox = styled.ul<{
   
   padding: ${({ scale }) => selectScale[scale].paddingTB}px 0;
   width: ${({ width }) => width}px;
+
+  overflow-y: scroll;
+  max-height: 10em;
 `;
 export const option = styled.li<{
   scale: ChipsInputScale
